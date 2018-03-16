@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114682523502965348}
   m_Layer: 0
   m_Name: Kreda
-  m_TagString: Untagged
+  m_TagString: Chalk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,8 +61,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a8a4a953632e7a54395d14b7346c623b, type: 3}
-  - {fileID: 2100002, guid: a8a4a953632e7a54395d14b7346c623b, type: 3}
+  - {fileID: 2100000, guid: cbcc3ed8e8dd6d24cbca3b0c9a11b755, type: 2}
+  - {fileID: 2100000, guid: cbcc3ed8e8dd6d24cbca3b0c9a11b755, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0.5441177, g: 0.13202855, b: 0.13202855, a: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
-  holdButtonToGrab: 0
+  holdButtonToGrab: 1
   stayGrabbedOnTeleport: 1
   validDrop: 1
   grabOverrideButton: 0
