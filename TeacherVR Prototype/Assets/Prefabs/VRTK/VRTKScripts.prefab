@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTillFade: 0
-  blinkTransitionSpeed: 0.1
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  blinkTransitionSpeed: 0.05
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
   headsetCollision: {fileID: 0}
   headsetFade: {fileID: 0}
 --- !u!114 &114111213967220170
@@ -316,14 +316,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usePointerColor: 1
-  playAreaCursorDimensions: {x: 1.5, y: 1.5}
+  playAreaCursorDimensions: {x: 2, y: 2}
   handlePlayAreaCursorCollisions: 1
   headsetOutOfBoundsIsCollision: 1
   displayOnInvalidLocation: 1
   targetListPolicy: {fileID: 114689080430735126}
   validLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
     type: 2}
-  invalidLocationObject: {fileID: 0}
+  invalidLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
+    type: 2}
 --- !u!114 &114565330734906172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,9 +432,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   operation: 0
-  checkType: 1
+  checkType: 2
   identifiers:
-  - Stairs
+  - VRTK_DestinationPoint
 --- !u!114 &114810599670809082
 MonoBehaviour:
   m_ObjectHideFlags: 1
