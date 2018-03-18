@@ -1,61 +1,35 @@
 fileFormatVersion: 2
-guid: 1f9731f0ab50f8041b6fe51087c1b6b2
-timeCreated: 1521294608
+guid: b89a27e29c5e6284299e56fe07e3a3d4
+timeCreated: 1521408814
 licenseType: Free
-SketchUpImporter:
-  generateBackFace: 0
-  mergeCoplanarFaces: 0
-  selectedNodes: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
-  assetHash:
-    serializedVersion: 2
-    Hash: d4b3b18c39ffb2f1bf55c6e5a0d8e568
-  longitude: -105.283
-  latitude: 40.017
-  northCorrection: -0
-  fileUnit: 0
-  sketchUpImportData:
-    defaultCamera:
-      position: {x: 0.06398513, y: 0.038603645, z: 0.01900766}
-      lookAt: {x: -8.229973, y: -4.383987, z: -2.2146356}
-      up: {x: -0.44202086, y: 0.88907087, z: -0.11904049}
-      fov: 35
-      aspectRatio: 0
-      orthoSize: 1
-      isPerspective: 1
-    scenes: []
+ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Group 2
-    100002: Group 4
-    100004: Group 8
-    100006: MicroUSB
-    100008: USB
-    100010: //RootNode
-    400000: Group 2
-    400002: Group 4
-    400004: Group 8
-    400006: MicroUSB
-    400008: USB
-    400010: //RootNode
-    2100000: '[Color_008]'
-    2100002: '[Color_D06]'
-    2100004: '[Color_001]'
-    2300000: Group 2
-    2300002: Group 4
-    2300004: Group 8
-    2300006: MicroUSB
-    3300000: Group 2
-    3300002: Group 4
-    3300004: Group 8
-    3300006: MicroUSB
-    4300000: Mesh Group 2
-    4300002: Mesh Group 4
-    4300004: Mesh MicroUSB
+    100000: hair002_high
+    100002: hand001
+    100004: //RootNode
+    400000: hair002_high
+    400002: hand001
+    400004: //RootNode
+    2100000: 01 - Default
+    2100002: 06 - Default
+    2100004: 14 - Default
+    2300000: hair002_high
+    2300002: hand001
+    2300004: //RootNode
+    3300000: hair002_high
+    3300002: hand001
+    3300004: //RootNode
+    4300000: body_high
+    4300002: hair002_high
+    4300004: hand001
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
-    materialName: 2
-    materialSearch: 0
+    materialName: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -81,7 +55,7 @@ SketchUpImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.0254
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -106,7 +80,7 @@ SketchUpImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -125,7 +99,7 @@ SketchUpImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
