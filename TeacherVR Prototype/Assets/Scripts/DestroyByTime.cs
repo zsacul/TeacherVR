@@ -6,6 +6,7 @@ public class DestroyByTime : MonoBehaviour
 {
     public float LifeTime;
     public bool SnapDropZone = false;
+    public string SnapObjectName;
 
     private bool wasKinematic = false;
     private Rigidbody rb;

@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4962186915850896}
   - component: {fileID: 114429514111905480}
-  - component: {fileID: 114102501545496324}
-  - component: {fileID: 114984401793606526}
   - component: {fileID: 54583824329267084}
   - component: {fileID: 114461205831951218}
+  - component: {fileID: 114817035309705650}
+  - component: {fileID: 114922358354652674}
   m_Layer: 0
   m_Name: Lampka
   m_TagString: Untagged
@@ -218,23 +218,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.22167803, y: 0.5318838, z: 0.39643168}
   m_Center: {x: 0.11083902, y: 0.2659419, z: 0.19821584}
---- !u!114 &114102501545496324
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1066600657850716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec2ac476f2fc9a45a4e69712580a603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  precisionGrab: 0
-  rightSnapHandle: {fileID: 0}
-  leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 0
-  throwMultiplier: 1
-  onGrabCollisionDelay: 0
 --- !u!114 &114429514111905480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -256,8 +239,8 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114102501545496324}
-  secondaryGrabActionScript: {fileID: 114984401793606526}
+  grabAttachMechanicScript: {fileID: 114817035309705650}
+  secondaryGrabActionScript: {fileID: 114922358354652674}
   isUsable: 0
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0
@@ -288,7 +271,26 @@ MonoBehaviour:
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
---- !u!114 &114984401793606526
+--- !u!114 &114817035309705650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1066600657850716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precisionGrab: 1
+  rightSnapHandle: {fileID: 0}
+  leftSnapHandle: {fileID: 0}
+  throwVelocityWithAttachDistance: 0
+  throwMultiplier: 1
+  onGrabCollisionDelay: 0
+  destroyImmediatelyOnThrow: 1
+  breakForce: 1500
+--- !u!114 &114922358354652674
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

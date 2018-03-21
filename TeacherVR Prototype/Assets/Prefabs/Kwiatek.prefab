@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 4137111618803136}
   - component: {fileID: 54931517844678872}
   - component: {fileID: 114455114889111076}
-  - component: {fileID: 114396514784284700}
-  - component: {fileID: 114908161644790626}
   - component: {fileID: 114833964060496612}
+  - component: {fileID: 114300612949473318}
+  - component: {fileID: 114935379199754836}
   m_Layer: 0
   m_Name: Kwiatek
   m_TagString: Untagged
@@ -259,7 +259,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027559055, y: 0.45609376, z: 0.17566146}
   m_Center: {x: 0.0137795275, y: 0.22804688, z: 0.08783073}
---- !u!114 &114396514784284700
+--- !u!114 &114300612949473318
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -267,9 +267,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150760702147028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  precisionGrab: 1
+  rightSnapHandle: {fileID: 0}
+  leftSnapHandle: {fileID: 0}
+  throwVelocityWithAttachDistance: 0
+  throwMultiplier: 1
+  onGrabCollisionDelay: 0
+  destroyImmediatelyOnThrow: 1
+  breakForce: 1500
 --- !u!114 &114455114889111076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -314,8 +322,8 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114908161644790626}
-  secondaryGrabActionScript: {fileID: 114396514784284700}
+  grabAttachMechanicScript: {fileID: 114300612949473318}
+  secondaryGrabActionScript: {fileID: 114935379199754836}
   isUsable: 0
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0
@@ -323,7 +331,7 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
---- !u!114 &114908161644790626
+--- !u!114 &114935379199754836
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -331,12 +339,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150760702147028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec2ac476f2fc9a45a4e69712580a603, type: 3}
+  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precisionGrab: 0
-  rightSnapHandle: {fileID: 0}
-  leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 0
-  throwMultiplier: 1
-  onGrabCollisionDelay: 0

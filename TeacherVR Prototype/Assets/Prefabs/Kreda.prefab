@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 54231740580776042}
   - component: {fileID: 65990321905488820}
   - component: {fileID: 114416904177324380}
-  - component: {fileID: 114085654687907028}
-  - component: {fileID: 114989696835808804}
   - component: {fileID: 114682523502965348}
+  - component: {fileID: 114733148896239040}
+  - component: {fileID: 114514975150103108}
   m_Layer: 0
   m_Name: Kreda
   m_TagString: Chalk
@@ -40,8 +40,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654335223098330}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 39.48168, y: 35.222, z: 30.496529}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,17 +116,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.15031172, z: 0.02}
   m_Center: {x: 0.01, y: 0.07515586, z: 0.01}
---- !u!114 &114085654687907028
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654335223098330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114416904177324380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,6 +139,17 @@ MonoBehaviour:
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+--- !u!114 &114514975150103108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654335223098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114682523502965348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -171,8 +171,8 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114989696835808804}
-  secondaryGrabActionScript: {fileID: 114085654687907028}
+  grabAttachMechanicScript: {fileID: 114733148896239040}
+  secondaryGrabActionScript: {fileID: 114514975150103108}
   isUsable: 0
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
---- !u!114 &114989696835808804
+--- !u!114 &114733148896239040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
