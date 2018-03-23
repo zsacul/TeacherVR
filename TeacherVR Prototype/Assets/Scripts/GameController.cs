@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour {
 
     #endregion
 
+    public EventsManager EventsManager;
+
     void Start () {
 		
 	}
