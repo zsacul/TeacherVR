@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchTest : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+public class TouchDetector: MonoBehaviour
+{
+    public bool Trigger;
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag.Equals("LController") || other.tag.Equals("RController"))
         {
-            Debug.Log(other.tag);
+            Trigger = true;
+            Invoke("TriggerOff",1);
         }
+    }
+
+    private void TriggerOff()
+    {
+        Trigger = false;
     }
 }

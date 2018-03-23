@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532025b543119094db6c8cc9411cbd49, type: 3}
+  m_Name: Ladder Climb
+  m_EditorClassIdentifier: 
+  name: Ladder Climb
+  icon: {fileID: 0}
+  description: Trzeba dotknac klocka na drabinie
+  status: 0
+  lvl: 0
+  ObjectToClimb: {fileID: 1551290260420514, guid: 858adf2d4b543664698b360115c5545d,
+    type: 2}
+  ObjectToTouch: {fileID: 1487045487590686, guid: bda04fb6185274f49bf933dcc4edd065,
+    type: 2}

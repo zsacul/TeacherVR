@@ -7,12 +7,16 @@ public class Events : ScriptableObject
 {
     //Nazwa eventu
     new public string name = "New Event";
+
     //Ikona eventu
     public Sprite icon = null;
+
     //Opis eventu
     public string description;
+
     //Status eventu
     public Status status = Status.Nothing;
+
     //Poziom trudności eventu, jeśli event nie posiada różnych poziomów powinno być 0 w przeciwnym wypadku >=1
     public int lvl;
 
@@ -36,6 +40,11 @@ public class Events : ScriptableObject
     {
         Debug.Log("Complete " + name);
         status = Status.Complete;
+    }
+
+    public virtual void CallInUpdate()
+    {
+        Debug.Log("Doing " + name);
     }
 
     //Status eventu kolejno nie wystartował, jest wykonywany, został przerwany, został poprawnie zakończony

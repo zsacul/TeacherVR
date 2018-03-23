@@ -10,9 +10,12 @@ public class EventsManager : MonoBehaviour
 
     public void StartNextEvent()
     {
-        currentEvent = ListOfEvents[0];
-        currentEvent.StartEvent();
-        ListOfEvents.RemoveAt(0);
+        if (ListOfEvents.Count > 0)
+        {
+            currentEvent = ListOfEvents[0];
+            currentEvent.StartEvent();
+            ListOfEvents.RemoveAt(0);
+        }
     }
 
     public void AbortCurrentEvent()
@@ -29,5 +32,21 @@ public class EventsManager : MonoBehaviour
     public Events.Status CheckCurrentEventStatus()
     {
         return currentEvent.status;
+    }
+
+    public void Update()
+    {
+        if (currentEvent != null)
+        {
+            if (CheckCurrentEventStatus() == Events.Status.Progress) currentEvent.CallInUpdate();
+            else
+            {
+                currentEvent = null;
+            }
+        }
+        else
+        {
+            StartNextEvent();
+        }
     }
 }
