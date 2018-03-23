@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114957960030030280}
   - component: {fileID: 114386015721487566}
   - component: {fileID: 114109520381316654}
+  - component: {fileID: 114728202362098834}
   m_Layer: 0
   m_Name: USBCable
   m_TagString: USB
@@ -80,6 +81,7 @@ GameObject:
   - component: {fileID: 114162370272899776}
   - component: {fileID: 114592679801920232}
   - component: {fileID: 114853747883446926}
+  - component: {fileID: 114876022229071028}
   m_Layer: 0
   m_Name: MicroUSBCable
   m_TagString: MicroUSB
@@ -673,7 +675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPointTransform: {fileID: 0}
-  maxRange: 0
   pointsInLineRenderer: 20
   sagAmplitude: 0.1
   swayMultiplier: 0
@@ -726,7 +727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endPointTransform: {fileID: 4878457440657212}
-  maxRange: 0
   pointsInLineRenderer: 20
   sagAmplitude: 0
   swayMultiplier: 0
@@ -756,6 +756,18 @@ MonoBehaviour:
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+--- !u!114 &114728202362098834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294256047406910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 2
 --- !u!114 &114766678604427278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -809,6 +821,18 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114876022229071028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392892270256712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 2
 --- !u!114 &114957960030030280
 MonoBehaviour:
   m_ObjectHideFlags: 1

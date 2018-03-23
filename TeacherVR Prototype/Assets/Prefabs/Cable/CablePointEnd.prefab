@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114438322592337862}
   - component: {fileID: 114780862634798430}
   - component: {fileID: 114789589313875378}
+  - component: {fileID: 114138069782771736}
   m_Layer: 0
   m_Name: CablePointEnd
   m_TagString: CablePointEnd
@@ -214,6 +215,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0332658, y: 0.46798587, z: 0.66346943}
   m_Center: {x: 0.37214294, y: 0.19835949, z: 0.1682654}
+--- !u!114 &114138069782771736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071480789206264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 5
 --- !u!114 &114194582081146670
 MonoBehaviour:
   m_ObjectHideFlags: 1

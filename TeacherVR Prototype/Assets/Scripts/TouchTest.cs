@@ -20,6 +20,5 @@ public class TouchTest : MonoBehaviour {
         {
             Debug.Log(other.tag);
         }
-        Debug.Log(other.tag);
     }
 }

@@ -1524,11 +1524,6 @@ Prefab:
       propertyPath: endPointTransform
       value: 
       objectReference: {fileID: 2068506092}
-    - target: {fileID: 114194582081146670, guid: c65170444a255fb45b7ec03581ac5b8a,
-        type: 2}
-      propertyPath: maxRange
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65170444a255fb45b7ec03581ac5b8a, type: 2}
   m_IsPrefabParent: 0
@@ -2095,7 +2090,7 @@ Transform:
   - {fileID: 987993721}
   - {fileID: 316878556}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &959945958
 Prefab:
@@ -2177,21 +2172,6 @@ Prefab:
     - target: {fileID: 4528139084387464, guid: a8c60c327010674449eab377c727be60, type: 2}
       propertyPath: m_RootOrder
       value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 114195406653389982, guid: a8c60c327010674449eab377c727be60,
-        type: 2}
-      propertyPath: maxRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114606276300109398, guid: a8c60c327010674449eab377c727be60,
-        type: 2}
-      propertyPath: maxRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114606276300109398, guid: a8c60c327010674449eab377c727be60,
-        type: 2}
-      propertyPath: ChangeColorOnMaxRange
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c60c327010674449eab377c727be60, type: 2}
@@ -3519,7 +3499,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4289733779032002, guid: d3161f09c7b31944ba8d2fd063a0500f, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114940814719450888, guid: d3161f09c7b31944ba8d2fd063a0500f,
         type: 2}
