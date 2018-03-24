@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33899055106498538}
   - component: {fileID: 23411334150532988}
   - component: {fileID: 95930354236411412}
+  - component: {fileID: 136158573425961208}
+  - component: {fileID: 114562487565019412}
   m_Layer: 0
   m_Name: jajko02
   m_TagString: Untagged
@@ -114,14 +116,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843757286852168}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -1.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4913096426442374}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4665577398064592
 Transform:
   m_ObjectHideFlags: 1
@@ -349,3 +351,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114562487565019412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492105637625576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0325396addb4294bba5ccef41a1c7e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &136158573425961208
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492105637625576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.118961856
+  m_Height: 0.23792377
+  m_Direction: 1
+  m_Center: {x: 2.0194067e-22, y: 0.000000003725297, z: 0.119204745}
