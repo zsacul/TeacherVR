@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Api;
 using UnityEngine;
+using VRTK;
 
 [CreateAssetMenu(fileName = "New TurnOnPC Event", menuName = "Events/TurnOnPC Event")]
 public class TurnOnPC : Events
@@ -21,6 +23,8 @@ public class TurnOnPC : Events
     private GameObject USB1Ins;
     private GameObject USB2Ins;
 
+    Transform u1, u2, mu1, mu2;
+
     private TouchDetector td;
 
     public override void StartEvent()
@@ -35,17 +39,25 @@ public class TurnOnPC : Events
         td = PC.GetComponentInChildren<TouchDetector>();
     }
 
-    //Poprawić optymalizacje!
+    //Poprawić optymalizacje! Może zastosować zamiast parenting to coś innego np. wykryć jointa albo sprawdzać kinematic
     public override void CallInUpdate()
     {
-        if (td.Trigger && 
-            PC.transform.Find("PC").Find("USBPort1").Find("SnapDropZone").Find("USBCable") != null &&
-            PC.transform.Find("PC").Find("USBPort2").Find("SnapDropZone").Find("USBCable") != null &&
-            PC.transform.Find("Monitor").Find("MicroUSBPort").Find("SnapDropZone").Find("MicroUSBCable") != null &&
-            PC.transform.Find("Keyboard").Find("MicroUSBPort").Find("SnapDropZone").Find("MicroUSBCable") != null)
+        if (td.Trigger)
         {
-            MonitorRenderer.material = PCOnMaterial;
-            CompleteEvent();
+            u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
+            u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
+            mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
+            mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
+
+            if (u1 != null && u2 != null && mu1 != null && mu2 != null)
+            {
+                MonitorRenderer.material = PCOnMaterial;
+                u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+                u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+                mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+                mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+                CompleteEvent();
+            }
         }
     }
 
@@ -53,8 +65,12 @@ public class TurnOnPC : Events
     {
         base.AbortEvent();
         MonitorRenderer.material = PCOffMaterial;
-        Destroy(USB1Ins);
-        Destroy(USB2Ins);
+        if (USB1Ins != null) Destroy(USB1Ins);
+        if (USB2Ins != null) Destroy(USB2Ins);
+        if (u1 != null) Destroy(u1);
+        if (u2 != null) Destroy(u2);
+        if (mu1 != null) Destroy(mu1);
+        if (mu2 != null) Destroy(mu2);
     }
 
     public override void CompleteEvent()
