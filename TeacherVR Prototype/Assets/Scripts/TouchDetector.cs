@@ -10,12 +10,13 @@ public class TouchDetector: MonoBehaviour
         if(other.tag.Equals("LController") || other.tag.Equals("RController"))
         {
             Trigger = true;
-            Invoke("TriggerOff",1);
+            StartCoroutine(TriggerOff());
         }
     }
 
-    private void TriggerOff()
+    private IEnumerator TriggerOff()
     {
+        yield return new WaitForEndOfFrame();
         Trigger = false;
     }
 }
