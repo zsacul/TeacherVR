@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sajmon", menuName = "Events/Sajmon Event")]
 public class Sajmon : Events
 {
-    public GameObject PC_Prefab;
     private GameObject PC;
 
     public GameObject ButtonsPrefab;
@@ -53,7 +52,7 @@ public class Sajmon : Events
 
     public override void CallInUpdate()
     {
-        base.CallInUpdate();
+        //base.CallInUpdate();
 
         if ((played == 0 && _time + Start_time <= Time.time) || (played == 1 && _time + deltaTime <= Time.time))
         {
