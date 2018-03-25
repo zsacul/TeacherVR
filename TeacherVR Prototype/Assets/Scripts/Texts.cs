@@ -52,6 +52,11 @@ public class Texts : MonoBehaviour
 
     public void PointsAnim(int How)
     {
+        // TEST
+        GameObject Target = GameObject.Find("ParticleSystem");
+        GameObject Where = GameObject.Find("Kwiatek");
+        Target.GetComponent<Particles>().CreateParticle1(Where.transform.position, 0f);
+        // TEST END
         How_Many += How;
         Anim = true;
     }
