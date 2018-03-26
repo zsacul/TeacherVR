@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Rysowanie : MonoBehaviour {
 	public int brushSize;
-	public GameObject rightHand;
     //Bottom left corner is 18 x 273 Top right is 461 x 493
     public Vector2[] TemplateShape;
     bool interpolate = false;
@@ -56,9 +55,9 @@ public class Rysowanie : MonoBehaviour {
         comboCounter = 0;
         gameInProgress = true;
     }
-
-    // Use this for initialization
-    void Start () {
+    
+    void Start ()
+    {
         Renderer rend = gameObject.GetComponent<Renderer>();
 		Texture2D original = rend.material.mainTexture as Texture2D;
 		drawingTexture = new Texture2D (original.width, original.height, original.format, true);
@@ -72,37 +71,35 @@ public class Rysowanie : MonoBehaviour {
             DrawLine(TemplateShape[0], TemplateShape[0], templateThickness, Color.green);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		RaycastHit hit;
 
-		VRTK.VRTK_Pointer pointer = rightHand.GetComponent<VRTK.VRTK_Pointer>();
-
-		hit = pointer.pointerRenderer.GetDestinationHit();
-
-		if (!pointer.IsActivationButtonPressed() || hit.transform == null) {
+    void OnUpdate(RaycastHit hit, VRTK.VRTK_Pointer pointer)
+    {
+        if (hit.transform == null)
+        {
             interpolate = false;
             return;
         }
 
         Renderer rend = hit.transform.GetComponent<Renderer>();
 
-        if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null || rend != gameObject.GetComponent<Renderer>()) {
+        if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null || rend != gameObject.GetComponent<Renderer>())
+        {
             interpolate = false;
             return;
         }
 
-        if (!interpolate) {
+        if (!interpolate)
+        {
             ClearBoard();
         }
 
-        if (!gameInProgress) {
+        if (!gameInProgress)
+        {
             return;
         }
 
-		Texture2D tex = hit.transform.GetComponent<Renderer>().material.mainTexture as Texture2D;
-		Vector2 pixelUV = hit.textureCoord;
+        Texture2D tex = hit.transform.GetComponent<Renderer>().material.mainTexture as Texture2D;
+        Vector2 pixelUV = hit.textureCoord;
         pixelUV.x *= tex.width;
         pixelUV.y *= tex.height;
 
@@ -110,21 +107,27 @@ public class Rysowanie : MonoBehaviour {
         bool mistake = false;
 
         //Check against the template only if it exists
-        if(TemplateShape.GetLength(0) > 1) {
-            if (DistanceFromLine(TemplateShape[lineStart], TemplateShape[currentTarget], pixelUV) > templateThickness / 2) {
+        if (TemplateShape.GetLength(0) > 1)
+        {
+            if (DistanceFromLine(TemplateShape[lineStart], TemplateShape[currentTarget], pixelUV) > templateThickness / 2)
+            {
                 //Player made a mistake
                 comboCounter = 0;
                 mistake = true;
                 Debug.Log("A mistake! Combo: " + comboCounter);
             }
 
-            if (DistanceFromLine(TemplateShape[currentTarget], TemplateShape[currentTarget], pixelUV) <= templateThickness / 2) {
+            if (DistanceFromLine(TemplateShape[currentTarget], TemplateShape[currentTarget], pixelUV) <= templateThickness / 2)
+            {
                 comboCounter++;
                 //Player reached a checkpoint
-                if (currentTarget == TemplateShape.GetLength(0) - 1) {
+                if (currentTarget == TemplateShape.GetLength(0) - 1)
+                {
                     Debug.Log("You finished the shape! Combo: " + comboCounter);
                     gameInProgress = false;
-                } else {
+                }
+                else
+                {
                     Debug.Log("Good job! Combo: " + comboCounter);
                     currentTarget++;
                     DrawLine(TemplateShape[currentTarget], TemplateShape[currentTarget], templateThickness, Color.green);
@@ -134,11 +137,22 @@ public class Rysowanie : MonoBehaviour {
 
 
         //draw a line between the 2 last known cursor positions so that the drawing is continous
-        if (interpolate) {
+        if (interpolate)
+        {
             DrawLine(pixelUV, lastUV, brushSize, mistake ? Color.red : Color.black);
         }
 
         interpolate = true;
         lastUV = pixelUV;
+    }
+
+	void Update ()
+    {
+        if (GameController.Instance.RysObject == null) return;
+        VRTK.VRTK_Pointer pointer = GameController.Instance.RysObject.GetComponent<VRTK.VRTK_Pointer>();
+
+        RaycastHit hit = pointer.pointerRenderer.GetDestinationHit();
+        
+        OnUpdate(hit, pointer);
 	}
 }

@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
     #endregion
 
     public EventsManager EventsManager;
+    public GameObject RysObject;
 
     void Start () {
 		
