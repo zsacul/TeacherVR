@@ -11,7 +11,7 @@ public class Chalk_Throwing : MonoBehaviour
         if (other.gameObject.CompareTag("Chalk"))
         {
         	
-        	rend.material.color = Color.red;
+        	transform.GetComponent<Renderer>().material.color = Color.red;
         }
 
     }
