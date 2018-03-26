@@ -12,36 +12,34 @@ public class Throwing_Tutorial : Events
     private GameObject targetsInstance;
     private GameObject chalkInstance;
 
-    public virtual void StartEvent()
+    public override void StartEvent()
     {
         base.StartEvent();
         targetsInstance = Instantiate(targets);
         chalkInstance = Instantiate(chalk);
-        //Debug.Log("Starting " + name);
-        //status = Status.Progress;
+        
     }
 
-    //Funkcja która przerywa w dowolnym momencie event i przywraca scenę do stanu z przed eventu
-    public virtual void AbortEvent()
+   
+    public override void AbortEvent()
     {
         base.AbortEvent();
         Destroy(chalkInstance);
         Destroy(targetsInstance);
-        //Debug.Log("Aborting " + name);
-        //status = Status.Abort;
+        
     }
 
-    //Funkcja która poprawnie konczy Event
-    public virtual void CompleteEvent()
+
+    public override void CompleteEvent()
     {
         base.AbortEvent();
         Destroy(chalk);
         Destroy(targets);
     }
 
-    public virtual void CallInUpdate()
+    public override void CallInUpdate()
     {
-        Debug.Log("Doing " + name);
+        //Debug.Log("Doing " + name);
     }
 
     
