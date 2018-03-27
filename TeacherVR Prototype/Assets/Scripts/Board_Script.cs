@@ -17,15 +17,17 @@ public class Board_Script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (rb.IsSleeping()) {
-			if (timer == 0.0F){
-				timer = Time.time;
-			}
+            //rb.isKinematic = true;
+            //Debug.Log("isKinematic = true");
+            StartCoroutine(wait());
+			//if (timer == 0.0F){
+			//	timer = Time.time;
+			//}
 			
-			if ((Time.time - timer) > wait_a_sec ){
-				rb.isKinematic = false;
-				Debug.Log("isKinematic = false");
-				timer = 0.0F;
-			}
+			//if ((Time.time - timer) > wait_a_sec ){
+				
+			//	timer = 0.0F;
+			//}
 			
 		}
 	}
@@ -34,8 +36,16 @@ public class Board_Script : MonoBehaviour {
 
     {
 
+        rb.isKinematic = false;
+        Debug.Log("isKinematic = false");
+
+    }
+
+    private IEnumerator wait()
+    {
+        yield return new WaitForSeconds(2f);
         rb.isKinematic = true;
         Debug.Log("isKinematic = true");
-
+        yield return 0;
     }
 }
