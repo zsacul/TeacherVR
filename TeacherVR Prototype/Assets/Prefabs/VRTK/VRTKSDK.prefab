@@ -627,11 +627,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207192935147064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 1, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4858352924343334}
   - {fileID: 4698287550593416}
+  - {fileID: 4858352924343334}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -701,7 +701,7 @@ Transform:
   m_Children:
   - {fileID: 4838082772738238}
   m_Father: {fileID: 4422085103996492}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4767907236063096
 Transform:
@@ -746,7 +746,7 @@ Transform:
   - {fileID: 4409894070424110}
   - {fileID: 4577894099077800}
   m_Father: {fileID: 4422085103996492}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4863577197521100
 Transform:
@@ -1423,8 +1423,8 @@ MonoBehaviour:
   autoManageVRSettings: 1
   autoLoadSetup: 1
   setups:
-  - {fileID: 114719551661403968}
   - {fileID: 114196386922175262}
+  - {fileID: 114719551661403968}
 --- !u!114 &114495300194191280
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,49 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class Board_Script : MonoBehaviour {
+public class Board_Script : MonoBehaviour
+{
+    private Rigidbody rb;
+    private Collider col;
 
-	public Rigidbody rb;
-	private float wait_a_sec = 2.0F;
-	private float timer = 0.0F;
-	// Use this for initialization
-	void Start () {
-		rb = GetComponent<Rigidbody>();
-		GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (rb.IsSleeping()) {
-            //rb.isKinematic = true;
-            //Debug.Log("isKinematic = true");
-            StartCoroutine(wait());
-			//if (timer == 0.0F){
-			//	timer = Time.time;
-			//}
-			
-			//if ((Time.time - timer) > wait_a_sec ){
-				
-			//	timer = 0.0F;
-			//}
-			
-		}
-	}
-
-	private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-
+    void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        col = GetComponent<MeshCollider>();
+        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += ObjectGrabbed;
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += ObjectUngrabbed;
+    }
 
-        rb.isKinematic = false;
-        Debug.Log("isKinematic = false");
+    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        col.enabled = false;
+    }
 
+    private void ObjectUngrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        StartCoroutine(wait());
     }
 
     private IEnumerator wait()
     {
-        yield return new WaitForSeconds(2f);
+        rb.isKinematic = false;
+        yield return new WaitForSeconds(1f);
         rb.isKinematic = true;
-        Debug.Log("isKinematic = true");
-        yield return 0;
+        col.enabled = true;
     }
 }

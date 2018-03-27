@@ -72,8 +72,12 @@ public class Rysowanie : MonoBehaviour {
         }
     }
 
-    void OnUpdate(RaycastHit hit, VRTK.VRTK_Pointer pointer)
+	void Update ()
     {
+        if (GameController.Instance.RysObject == null) return;
+
+        RaycastHit hit = GameController.Instance.RysObject.GetComponent<VRTK.VRTK_Pointer>().pointerRenderer.GetDestinationHit();
+        Debug.Log(hit.transform);
         if (hit.transform == null)
         {
             interpolate = false;
@@ -145,14 +149,4 @@ public class Rysowanie : MonoBehaviour {
         interpolate = true;
         lastUV = pixelUV;
     }
-
-	void Update ()
-    {
-        if (GameController.Instance.RysObject == null) return;
-        VRTK.VRTK_Pointer pointer = GameController.Instance.RysObject.GetComponent<VRTK.VRTK_Pointer>();
-
-        RaycastHit hit = pointer.pointerRenderer.GetDestinationHit();
-        
-        OnUpdate(hit, pointer);
-	}
 }

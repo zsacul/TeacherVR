@@ -70,6 +70,9 @@ namespace VRTK
         [Tooltip("If this is checked then the interactable object script will be disabled when the object is not being interacted with. This will eliminate the potential number of calls the interactable objects make each frame.")]
         public bool disableWhenIdle = true;
 
+        [Tooltip("Przydatne gdy chcemy sami kontrolować co się dzieje z naszym obiektem jak w tablicy")]
+        public bool IgnoreSaveKinematic = false;
+
         [Header("Touch Options", order = 1)]
 
         [Tooltip("The colour to highlight the object when it is touched. This colour will override any globally set colour (for instance on the `VRTK_InteractTouch` script).")]
@@ -556,7 +559,7 @@ namespace VRTK
         /// </summary>
         public virtual void SaveCurrentState()
         {
-            if (!IsGrabbed() && !snappedInSnapDropZone)
+            if (!IsGrabbed() && !snappedInSnapDropZone && !IgnoreSaveKinematic)
             {
                 previousParent = transform.parent;
                 if (!IsSwappable())
