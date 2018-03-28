@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 65124760680081808}
   - component: {fileID: 65508661332188488}
   - component: {fileID: 65871299751761330}
+  - component: {fileID: 114958876056779370}
   m_Layer: 0
   m_Name: Kosz
   m_TagString: ExcludeTeleport
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1701630628334076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 48.400818, y: 33.522686, z: 36.991856}
+  m_LocalPosition: {x: 48.400818, y: 33.522686, z: 35.229355}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f2b750dcd14bdc143b296d2d2d436002, type: 2}
+  - {fileID: 2100000, guid: 8ea43bbfbafe13946a9862cf26c325be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,3 +148,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.7874016, z: 0.72910064}
   m_Center: {x: 0.67, y: 0.3937008, z: 0.36455032}
+--- !u!114 &114958876056779370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701630628334076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60fb176e45cff2949bf9f1b4990e64ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 8ea43bbfbafe13946a9862cf26c325be, type: 2}
+  minY: 0
+  maxY: 1
+  duration: 5
