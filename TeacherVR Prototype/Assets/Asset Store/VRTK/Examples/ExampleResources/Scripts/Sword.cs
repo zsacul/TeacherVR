@@ -1,13 +1,19 @@
-﻿namespace VRTK.Examples
+﻿using System;
+using System.Collections;
+
+namespace VRTK.Examples
 {
     using UnityEngine;
 
     public class Sword : VRTK_InteractableObject
     {
+        public bool DestroyOnGripPress = false;
         private float impactMagnifier = 120f;
         private float collisionForce = 0f;
         private float maxCollisionForce = 4000f;
         private VRTK_ControllerReference controllerReference;
+        private VRTK_ControllerEvents ce;
+        private bool canTouch = true;
 
         public float CollisionForce()
         {
@@ -17,6 +23,7 @@
         public override void Grabbed(VRTK_InteractGrab grabbingObject)
         {
             base.Grabbed(grabbingObject);
+            ce = grabbingObject.controllerEvents;
             controllerReference = VRTK_ControllerReference.GetControllerReference(grabbingObject.controllerEvents.gameObject);
         }
 
@@ -26,11 +33,36 @@
             controllerReference = null;
         }
 
+        public override void StartTouching(VRTK_InteractTouch currentTouchingObject = null)
+        {
+            base.StartTouching(currentTouchingObject);
+            VRTK_InteractGrab myGrab = currentTouchingObject.GetComponent<VRTK_InteractGrab>();
+            if(canTouch) myGrab.AttemptGrab();
+        }
+        
         protected override void OnEnable()
         {
             base.OnEnable();
             controllerReference = null;
             interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        }
+
+        protected override void Update()
+        {
+            base.Update();
+            if (ce.gripPressed)
+            {
+                ForceReleaseGrab();
+                canTouch = false;
+                if(DestroyOnGripPress)Destroy(gameObject);
+                StartCoroutine(wait());
+            }
+        }
+
+        private IEnumerator wait()
+        {
+            yield return new WaitForSeconds(1f);
+            canTouch = true;
         }
 
         private void OnCollisionEnter(Collision collision)
