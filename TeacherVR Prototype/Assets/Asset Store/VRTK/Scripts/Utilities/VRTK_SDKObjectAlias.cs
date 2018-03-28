@@ -1,4 +1,5 @@
 ﻿// SDK Object Alias|Utilities|90063
+
 namespace VRTK
 {
     using UnityEngine;
@@ -16,7 +17,9 @@ namespace VRTK
         public enum SDKObject
         {
             Boundary,
-            Headset
+            Headset,
+            LeftHand,
+            RightHand
         }
 
         [Tooltip("The specific SDK Object to child this GameObject to.")]
@@ -65,8 +68,16 @@ namespace VRTK
                 case SDKObject.Headset:
                     newParent = VRTK_DeviceFinder.HeadsetTransform();
                     break;
+                case SDKObject.LeftHand:
+                    if (VRTK_DeviceFinder.GetControllerLeftHand() == null) break;
+                    newParent = VRTK_DeviceFinder.GetControllerLeftHand().transform;
+                    break;
+                case SDKObject.RightHand:
+                    if (VRTK_DeviceFinder.GetControllerRightHand() == null) break;
+                    newParent = VRTK_DeviceFinder.GetControllerRightHand().transform;
+                    break;
             }
-
+            
             transform.SetParent(newParent);
             transform.localPosition = currentPosition;
             transform.localRotation = currentRotation;
