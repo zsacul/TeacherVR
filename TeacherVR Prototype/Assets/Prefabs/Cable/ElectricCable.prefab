@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114406411487320218}
   - component: {fileID: 54285701938608580}
   - component: {fileID: 114801217410873214}
+  - component: {fileID: 114621982814343698}
   m_Layer: 0
   m_Name: Red
   m_TagString: Electric
@@ -385,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
@@ -448,6 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
@@ -496,6 +499,20 @@ MonoBehaviour:
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
   breakForce: 100
+--- !u!114 &114621982814343698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1019766966521230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 1
+  DoubleConnect: 1
+  End: {fileID: 4012185242420196}
 --- !u!114 &114692125157914654
 MonoBehaviour:
   m_ObjectHideFlags: 1

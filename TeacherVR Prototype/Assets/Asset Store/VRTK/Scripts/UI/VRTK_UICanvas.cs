@@ -29,9 +29,10 @@ namespace VRTK
         protected const string CANVAS_DRAGGABLE_PANEL = "VRTK_UICANVAS_DRAGGABLE_PANEL";
         protected const string ACTIVATOR_FRONT_TRIGGER_GAMEOBJECT = "VRTK_UICANVAS_ACTIVATOR_FRONT_TRIGGER";
 
+        public VRTK_UIPointer UIPointerHand;
         public void ChangeState()
         {
-            gameObject.SetActive(!gameObject.activeSelf);
+            gameObject.SetActive(UIPointerHand.PointerActive());
         }
 
         protected virtual void OnEnable()
