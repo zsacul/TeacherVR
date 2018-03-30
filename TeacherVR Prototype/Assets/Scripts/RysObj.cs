@@ -1,31 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
-public class RysObj : MonoBehaviour {
-    Rigidbody rb;
-    VRTK.VRTK_Pointer po;
-    VRTK.VRTK_StraightPointerRenderer spr;
+public class RysObj : MonoBehaviour
+{
+    VRTK_InteractableObject io;
+    VRTK_Pointer po;
+    VRTK_StraightPointerRenderer spr;
 
-	void Start ()
+    void Start()
     {
-        rb = GetComponentInParent<Rigidbody>();
-        po = GetComponent<VRTK.VRTK_Pointer>();
-        spr = GetComponent<VRTK.VRTK_StraightPointerRenderer>();
-	}
+        io = GetComponentInParent<VRTK_InteractableObject>();
+        po = GetComponent<VRTK_Pointer>();
+        spr = GetComponent<VRTK_StraightPointerRenderer>();
+        io.InteractableObjectGrabbed += ObjectGrabbed;
+        io.InteractableObjectUngrabbed += ObjectUngrabbed;
+    }
 
-    void Update()
+    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
-        if (rb.isKinematic)
-        {
-            po.enabled = true;
-            spr.enabled = true;
-            GameController.Instance.RysObject = gameObject;
-        }
-        else
-        {
-            spr.enabled = false;
-            po.enabled = false;
-        }
+        spr.enabled = true;
+        po.enabled = true;
+        GameController.Instance.RysObject = gameObject;
+    }
+
+
+    private void ObjectUngrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        po.enabled = false;
+        spr.enabled = false;
+        GameController.Instance.RysObject = null;
     }
 }
