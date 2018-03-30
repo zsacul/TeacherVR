@@ -17,7 +17,6 @@ public class Throwing_Tutorial : Events
         base.StartEvent();
         targetsInstance = Instantiate(targets);
         chalkInstance = Instantiate(chalk);
-        
     }
 
    
@@ -26,15 +25,14 @@ public class Throwing_Tutorial : Events
         base.AbortEvent();
         Destroy(chalkInstance);
         Destroy(targetsInstance);
-        
     }
 
 
     public override void CompleteEvent()
     {
-        base.AbortEvent();
-        Destroy(chalk);
-        Destroy(targets);
+        base.CompleteEvent();
+        Destroy(chalkInstance);
+        Destroy(targetsInstance);
     }
 
     public override void CallInUpdate()
