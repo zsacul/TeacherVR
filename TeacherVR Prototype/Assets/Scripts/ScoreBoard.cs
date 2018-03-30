@@ -9,18 +9,22 @@ public class ScoreBoard : MonoBehaviour
     private TextMeshPro textMesh;
 
     private int points = 0;
+    private float time = 0f;
     private bool Anim = false;
     private int How_Many = 0;
 
     void Start ()
     {
         textMesh = gameObject.GetComponent<TextMeshPro>();
-        textMesh.text = "Score : " + points;
+        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
     }
 
 
     private void Update()
     {
+        //textMesh.text = "Score: " + points + "\n" + "Time: " + time;
+        //time += 0.01f;
+
         if ((Anim) && (How_Many > 0))
         {
             PointsAdd(1);
@@ -48,7 +52,7 @@ public class ScoreBoard : MonoBehaviour
     public void PointsAdd(int add)
     {
         points += add;
-        textMesh.text = "Score : " + points;
+        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
     }
 
     public void PointsAnim(int How)
@@ -60,7 +64,7 @@ public class ScoreBoard : MonoBehaviour
     public void PointsChange(int change)
     {
         points = change;
-        textMesh.text = "Score : " + points;
+        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
     }
 
     public int GetPoints()
