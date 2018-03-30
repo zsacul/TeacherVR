@@ -14,6 +14,6 @@ public class Tutorial_Point_Anim_Control : MonoBehaviour {
 
 	public void Kill(){
 		anim.SetBool("Alive", false);
-		Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length + 2.0F);
+		//Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length + 2.0F);
 	}
 }

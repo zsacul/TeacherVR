@@ -77,7 +77,6 @@ public class Rysowanie : MonoBehaviour {
         if (GameController.Instance.RysObject == null) return;
 
         RaycastHit hit = GameController.Instance.RysObject.GetComponent<VRTK.VRTK_Pointer>().pointerRenderer.GetDestinationHit();
-        Debug.Log(hit.transform);
         if (hit.transform == null)
         {
             interpolate = false;
