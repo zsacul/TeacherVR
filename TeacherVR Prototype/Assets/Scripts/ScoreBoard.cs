@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ScoreBoard : MonoBehaviour
 {
@@ -9,21 +10,34 @@ public class ScoreBoard : MonoBehaviour
     private TextMeshPro textMesh;
 
     private int points = 0;
-    private float time = 0f;
+    private float timer = 0f;
+
+    private int minutes = 0;
+    private int seconds = 0;
+
     private bool Anim = false;
     private int How_Many = 0;
 
     void Start ()
     {
         textMesh = gameObject.GetComponent<TextMeshPro>();
-        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
+        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
 
 
     private void Update()
     {
-        //textMesh.text = "Score: " + points + "\n" + "Time: " + time;
-        //time += 0.01f;
+        timer += Time.deltaTime;
+        seconds = Convert.ToInt32(timer % 60);
+        
+        if (seconds == 60f)
+        {
+            seconds = 0;
+            timer = 0f;
+            minutes++;
+        }
+
+        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
 
         if ((Anim) && (How_Many > 0))
         {
@@ -52,7 +66,7 @@ public class ScoreBoard : MonoBehaviour
     public void PointsAdd(int add)
     {
         points += add;
-        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
+        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
 
     public void PointsAnim(int How)
@@ -64,7 +78,7 @@ public class ScoreBoard : MonoBehaviour
     public void PointsChange(int change)
     {
         points = change;
-        textMesh.text = "Score: " + points + "\n" + "Time: " + time;
+        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
 
     public int GetPoints()
