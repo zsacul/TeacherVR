@@ -25,8 +25,6 @@ public class TurnOnPC : Events
 
     Transform u1, u2, mu1, mu2;
 
-    private TouchDetector td;
-
     public override void StartEvent()
     {
         base.StartEvent();
@@ -35,15 +33,11 @@ public class TurnOnPC : Events
         PCOffMaterial = MonitorRenderer.material;
         USB1Ins = Instantiate(USBCable, Cable1Transform.position, USBCable.transform.rotation);
         USB2Ins = Instantiate(USBCable, Cable2Transform.position, USBCable.transform.rotation);
-
-        td = PC.GetComponentInChildren<TouchDetector>();
     }
 
-    //Poprawić optymalizacje! Może zastosować zamiast parenting to coś innego np. wykryć jointa albo sprawdzać kinematic
+    //Poprawić optymalizacje! Może na eventach?
     public override void CallInUpdate()
     {
-        if (td.Trigger)
-        {
             u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
             u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
             mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
@@ -58,7 +52,7 @@ public class TurnOnPC : Events
                 mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
                 CompleteEvent();
             }
-        }
+        
     }
 
     public override void AbortEvent()

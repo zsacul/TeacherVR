@@ -6,26 +6,35 @@ using VRTK;
 
 public class ParticleOnOff : MonoBehaviour
 {
+    public float ParticleScale = 1f;
+
     public float LifeTime = 0f;
 
     public GameObject Particle;
     public Transform ParticleTransform;
+
+    public Events EventScriptableObject;
+
     private GameObject ParticleInstance;
 
     public enum Occasion
     {
+        Snaped,
+        Unsnaped,
         Touched,
         Untouch,
         Grabbed,
         Ungrabbed,
         Enable,
-        Disable
+        Disable,
+        Event
     }
 
     public Occasion TurnOn;
     public Occasion TurnOff;
 
     private VRTK_InteractableObject io;
+    private VRTK_SnapDropZone sdz;
 
     void OnEnable()
     {
@@ -52,11 +61,40 @@ public class ParticleOnOff : MonoBehaviour
         }
     }
 
+    private void Inst()
+    {
+        if (ParticleTransform == null) ParticleInstance = Instantiate(Particle);
+        else ParticleInstance = Instantiate(Particle, ParticleTransform.position, ParticleTransform.rotation);
+        ParticleInstance.transform.localScale *= ParticleScale;
+    }
+
+    private void Del()
+    {
+        if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
+    }
+
+    void CheckEvent()
+    {
+        if (EventScriptableObject == GameController.Instance.EventsManager.GetCurrentEvent())
+        {
+            if (TurnOn == Occasion.Event) Inst();
+            if (TurnOff == Occasion.Event) Del();
+            CancelInvoke();
+        }
+    }
+
     void Start()
     {
         io = GetComponent<VRTK_InteractableObject>();
+        sdz = GetComponent<VRTK_SnapDropZone>();
         switch (TurnOn)
         {
+            case Occasion.Snaped:
+                sdz.ObjectSnappedToDropZone += ObjectSnappedOn;
+                break;
+            case Occasion.Unsnaped:
+                sdz.ObjectSnappedToDropZone += ObjectUnsnappedOn;
+                break;
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOn;
                 break;
@@ -69,10 +107,19 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched += ObjectUngrabbedOn;
                 break;
+            case Occasion.Event:
+                InvokeRepeating("CheckEvent", 0, 1);
+                break;
         }
 
         switch (TurnOff)
         {
+            case Occasion.Snaped:
+                sdz.ObjectSnappedToDropZone += ObjectSnappedOff;
+                break;
+            case Occasion.Unsnaped:
+                sdz.ObjectSnappedToDropZone += ObjectUnsnappedOff;
+                break;
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOff;
                 break;
@@ -85,17 +132,20 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched += ObjectUngrabbedOff;
                 break;
+            case Occasion.Event:
+                InvokeRepeating("CheckEvent", 0, 1);
+                break;
         }
     }
 
-    private void Inst()
+    private void ObjectSnappedOn(object sender, SnapDropZoneEventArgs e)
     {
-        ParticleInstance = Instantiate(Particle, ParticleTransform.position, ParticleTransform.rotation);
+        Inst();
     }
 
-    private void Del()
+    private void ObjectUnsnappedOn(object sender, SnapDropZoneEventArgs e)
     {
-        if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
+        Inst();
     }
 
     private void ObjectTouchedOn(object sender, InteractableObjectEventArgs e)
@@ -116,6 +166,16 @@ public class ParticleOnOff : MonoBehaviour
     private void ObjectUngrabbedOn(object sender, InteractableObjectEventArgs e)
     {
         Inst();
+    }
+
+    private void ObjectSnappedOff(object sender, SnapDropZoneEventArgs e)
+    {
+        Del();
+    }
+
+    private void ObjectUnsnappedOff(object sender, SnapDropZoneEventArgs e)
+    {
+        Del();
     }
 
     private void ObjectTouchedOff(object sender, InteractableObjectEventArgs e)

@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 54510966765033618}
   - component: {fileID: 114271362215571430}
   - component: {fileID: 114325333009496720}
+  - component: {fileID: 114322906627883470}
   m_Layer: 0
   m_Name: SnapDropZone
   m_TagString: Untagged
@@ -161,6 +162,7 @@ GameObject:
   - component: {fileID: 54871736287246980}
   - component: {fileID: 114973127859426330}
   - component: {fileID: 114115486092090164}
+  - component: {fileID: 114884728094154632}
   m_Layer: 0
   m_Name: SnapDropZone
   m_TagString: Untagged
@@ -247,6 +249,7 @@ GameObject:
   - component: {fileID: 54194462119325158}
   - component: {fileID: 114378456767380030}
   - component: {fileID: 114433144332749050}
+  - component: {fileID: 114709325012522950}
   m_Layer: 0
   m_Name: SnapDropZone
   m_TagString: Untagged
@@ -379,6 +382,7 @@ GameObject:
   - component: {fileID: 54956823626550226}
   - component: {fileID: 114222911663025224}
   - component: {fileID: 114692171919455430}
+  - component: {fileID: 114373684575331546}
   m_Layer: 0
   m_Name: SnapDropZone
   m_TagString: Untagged
@@ -1673,7 +1677,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1811,7 +1815,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1879,7 +1883,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2019,7 +2023,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7b939e5e799d98a469f594828ebab52e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2420,6 +2424,25 @@ MonoBehaviour:
   validObjectListPolicy: {fileID: 114325333009496720}
   displayDropZoneInEditor: 1
   defaultSnappedObject: {fileID: 0}
+--- !u!114 &114322906627883470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344262407224512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleScale: 0.1
+  LifeTime: 0
+  Particle: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 2}
+  ParticleTransform: {fileID: 4651209199563234}
+  EventScriptableObject: {fileID: 11400000, guid: 44c47d5cfa464004f8e47a57e05aed13,
+    type: 2}
+  TurnOn: 8
+  TurnOff: 0
 --- !u!114 &114325333009496720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2435,6 +2458,25 @@ MonoBehaviour:
   checkType: 1
   identifiers:
   - USB
+--- !u!114 &114373684575331546
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609791359260362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleScale: 0.1
+  LifeTime: 0
+  Particle: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 2}
+  ParticleTransform: {fileID: 4914530122230182}
+  EventScriptableObject: {fileID: 11400000, guid: 44c47d5cfa464004f8e47a57e05aed13,
+    type: 2}
+  TurnOn: 8
+  TurnOff: 0
 --- !u!114 &114378456767380030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2487,6 +2529,25 @@ MonoBehaviour:
   checkType: 1
   identifiers:
   - MicroUSB
+--- !u!114 &114709325012522950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436008548556612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleScale: 0.1
+  LifeTime: 0
+  Particle: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 2}
+  ParticleTransform: {fileID: 4034603737597466}
+  EventScriptableObject: {fileID: 11400000, guid: 44c47d5cfa464004f8e47a57e05aed13,
+    type: 2}
+  TurnOn: 8
+  TurnOff: 0
 --- !u!114 &114866298140920698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2499,6 +2560,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Trigger: 0
+--- !u!114 &114884728094154632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364065765509454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticleScale: 0.1
+  LifeTime: 0
+  Particle: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c, type: 2}
+  ParticleTransform: {fileID: 4960937985420816}
+  EventScriptableObject: {fileID: 11400000, guid: 44c47d5cfa464004f8e47a57e05aed13,
+    type: 2}
+  TurnOn: 8
+  TurnOff: 0
 --- !u!114 &114973127859426330
 MonoBehaviour:
   m_ObjectHideFlags: 1
