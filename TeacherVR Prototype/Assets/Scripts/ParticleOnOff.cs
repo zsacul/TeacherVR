@@ -22,7 +22,7 @@ public class ParticleOnOff : MonoBehaviour
         Snaped,
         Unsnaped,
         Touched,
-        Untouch,
+        Untouched,
         Grabbed,
         Ungrabbed,
         Enable,
@@ -98,7 +98,7 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOn;
                 break;
-            case Occasion.Untouch:
+            case Occasion.Untouched:
                 io.InteractableObjectTouched += ObjectUntouchedOn;
                 break;
             case Occasion.Grabbed:
@@ -123,7 +123,7 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOff;
                 break;
-            case Occasion.Untouch:
+            case Occasion.Untouched:
                 io.InteractableObjectTouched += ObjectUntouchedOff;
                 break;
             case Occasion.Grabbed:
