@@ -8,9 +8,6 @@ public class Events : ScriptableObject
     //Nazwa eventu
     new public string name = "New Event";
 
-    //Ikona eventu
-    public Sprite icon = null;
-
     //Opis eventu
     public string description;
 
