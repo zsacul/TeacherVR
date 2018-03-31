@@ -22,14 +22,16 @@ public class GameController : MonoBehaviour {
 
     public EventsManager EventsManager;
     public GameObject RysObject;
+    public ScoreBoard ScoreBoard;
 
     void Start () {
 		
 	}
 	
 
-	void Update () {
-		
-	}
+	void Update ()
+    {
+
+    }
     
 }

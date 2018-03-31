@@ -89,6 +89,10 @@ public class ScoreBoard : MonoBehaviour
         {
             ChangeTimeCounting();
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ChangeTime(1,59);
+        }
     }
 
     // Dodawanie punktów bez animacji
@@ -98,9 +102,9 @@ public class ScoreBoard : MonoBehaviour
     }
 
     // Dodawanie punktów + "animacja"
-    public void PointsAddAnim(int How)
+    public void PointsAddAnim(int how)
     {
-        How_Many += How;
+        How_Many += how;
         Anim = true;
     }
 
@@ -136,6 +140,11 @@ public class ScoreBoard : MonoBehaviour
             //ChangeTime(10, 0);
             CountDown = true;
         }
+    }
+
+    public bool IsOutOfTime()
+    {
+        return OutOfTime;
     }
 
     /*
