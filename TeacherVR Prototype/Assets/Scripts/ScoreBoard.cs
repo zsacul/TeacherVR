@@ -6,7 +6,6 @@ using System;
 
 public class ScoreBoard : MonoBehaviour
 {
-
     private TextMeshPro textMesh;
 
     private int points = 0;
@@ -18,26 +17,51 @@ public class ScoreBoard : MonoBehaviour
     private bool Anim = false;
     private int How_Many = 0;
 
+    private bool CountDown = false;
+    private bool OutOfTime = false;
+
     void Start ()
     {
         textMesh = gameObject.GetComponent<TextMeshPro>();
-        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
-
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        seconds = Convert.ToInt32(timer % 60);
-        
-        if (seconds == 60f)
+        if (CountDown)
         {
-            seconds = 0;
-            timer = 0f;
-            minutes++;
+            timer -= Time.deltaTime;
+            seconds = Convert.ToInt32(timer % 60);
+            if (seconds == 0)
+            {
+                seconds = 60;
+                timer = 60f;
+                minutes--;
+                if (minutes < 0)
+                {
+                    OutOfTime = true;
+                }
+            }
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            seconds = Convert.ToInt32(timer % 60);
+            if (seconds == 60)
+            {
+                seconds = 0;
+                timer = 0f;
+                minutes++;
+            }
         }
 
-        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
+        if (OutOfTime)
+        {
+            textMesh.text = "Score -  " + points + "\n\n" + "OUT OF TIME!";
+        }
+        else
+        {
+            textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":" + seconds;
+        }
 
         if ((Anim) && (How_Many > 0))
         {
@@ -52,45 +76,75 @@ public class ScoreBoard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // KLAWISZE TYLKO DO TESTOW
+        // KLAWISZE TYLKO DO TESTÓW!
         if (Input.GetKeyDown(KeyCode.P))
         {
             PointsAdd(1);
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            PointsAnim(10);
+            PointsAddAnim(10);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ChangeTimeCounting();
         }
     }
 
+    // Dodawanie punktów bez animacji
     public void PointsAdd(int add)
     {
         points += add;
-        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
 
-    public void PointsAnim(int How)
+    // Dodawanie punktów + "animacja"
+    public void PointsAddAnim(int How)
     {
         How_Many += How;
         Anim = true;
     }
 
+    // Statyczna zmiana punktów
     public void PointsChange(int change)
     {
         points = change;
-        textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
+        //textMesh.text = "Score - " + points + "\n\n" + "Time  - " + minutes + ":" + seconds;
     }
 
+    // Zwracanie ilości punktów
     public int GetPoints()
     {
         return points;
     }
 
-    /* JAK SIĘ ODWOŁAC?
+    // Zmiana czasu
+    public void ChangeTime(int new_minutes, int new_seconds)
+    {
+        minutes = new_minutes;
+        seconds = new_seconds;
+    }
+
+    // Zmiana sposobu odliczania
+    public void ChangeTimeCounting()
+    {
+        if (CountDown)
+        {
+            CountDown = false;
+        }
+        else
+        {
+            //ChangeTime(10, 0);
+            CountDown = true;
+        }
+    }
+
+    /*
+     
+    JAK SIĘ ODWOŁAC?
       
-    private GameObject Target;                          // Jeśli obiekt ma pamiętać drugi obiekt
-    Target = GameObject.Find("Score");                 // Ten obiekt (Score) trzyma teksty, więc go szukamy
-    Target.GetComponent<ScoreBoard>().funkcja(argument);     // Tutaj odwołujemy się do skrypu (funkcji w nim)
+    private GameObject Target;                               // Jeśli obiekt ma pamiętać drugi obiekt
+    Target = GameObject.Find("Score");                      // Ten obiekt (Score) trzyma teksty, więc go szukamy
+    Target.GetComponent<ScoreBoard>().funkcja(argument);   // Tutaj odwołujemy się do skrypu (funkcji w tym skrypcie)
 
     */
 
