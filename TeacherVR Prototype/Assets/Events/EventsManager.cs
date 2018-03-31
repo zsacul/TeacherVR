@@ -8,6 +8,10 @@ public class EventsManager : MonoBehaviour
 
     private Events currentEvent;
 
+    public delegate void EventsManagerEventHandler();
+
+    public event EventsManagerEventHandler EventsManagerStartNext;
+
     public void StartNextEvent()
     {
         if (ListOfEvents.Count > 0)
@@ -15,6 +19,10 @@ public class EventsManager : MonoBehaviour
             currentEvent = ListOfEvents[0];
             currentEvent.StartEvent();
             ListOfEvents.RemoveAt(0);
+            if (EventsManagerStartNext != null)
+            {
+                EventsManagerStartNext();
+            }
         }
     }
 
