@@ -34,6 +34,11 @@ public class EventsManager : MonoBehaviour
         return currentEvent.status;
     }
 
+    public Events GetCurrentEvent()
+    {
+        return currentEvent;
+    }
+
     public void Update()
     {
         if (currentEvent != null)
