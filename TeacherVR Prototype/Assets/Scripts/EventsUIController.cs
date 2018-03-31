@@ -26,6 +26,10 @@ public class EventsUIController : MonoBehaviour
 
     private void UpdateList()
     {
+        foreach (Transform t in ListOfEvents.transform)
+        {
+            Destroy(t.gameObject);
+        }
         if (GameController.Instance.EventsManager.GetCurrentEvent() != null)
         {
             EventName.text = GameController.Instance.EventsManager.GetCurrentEvent().name;

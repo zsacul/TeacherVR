@@ -14,6 +14,10 @@ public class EventsManager : MonoBehaviour
 
     public void StartNextEvent()
     {
+        if (currentEvent != null)
+        {
+            AbortCurrentEvent();
+        }
         if (ListOfEvents.Count > 0)
         {
             currentEvent = ListOfEvents[0];
