@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target_Control : MonoBehaviour {
+public class Target_Control : MonoBehaviour
+{
+    private bool allKilled = false;
+    private int targetsNum = 0;
+    private int targetsKilled = 0;
 
-	
-	private bool state = false;
+    void Start()
+    {
+        foreach (Transform child in transform)
+        {
+            targetsNum++;
+        }
+    }
 
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Update()
+    {
+        if (targetsKilled == targetsNum) allKilled = true;
+    }
 
-	void Targets(){
-		foreach (Transform child in transform) {
-			state = true;
+    public void Killed()
+    {
+        targetsKilled++;
+    }
 
-		}
-	}
+    public bool Destruction()
+    {
+        return allKilled;
+    }
 }

@@ -12,11 +12,14 @@ public class Throwing_Tutorial : Events
     private GameObject targetsInstance;
     private GameObject chalkInstance;
 
+    private Target_Control tc;
+
     public override void StartEvent()
     {
         base.StartEvent();
         targetsInstance = Instantiate(targets);
         chalkInstance = Instantiate(chalk);
+        tc = targetsInstance.GetComponent<Target_Control>();
     }
 
    
@@ -37,7 +40,7 @@ public class Throwing_Tutorial : Events
 
     public override void CallInUpdate()
     {
-        //Debug.Log("Doing " + name);
+        if(tc.Destruction())CompleteEvent();
     }
 
     

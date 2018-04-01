@@ -73,6 +73,15 @@ public class ParticleOnOff : MonoBehaviour
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
     }
 
+    void CheckEventAbort()
+    {
+        if (EventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())
+        {
+            Del();
+            CancelInvoke();
+        }
+    }
+
     void CheckEvent()
     {
         if (EventScriptableObject == GameController.Instance.EventsManager.GetCurrentEvent())
@@ -80,6 +89,7 @@ public class ParticleOnOff : MonoBehaviour
             if (TurnOn == Occasion.Event) Inst();
             if (TurnOff == Occasion.Event) Del();
             CancelInvoke();
+            InvokeRepeating("CheckEventAbort", 0, 1);
         }
     }
 

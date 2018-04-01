@@ -4,30 +4,31 @@ using UnityEngine;
 
 public class Chalk_Hit : MonoBehaviour
 {
-	private Renderer rend;
-	private bool state = true;
+    private Renderer rend;
+    private int hits = 0;
 
-	public Tutorial_Point_Anim_Control tutorial_point_user;
+    public Tutorial_Point_Anim_Control tutorial_point_user;
 
-	void Start() {
-		rend = transform.GetComponent<Renderer>();
-	}
+    void Start()
+    {
+        rend = transform.GetComponent<Renderer>();
+    }
 
     void OnCollisionEnter(Collision other)
     {
-
         if (other.gameObject.CompareTag("Chalk"))
         {
-        	if (state) {
-        		rend.material.color = Color.red;
-        		state = false;
-        		} else {
-        		rend.material.color = Color.yellow;
-        		tutorial_point_user.Kill();
-        		}
-            
-            
+            if (hits == 0)
+            {
+                rend.material.color = Color.red;
+                hits++;
+            }
+            else if (hits == 1)
+            {
+                rend.material.color = Color.yellow;
+                tutorial_point_user.Kill();
+                hits++;
+            }
         }
-
     }
 }
