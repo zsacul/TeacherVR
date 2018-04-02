@@ -35,6 +35,11 @@ public class EventsUIController : MonoBehaviour
             EventName.text = GameController.Instance.EventsManager.GetCurrentEvent().name;
             Description.text = GameController.Instance.EventsManager.GetCurrentEvent().description;
         }
+        else
+        {
+            EventName.text = "Nothing";
+            Description.text = "No more events available";
+        }
         foreach (Events e in GameController.Instance.EventsManager.ListOfEvents)
         {
             GameObject newButton = Instantiate(ExampleButton);

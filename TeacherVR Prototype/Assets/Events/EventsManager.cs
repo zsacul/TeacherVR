@@ -23,10 +23,10 @@ public class EventsManager : MonoBehaviour
             currentEvent = ListOfEvents[0];
             currentEvent.StartEvent();
             ListOfEvents.RemoveAt(0);
-            if (EventsManagerStartNext != null)
-            {
-                EventsManagerStartNext();
-            }
+        }
+        if (EventsManagerStartNext != null)
+        {
+            EventsManagerStartNext();
         }
     }
 
