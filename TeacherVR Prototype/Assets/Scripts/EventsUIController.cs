@@ -38,7 +38,7 @@ public class EventsUIController : MonoBehaviour
         foreach (Events e in GameController.Instance.EventsManager.ListOfEvents)
         {
             GameObject newButton = Instantiate(ExampleButton);
-            newButton.transform.Find("Text").GetComponent<Text>().text = e.name;
+            newButton.transform.Find("TextMeshPro").GetComponent<TextMeshPro>().text = e.name;
             newButton.transform.SetParent(ListOfEvents.transform, false);
         }
     }

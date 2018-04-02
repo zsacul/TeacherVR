@@ -4,24 +4,29 @@ using VRTK;
 
 public class TiltWindow : MonoBehaviour
 {
+    public bool VR = false;
+    public Hand VRHandToTrack;
+    public Vector2 range = new Vector2(5f, 3f);
+
+    private VRTK_UIPointer UIPointerR;
+    private VRTK_UIPointer UIPointerL;
+    private Transform HeadsetTranform;
+
+    private float x = 0;
+    private float y = 0;
+    private Vector3 pos;
+
+    private Transform mTrans;
+    private Quaternion mStart;
+    private Vector2 mRot = Vector2.zero;
+
     public enum Hand
     {
         Right,
         Left
     }
 
-    public bool VR = false;
-    public Hand VRHandToTrack;
-    private VRTK_UIPointer UIPointerR;
-    private VRTK_UIPointer UIPointerL;
-    private Transform HeadsetTranform;
-    public Vector2 range = new Vector2(5f, 3f);
-
-    Transform mTrans;
-    Quaternion mStart;
-    Vector2 mRot = Vector2.zero;
-
-    private IEnumerator FindHands()
+    private IEnumerator FindDevices()
     {
         yield return new WaitForEndOfFrame();
         UIPointerR = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_UIPointer>();
@@ -33,67 +38,45 @@ public class TiltWindow : MonoBehaviour
     {
         mTrans = transform;
         mStart = mTrans.localRotation;
-        StartCoroutine(FindHands());
+        StartCoroutine(FindDevices());
+    }
+
+    private void setXY(VRTK_UIPointer Pointer, VRTK_UIPointer CorrectionPointer)
+    {
+        if (Pointer != null && Pointer.PointerActive())
+        {
+            pos = Pointer.GetOriginPosition();
+
+            if (HeadsetTranform.rotation.eulerAngles.y > 315 && HeadsetTranform.rotation.eulerAngles.y < 360 ||
+                HeadsetTranform.rotation.eulerAngles.y > 0 && HeadsetTranform.rotation.eulerAngles.y < 45)
+            {
+                x = CorrectionPointer.GetOriginPosition().x - pos.x;
+                y = CorrectionPointer.GetOriginPosition().y - pos.y;
+            }
+            else if (HeadsetTranform.rotation.eulerAngles.y > 45 && HeadsetTranform.rotation.eulerAngles.y < 135)
+            {
+                x = -CorrectionPointer.GetOriginPosition().z + pos.z;
+                y = CorrectionPointer.GetOriginPosition().y - pos.y;
+            }
+            else if (HeadsetTranform.rotation.eulerAngles.y > 135 && HeadsetTranform.rotation.eulerAngles.y < 225)
+            {
+                x = -CorrectionPointer.GetOriginPosition().x + pos.x;
+                y = CorrectionPointer.GetOriginPosition().y - pos.y;
+            }
+            else
+            {
+                x = CorrectionPointer.GetOriginPosition().z - pos.z;
+                y = CorrectionPointer.GetOriginPosition().y - pos.y;
+            }
+        }
     }
 
     void Update()
     {
-        Vector3 pos;
-        float x = 0;
-        float y = 0;
         if (VR)
         {
-            if (VRHandToTrack == Hand.Right && UIPointerR.PointerActive())
-            {
-                pos = UIPointerR.GetOriginPosition();
-
-                if (HeadsetTranform.rotation.eulerAngles.y > 315 && HeadsetTranform.rotation.eulerAngles.y < 360 ||
-                    HeadsetTranform.rotation.eulerAngles.y > 0 && HeadsetTranform.rotation.eulerAngles.y < 45)
-                {
-                    x = UIPointerL.GetOriginPosition().x - pos.x;
-                    y = UIPointerL.GetOriginPosition().y - pos.y;
-                }
-                else if (HeadsetTranform.rotation.eulerAngles.y > 45 && HeadsetTranform.rotation.eulerAngles.y < 135)
-                {
-                    x = -UIPointerL.GetOriginPosition().z + pos.z;
-                    y = UIPointerL.GetOriginPosition().y - pos.y;
-                }
-                else if (HeadsetTranform.rotation.eulerAngles.y > 135 && HeadsetTranform.rotation.eulerAngles.y < 225)
-                {
-                    x = -UIPointerL.GetOriginPosition().x + pos.x;
-                    y = UIPointerL.GetOriginPosition().y - pos.y;
-                }
-                else
-                {
-                    x = UIPointerL.GetOriginPosition().z - pos.z;
-                    y = UIPointerL.GetOriginPosition().y - pos.y;
-                }
-            }
-            else if (UIPointerL.PointerActive())
-            {
-                pos = UIPointerL.GetOriginPosition();
-                if (HeadsetTranform.rotation.eulerAngles.y >= 315 && HeadsetTranform.rotation.eulerAngles.y <= 360 ||
-                    HeadsetTranform.rotation.eulerAngles.y >= 0 && HeadsetTranform.rotation.eulerAngles.y <= 45)
-                {
-                    x = UIPointerR.GetOriginPosition().x - pos.x;
-                    y = UIPointerR.GetOriginPosition().y - pos.y;
-                }
-                else if (HeadsetTranform.rotation.eulerAngles.y >= 45 && HeadsetTranform.rotation.eulerAngles.y <= 135)
-                {
-                    x = -UIPointerR.GetOriginPosition().z + pos.z;
-                    y = UIPointerR.GetOriginPosition().y - pos.y;
-                }
-                else if (HeadsetTranform.rotation.eulerAngles.y >= 135 && HeadsetTranform.rotation.eulerAngles.y <= 225)
-                {
-                    x = -UIPointerR.GetOriginPosition().x + pos.x;
-                    y = UIPointerR.GetOriginPosition().y - pos.y;
-                }
-                else
-                {
-                    x = UIPointerR.GetOriginPosition().z - pos.z;
-                    y = UIPointerR.GetOriginPosition().y - pos.y;
-                }
-            }
+            if (VRHandToTrack == Hand.Right) setXY(UIPointerR, UIPointerL);
+            else setXY(UIPointerL, UIPointerR);
         }
         else
         {

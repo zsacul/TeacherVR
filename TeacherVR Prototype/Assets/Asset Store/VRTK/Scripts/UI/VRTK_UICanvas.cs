@@ -1,4 +1,5 @@
 ﻿// UI Canvas|UI|80010
+
 namespace VRTK
 {
     using UnityEngine;
@@ -18,9 +19,12 @@ namespace VRTK
     [AddComponentMenu("VRTK/Scripts/UI/VRTK_UICanvas")]
     public class VRTK_UICanvas : MonoBehaviour
     {
-        [Tooltip("Determines if a UI Click action should happen when a UI Pointer game object collides with this canvas.")]
+        [Tooltip(
+            "Determines if a UI Click action should happen when a UI Pointer game object collides with this canvas.")]
         public bool clickOnPointerCollision = false;
-        [Tooltip("Determines if a UI Pointer will be auto activated if a UI Pointer game object comes within the given distance of this canvas. If a value of `0` is given then no auto activation will occur.")]
+
+        [Tooltip(
+            "Determines if a UI Pointer will be auto activated if a UI Pointer game object comes within the given distance of this canvas. If a value of `0` is given then no auto activation will occur.")]
         public float autoActivateWithinDistance = 0f;
 
         protected BoxCollider canvasBoxCollider;
@@ -30,6 +34,7 @@ namespace VRTK
         protected const string ACTIVATOR_FRONT_TRIGGER_GAMEOBJECT = "VRTK_UICANVAS_ACTIVATOR_FRONT_TRIGGER";
 
         public VRTK_UIPointer UIPointerHand;
+
         public void ChangeState()
         {
             gameObject.SetActive(UIPointerHand.PointerActive());
@@ -75,7 +80,9 @@ namespace VRTK
 
             if (!canvas || canvas.renderMode != RenderMode.WorldSpace)
             {
-                VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_GAMEOBJECT, "VRTK_UICanvas", "Canvas", "the same", " that is set to `Render Mode = World Space`"));
+                VRTK_Logger.Error(VRTK_Logger.GetCommonMessage(
+                    VRTK_Logger.CommonMessageKeys.REQUIRED_COMPONENT_MISSING_FROM_GAMEOBJECT, "VRTK_UICanvas", "Canvas",
+                    "the same", " that is set to `Render Mode = World Space`"));
                 return;
             }
 
@@ -107,7 +114,8 @@ namespace VRTK
 
                 canvasBoxCollider = canvas.gameObject.AddComponent<BoxCollider>();
                 canvasBoxCollider.size = new Vector3(canvasSize.x, canvasSize.y, zScale);
-                canvasBoxCollider.center = new Vector3(canvasSize.x / 2 - canvasSize.x * pivot.x, canvasSize.y / 2 - canvasSize.y * pivot.y, zScale / 2f);
+                canvasBoxCollider.center = new Vector3(canvasSize.x / 2 - canvasSize.x * pivot.x,
+                    canvasSize.y / 2 - canvasSize.y * pivot.y, zScale / 2f);
                 canvasBoxCollider.isTrigger = true;
             }
 
@@ -152,7 +160,8 @@ namespace VRTK
                 var frontTrigger = new GameObject(ACTIVATOR_FRONT_TRIGGER_GAMEOBJECT);
                 frontTrigger.transform.SetParent(canvas.transform);
                 frontTrigger.transform.SetAsFirstSibling();
-                frontTrigger.transform.localPosition = new Vector3(canvasSize.x / 2 - canvasSize.x * pivot.x, canvasSize.y / 2 - canvasSize.y * pivot.y);
+                frontTrigger.transform.localPosition = new Vector3(canvasSize.x / 2 - canvasSize.x * pivot.x,
+                    canvasSize.y / 2 - canvasSize.y * pivot.y);
                 frontTrigger.transform.localRotation = Quaternion.identity;
                 frontTrigger.transform.localScale = Vector3.one;
 
@@ -202,7 +211,7 @@ namespace VRTK
                 Destroy(canvasRigidBody);
             }
 
-            StopCoroutine(draggablePanelCreation);
+            if (draggablePanelCreation != null) StopCoroutine(draggablePanelCreation);
             var draggablePanel = canvas.transform.Find(CANVAS_DRAGGABLE_PANEL);
             if (draggablePanel)
             {
