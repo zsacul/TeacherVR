@@ -24,7 +24,9 @@ namespace VRTK.Examples
         {
             base.Grabbed(grabbingObject);
             ce = grabbingObject.controllerEvents;
-            controllerReference = VRTK_ControllerReference.GetControllerReference(grabbingObject.controllerEvents.gameObject);
+            ce.GripPressed += Hand_GripPressed;
+            controllerReference =
+                VRTK_ControllerReference.GetControllerReference(grabbingObject.controllerEvents.gameObject);
         }
 
         public override void Ungrabbed(VRTK_InteractGrab previousGrabbingObject)
@@ -37,9 +39,9 @@ namespace VRTK.Examples
         {
             base.StartTouching(currentTouchingObject);
             VRTK_InteractGrab myGrab = currentTouchingObject.GetComponent<VRTK_InteractGrab>();
-            if(canTouch) myGrab.AttemptGrab();
+            if (canTouch) myGrab.AttemptGrab();
         }
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -47,16 +49,17 @@ namespace VRTK.Examples
             interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         }
 
-        protected override void Update()
+        private void Hand_GripPressed(object sender, ControllerInteractionEventArgs e)
         {
-            base.Update();
-            if (ce.gripPressed)
-            {
-                ForceReleaseGrab();
-                canTouch = false;
-                if(DestroyOnGripPress)Destroy(gameObject);
-                StartCoroutine(wait());
-            }
+            ForceReleaseGrab();
+            canTouch = false;
+            if (DestroyOnGripPress) Destroy(gameObject);
+            StartCoroutine(wait());
+        }
+
+        public void OnDestroy()
+        {
+            if (ce != null) ce.GripPressed -= Hand_GripPressed;
         }
 
         private IEnumerator wait()
@@ -69,7 +72,8 @@ namespace VRTK.Examples
         {
             if (VRTK_ControllerReference.IsValid(controllerReference) && IsGrabbed())
             {
-                collisionForce = VRTK_DeviceFinder.GetControllerVelocity(controllerReference).magnitude * impactMagnifier;
+                collisionForce = VRTK_DeviceFinder.GetControllerVelocity(controllerReference).magnitude *
+                                 impactMagnifier;
                 var hapticStrength = collisionForce / maxCollisionForce;
                 VRTK_ControllerHaptics.TriggerHapticPulse(controllerReference, hapticStrength, 0.5f, 0.01f);
             }
