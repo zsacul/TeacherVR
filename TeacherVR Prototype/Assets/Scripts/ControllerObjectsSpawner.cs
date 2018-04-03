@@ -40,11 +40,13 @@ public class ControllerObjectsSpawner : MonoBehaviour
             sign *= -1;
             count++;
             GameObject instantiate =
-                Instantiate(obj, HandTransform.position + HandTransform.forward/2, HandTransform.rotation);
+                Instantiate(obj, HandTransform.position + HandTransform.forward / 2, HandTransform.rotation);
             float correct = 0;
             if (Objects.Length % 2 == 0) correct = angle / 2;
             instantiate.transform.RotateAround(HandTransform.position, Vector3.up,
                 sign * (count / 2) * angle - correct);
+            instantiate.transform.eulerAngles =
+                new Vector3(obj.transform.eulerAngles.x, instantiate.transform.eulerAngles.y, obj.transform.rotation.z);
             Rigidbody rb = instantiate.GetComponent<Rigidbody>();
             if (rb != null) rb.isKinematic = true;
             ObjectsInstances.Add(instantiate);
