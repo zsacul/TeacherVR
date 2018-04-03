@@ -131,13 +131,16 @@ namespace VRTK
                 case ControllerElements.Touchpad:
                     return GetControllerTouchpadPath(hand, suffix);
                 case ControllerElements.ButtonOne:
-                    return GetControllerButtonOnePath(hand, suffix);
+                    //return GetControllerButtonOnePath(hand, suffix);
+                    return GetControllerSystemMenuPath(hand, suffix);
                 case ControllerElements.ButtonTwo:
                     return GetControllerButtonTwoPath(hand, suffix);
+                    //return GetControllerSystemMenuPath(hand, suffix);
                 case ControllerElements.SystemMenu:
                     return GetControllerSystemMenuPath(hand, suffix);
                 case ControllerElements.StartMenu:
-                    return GetControllerStartMenuPath(hand, suffix);
+                    //return GetControllerStartMenuPath(hand, suffix);
+                    return GetControllerSystemMenuPath(hand, suffix);
                 case ControllerElements.Body:
                     return "body";
             }

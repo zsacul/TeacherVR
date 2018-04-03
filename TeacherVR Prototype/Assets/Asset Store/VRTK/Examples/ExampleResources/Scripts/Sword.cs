@@ -57,8 +57,9 @@ namespace VRTK.Examples
             StartCoroutine(wait());
         }
 
-        public void OnDestroy()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             if (ce != null) ce.GripPressed -= Hand_GripPressed;
         }
 

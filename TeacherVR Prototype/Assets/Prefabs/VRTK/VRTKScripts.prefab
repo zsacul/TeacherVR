@@ -2944,7 +2944,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1842632541582242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 3, y: 1, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4669434149517212}
@@ -3231,9 +3231,9 @@ MonoBehaviour:
   triggerText: Trigger
   gripText: Grip
   touchpadText: Touchpad
-  buttonOneText: ButtonOne
-  buttonTwoText: ButtonTwo
-  startMenuText: StartMenu
+  buttonOneText: 
+  buttonTwoText: Pointer
+  startMenuText: Steam Menu
   tipBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   tipTextColor: {r: 1, g: 1, b: 1, a: 1}
   tipLineColor: {r: 0, g: 0, b: 0, a: 1}
@@ -3282,7 +3282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VR: 1
   VRHandToTrack: 1
-  range: {x: 30, y: 24}
+  range: {x: 60, y: 50}
 --- !u!114 &114028565939308058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4472,18 +4472,7 @@ MonoBehaviour:
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonOnePressed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114141339419563916}
-        m_MethodName: ChangeState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonOneReleased:
@@ -4503,7 +4492,18 @@ MonoBehaviour:
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonTwoPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114141339419563916}
+        m_MethodName: ChangeState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonTwoReleased:
@@ -4701,7 +4701,7 @@ MonoBehaviour:
   enableTeleport: 0
   targetListPolicy: {fileID: 0}
   pointerRenderer: {fileID: 114481797265615242}
-  activationButton: 12
+  activationButton: 14
   holdButtonToActivate: 0
   activateOnEnable: 0
   activationDelay: 0
@@ -4764,7 +4764,7 @@ MonoBehaviour:
   enableTeleport: 0
   targetListPolicy: {fileID: 0}
   pointerRenderer: {fileID: 114370226121674652}
-  activationButton: 12
+  activationButton: 14
   holdButtonToActivate: 0
   activateOnEnable: 0
   activationDelay: 0
@@ -5906,7 +5906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b26f999cbdac8478b6c2a046256169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationButton: 12
+  activationButton: 14
   activationMode: 1
   selectionButton: 3
   clickMethod: 0
@@ -7516,9 +7516,9 @@ MonoBehaviour:
   triggerText: Trigger
   gripText: Grip
   touchpadText: Touchpad
-  buttonOneText: ButtonOne
-  buttonTwoText: ButtonTwo
-  startMenuText: StartMenu
+  buttonOneText: 
+  buttonTwoText: Pointer
+  startMenuText: Steam Menu
   tipBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   tipTextColor: {r: 1, g: 1, b: 1, a: 1}
   tipLineColor: {r: 0, g: 0, b: 0, a: 1}
@@ -7829,7 +7829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VR: 1
   VRHandToTrack: 0
-  range: {x: 30, y: 24}
+  range: {x: 60, y: 50}
 --- !u!114 &114611622381841688
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8397,7 +8397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b26f999cbdac8478b6c2a046256169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activationButton: 12
+  activationButton: 14
   activationMode: 1
   selectionButton: 3
   clickMethod: 0
@@ -8585,18 +8585,7 @@ MonoBehaviour:
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonOnePressed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114250521905700816}
-        m_MethodName: ChangeState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonOneReleased:
@@ -8616,7 +8605,18 @@ MonoBehaviour:
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonTwoPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114250521905700816}
+        m_MethodName: ChangeState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnButtonTwoReleased:
