@@ -8,11 +8,17 @@
 
         private float offAngle = 40f;
         private Vector3 fixedPosition;
+        private float switchDelay = 0.5f;
+        private float lastSwitch = 0f;
 
-        public override void StartUsing(VRTK_InteractUse currentUsingObject)
+        public override void StartTouching(VRTK_InteractTouch currentTouchingObject = null)
         {
-            base.StartUsing(currentUsingObject);
-            SetSafety(!safetyOff);
+            base.StartTouching(currentTouchingObject);
+            if (Time.time > lastSwitch + switchDelay)
+            {
+                lastSwitch = Time.time;
+                SetSafety(!safetyOff);
+            }
         }
 
         protected void Start()
