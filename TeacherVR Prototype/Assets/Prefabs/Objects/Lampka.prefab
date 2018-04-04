@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114429514111905480}
   - component: {fileID: 114817035309705650}
   - component: {fileID: 114922358354652674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lampka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4443281439609814}
   - component: {fileID: 33430946304244200}
   - component: {fileID: 23130173021019042}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Group 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 65983924347829630}
   - component: {fileID: 65910592795388246}
   - component: {fileID: 65883300546091052}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []

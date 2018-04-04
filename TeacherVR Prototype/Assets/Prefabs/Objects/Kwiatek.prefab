@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33061660018732776}
   - component: {fileID: 23892518183931196}
   - component: {fileID: 65001134250044892}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Group 25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33850243558307604}
   - component: {fileID: 23720743341031654}
   - component: {fileID: 64915815275331230}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Group 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114833964060496612}
   - component: {fileID: 114300612949473318}
   - component: {fileID: 114935379199754836}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kwiatek
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4809874666758658}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114378462308780154}
   - component: {fileID: 114625013654399912}
   - component: {fileID: 114287129652760252}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Waza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 65489066704290278}
   - component: {fileID: 65664258260998214}
   - component: {fileID: 65071591170114196}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []

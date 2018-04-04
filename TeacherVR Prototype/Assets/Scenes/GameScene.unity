@@ -2843,8 +2843,8 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5496377e57af81b448ff773964d53d2f, type: 3}
   m_PrefabInternal: {fileID: 2039387396}
---- !u!64 &425783990
-MeshCollider:
+--- !u!65 &425783990
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -2852,11 +2852,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 5496377e57af81b448ff773964d53d2f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 0.79999995, z: 0.72999996}
+  m_Center: {x: 0, y: 0, z: -0.335}
 --- !u!1 &431913769
 GameObject:
   m_ObjectHideFlags: 0
@@ -12047,6 +12045,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 33819909418821224, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114925207207940992, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -12056,11 +12059,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 33819909418821224, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6369b2c7d8b71ab428227fa70f8acbb2, type: 2}

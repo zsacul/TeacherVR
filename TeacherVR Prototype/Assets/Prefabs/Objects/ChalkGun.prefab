@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33533648390359300}
   - component: {fileID: 23217229543323806}
   - component: {fileID: 65558937023878458}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4107542056266918}
   - component: {fileID: 33517017897724174}
   - component: {fileID: 23908508329072192}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 54740275546874984}
   - component: {fileID: 114683799698322564}
   - component: {fileID: 138718922418961552}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SafetySwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114747745210320172}
   - component: {fileID: 114232566946827360}
   - component: {fileID: 114217394539982984}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Bullet
   m_TagString: Chalk
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 33517794264301678}
   - component: {fileID: 23817287045459838}
   - component: {fileID: 65466316670457254}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 33079193098172694}
   - component: {fileID: 23481409934252396}
   - component: {fileID: 65236540182087322}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerGuardFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 114729451214058772}
   - component: {fileID: 114073570998395036}
   - component: {fileID: 114562943085225418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rysowanie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4252071675134894}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 114115465773477684}
   - component: {fileID: 114819836067236894}
   - component: {fileID: 114750273400034620}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ChalkGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4490831682493874}
   - component: {fileID: 114721552506708572}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SnapHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 33166587674980566}
   - component: {fileID: 23962544564388280}
   - component: {fileID: 65801183385159884}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 4006371544735004}
   - component: {fileID: 33184803826140812}
   - component: {fileID: 23251191077524912}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 114799947061730824}
   - component: {fileID: 114719632704191182}
   - component: {fileID: 153714918978128858}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 33255392191501986}
   - component: {fileID: 23374679368861012}
   - component: {fileID: 65009781890130024}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TriggerGuardBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 33554675910631300}
   - component: {fileID: 23042038081281930}
   - component: {fileID: 65869064306003258}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,6 +1124,7 @@ MonoBehaviour:
   usingState: 0
   bulletSpeed: 20
   bulletLife: 5
+  fireDelay: 0.5
 --- !u!114 &114217394539982984
 MonoBehaviour:
   m_ObjectHideFlags: 1
