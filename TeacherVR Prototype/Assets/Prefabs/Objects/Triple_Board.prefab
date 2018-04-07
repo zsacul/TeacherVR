@@ -2084,7 +2084,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299118871212846}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4827022408722932}
@@ -2578,7 +2578,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503616459833966}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4874272969635594}
@@ -2697,7 +2697,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477161522587400}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4605485094974390}
@@ -2712,7 +2712,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989211138177780}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4690148541579990}
@@ -2902,7 +2902,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213078778540100}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4320627124360950}
@@ -3477,7 +3477,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726302968350976}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4708691358521176}
@@ -8223,7 +8223,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!114 &114193980290807046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8296,7 +8296,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!114 &114259638813121826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8369,7 +8369,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!114 &114466591780577072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8555,7 +8555,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!114 &114713181280975454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8765,7 +8765,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!114 &114931345509117070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8880,7 +8880,7 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  breakForce: 300000
 --- !u!136 &136007749485491388
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -9203,7 +9203,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.1700002, y: 3.6417723, z: 6.8}
+  m_ConnectedAnchor: {x: 1.1700002, y: 4.6917725, z: 6.8}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9216,7 +9216,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -9297,7 +9297,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.1, y: 3.6417723, z: 6.8}
+  m_ConnectedAnchor: {x: 1.1, y: 4.6917725, z: 6.8}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9310,7 +9310,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -9391,7 +9391,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.2400005, y: 3.6417723, z: 9.85}
+  m_ConnectedAnchor: {x: 1.2400005, y: 4.6917725, z: 9.85}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9404,7 +9404,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -9485,7 +9485,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.1700006, y: 3.6417723, z: 9.85}
+  m_ConnectedAnchor: {x: 1.1700006, y: 4.6917725, z: 9.85}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9498,7 +9498,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -9579,7 +9579,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.2400001, y: 3.6417723, z: 6.8}
+  m_ConnectedAnchor: {x: 1.2400001, y: 4.6917725, z: 6.8}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9592,7 +9592,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:
@@ -9673,7 +9673,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 1.3917724, z: 0}
   m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.1000005, y: 3.6417723, z: 9.85}
+  m_ConnectedAnchor: {x: 1.1000005, y: 4.6917725, z: 9.85}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
@@ -9686,7 +9686,7 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LinearLimit:
-    limit: 2.65
+    limit: 0.86
     bounciness: 0.1
     contactDistance: 0
   m_AngularXLimitSpring:

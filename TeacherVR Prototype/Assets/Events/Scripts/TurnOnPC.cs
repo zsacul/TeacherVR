@@ -61,10 +61,10 @@ public class TurnOnPC : Events
         MonitorRenderer.material = PCOffMaterial;
         if (USB1Ins != null) Destroy(USB1Ins);
         if (USB2Ins != null) Destroy(USB2Ins);
-        if (u1 != null) Destroy(u1);
-        if (u2 != null) Destroy(u2);
-        if (mu1 != null) Destroy(mu1);
-        if (mu2 != null) Destroy(mu2);
+        if (u1 != null) Destroy(u1.gameObject);
+        if (u2 != null) Destroy(u2.gameObject);
+        if (mu1 != null) Destroy(mu1.gameObject);
+        if (mu2 != null) Destroy(mu2.gameObject);
     }
 
     public override void CompleteEvent()

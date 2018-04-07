@@ -73,6 +73,61 @@ public class ParticleOnOff : MonoBehaviour
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
     }
 
+    private void OnDestroy()
+    {
+        switch (TurnOn)
+        {
+            case Occasion.Snaped:
+                sdz.ObjectSnappedToDropZone -= ObjectSnappedOn;
+                break;
+            case Occasion.Unsnaped:
+                sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOn;
+                break;
+            case Occasion.Touched:
+                io.InteractableObjectTouched -= ObjectTouchedOn;
+                break;
+            case Occasion.Untouched:
+                io.InteractableObjectTouched -= ObjectUntouchedOn;
+                break;
+            case Occasion.Grabbed:
+                io.InteractableObjectTouched -= ObjectGrabbedOn;
+                break;
+            case Occasion.Ungrabbed:
+                io.InteractableObjectTouched -= ObjectUngrabbedOn;
+                break;
+            case Occasion.Event:
+                CheckEvent();
+                CheckEventAbort();
+                break;
+        }
+
+        switch (TurnOff)
+        {
+            case Occasion.Snaped:
+                sdz.ObjectSnappedToDropZone -= ObjectSnappedOff;
+                break;
+            case Occasion.Unsnaped:
+                sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOff;
+                break;
+            case Occasion.Touched:
+                io.InteractableObjectTouched -= ObjectTouchedOff;
+                break;
+            case Occasion.Untouched:
+                io.InteractableObjectTouched -= ObjectUntouchedOff;
+                break;
+            case Occasion.Grabbed:
+                io.InteractableObjectTouched -= ObjectGrabbedOff;
+                break;
+            case Occasion.Ungrabbed:
+                io.InteractableObjectTouched -= ObjectUngrabbedOff;
+                break;
+            case Occasion.Event:
+                CheckEvent();
+                CheckEventAbort();
+                break;
+        }
+    }
+
     void CheckEventAbort()
     {
         if (EventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())

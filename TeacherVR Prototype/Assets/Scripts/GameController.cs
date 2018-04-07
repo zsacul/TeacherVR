@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     public EventsManager EventsManager;
     public GameObject RysObject;
     public ScoreBoard ScoreBoard;
+    public MessageSystem MessageSystem;
 
     void Start () {
 		
