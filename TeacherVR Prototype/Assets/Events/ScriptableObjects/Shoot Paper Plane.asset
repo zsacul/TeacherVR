@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d70fc1f89f1a845b6a3cd6c935cc18, type: 3}
+  m_Name: Shoot Paper Plane
+  m_EditorClassIdentifier: 
+  name: Paper planes
+  description: Bring down all paper planes
+  status: 3
+  lvl: 2
+  ObjectToShoot: {fileID: 1239773670124760, guid: 6e3955af72cc49c4188c0c47f919242b,
+    type: 2}
+  MoveSpeed: 1
+  AngularSpeed: 2
+  ObjectScale: 3
+  MinPos: {x: 2, y: 3, z: 4}
+  MaxPos: {x: 6, y: 5, z: 13}
