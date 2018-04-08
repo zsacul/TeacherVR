@@ -30,6 +30,7 @@ public class ShootTheObjects : Events
     {
         base.StartEvent();
         Instances.Clear();
+        TargetLocations.Clear();
         for (int i = 0; i < lvl * 2; i++)
         {
             GameObject obj = Instantiate(ObjectToShoot, RandomPos(),
@@ -68,14 +69,16 @@ public class ShootTheObjects : Events
         base.AbortEvent();
         foreach (GameObject obj in Instances)
         {
-            Destroy(obj);
+            if (obj != null) Destroy(obj);
         }
         Instances.Clear();
+        TargetLocations.Clear();
     }
 
     public override void CompleteEvent()
     {
         base.CompleteEvent();
         Instances.Clear();
+        TargetLocations.Clear();
     }
 }
