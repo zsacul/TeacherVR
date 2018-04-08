@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
-using VRTK.Examples;
 
 public class ControllerObjectsSpawner : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
 
     void Start()
     {
+        ObjectsInstances.Clear();
         StartCoroutine(FindDevices());
     }
 
@@ -43,10 +43,10 @@ public class ControllerObjectsSpawner : MonoBehaviour
                 Instantiate(obj, HandTransform.position + HandTransform.forward / 2, HandTransform.rotation);
             float correct = 0;
             if (Objects.Length % 2 == 0) correct = angle / 2;
-            instantiate.transform.RotateAround(HandTransform.position, Vector3.up,
+            instantiate.transform.RotateAround(HandTransform.position, HandTransform.up,
                 sign * (count / 2) * angle - correct);
-            instantiate.transform.eulerAngles =
-                new Vector3(obj.transform.eulerAngles.x, instantiate.transform.eulerAngles.y, obj.transform.rotation.z);
+            /*instantiate.transform.eulerAngles =
+                new Vector3(obj.transform.eulerAngles.x, instantiate.transform.eulerAngles.y, obj.transform.rotation.z);*/
             Rigidbody rb = instantiate.GetComponent<Rigidbody>();
             if (rb != null) rb.isKinematic = true;
             ObjectsInstances.Add(instantiate);

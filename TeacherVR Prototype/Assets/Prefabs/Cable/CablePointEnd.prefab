@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114780862634798430}
   - component: {fileID: 114789589313875378}
   - component: {fileID: 114138069782771736}
+  - component: {fileID: 114534444641155592}
   m_Layer: 0
   m_Name: CablePointEnd
   m_TagString: CablePointEnd
@@ -227,6 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRange: 5
+  OverMaxRangeAction: 0
+  End: {fileID: 0}
 --- !u!114 &114194582081146670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
+  IgnoreSaveKinematic: 0
   touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
@@ -275,6 +279,23 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114534444641155592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071480789206264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 1
+  thickness: 1
+  customOutlineModels: []
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!114 &114726222687133590
 MonoBehaviour:
   m_ObjectHideFlags: 1

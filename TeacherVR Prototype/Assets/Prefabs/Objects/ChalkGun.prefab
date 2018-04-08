@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 114115465773477684}
   - component: {fileID: 114819836067236894}
   - component: {fileID: 114750273400034620}
+  - component: {fileID: 114421484920546780}
   m_Layer: 2
   m_Name: ChalkGun
   m_TagString: Untagged
@@ -1184,6 +1185,23 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114421484920546780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1601493718899414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 1
+  thickness: 1
+  customOutlineModels: []
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!114 &114562943085225418
 MonoBehaviour:
   m_ObjectHideFlags: 1

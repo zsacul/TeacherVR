@@ -32,6 +32,10 @@ public class Climb : Events
     public override void AbortEvent()
     {
         base.AbortEvent();
+        objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
+        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
+        climb.enabled = false;
+        climb.enabled = true;
         Destroy(objToClimbInstance);
         Destroy(objToTouchInstance);
     }
@@ -39,6 +43,10 @@ public class Climb : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
+        objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
+        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
+        climb.enabled = false;
+        climb.enabled = true;
         Destroy(objToClimbInstance);
         Destroy(objToTouchInstance);
     }

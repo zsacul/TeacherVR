@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114957960030030280}
   - component: {fileID: 114386015721487566}
   - component: {fileID: 114109520381316654}
+  - component: {fileID: 114248201696598002}
   m_Layer: 0
   m_Name: USBCable
   m_TagString: USB
@@ -148,6 +149,7 @@ GameObject:
   - component: {fileID: 114226869751310678}
   - component: {fileID: 145654758976543596}
   - component: {fileID: 114807283354150044}
+  - component: {fileID: 114440143817382338}
   m_Layer: 0
   m_Name: USBCable
   m_TagString: USB
@@ -379,7 +381,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426655178385984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.959606, y: 34.314, z: 37.361}
+  m_LocalPosition: {x: 2.5483203, y: 1.727, z: 2.1592221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4465413365445426}
@@ -408,7 +410,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1072654771057108}
-  m_LocalRotation: {x: -0.0012829546, y: -0.7271823, z: -0.0013590982, w: 0.6864419}
+  m_LocalRotation: {x: -0.0012836601, y: -0.7271838, z: -0.0013598514, w: 0.6864403}
   m_LocalPosition: {x: -0.0004, y: 0.0038, z: 0.0114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -724,6 +726,23 @@ MonoBehaviour:
   useOverrideButton: 0
   allowedUseControllers: 0
   usingState: 0
+--- !u!114 &114248201696598002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1294256047406910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 1
+  thickness: 1
+  customOutlineModels: []
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!114 &114386015721487566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -741,6 +760,24 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
+--- !u!114 &114440143817382338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576294772812506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 1
+  thickness: 1
+  customOutlineModels:
+  - {fileID: 1590755535587844}
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!114 &114472043716247506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -829,7 +866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRange: 2
-  DoubleConnect: 1
+  OverMaxRangeAction: 0
   End: {fileID: 4133872647977442}
 --- !u!114 &114952122506325824
 MonoBehaviour:
@@ -900,26 +937,26 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -0.39239883, y: 0.7951126, z: 5.854233}
-  - {x: -0.4134724, y: 0.7951915, z: 5.8530173}
-  - {x: -0.43454602, y: 0.79527044, z: 5.8518014}
-  - {x: -0.4556196, y: 0.7953493, z: 5.850586}
-  - {x: -0.4766932, y: 0.7954282, z: 5.84937}
-  - {x: -0.4977668, y: 0.79550713, z: 5.8481545}
-  - {x: -0.5188404, y: 0.79558605, z: 5.8469386}
-  - {x: -0.539914, y: 0.79566497, z: 5.845723}
-  - {x: -0.5609876, y: 0.7957438, z: 5.844507}
-  - {x: -0.5820612, y: 0.79582274, z: 5.8432918}
-  - {x: -0.60313475, y: 0.79590166, z: 5.842076}
-  - {x: -0.62420833, y: 0.7959806, z: 5.8408604}
-  - {x: -0.6452819, y: 0.7960594, z: 5.8396444}
-  - {x: -0.66635555, y: 0.79613835, z: 5.838429}
-  - {x: -0.68742913, y: 0.79621726, z: 5.837213}
-  - {x: -0.70850277, y: 0.7962962, z: 5.8359976}
-  - {x: -0.72957635, y: 0.7963751, z: 5.8347816}
-  - {x: -0.7506499, y: 0.79645395, z: 5.833566}
-  - {x: -0.7717235, y: 0.79653287, z: 5.8323503}
-  - {x: -0.7927971, y: 0.7966118, z: 5.831135}
+  - {x: 2.5479202, y: 1.7308, z: 2.170622}
+  - {x: 2.5268466, y: 1.730879, z: 2.1694064}
+  - {x: 2.5057728, y: 1.730958, z: 2.1681905}
+  - {x: 2.4846992, y: 1.7310369, z: 2.1669748}
+  - {x: 2.4636254, y: 1.7311158, z: 2.165759}
+  - {x: 2.4425519, y: 1.7311947, z: 2.1645432}
+  - {x: 2.4214783, y: 1.7312738, z: 2.1633275}
+  - {x: 2.4004045, y: 1.7313527, z: 2.1621115}
+  - {x: 2.3793309, y: 1.7314316, z: 2.1608958}
+  - {x: 2.358257, y: 1.7315105, z: 2.1596801}
+  - {x: 2.3371835, y: 1.7315896, z: 2.1584642}
+  - {x: 2.3161097, y: 1.7316685, z: 2.1572485}
+  - {x: 2.295036, y: 1.7317474, z: 2.1560328}
+  - {x: 2.2739625, y: 1.7318263, z: 2.1548169}
+  - {x: 2.2528887, y: 1.7319053, z: 2.1536012}
+  - {x: 2.231815, y: 1.7319843, z: 2.1523852}
+  - {x: 2.2107413, y: 1.7320632, z: 2.1511695}
+  - {x: 2.1896677, y: 1.7321421, z: 2.1499538}
+  - {x: 2.168594, y: 1.7322211, z: 2.148738}
+  - {x: 2.1475203, y: 1.7323, z: 2.1475222}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.005

@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 114300523634856144}
   - component: {fileID: 114654203404996166}
   - component: {fileID: 114252713485597066}
+  - component: {fileID: 114528980277502920}
   m_Layer: 2
   m_Name: RealGun
   m_TagString: Untagged
@@ -1217,6 +1218,23 @@ MonoBehaviour:
   bulletSpeed: 200
   bulletLife: 5
   fireDelay: 0.5
+--- !u!114 &114528980277502920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474174020828974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c08517e04830d6d44a13c5ea5f574181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  unhighlightOnDisable: 1
+  thickness: 1
+  customOutlineModels: []
+  customOutlineModelPaths: []
+  enableSubmeshHighlight: 0
 --- !u!114 &114654203404996166
 MonoBehaviour:
   m_ObjectHideFlags: 1
