@@ -12,6 +12,25 @@ public class EventsManager : MonoBehaviour
 
     public event EventsManagerEventHandler EventsManagerStartNext;
 
+    private void AddPoints(int pkt)
+    {
+
+    }
+
+    private void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow, MessageSystem.Window window)
+    {
+        Debug.Log("Start Message");
+        GameController.Instance.MessageSystem.ChangeActiveFollower(objectToFollow);
+        GameController.Instance.MessageSystem.ShowCustomText(txt, window, true);
+        StartCoroutine(Hide(time));
+    }
+
+    private IEnumerator Hide(float time)
+    {
+        yield return new WaitForSeconds(time);
+        GameController.Instance.MessageSystem.HideAllText();
+    }
+
     public void StartNextEvent()
     {
         if (currentEvent != null)
@@ -21,8 +40,11 @@ public class EventsManager : MonoBehaviour
         if (ListOfEvents.Count > 0)
         {
             currentEvent = ListOfEvents[0];
+            currentEvent.AddPointsEvent += AddPoints;
+            currentEvent.MessageEvent += Message;
             currentEvent.StartEvent();
             ListOfEvents.RemoveAt(0);
+            
         }
         if (EventsManagerStartNext != null)
         {
@@ -33,6 +55,8 @@ public class EventsManager : MonoBehaviour
     public void AbortCurrentEvent()
     {
         currentEvent.AbortEvent();
+        currentEvent.AddPointsEvent -= AddPoints;
+        currentEvent.MessageEvent -= Message;
         currentEvent = null;
     }
 
@@ -58,6 +82,8 @@ public class EventsManager : MonoBehaviour
             if (CheckCurrentEventStatus() == Events.Status.Progress) currentEvent.CallInUpdate();
             else
             {
+                currentEvent.AddPointsEvent -= AddPoints;
+                currentEvent.MessageEvent -= Message;
                 currentEvent = null;
             }
         }

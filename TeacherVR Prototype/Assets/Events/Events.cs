@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 //Tu należy zmienić Events/Basic Event na Events/MojaNazwaEventu Event podczas dziedziczenia
 //Dziedziczymy tworząc nowy skrypt i wpisując public class MojaNazwaEventu : Events {}
@@ -16,6 +18,14 @@ public class Events : ScriptableObject
 
     //Poziom trudności eventu, jeśli event nie posiada różnych poziomów powinno być 0 w przeciwnym wypadku >=1
     public int lvl;
+
+    public delegate void AddPointsEventHandler(int numb);
+
+    public delegate void MessageEventHandler(float time, string txt, MessageSystem.ObjectToFollow objectToFollow, MessageSystem.Window window);
+
+    public event AddPointsEventHandler AddPointsEvent;
+
+    public event MessageEventHandler MessageEvent;
 
     //Funkcja po której wywołaniu startuje event
     //Powinna zapamiętać na starcie parametry zmienianych obiektów
@@ -54,8 +64,24 @@ public class Events : ScriptableObject
     }
 
     //Funkcja dodająca punkty dla gracza
-    public void AddPoints(int pkt)
+    protected void AddPoints(int pkt)
+    { 
+        if (AddPointsEvent != null)
+        {
+            Debug.Log(pkt + " points for " + name);
+            AddPointsEvent(pkt);
+        }
+
+    }
+
+    //Funkcja wysylajaca wiadomosc do gracza
+    protected void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow, MessageSystem.Window window)
     {
-        Debug.Log(pkt + " Points for " + name);
+        if (MessageEvent != null)
+        {
+            Debug.Log(txt + " for " + time + " from " + name);
+            MessageEvent(time, txt, objectToFollow, window);
+        }
+
     }
 }

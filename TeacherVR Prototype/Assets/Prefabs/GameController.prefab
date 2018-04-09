@@ -765,15 +765,15 @@ MonoBehaviour:
   gameObjectToFollow: {fileID: 1585805944881360}
   gameObjectToChange: {fileID: 1893778420171790}
   followsPosition: 1
-  smoothsPosition: 1
-  maxAllowedPerFrameDistanceDifference: 2
+  smoothsPosition: 0
+  maxAllowedPerFrameDistanceDifference: 15
   followsRotation: 1
-  smoothsRotation: 0
-  maxAllowedPerFrameAngleDifference: 1.5
+  smoothsRotation: 1
+  maxAllowedPerFrameAngleDifference: 300
   followsScale: 1
   smoothsScale: 0
   maxAllowedPerFrameSizeDifference: 0.003
-  _moment: 1
+  _moment: 2
 --- !u!114 &114829680446557214
 MonoBehaviour:
   m_ObjectHideFlags: 1
