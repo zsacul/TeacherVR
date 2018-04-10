@@ -34,7 +34,7 @@ public class AnimationControll : MonoBehaviour {
         anim.SetBool(name, false);
     }
 
-	protected void Walk(bool state) {
+	public void Walk(bool state) {
 		if (state) {
 			anim.SetBool("isWalking", true);
 		} else {
@@ -42,7 +42,7 @@ public class AnimationControll : MonoBehaviour {
 		}
 	}
 
-	protected void Talk(bool state) {
+	public void Talk(bool state) {
 		if (state) {
 			anim.SetBool("isTalking", true);
 		} else {
@@ -50,28 +50,28 @@ public class AnimationControll : MonoBehaviour {
 		}
 	}
 
-	protected void HandThingy() {
+	public void HandThingy() {
 		coroutine = func("HandThingy");
 		StartCoroutine(coroutine);
 	}
 
-	protected void Clap() {
+	public void Clap() {
 		coroutine = func("Clap");
 		StartCoroutine(coroutine);
 	}
 
-	protected void Hit() {
+	public void Hit() {
 		coroutine = func("Hit");
 		materials[3] = eyeHit;
 		StartCoroutine(coroutine);
 		materials[3] = eyeDefault;		
 	}
 	
-	protected void Wave() {
+	public void Wave() {
 		anim.SetTrigger("Wave");
 	}
 
-	protected void Give() {
+	public void Give() {
 		anim.SetTrigger("Give");
 	}
 
