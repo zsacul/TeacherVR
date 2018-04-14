@@ -8372,7 +8372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114155724911092596
 MonoBehaviour:
@@ -8438,14 +8438,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1726302968350976}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: a3fd99b7c5660e64298716f3ee73d31a, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114221520167636816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8502,12 +8503,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213078778540100}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114686393071096114}
 --- !u!114 &114275668416104070
 MonoBehaviour:
@@ -8520,14 +8521,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1989211138177780}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: 53c54f01b785cef49b7306635029ff4b, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114287413349708242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8539,7 +8541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114311926937421462
 MonoBehaviour:
@@ -8648,7 +8650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114518038196895492
 MonoBehaviour:
@@ -8678,12 +8680,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989211138177780}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114275668416104070}
 --- !u!114 &114654356669235030
 MonoBehaviour:
@@ -8691,12 +8693,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503616459833966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114852442960439752}
 --- !u!114 &114679906771994138
 MonoBehaviour:
@@ -8751,14 +8753,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1213078778540100}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: c7a60862e6d1ea34ea083352c8f08db0, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114697886016423778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8770,14 +8773,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1477161522587400}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: f2354181e68fe9b4797fee0800a8b612, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114707383527598580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8859,12 +8863,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1726302968350976}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114195914375759146}
 --- !u!114 &114755548964815654
 MonoBehaviour:
@@ -8877,7 +8881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114787668231096980
 MonoBehaviour:
@@ -8890,7 +8894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114792608147677674
 MonoBehaviour:
@@ -8898,12 +8902,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1477161522587400}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114697886016423778}
 --- !u!114 &114849893141849744
 MonoBehaviour:
@@ -8927,14 +8931,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1503616459833966}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: 4db4c700962f4e04cbca66c97cb77a62, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114888462420970036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9092,7 +9097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 2
+  templateThickness: 0.02
   Paint: {fileID: 0}
 --- !u!114 &114966012673147960
 MonoBehaviour:
@@ -9105,26 +9110,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24376e6fce1519246a80a8988976a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Board: {fileID: 1299118871212846}
   brushContainer: {fileID: 0}
   canvasCam: {fileID: 0}
-  cursorPaint: {fileID: 21300000, guid: 9c97ef0a9e8c35b44ba030235e9b78ff, type: 3}
+  cursorPaint: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   ChalkSprite: {fileID: 21300000, guid: 509a3e2617df86e4abd149d051471645, type: 3}
   SpongeSprite: {fileID: 21300000, guid: 8188c49d79079af41b1398b7fdcbff5e, type: 3}
   canvasTexture: {fileID: 8400000, guid: 50097aba4a733b64c8573568d7ae6023, type: 2}
   baseMaterial: {fileID: 2100000, guid: def9f198675160e4d9ab9afa9886f37b, type: 2}
-  brushSize: 0.05
+  brushSize: 0.07
 --- !u!114 &114970190790791296
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299118871212846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7101012d4c4d6944987e5fde85bd9bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushSize: 6
+  templateThickness: 0.02
   Paint: {fileID: 114966012673147960}
 --- !u!114 &114983220225280716
 MonoBehaviour:

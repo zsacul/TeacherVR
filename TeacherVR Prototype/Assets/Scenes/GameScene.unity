@@ -743,56 +743,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114697886016423778, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: brushContainer
-      value: 
-      objectReference: {fileID: 373631903}
-    - target: {fileID: 114697886016423778, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: canvasCam
-      value: 
-      objectReference: {fileID: 630828989}
-    - target: {fileID: 114686393071096114, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: brushContainer
-      value: 
-      objectReference: {fileID: 915451896}
-    - target: {fileID: 114686393071096114, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: canvasCam
-      value: 
-      objectReference: {fileID: 822934594}
-    - target: {fileID: 114275668416104070, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: brushContainer
-      value: 
-      objectReference: {fileID: 1756231383}
-    - target: {fileID: 114275668416104070, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: canvasCam
-      value: 
-      objectReference: {fileID: 74949700}
-    - target: {fileID: 114966012673147960, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: brushContainer
-      value: 
-      objectReference: {fileID: 1087741055}
-    - target: {fileID: 114966012673147960, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: canvasCam
-      value: 
-      objectReference: {fileID: 1833929126}
-    - target: {fileID: 114195914375759146, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: brushContainer
-      value: 
-      objectReference: {fileID: 1737050077}
-    - target: {fileID: 114195914375759146, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
-        type: 2}
-      propertyPath: canvasCam
-      value: 
-      objectReference: {fileID: 1259404740}
     - target: {fileID: 114852442960439752, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
         type: 2}
       propertyPath: brushContainer
@@ -803,6 +753,56 @@ Prefab:
       propertyPath: canvasCam
       value: 
       objectReference: {fileID: 807522571}
+    - target: {fileID: 114195914375759146, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: brushContainer
+      value: 
+      objectReference: {fileID: 1737050077}
+    - target: {fileID: 114195914375759146, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: canvasCam
+      value: 
+      objectReference: {fileID: 1259404740}
+    - target: {fileID: 114966012673147960, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: brushContainer
+      value: 
+      objectReference: {fileID: 1087741055}
+    - target: {fileID: 114966012673147960, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: canvasCam
+      value: 
+      objectReference: {fileID: 1833929126}
+    - target: {fileID: 114275668416104070, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: brushContainer
+      value: 
+      objectReference: {fileID: 1756231383}
+    - target: {fileID: 114275668416104070, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: canvasCam
+      value: 
+      objectReference: {fileID: 74949700}
+    - target: {fileID: 114686393071096114, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: brushContainer
+      value: 
+      objectReference: {fileID: 915451896}
+    - target: {fileID: 114686393071096114, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: canvasCam
+      value: 
+      objectReference: {fileID: 822934594}
+    - target: {fileID: 114697886016423778, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: brushContainer
+      value: 
+      objectReference: {fileID: 373631903}
+    - target: {fileID: 114697886016423778, guid: c9f776fd9b058ae4b9a54b1588bb9ac3,
+        type: 2}
+      propertyPath: canvasCam
+      value: 
+      objectReference: {fileID: 630828989}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9f776fd9b058ae4b9a54b1588bb9ac3, type: 2}
   m_IsPrefabParent: 0
@@ -13288,11 +13288,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 33819909418821224, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114925207207940992, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -13302,6 +13297,11 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33819909418821224, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6369b2c7d8b71ab428227fa70f8acbb2, type: 2}

@@ -12,6 +12,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
 {
     private VRTK_Pointer chalkPointer;
 
+    public GameObject Board;
     public GameObject brushContainer; //The cursor that overlaps the model and our container for the brushes painted
 
     public Camera canvasCam; //The camera that looks at the model, and the camera that looks at the canvas.
@@ -30,15 +31,17 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     private Vector3 lastPoint;
     GameObject brushObj;
 
-    void Start()
+    public Vector3 GetLastPoint()
     {
-        ChalkColor = GameController.Instance.ChalkColor;
+        return lastPoint;
     }
+
     void Update()
     {
         if (GameController.Instance.RysObject != null)
             chalkPointer = GameController.Instance.RysObject.GetComponent<VRTK_Pointer>();
         else return;
+        ChalkColor = GameController.Instance.ChalkColor;
         if (GameController.Instance.RysObject.tag.Equals("Sponge"))
         {
             cursorPaint = SpongeSprite;
@@ -71,7 +74,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         line.transform.position = start;
     }
 
-    public void DrawPoint(Vector3 uvWorldPosition, float size,Color color)
+    public void DrawPoint(Vector3 uvWorldPosition, float size, Color color)
     {
         //brushColor.a = brushSize * 2.0f; // Brushes have alpha to have a merging effect when painted over.
         brushObj = (GameObject) Instantiate(Resources.Load("TexturePainter-Instances/BrushEntity")); //Paint a brush
@@ -90,7 +93,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         Vector3 uvWorldPosition = Vector3.zero;
         if (HitTestUVPosition(ref uvWorldPosition))
         {
-            DrawPoint(uvWorldPosition,brushSize,brushColor);
+            DrawPoint(uvWorldPosition, brushSize, brushColor);
             if (lastPoint != Vector3.zero)
             {
                 if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 10)
@@ -114,7 +117,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
             Renderer rend = hit.transform.GetComponent<Renderer>();
 
             if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null ||
-                rend != transform.parent.Find("Board").GetComponent<Renderer>())
+                rend != Board.GetComponent<Renderer>())
             {
                 return false;
             }
