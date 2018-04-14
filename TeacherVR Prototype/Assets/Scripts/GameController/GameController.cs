@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour {
 
     public EventsManager EventsManager;
     public GameObject RysObject;
+    public Vector2[] TemplateShape;
+    public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
 
