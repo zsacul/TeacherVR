@@ -26,14 +26,14 @@ public class GameController : MonoBehaviour {
     public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
+    public SoundManager SoundManager;
 
     void Start () {
 		
 	}
 	
 
-	void Update ()
-    {
+	void Update () {
 
     }
     
