@@ -24,14 +24,14 @@ public class GameController : MonoBehaviour {
     public GameObject RysObject;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
+    public SoundManager SoundManager;
 
     void Start () {
 		
 	}
 	
 
-	void Update ()
-    {
+	void Update () {
 
     }
     
