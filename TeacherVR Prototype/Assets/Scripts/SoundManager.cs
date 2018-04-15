@@ -2,16 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SfxList { HookBang, TopDoorBang, TopDoorOpen, SideDoorBang, SideDoorOpen };
+
 public class SoundManager : MonoBehaviour {
 
     public GameObject ParticlePrefab;
     public GameObject ACSource;
-    public AudioClip TestClip;
+    public GameObject LightSource;
+
+    public AudioClip SfxHookBang;
+    public AudioClip SfxTopDoorBang;
+    public AudioClip SfxTopDoorOpen;
+    public AudioClip SfxSideDoorBang;
+    public AudioClip SfxSideDoorOpen;
+
+
     private float _ACNsound;
 
     private int _PoolSize = 30;
     private GameObject[] _SfxParticlesPool;
     private int _FreshPoolInd = 0;
+
+    public AudioClip ClipFromEnum(SfxList en)
+    {
+        switch (en)
+        {
+            case SfxList.HookBang:
+                return SfxHookBang;
+
+            case SfxList.TopDoorBang:
+                return SfxTopDoorBang;
+
+            case SfxList.TopDoorOpen:
+                return SfxTopDoorOpen;
+
+            case SfxList.SideDoorBang:
+                return SfxSideDoorBang;
+
+            case SfxList.SideDoorOpen:
+                return SfxSideDoorOpen;
+
+        }
+
+        return null;
+    }
 
     private GameObject SfxFromPool()
     {
@@ -24,19 +58,46 @@ public class SoundManager : MonoBehaviour {
         return _SfxParticlesPool[_FreshPoolInd++];
     }
 
-    public void PlaySfxAt(AudioClip clip, Transform where)
+    public void Play3DAt(AudioClip clip, Transform where)
     {
-        PlaySfxAt(clip, where.position);
+        Play3DAt(clip, where.position);
     }
 
-    public void PlaySfxAt(AudioClip clip, Vector3 v3)
+    public void Play3DAt(SfxList en, Transform where)
+    {
+        Play3DAt(ClipFromEnum(en), where);
+    }
+
+    public void Play3DAt(SfxList en, Vector3 where)
+    {
+        Play3DAt(ClipFromEnum(en), where);
+    }
+
+    public void Play3DAt(AudioClip clip, Vector3 v3)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
         tmp.transform.position = v3;
+        tmp.GetComponent<AudioSource>().spatialBlend = 1.0f; //full 3D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
     }
+
+
+    public void Play2D(SfxList en)
+    {
+        Play2D(ClipFromEnum(en));
+    }
+
+    public void Play2D(AudioClip clip)
+    {
+        GameObject tmp = SfxFromPool();
+        tmp.GetComponent<AudioSource>().clip = clip;
+        tmp.GetComponent<AudioSource>().spatialBlend = 0.0f; //full 2D
+        tmp.SetActive(true);
+        tmp.GetComponent<AudioSource>().Play();
+    }
+
 
     public void SetACVolume(float x)
     {
@@ -44,8 +105,8 @@ public class SoundManager : MonoBehaviour {
     }
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         _SfxParticlesPool = new GameObject[_PoolSize];
         
@@ -65,14 +126,6 @@ public class SoundManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        // for Sfx testing!
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            //test position at the left chair in the hall
-            Vector3 tmp = GameObject.Find("25_chair_3").transform.position;
-            PlaySfxAt(TestClip, tmp);
-        }
 		
 	}
 }
