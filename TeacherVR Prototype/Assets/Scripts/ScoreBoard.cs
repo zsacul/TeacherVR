@@ -20,56 +20,77 @@ public class ScoreBoard : MonoBehaviour
     private bool CountDown = false;
     private bool OutOfTime = false;
 
+    private bool Active = false;
+
     void Start ()
     {
         textMesh = gameObject.GetComponent<TextMeshPro>();
+        textMesh.text = "Tap here to start game!";
     }
 
     private void Update()
     {
-        if (CountDown)
+        if (Active)
         {
-            timer -= Time.deltaTime;
-            seconds = Convert.ToInt32(timer % 60);
-            if (seconds == 0)
+            if (CountDown)
             {
-                seconds = 60;
-                timer = 60f;
-                minutes--;
-                if (minutes < 0)
+                timer -= Time.deltaTime;
+                seconds = Convert.ToInt32(timer % 60);
+                if (seconds == 0)
                 {
-                    OutOfTime = true;
+                    seconds = 60;
+                    timer = 60f;
+                    minutes--;
+                    if (minutes < 0)
+                    {
+                        OutOfTime = true;
+                    }
                 }
             }
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            seconds = Convert.ToInt32(timer % 60);
-            if (seconds == 60)
+            else
             {
-                seconds = 0;
-                timer = 0f;
-                minutes++;
+                timer += Time.deltaTime;
+                seconds = Convert.ToInt32(timer % 60);
+                if (seconds == 60)
+                {
+                    seconds = 0;
+                    timer = 0f;
+                    minutes++;
+                }
             }
-        }
 
-        if (OutOfTime)
-        {
-            textMesh.text = "Score -  " + points + "\n\n" + "OUT OF TIME!";
-        }
-        else
-        {
-            textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":" + seconds;
-        }
-
-        if ((Anim) && (How_Many > 0))
-        {
-            PointsAdd(1);
-            How_Many--;
-            if (How_Many == 0)
+            if (OutOfTime)
             {
-                Anim = false;
+                textMesh.text = "Score -  " + points + "\n\n" + "OUT OF TIME!";
+            }
+            else
+            {
+                if ((seconds >= 10) && (minutes >= 10))
+                {                 
+                    textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":" + seconds;
+                }
+                if ((seconds < 10) && (minutes >= 10))
+                {
+                    textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":0" + seconds;
+                }
+                if ((seconds >= 10) && (minutes < 10))
+                {
+                    textMesh.text = "Score -  " + points + "\n\n" + "Time  -  0" + minutes + ":" + seconds;
+                }
+                else
+                {
+                    textMesh.text = "Score -  " + points + "\n\n" + "Time  -  0" + minutes + ":0" + seconds;
+                }
+            }
+
+            if ((Anim) && (How_Many > 0))
+            {
+                PointsAdd(1);
+                How_Many--;
+                if (How_Many == 0)
+                {
+                    Anim = false;
+                }
             }
         }
     }
@@ -140,6 +161,12 @@ public class ScoreBoard : MonoBehaviour
             //ChangeTime(10, 0);
             CountDown = true;
         }
+    }
+
+    // Zwracanie ilości punktów
+    public void SetActive()
+    {
+        Active = true;
     }
 
     public bool IsOutOfTime()
