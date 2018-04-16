@@ -127,25 +127,26 @@ public class SoundManager : MonoBehaviour {
 
     }
 
-    public GameObject Play3DAt(AudioClip clip, Transform where)
+    public GameObject Play3DAt(AudioClip clip, Transform where, float volume = 1.0f)
     {
-        return Play3DAt(clip, where.position);
+        return Play3DAt(clip, where.position, volume);
     }
 
-    public GameObject Play3DAt(SamplesList en, Transform where)
+    public GameObject Play3DAt(SamplesList en, Transform where, float volume = 1.0f)
     {
-        return Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where, volume);
     }
 
-    public GameObject Play3DAt(SamplesList en, Vector3 where)
+    public GameObject Play3DAt(SamplesList en, Vector3 where, float volume = 1.0f)
     {
-        return Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where, volume);
     }
 
-    public GameObject Play3DAt(AudioClip clip, Vector3 v3)
+    public GameObject Play3DAt(AudioClip clip, Vector3 v3, float volume = 1.0f)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
+        tmp.GetComponent<AudioSource>().volume = volume;
         tmp.transform.position = v3;
         tmp.GetComponent<AudioSource>().spatialBlend = 1.0f; //full 3D
         tmp.SetActive(true);
@@ -154,15 +155,16 @@ public class SoundManager : MonoBehaviour {
     }
 
 
-    public GameObject Play2D(SamplesList en)
+    public GameObject Play2D(SamplesList en, float volume = 1.0f)
     {
-        return Play2D(ClipFromEnum(en));
+        return Play2D(ClipFromEnum(en), volume);
     }
 
-    public GameObject Play2D(AudioClip clip)
+    public GameObject Play2D(AudioClip clip, float volume = 1.0f)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
+        tmp.GetComponent<AudioSource>().volume = volume;
         tmp.GetComponent<AudioSource>().spatialBlend = 0.0f; //full 2D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
