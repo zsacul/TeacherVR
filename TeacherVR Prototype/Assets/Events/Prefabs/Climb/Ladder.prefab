@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114974613396760330}
   - component: {fileID: 114285958497165584}
   - component: {fileID: 114470787749369032}
+  - component: {fileID: 114768039063704946}
   m_Layer: 0
   m_Name: Group 1
   m_TagString: Stairs
@@ -124,6 +125,7 @@ GameObject:
   - component: {fileID: 65971556740713158}
   - component: {fileID: 65887707923495344}
   - component: {fileID: 114296137261258540}
+  - component: {fileID: 114765118362135700}
   m_Layer: 0
   m_Name: Group 3
   m_TagString: Untagged
@@ -735,6 +737,32 @@ MonoBehaviour:
   throwMultiplier: 1
   onGrabCollisionDelay: 0
   useObjectRotation: 0
+--- !u!114 &114765118362135700
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573826385100068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 5
+  Action: 4
+--- !u!114 &114768039063704946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029845950442012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 5
+  Action: 4
 --- !u!114 &114974613396760330
 MonoBehaviour:
   m_ObjectHideFlags: 1
