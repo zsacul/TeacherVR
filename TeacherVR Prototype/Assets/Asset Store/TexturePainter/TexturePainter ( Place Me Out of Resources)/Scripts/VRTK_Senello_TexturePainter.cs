@@ -134,4 +134,12 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         lastPoint = Vector3.zero;
         return false;
     }
+
+    public void Clear()
+    {
+        foreach (Transform child in brushContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }

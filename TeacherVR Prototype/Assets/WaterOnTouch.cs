@@ -48,6 +48,7 @@ public class WaterOnTouch : MonoBehaviour
     IEnumerator TurnOff()
     {
         yield return new WaitForSeconds(WaterDurration);
-        ChangeState();
+        anim.SetBool("On", false);
+        WaterSource.SetActive(false);
     }
 }

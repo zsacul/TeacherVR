@@ -7,7 +7,7 @@ public class Rysowanie : MonoBehaviour
     public float templateThickness = 0.02f;
 
     private bool canApply = true;
-    private bool gameInProgress = true;
+    public bool gameInProgress = false;
     private int currentTarget = 0;
     private int comboCounter = 0;
     private Vector2[] TemplateShape;

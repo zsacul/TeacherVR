@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c1573ff58e32f42bca0ae141d4aa80, type: 3}
+  m_Name: Drawing Sum
+  m_EditorClassIdentifier: 
+  name: Drawing
+  description: Draw sum symbol
+  status: 0
+  lvl: 0
+  TemplateShape:
+  - {x: 0.15, y: 0.4}
+  - {x: -0.15, y: 0.4}
+  - {x: 0.15, y: 0.25}
+  - {x: -0.15, y: 0.1}
+  - {x: 0.15, y: 0.1}

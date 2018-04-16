@@ -680,6 +680,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4c0a779784261844488dee67e03a413c, type: 2}
   - {fileID: 11400000, guid: eb933c0b94c46374d85bb229e89245d0, type: 2}
   - {fileID: 11400000, guid: d3b136ef50289d04586538fc7b1d6a5f, type: 2}
+  - {fileID: 11400000, guid: a4ae700b7b48bae49b9647b59d5c8b4c, type: 2}
 --- !u!114 &114219684108390256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1038,12 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EventsManager: {fileID: 114156139348577676}
   RysObject: {fileID: 0}
-  TemplateShape:
-  - {x: 0.15, y: 0.4}
-  - {x: -0.15, y: 0.4}
-  - {x: 0.15, y: 0.25}
-  - {x: -0.15, y: 0.1}
-  - {x: 0.15, y: 0.1}
+  TemplateShape: []
   ChalkColor: {r: 1, g: 1, b: 1, a: 1}
   ScoreBoard: {fileID: 114402954041823974}
   MessageSystem: {fileID: 114842719621919352}
