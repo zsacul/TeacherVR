@@ -51,7 +51,7 @@ public class Events : ScriptableObject
 
     public virtual void CallInUpdate()
     {
-        Debug.Log("Doing " + name);
+     //   Debug.Log("Doing " + name);
     }
 
     //Status eventu kolejno nie wystartował, jest wykonywany, został przerwany, został poprawnie zakończony

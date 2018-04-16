@@ -12,7 +12,7 @@ public class Sajmon : Events
 
     private Renderer MonitorRenderer;
 
-    public static AudioSource aSource;
+   // public static AudioSource aSource;
 
     public int sequence;
     private int buffor;
@@ -34,12 +34,12 @@ public class Sajmon : Events
         
        
         PC = GameObject.FindGameObjectWithTag("PCEvent");
-
+        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<MeshRenderer>();
         color = MonitorRenderer.material.color;
         MonitorRenderer.material.color = Color.red;
         Buttons = Instantiate(ButtonsPrefab);
-        aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
+       // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
         GenerateSequence(lvl); 
         buffor = sequence;

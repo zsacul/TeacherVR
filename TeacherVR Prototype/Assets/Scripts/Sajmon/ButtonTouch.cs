@@ -30,8 +30,9 @@ public class ButtonTouch : MonoBehaviour {
     {
         gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         pressed = true;
-        Sajmon.aSource.clip = sound;
-        Sajmon.aSource.Play();
+        // Sajmon.aSource.clip = sound;
+        //   Sajmon.aSource.Play();
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.Pop,gameObject.transform);
         if (!showing)
         {
             Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);

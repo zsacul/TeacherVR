@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/* Main source atomtwist's comment from:
+https://forum.unity.com/threads/check-current-microphone-input-volume.133501/ */
 public class MicInput : MonoBehaviour
 {
     public GameObject SpeakingInd;
 
-
+    static public MicInputType typeOfInput;
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
-
+    public enum MicInputType
+    {
+        speechDetection,
+        peakDetection
+    }
     float time;
     int current_time;
     int lastPointsTime;
@@ -18,13 +23,15 @@ public class MicInput : MonoBehaviour
     public int totalScore;
     int scoreBuffer;
 
+    public float minSilencingVolume = 1f;
     public float detectionLevel = 0.25f; 
     public float eps = 0.0000001f;
 
     void InitMic()
     {
+        
         if (deviceName == null) deviceName = Microphone.devices[0];
-        audioClipRec = Microphone.Start(deviceName, true, 999, 44100);
+        audioClipRec = Microphone.Start(deviceName, true, 128, 44100);
     }
 
     void StopMicrophone()
@@ -79,35 +86,63 @@ public class MicInput : MonoBehaviour
                 }
 
             }
+            if(SpeakingInd!=null)
             SpeakingInd.SetActive(isSpeaking);
         }
 
         return currentSpeakingTime;
     }
-
+    float PeakDetection()
+    {
+        float levelMax = 0;
+        float[] waveData = new float[sampleWindow];
+        int micPosition = Microphone.GetPosition(null) - (sampleWindow + 1); // null means the first microphone
+        if (micPosition < 0) return 0;
+        audioClipRec.GetData(waveData, micPosition);
+        // Getting a peak on the last 128 samples
+        for (int i = 0; i < sampleWindow; i++)
+        {
+            float wavePeak = waveData[i];
+            if (levelMax < wavePeak)
+            {
+                levelMax = wavePeak;
+            }
+        }
+        Debug.Log(levelMax);
+        return levelMax;
+    }
     private void Start()
     {
         totalScore = 0;
         isSpeaking = false;
-        SpeakingInd.SetActive(false);
+        if (SpeakingInd != null)
+            SpeakingInd.SetActive(false);
     }
 
     void Update()
     {
         time += Time.deltaTime;
         current_time = (int)time;
-
-        scoreBuffer = DetectionOfSpeech();
-        if (scoreBuffer != 0)
+        if (typeOfInput == MicInputType.speechDetection)
         {
-            lastPointsTime = current_time;
+            scoreBuffer = DetectionOfSpeech();
+            if (scoreBuffer != 0)
+            {
+                lastPointsTime = current_time;
+            }
+            if (lastPointsTime + 3 <= current_time)
+            {
+                isSpeaking = false;
+                if (SpeakingInd != null)
+                    SpeakingInd.SetActive(false);
+            }
+            totalScore += scoreBuffer;
         }
-        if (lastPointsTime + 5 <= current_time)
+        else if(typeOfInput == MicInputType.peakDetection)
         {
-            isSpeaking = false;
-            SpeakingInd.SetActive(false);
+            if (PeakDetection() >= minSilencingVolume)
+                Noise.shoutedLoudEnough = true;
         }
-        totalScore += scoreBuffer;
 
     }
 
@@ -147,3 +182,4 @@ public class MicInput : MonoBehaviour
         }
     }
 }
+
