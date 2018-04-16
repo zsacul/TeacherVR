@@ -61,7 +61,7 @@ public class SoundManager : MonoBehaviour {
 
     // ---------------------------------------------------------------------
 
-    private int _PoolSize = 30;
+    private int _PoolSize = 30000;
     private GameObject[] _SfxParticlesPool;
     private int _FreshPoolInd = 0;
 
@@ -123,22 +123,22 @@ public class SoundManager : MonoBehaviour {
         return _SfxParticlesPool[_FreshPoolInd++];
     }
 
-    public void Play3DAt(AudioClip clip, Transform where)
+    public GameObject Play3DAt(AudioClip clip, Transform where)
     {
-        Play3DAt(clip, where.position);
+        return Play3DAt(clip, where.position);
     }
 
-    public void Play3DAt(SamplesList en, Transform where)
+    public GameObject Play3DAt(SamplesList en, Transform where)
     {
-        Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where);
     }
 
-    public void Play3DAt(SamplesList en, Vector3 where)
+    public GameObject Play3DAt(SamplesList en, Vector3 where)
     {
-        Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where);
     }
 
-    public void Play3DAt(AudioClip clip, Vector3 v3)
+    public GameObject Play3DAt(AudioClip clip, Vector3 v3)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
@@ -146,21 +146,23 @@ public class SoundManager : MonoBehaviour {
         tmp.GetComponent<AudioSource>().spatialBlend = 1.0f; //full 3D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
+        return tmp;
     }
 
 
-    public void Play2D(SamplesList en)
+    public GameObject Play2D(SamplesList en)
     {
-        Play2D(ClipFromEnum(en));
+        return Play2D(ClipFromEnum(en));
     }
 
-    public void Play2D(AudioClip clip)
+    public GameObject Play2D(AudioClip clip)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
         tmp.GetComponent<AudioSource>().spatialBlend = 0.0f; //full 2D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
+        return tmp;
     }
 
 

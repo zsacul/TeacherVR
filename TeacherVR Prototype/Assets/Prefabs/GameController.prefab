@@ -44,6 +44,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1250642498370342
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4705794777514870}
+  m_Layer: 0
+  m_Name: WhereAreParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1294723409404298
 GameObject:
   m_ObjectHideFlags: 1
@@ -155,6 +170,22 @@ GameObject:
   - component: {fileID: 114842719621919352}
   m_Layer: 0
   m_Name: MessageSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1620835818294610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4757447956683364}
+  - component: {fileID: 114381028436680680}
+  m_Layer: 0
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +323,7 @@ Transform:
   - {fileID: 4233775277000564}
   - {fileID: 4232994294248656}
   - {fileID: 4958128391800066}
+  - {fileID: 4757447956683364}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -319,6 +351,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224221477483751698}
+  - {fileID: 4705794777514870}
   m_Father: {fileID: 4199499733645704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,6 +380,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4958128391800066}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4705794777514870
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1250642498370342}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 4.434, y: 1.113, z: -0.669}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4233775277000564}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4757447956683364
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620835818294610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4548197, y: 1.5172141, z: 4.9992723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4199499733645704}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4958128391800066
 Transform:
@@ -487,12 +546,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Objects:
-  - {fileID: 1649753631757194, guid: ad532ca6d795b6a47bdc00c235ed0b56, type: 2}
-  - {fileID: 1649753631757194, guid: 3736e268bf08f7947bfa0b19e15b18c6, type: 2}
-  - {fileID: 1649753631757194, guid: 01f9af5b7d582e34fb47ebba715fca69, type: 2}
-  - {fileID: 1474174020828974, guid: 65a9ff29f8c1b6d47b6e34e6f4dd4c36, type: 2}
-  - {fileID: 1601493718899414, guid: f57a935dc56e8f44c869137d7b644898, type: 2}
-  - {fileID: 1690379902178180, guid: b2dd12cba4459de43b2db08763b5ab99, type: 2}
+  - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
+  - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
   - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
   angle: 20
 --- !u!114 &114141887367729896
@@ -624,6 +679,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cc4f8643a4bfa24d97b536477c84bfc, type: 2}
   - {fileID: 11400000, guid: 4c0a779784261844488dee67e03a413c, type: 2}
   - {fileID: 11400000, guid: eb933c0b94c46374d85bb229e89245d0, type: 2}
+  - {fileID: 11400000, guid: d3b136ef50289d04586538fc7b1d6a5f, type: 2}
 --- !u!114 &114219684108390256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -663,8 +719,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef23c05a801fbdd48bacc9feacdac2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Particle1: {fileID: 1750940742320366, guid: 4b06a87eacc04254aa5e14117af79273, type: 2}
-  Particle2: {fileID: 0}
+  OnePoint: {fileID: 1795693263993040, guid: eaf6f61df48f798449770633a0623e5d, type: 2}
+--- !u!114 &114381028436680680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1620835818294610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff6f306b5527234881468359e4f35c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenericPrefab: {fileID: 1625932489477716, guid: c2ba3f9770c11ca42a746b06b57db982,
+    type: 2}
+  ACSource: {fileID: 0}
+  LightSource: {fileID: 0}
+  TopDoorSource: {fileID: 0}
+  TopDoor: {fileID: 0}
+  SfxHookBang: {fileID: 8300000, guid: 42da4784cb93bcb48a8164bad2159881, type: 3}
+  SfxComputerBeep: {fileID: 8300000, guid: 5df6a0b08da0ef540a8f087347efe874, type: 3}
+  SfxWaterSplash: {fileID: 8300000, guid: 34b3fd977ca07d540830ad0e0ab872e4, type: 3}
+  SfxBottleSpray: {fileID: 8300000, guid: 260b2834f6028ea4185573f0d9ee7c55, type: 3}
+  SfxBottleFilling: {fileID: 8300000, guid: 93cbd946790b41549ae3747189a0f400, type: 3}
+  SfxLadder: {fileID: 8300000, guid: d7a7cbd3b0a918f4396410b7a7897334, type: 3}
+  SfxBBSliding: {fileID: 8300000, guid: f946302f78d06ea46adf29e7ed3b25b3, type: 3}
+  SfxError: {fileID: 8300000, guid: 828c5601bedac174d8d516172b8b95cc, type: 3}
+  SfxCorrect: {fileID: 8300000, guid: d048e10de8dd76c45991370fbabcbcc5, type: 3}
+  SfxPop: {fileID: 8300000, guid: d3fa5be6c9355bd4da39d3ecfc17c40a, type: 3}
+  SfxClink: {fileID: 8300000, guid: dfc16653469842d47b0fd11ee8c0d19e, type: 3}
+  SfxWaterRunning: {fileID: 8300000, guid: d819e026a59b10047814f318a35ebd74, type: 3}
+  SfxPoof: {fileID: 8300000, guid: 2474817e13a7f924589c809f006b4ba1, type: 3}
 --- !u!114 &114402954041823974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -962,6 +1047,8 @@ MonoBehaviour:
   ChalkColor: {r: 1, g: 1, b: 1, a: 1}
   ScoreBoard: {fileID: 114402954041823974}
   MessageSystem: {fileID: 114842719621919352}
+  SoundManager: {fileID: 114381028436680680}
+  Particles: {fileID: 114359320960930358}
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1

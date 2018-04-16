@@ -29,6 +29,7 @@ public class ShootTheObjects : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         Instances.Clear();
         TargetLocations.Clear();
         for (int i = 0; i < lvl * 2; i++)
@@ -61,6 +62,7 @@ public class ShootTheObjects : Events
             }
             i++;
         }
+
         if (Instances.Count != 0 && !alive) CompleteEvent();
     }
 

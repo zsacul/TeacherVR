@@ -28,7 +28,7 @@ public class TurnOnPC : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<Renderer>();
         PCOffMaterial = MonitorRenderer.material;
@@ -71,5 +71,6 @@ public class TurnOnPC : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep,PC.transform.position);
     }
 }
