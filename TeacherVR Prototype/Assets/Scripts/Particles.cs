@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Particles : MonoBehaviour
 {
-    public GameObject Particle1;
+    public GameObject OnePoint;
 
-    public GameObject Particle2;
-
-
-    public void CreateParticle1(Vector3 transform, float rotation)
+    public void CreateOnePoint(Vector3 transform, float rotation)
     {
-        GameObject newParticle = Instantiate(Particle1, transform, gameObject.transform.rotation) as GameObject;
+        GameObject newParticle = Instantiate(OnePoint, transform, gameObject.transform.rotation) as GameObject;
     }
 }

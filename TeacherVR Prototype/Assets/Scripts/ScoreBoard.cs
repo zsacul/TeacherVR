@@ -22,8 +22,13 @@ public class ScoreBoard : MonoBehaviour
 
     private bool Active = false;
 
+    GameObject ParticleSystem;
+    GameObject Where;
+
     void Start ()
     {
+        ParticleSystem = GameObject.Find("ParticleSystem");
+        Where = GameObject.Find("WhereAreParticles");
         textMesh = gameObject.GetComponent<TextMeshPro>();
         textMesh.text = "Tap here to start game!";
     }
@@ -100,6 +105,7 @@ public class ScoreBoard : MonoBehaviour
         // KLAWISZE TYLKO DO TESTÓW!
         if (Input.GetKeyDown(KeyCode.P))
         {
+            ParticleSystem.GetComponent<Particles>().CreateOnePoint(Where.transform.position, 0f);
             PointsAdd(1);
         }
         if (Input.GetKeyDown(KeyCode.O))
