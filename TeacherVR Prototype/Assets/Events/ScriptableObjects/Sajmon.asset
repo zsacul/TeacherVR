@@ -14,7 +14,13 @@ MonoBehaviour:
   name: Sajmon
   description: Click the buttons as they are illuminated
   status: 1
-  lvl: 2
+  Lvl: 2
+  MediumLvl: 3
+  DeviationLvlRange: 1
+  Repeatable: 1
+  GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
+  GoToTransform: {fileID: 4316535167316242, guid: b57dd63d2d1ba604aa8a9fbea2999fa8,
+    type: 2}
   ButtonsPrefab: {fileID: 1175861975451916, guid: 2500c358372e60c4d93b7389ffc58b34,
     type: 2}
   sequence: 113

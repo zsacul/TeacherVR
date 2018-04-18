@@ -6,6 +6,8 @@ public class EventsManager : MonoBehaviour
 {
     public List<Events> ListOfEvents = new List<Events>();
 
+    private List<Events> EventsToMix = new List<Events>();
+
     private Events currentEvent;
 
     public delegate void EventsManagerEventHandler();
@@ -17,18 +19,20 @@ public class EventsManager : MonoBehaviour
         GameController.Instance.ScoreBoard.PointsAdd(pkt);
     }
 
-    private void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow, MessageSystem.Window window)
+    private void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow,
+        MessageSystem.Window window)
     {
         Debug.Log("Start Message");
         GameController.Instance.MessageSystem.ChangeActiveFollower(objectToFollow);
         GameController.Instance.MessageSystem.ShowCustomText(txt, window, true);
-        StartCoroutine(Hide(time));
+        StopAllCoroutines();
+        StartCoroutine(Hide(time,window));
     }
 
-    private IEnumerator Hide(float time)
+    private IEnumerator Hide(float time,MessageSystem.Window window)
     {
         yield return new WaitForSeconds(time);
-        GameController.Instance.MessageSystem.HideAllText();
+        GameController.Instance.MessageSystem.HideWindow(window);
     }
 
     public void StartNextEvent()
@@ -44,7 +48,7 @@ public class EventsManager : MonoBehaviour
             currentEvent.MessageEvent += Message;
             currentEvent.StartEvent();
             ListOfEvents.RemoveAt(0);
-            
+            FillList();
         }
         if (EventsManagerStartNext != null)
         {
@@ -75,7 +79,16 @@ public class EventsManager : MonoBehaviour
         return currentEvent;
     }
 
-    public void Update()
+    void Start()
+    {
+        foreach (Events e in ListOfEvents)
+        {
+            if (e.Repeatable) EventsToMix.Add(e);
+        }
+        FillList();
+    }
+
+    void Update()
     {
         if (currentEvent != null)
         {
@@ -90,6 +103,16 @@ public class EventsManager : MonoBehaviour
         else
         {
             StartNextEvent();
+        }
+    }
+
+    void FillList()
+    {
+        while (ListOfEvents.Count < 11)
+        {
+            Events tmp = EventsToMix[Random.Range(0, EventsToMix.Count)];
+            if(tmp.DeviationLvlRange>=1) tmp.Lvl = tmp.MediumLvl + Random.Range(-1, 1) * Random.Range(1,tmp.DeviationLvlRange);
+            AddEvent(tmp);
         }
     }
 }

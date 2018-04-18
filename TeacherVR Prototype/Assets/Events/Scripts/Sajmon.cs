@@ -31,8 +31,7 @@ public class Sajmon : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        
-       
+
         PC = GameObject.FindGameObjectWithTag("PCEvent");
 
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<MeshRenderer>();
@@ -41,7 +40,7 @@ public class Sajmon : Events
         Buttons = Instantiate(ButtonsPrefab);
         aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
-        GenerateSequence(lvl); 
+        GenerateSequence(Lvl); 
         buffor = sequence;
         _time = Time.time;
         played = -1;
@@ -97,7 +96,7 @@ public class Sajmon : Events
                 Debug.Log(PlayerSequence);
                 if (PlayerSequence - sequence == 0)
                 {
-                    AddPoints(lvl * 10);
+                    AddPoints(Lvl * 10);
                     CompleteEvent();
                 }
                 else

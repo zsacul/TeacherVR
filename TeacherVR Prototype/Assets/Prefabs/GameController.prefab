@@ -547,8 +547,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
-  - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
-  - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
   angle: 20
 --- !u!114 &114141887367729896
 MonoBehaviour:
@@ -677,10 +675,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6467af3b443148c4f8716d77a755e43d, type: 2}
   - {fileID: 11400000, guid: 44c47d5cfa464004f8e47a57e05aed13, type: 2}
   - {fileID: 11400000, guid: 3cc4f8643a4bfa24d97b536477c84bfc, type: 2}
-  - {fileID: 11400000, guid: 4c0a779784261844488dee67e03a413c, type: 2}
   - {fileID: 11400000, guid: eb933c0b94c46374d85bb229e89245d0, type: 2}
   - {fileID: 11400000, guid: d3b136ef50289d04586538fc7b1d6a5f, type: 2}
   - {fileID: 11400000, guid: a4ae700b7b48bae49b9647b59d5c8b4c, type: 2}
+  - {fileID: 11400000, guid: 95d129cfdc1288d42a2a65242ed15ea0, type: 2}
 --- !u!114 &114219684108390256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -894,9 +892,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MessageWindow: {fileID: 1893778420171790}
+  LeftTooltips: {fileID: 0}
+  RightTooltips: {fileID: 0}
   HeadsetFollower: {fileID: 1585805944881360}
-  RightHandFollower: {fileID: 1121733468651774}
   LeftHandFollower: {fileID: 1560981466383412}
+  RightHandFollower: {fileID: 1121733468651774}
   ActiveFollower: 0
   Window6x7: {fileID: 1414781172164096}
   Window8x4: {fileID: 1799996432989430}

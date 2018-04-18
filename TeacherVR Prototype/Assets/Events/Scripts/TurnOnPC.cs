@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Api;
 using UnityEngine;
 using VRTK;
 
@@ -8,7 +7,6 @@ using VRTK;
 public class TurnOnPC : Events
 {
     public Material PCOnMaterial;
-
 
     public GameObject USBCable;
 

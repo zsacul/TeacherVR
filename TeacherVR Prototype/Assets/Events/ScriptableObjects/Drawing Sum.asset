@@ -13,11 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Drawing
   description: Draw sum symbol
-  status: 0
-  lvl: 0
+  status: 1
+  Lvl: 0
+  MediumLvl: 0
+  DeviationLvlRange: 0
+  Repeatable: 1
+  GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
+  GoToTransform: {fileID: 4108709543872196, guid: 73228dfe24689f743a29854f86c72c6e,
+    type: 2}
   TemplateShape:
   - {x: 0.15, y: 0.4}
   - {x: -0.15, y: 0.4}
   - {x: 0.15, y: 0.25}
   - {x: -0.15, y: 0.1}
   - {x: 0.15, y: 0.1}
+  Chalk_Tutorial_Point: {fileID: 1990725314350498, guid: 924ac6184152e6546b627d4833298476,
+    type: 2}

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using VRTK;
 
@@ -6,9 +7,12 @@ public class MessageSystem : MonoBehaviour
 {
     public GameObject MessageWindow;
 
+    public GameObject LeftTooltips;
+    public GameObject RightTooltips;
+
     public GameObject HeadsetFollower;
-    public GameObject RightHandFollower;
     public GameObject LeftHandFollower;
+    public GameObject RightHandFollower;
 
     public ObjectToFollow ActiveFollower = ObjectToFollow.Headset;
 
@@ -17,10 +21,72 @@ public class MessageSystem : MonoBehaviour
 
     private VRTK_TransformFollow TransformFollow;
 
+    private VRTK_ControllerEvents RightHand;
+    private VRTK_ControllerEvents LeftHand;
+
     private void Start()
     {
         TransformFollow = MessageWindow.GetComponent<VRTK_TransformFollow>();
         ChangeActiveFollower(ActiveFollower);
+        StartCoroutine(FindDevices());
+    }
+
+    private IEnumerator FindDevices()
+    {
+        yield return new WaitForEndOfFrame();
+
+        RightHand = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_ControllerEvents>();
+        LeftHand = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_ControllerEvents>();
+
+        RightHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed += TriggerPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().GripPressed += GripPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().GripPressed += GripPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchpadPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchpadPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().ButtonTwoPressed += ButtonTwoPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().ButtonTwoPressed += ButtonTwoPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed += StartMenuPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed += StartMenuPressed;
+    }
+
+    private void OnDestroy()
+    {
+        RightHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().GripPressed -= GripPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().GripPressed -= GripPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed -= TouchpadPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed -= TouchpadPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().ButtonTwoPressed -= ButtonTwoPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().ButtonTwoPressed -= ButtonTwoPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed -= StartMenuPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed -= StartMenuPressed;
+    }
+
+    private void TriggerPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        HideButton(Button.Trigger);
+    }
+
+    private void GripPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        HideButton(Button.Grip);
+    }
+
+    private void TouchpadPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        HideButton(Button.Touchpad);
+    }
+
+    private void ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        HideButton(Button.ButtonTwo);
+    }
+
+    private void StartMenuPressed(object sender, ControllerInteractionEventArgs e)
+    {
+        HideButton(Button.StartMenu);
     }
 
     public enum ObjectToFollow
@@ -34,6 +100,15 @@ public class MessageSystem : MonoBehaviour
     {
         W600H700,
         W800H400
+    }
+
+    public enum Button
+    {
+        Trigger,
+        Grip,
+        Touchpad,
+        ButtonTwo,
+        StartMenu
     }
 
     public void ChangeActiveFollower(ObjectToFollow val)
@@ -82,6 +157,91 @@ public class MessageSystem : MonoBehaviour
                 Window8x4.GetComponentInChildren<TextMeshProUGUI>().text = text;
                 break;
         }
+    }
+
+    public void ShowButtonOnControllers(Button button, string txt, float time)
+    {
+        switch (button)
+        {
+            case Button.Trigger:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = txt;
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = txt;
+                break;
+            case Button.Grip:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = txt;
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = txt;
+                break;
+            case Button.Touchpad:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = txt;
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = txt;
+                break;
+            case Button.ButtonTwo:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = txt;
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = txt;
+                break;
+            case Button.StartMenu:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = txt;
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = txt;
+                break;
+        }
+
+        ChangTooltipsState(true);
+        StartCoroutine(HideAllButtons(time));
+    }
+
+    private void HideButton(Button button)
+    {
+        if(!LeftTooltips.activeSelf || !RightTooltips.activeSelf) return;
+        switch (button)
+        {
+            case Button.Trigger:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
+                break;
+            case Button.Grip:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
+                break;
+            case Button.Touchpad:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
+                break;
+            case Button.ButtonTwo:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
+                break;
+            case Button.StartMenu:
+                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
+                RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
+                break;
+        }
+
+        ChangTooltipsState(false);
+        ChangTooltipsState(true);
+    }
+
+    private void ChangTooltipsState(bool val)
+    {
+        LeftTooltips.SetActive(val);
+        RightTooltips.SetActive(val);
+    }
+
+    public IEnumerator HideAllButtons(float time)
+    {
+        yield return new WaitForSeconds(time);
+        HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
+        HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
+        ChangTooltipsState(false);
+    }
+
+    private void HideAllButtonsOnController(VRTK_ControllerTooltips tooltips)
+    {
+        tooltips.triggerText = "";
+        tooltips.gripText = "";
+        tooltips.touchpadText = "";
+        tooltips.buttonOneText = "";
+        tooltips.buttonTwoText = "";
+        tooltips.startMenuText = "";
     }
 
     public void HideAllText()

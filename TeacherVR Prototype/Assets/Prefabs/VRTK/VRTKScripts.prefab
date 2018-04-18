@@ -3228,15 +3228,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a9c9ae8b1fb1542b78598ac955afe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerText: Trigger
-  gripText: Grip
-  touchpadText: Touchpad
+  triggerText: 
+  gripText: 
+  touchpadText: 
   buttonOneText: 
-  buttonTwoText: Pointer
-  startMenuText: Steam Menu
-  tipBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  tipTextColor: {r: 1, g: 1, b: 1, a: 1}
-  tipLineColor: {r: 0, g: 0, b: 0, a: 1}
+  buttonTwoText: 
+  startMenuText: 
+  tipBackgroundColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipTextColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
+  tipLineColor: {r: 0, g: 1, b: 0.843, a: 1}
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
@@ -4215,7 +4215,7 @@ MonoBehaviour:
   customTracer: {fileID: 152786, guid: 78ca952d2c8152c44a89f9b406f7e137, type: 2}
   customCursor: {fileID: 1052804388828874, guid: 94d8386a1ba463846855c79b241bba40,
     type: 2}
-  validLocationObject: {fileID: 1324733427653450, guid: a0e9e3c83ffa0404ba9c19c2ee9d46d2,
+  validLocationObject: {fileID: 1979194339298360, guid: df82199eb2bef3243a2c6c93c71fef2e,
     type: 2}
   invalidLocationObject: {fileID: 1666077277691886, guid: b78e790754a943b45b66d4f610dde465,
     type: 2}
@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 224774365862472360}
   m_Horizontal: 0
-  m_Vertical: 1
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -7569,15 +7569,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a9c9ae8b1fb1542b78598ac955afe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerText: Trigger
-  gripText: Grip
-  touchpadText: Touchpad
+  triggerText: 
+  gripText: 
+  touchpadText: 
   buttonOneText: 
-  buttonTwoText: Pointer
-  startMenuText: Steam Menu
-  tipBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  tipTextColor: {r: 1, g: 1, b: 1, a: 1}
-  tipLineColor: {r: 0, g: 0, b: 0, a: 1}
+  buttonTwoText: 
+  startMenuText: 
+  tipBackgroundColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipTextColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
+  tipLineColor: {r: 0, g: 1, b: 0.843, a: 1}
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
@@ -8444,7 +8444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057015237f68bd74d9c6c6c28ea347e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreTriggerColliders: 0
+  ignoreTriggerColliders: 1
   colliderRadius: 0.1
   targetListPolicy: {fileID: 0}
   headsetColliding: 0
@@ -10594,7 +10594,7 @@ MonoBehaviour:
   customTracer: {fileID: 152786, guid: 78ca952d2c8152c44a89f9b406f7e137, type: 2}
   customCursor: {fileID: 1052804388828874, guid: 94d8386a1ba463846855c79b241bba40,
     type: 2}
-  validLocationObject: {fileID: 1324733427653450, guid: a0e9e3c83ffa0404ba9c19c2ee9d46d2,
+  validLocationObject: {fileID: 1979194339298360, guid: df82199eb2bef3243a2c6c93c71fef2e,
     type: 2}
   invalidLocationObject: {fileID: 1666077277691886, guid: b78e790754a943b45b66d4f610dde465,
     type: 2}

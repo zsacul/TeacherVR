@@ -41,12 +41,12 @@ public class Climb : Events
     }
 
     public override void CompleteEvent()
-    { 
+    {
+        base.CompleteEvent();
         GameObject Target;
         Target = GameObject.Find("Score");                      
         Target.GetComponent<ScoreBoard>().SetActive();
-
-        base.CompleteEvent();
+        
         objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
         VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
         climb.enabled = false;
