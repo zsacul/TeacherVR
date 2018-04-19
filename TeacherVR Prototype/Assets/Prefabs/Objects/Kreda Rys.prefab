@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114682523502965348}
   - component: {fileID: 114733148896239040}
   - component: {fileID: 114514975150103108}
+  - component: {fileID: 114832523261641036}
   m_Layer: 2
   m_Name: Kreda Rys
   m_TagString: Chalk
@@ -353,6 +354,18 @@ MonoBehaviour:
   maximumCursorScale: {x: Infinity, y: Infinity, z: Infinity}
   customTracer: {fileID: 0}
   customCursor: {fileID: 0}
+--- !u!114 &114832523261641036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654335223098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc965feeeb89304ba7c785262c3835f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CenterOfMass: {x: 0, y: -0.1, z: 0}
 --- !u!114 &114863591697717982
 MonoBehaviour:
   m_ObjectHideFlags: 1

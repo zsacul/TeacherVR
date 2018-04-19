@@ -37,20 +37,30 @@ public class PourWater : MonoBehaviour
     {
         if (col.tag.Equals("WaterSource"))
         {
-            if (fuel <= maxFuel)
+            if (canFill())
             {
                 fuel = Mathf.Lerp(fuel, fuel + cost, speed * Time.deltaTime);
             }
         }
     }
 
+    bool canFill()
+    {
+        return fuel <= maxFuel &&
+               (transform.eulerAngles.x >= 270 && transform.eulerAngles.x <= 360 ||
+                transform.eulerAngles.x >= 0 && transform.eulerAngles.x <= 90) &&
+               (transform.eulerAngles.z >= 270 && transform.eulerAngles.z <= 360 ||
+                transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 90);
+    }
+
     public void OnTriggerEnter(Collider col)
     {
         if (col.tag.Equals("WaterSource"))
         {
-            if (fuel <= maxFuel)
+            if (canFill())
             {
-                waterSound = GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position);
+                waterSound =
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position);
             }
         }
     }
@@ -59,7 +69,7 @@ public class PourWater : MonoBehaviour
     {
         if (col.tag.Equals("WaterSource"))
         {
-            if (waterSound!= null)
+            if (waterSound != null)
             {
                 waterSound.GetComponent<AudioSource>().Stop();
             }
