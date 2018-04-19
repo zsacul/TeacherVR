@@ -18,10 +18,10 @@ public class Drawing : Events
         Message(5,description,MessageSystem.ObjectToFollow.Headset,MessageSystem.Window.W800H400);
         GameController.Instance.TemplateShape = TemplateShape;
         rysowanie = GameObject.Find("Triple_Board/Right/3rd_layer/Board").GetComponent<Rysowanie>();
-        rysowanie.enabled = true;
-        rysowanie.gameInProgress = true;
         painter = rysowanie.Paint;
         painter.Clear();
+        rysowanie.gameInProgress = true;
+        rysowanie.enabled = true;
         Chalk_Tutorial_Point_Inst = Instantiate(Chalk_Tutorial_Point);
     }
 

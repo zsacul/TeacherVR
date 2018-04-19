@@ -31,7 +31,7 @@ public class Rysowanie : MonoBehaviour
         }
     }
 
-    void Start()
+    void OnEnable()
     {
         chalkColor = GameController.Instance.ChalkColor;
         TemplateShape = GameController.Instance.TemplateShape;
