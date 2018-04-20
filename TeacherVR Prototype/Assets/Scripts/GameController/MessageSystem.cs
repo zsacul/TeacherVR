@@ -161,6 +161,7 @@ public class MessageSystem : MonoBehaviour
 
     public void ShowButtonOnControllers(Button button, string txt, float time)
     {
+        if (!GameController.Instance.Tooltips) return;
         switch (button)
         {
             case Button.Trigger:
@@ -191,7 +192,7 @@ public class MessageSystem : MonoBehaviour
 
     private void HideButton(Button button)
     {
-        if(!LeftTooltips.activeSelf || !RightTooltips.activeSelf) return;
+        if (!LeftTooltips.activeSelf || !RightTooltips.activeSelf) return;
         switch (button)
         {
             case Button.Trigger:
@@ -224,6 +225,13 @@ public class MessageSystem : MonoBehaviour
     {
         LeftTooltips.SetActive(val);
         RightTooltips.SetActive(val);
+    }
+
+    public void HideAllButtons()
+    {
+        HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
+        HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
+        ChangTooltipsState(false);
     }
 
     public IEnumerator HideAllButtons(float time)

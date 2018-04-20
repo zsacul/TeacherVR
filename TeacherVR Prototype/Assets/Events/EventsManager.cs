@@ -108,11 +108,17 @@ public class EventsManager : MonoBehaviour
 
     void FillList()
     {
+        string lastName = ListOfEvents[ListOfEvents.Count-1].name;
         while (ListOfEvents.Count < 11)
         {
             Events tmp = EventsToMix[Random.Range(0, EventsToMix.Count)];
+            while (lastName.Equals(tmp.name) && EventsToMix.Count >=2)
+            {
+                tmp = EventsToMix[Random.Range(0, EventsToMix.Count)];
+            }
             if(tmp.DeviationLvlRange>=1) tmp.Lvl = tmp.MediumLvl + Random.Range(-1, 1) * Random.Range(1,tmp.DeviationLvlRange);
             AddEvent(tmp);
+            lastName = tmp.name;
         }
     }
 }

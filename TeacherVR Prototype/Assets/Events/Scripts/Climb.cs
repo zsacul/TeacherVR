@@ -16,6 +16,8 @@ public class Climb : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Touchpad, "Teleport", 60);
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         objToClimbInstance = Instantiate(ObjectToClimb);
         objToTouchInstance = Instantiate(ObjectToTouch);
         tt = objToTouchInstance.GetComponent<TouchDetector>();

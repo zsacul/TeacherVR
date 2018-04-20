@@ -70,6 +70,7 @@ public class Events : ScriptableObject
         Debug.Log("Aborting " + name);
         status = Status.Abort;
         DestroyGotTo();
+        GameController.Instance.MessageSystem.HideAllButtons();
     }
 
     //Funkcja która poprawnie konczy Event

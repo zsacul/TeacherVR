@@ -17,6 +17,7 @@ public class Throwing_Tutorial : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         targetsInstance = Instantiate(targets);
         chalkInstance = Instantiate(chalk);
         tc = targetsInstance.GetComponent<Target_Control>();
