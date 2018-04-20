@@ -40,7 +40,7 @@
         public override void StartUsing(VRTK_InteractUse currentUsingObject)
         {
             base.StartUsing(currentUsingObject);
-                if (Time.time > lastFire + fireDelay && pourWater.Use())
+                if (Time.time > lastFire + fireDelay) // && pourWater.Use())
                 {
                     lastFire = Time.time;
                     FireBullet();
