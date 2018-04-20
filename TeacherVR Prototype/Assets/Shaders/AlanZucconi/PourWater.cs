@@ -48,9 +48,9 @@ public class PourWater : MonoBehaviour
     {
         return fuel <= maxFuel &&
                (transform.eulerAngles.x >= 270 && transform.eulerAngles.x <= 360 ||
-                transform.eulerAngles.x >= 0 && transform.eulerAngles.x <= 90) &&
+                transform.eulerAngles.x >= -0.1 && transform.eulerAngles.x <= 90) &&
                (transform.eulerAngles.z >= 270 && transform.eulerAngles.z <= 360 ||
-                transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 90);
+                transform.eulerAngles.z >= -0.1 && transform.eulerAngles.z <= 90);
     }
 
     public void OnTriggerEnter(Collider col)

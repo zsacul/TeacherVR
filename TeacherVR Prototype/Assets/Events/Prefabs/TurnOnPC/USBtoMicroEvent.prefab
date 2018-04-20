@@ -167,8 +167,6 @@ GameObject:
   - component: {fileID: 114123072346513576}
   - component: {fileID: 114747452050449750}
   - component: {fileID: 114226869751310678}
-  - component: {fileID: 145654758976543596}
-  - component: {fileID: 114807283354150044}
   - component: {fileID: 114675882818204354}
   - component: {fileID: 114448321834056406}
   - component: {fileID: 114495637228265818}
@@ -341,7 +339,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426655178385984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5513406, y: 1.727, z: 2.1151323}
+  m_LocalPosition: {x: 2.5513406, y: 1.727, z: 2.762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4465413365445426}
@@ -779,6 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxRange: 3
   OverMaxRangeAction: 2
+  UseParticle: 1
   End: {fileID: 4639256766705276}
 --- !u!114 &114682589143985296
 MonoBehaviour:
@@ -832,20 +831,6 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
---- !u!114 &114807283354150044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1576294772812506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxRange: 2
-  OverMaxRangeAction: 1
-  End: {fileID: 4639256766705276}
 --- !u!114 &114853269481605278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -963,26 +948,26 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 2.5142405, y: 1.7308, z: 2.1395323}
-  - {x: 2.4930863, y: 1.7308421, z: 2.1383166}
-  - {x: 2.4719322, y: 1.7308842, z: 2.1371007}
-  - {x: 2.450778, y: 1.7309264, z: 2.135885}
-  - {x: 2.4296236, y: 1.7309685, z: 2.1346693}
-  - {x: 2.4084694, y: 1.7310106, z: 2.1334534}
-  - {x: 2.3873153, y: 1.7310526, z: 2.1322377}
-  - {x: 2.366161, y: 1.7310947, z: 2.1310217}
-  - {x: 2.345007, y: 1.7311369, z: 2.129806}
-  - {x: 2.3238528, y: 1.731179, z: 2.1285903}
-  - {x: 2.3026984, y: 1.7312211, z: 2.1273744}
-  - {x: 2.2815442, y: 1.7312632, z: 2.1261587}
-  - {x: 2.26039, y: 1.7313054, z: 2.124943}
-  - {x: 2.2392359, y: 1.7313474, z: 2.123727}
-  - {x: 2.2180817, y: 1.7313895, z: 2.1225114}
-  - {x: 2.1969275, y: 1.7314316, z: 2.1212955}
-  - {x: 2.1757731, y: 1.7314737, z: 2.1200798}
-  - {x: 2.154619, y: 1.7315159, z: 2.118864}
-  - {x: 2.1334648, y: 1.731558, z: 2.1176481}
-  - {x: 2.1123106, y: 1.7316, z: 2.1164324}
+  - {x: 2.5142405, y: 1.7308, z: 2.7864}
+  - {x: 2.4930863, y: 1.7308421, z: 2.7851844}
+  - {x: 2.4719322, y: 1.7308842, z: 2.7839684}
+  - {x: 2.450778, y: 1.7309264, z: 2.7827528}
+  - {x: 2.4296236, y: 1.7309685, z: 2.781537}
+  - {x: 2.4084694, y: 1.7310106, z: 2.7803211}
+  - {x: 2.3873153, y: 1.7310526, z: 2.7791054}
+  - {x: 2.366161, y: 1.7310947, z: 2.7778895}
+  - {x: 2.345007, y: 1.7311369, z: 2.7766738}
+  - {x: 2.3238528, y: 1.731179, z: 2.775458}
+  - {x: 2.3026984, y: 1.7312211, z: 2.7742422}
+  - {x: 2.2815442, y: 1.7312632, z: 2.7730265}
+  - {x: 2.26039, y: 1.7313054, z: 2.7718108}
+  - {x: 2.2392359, y: 1.7313474, z: 2.7705948}
+  - {x: 2.2180817, y: 1.7313895, z: 2.7693791}
+  - {x: 2.1969275, y: 1.7314316, z: 2.7681632}
+  - {x: 2.1757731, y: 1.7314737, z: 2.7669475}
+  - {x: 2.154619, y: 1.7315159, z: 2.7657318}
+  - {x: 2.1334648, y: 1.731558, z: 2.7645159}
+  - {x: 2.1123106, y: 1.7316, z: 2.7633002}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.005
@@ -1140,25 +1125,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!145 &145654758976543596
-SpringJoint:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1576294772812506}
-  m_ConnectedBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 2.5459125, y: 1.727, z: 2.2879567}
-  serializedVersion: 2
-  m_Spring: 10
-  m_Damper: 0.1
-  m_MinDistance: 0
-  m_MaxDistance: 0.01
-  m_Tolerance: 0.0025
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1

@@ -34,7 +34,7 @@ public class Rysowanie : MonoBehaviour
     void OnEnable()
     {
         chalkColor = GameController.Instance.ChalkColor;
-        TemplateShape = GameController.Instance.TemplateShape;
+        TemplateShape = GameController.Instance.DrawingManager.TemplateShape;
         brushLocation = Paint.brushContainer.transform.position;
         brushLocation2 = new Vector2(brushLocation.x, brushLocation.y);
 
@@ -56,9 +56,9 @@ public class Rysowanie : MonoBehaviour
     void Update()
     {
         if (!gameInProgress) return;
-        if (GameController.Instance.RysObject == null) return;
+        if (GameController.Instance.DrawingManager.RysObject == null) return;
 
-        RaycastHit hit = GameController.Instance.RysObject.GetComponent<VRTK.VRTK_Pointer>().pointerRenderer
+        RaycastHit hit = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK.VRTK_Pointer>().pointerRenderer
             .GetDestinationHit();
         if (hit.transform == null)
         {
@@ -73,7 +73,7 @@ public class Rysowanie : MonoBehaviour
             return;
         }
 
-        TemplateShape = GameController.Instance.TemplateShape;
+        TemplateShape = GameController.Instance.DrawingManager.TemplateShape;
 
         /*if (!interpolate)
         {

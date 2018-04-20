@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 114922246401061436}
   - component: {fileID: 114156139348577676}
   - component: {fileID: 114063989707651496}
+  - component: {fileID: 114002356681056558}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -507,6 +508,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942325621100860}
   m_Mesh: {fileID: 0}
+--- !u!114 &114002356681056558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982150515922314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2415cb3ae156e984dac8722fd3b40574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TemplateShape: []
+  RysObject: {fileID: 0}
+  Boards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114041882298443638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1039,9 +1060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EventsManager: {fileID: 114156139348577676}
-  RysObject: {fileID: 0}
+  DrawingManager: {fileID: 114002356681056558}
   Tooltips: 1
-  TemplateShape: []
   ChalkColor: {r: 1, g: 1, b: 1, a: 1}
   ScoreBoard: {fileID: 114402954041823974}
   MessageSystem: {fileID: 114842719621919352}

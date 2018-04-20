@@ -18,12 +18,15 @@ public class ChangeCenterOfMassOnThrow : MonoBehaviour
     private void ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
     {
         rb.centerOfMass = CenterOfMass;
-        StartCoroutine(Reset(0.5f));
     }
 
-    IEnumerator Reset(float time)
+    void Reset()
     {
-        yield return new WaitForSeconds(time);
         rb.ResetCenterOfMass();
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        Reset();
     }
 }

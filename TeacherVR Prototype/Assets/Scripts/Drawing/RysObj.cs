@@ -22,7 +22,7 @@ public class RysObj : MonoBehaviour
     {
         spr.enabled = true;
         po.enabled = true;
-        GameController.Instance.RysObject = gameObject;
+        GameController.Instance.DrawingManager.RysObject = gameObject;
     }
 
 
@@ -30,6 +30,6 @@ public class RysObj : MonoBehaviour
     {
         po.enabled = false;
         spr.enabled = false;
-        GameController.Instance.RysObject = null;
+        GameController.Instance.DrawingManager.RysObject = null;
     }
 }

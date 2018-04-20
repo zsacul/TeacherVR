@@ -21,21 +21,11 @@ public class GameController : MonoBehaviour
     #endregion
 
     public EventsManager EventsManager;
-    public GameObject RysObject;
+    public DrawingManager DrawingManager;
     public bool Tooltips = true;
-    public Vector2[] TemplateShape;
     public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
-
-    void Start()
-    {
-    }
-
-
-    void Update()
-    {
-    }
 }

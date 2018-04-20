@@ -1081,8 +1081,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1074887776464374}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.24135576, y: 0.16883785, z: 0.2256863}
-  m_LocalScale: {x: 0.0001127827, y: 0.0001127827, z: 0.0001127827}
+  m_LocalPosition: {x: 0.2663, y: 0.16883785, z: 0.2257}
+  m_LocalScale: {x: 0.00013, y: 0.00015, z: 0.00015}
   m_Children: []
   m_Father: {fileID: 4147660567373804}
   m_RootOrder: 4
@@ -1107,8 +1107,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1621389932387772}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.11901774, y: 0.17842683, z: 0.18208866}
-  m_LocalScale: {x: 0.0001127827, y: 0.0001127827, z: 0.0001127827}
+  m_LocalPosition: {x: 0.119, y: 0.17842683, z: 0.1855}
+  m_LocalScale: {x: 0.00008, y: 0.00008, z: 0.00008}
   m_Children: []
   m_Father: {fileID: 4147660567373804}
   m_RootOrder: 5
@@ -1259,7 +1259,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587643318926272}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.4124586, y: 0.16395606, z: 0.22580563}
+  m_LocalPosition: {x: 0.389, y: 0.16395606, z: 0.226}
   m_LocalScale: {x: 0.0001127827, y: 0.0001127827, z: 0.0001127827}
   m_Children: []
   m_Father: {fileID: 4147660567373804}
@@ -1687,8 +1687,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056737037091594}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.118091226, y: 0.17837992, z: 0.27318302}
-  m_LocalScale: {x: 0.0001127827, y: 0.0001127827, z: 0.0001127827}
+  m_LocalPosition: {x: 0.1181, y: 0.17837992, z: 0.2644}
+  m_LocalScale: {x: 0.00008, y: 0.00008, z: 0.00008}
   m_Children: []
   m_Father: {fileID: 4147660567373804}
   m_RootOrder: 6
@@ -4118,7 +4118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tag: Chalk
-  Event: 1
+  DestroyObjectsEvent: 1
 --- !u!136 &136084255781146374
 CapsuleCollider:
   m_ObjectHideFlags: 1

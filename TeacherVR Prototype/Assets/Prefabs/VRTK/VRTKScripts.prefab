@@ -1876,6 +1876,7 @@ GameObject:
   - component: {fileID: 114903243512692118}
   - component: {fileID: 114129886102994886}
   - component: {fileID: 114923458139156758}
+  - component: {fileID: 114289893663998668}
   m_Layer: 0
   m_Name: PlayArea
   m_TagString: Untagged
@@ -3234,9 +3235,9 @@ MonoBehaviour:
   buttonOneText: 
   buttonTwoText: 
   startMenuText: 
-  tipBackgroundColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipBackgroundColor: {r: 0, g: 0.39215687, b: 0.628, a: 1}
   tipTextColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
-  tipLineColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipLineColor: {r: 0, g: 0.3921569, b: 0.627451, a: 1}
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
@@ -5451,6 +5452,22 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &114289893663998668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730355004553964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed2aa1a29b92ca4f84a26a5f6e9218b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operation: 0
+  checkType: 1
+  identifiers:
+  - USB
+  - MicroUSB
 --- !u!114 &114309348137939106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7575,9 +7592,9 @@ MonoBehaviour:
   buttonOneText: 
   buttonTwoText: 
   startMenuText: 
-  tipBackgroundColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipBackgroundColor: {r: 0, g: 0.39215687, b: 0.628, a: 1}
   tipTextColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
-  tipLineColor: {r: 0, g: 1, b: 0.843, a: 1}
+  tipLineColor: {r: 0, g: 0.3921569, b: 0.627451, a: 1}
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
@@ -9620,12 +9637,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionDetector: 0
-  ignoreTriggerColliders: 0
+  ignoreTriggerColliders: 1
   rewindDelay: 0.5
   pushbackDistance: 0.5
   crouchThreshold: 0.5
   crouchRewindThreshold: 0.1
-  targetListPolicy: {fileID: 0}
+  targetListPolicy: {fileID: 114289893663998668}
   bodyPhysics: {fileID: 0}
   headsetCollision: {fileID: 0}
 --- !u!114 &114908539411786636

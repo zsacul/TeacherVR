@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Drawing Event", menuName = "Events/Drawing Event")]
 public class Drawing : Events
 {
+    [Range(0, 5)]
+    public int Board = 2;
     public Vector2[] TemplateShape;
     public GameObject Chalk_Tutorial_Point;
 
@@ -16,9 +18,9 @@ public class Drawing : Events
     {
         base.StartEvent();
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
-        Message(5,description,MessageSystem.ObjectToFollow.Headset,MessageSystem.Window.W800H400);
-        GameController.Instance.TemplateShape = TemplateShape;
-        rysowanie = GameObject.Find("Triple_Board/Right/3rd_layer/Board").GetComponent<Rysowanie>();
+        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        GameController.Instance.DrawingManager.TemplateShape = TemplateShape;
+        rysowanie = GameController.Instance.DrawingManager.Boards[Board];
         painter = rysowanie.Paint;
         painter.Clear();
         rysowanie.gameInProgress = true;
@@ -40,7 +42,7 @@ public class Drawing : Events
         rysowanie.gameInProgress = false;
         rysowanie.enabled = false;
         painter.Clear();
-        GameController.Instance.TemplateShape = null;
+        GameController.Instance.DrawingManager.TemplateShape = null;
         Destroy(Chalk_Tutorial_Point_Inst);
     }
 
@@ -48,7 +50,8 @@ public class Drawing : Events
     {
         base.CompleteEvent();
         rysowanie.enabled = false;
-        GameController.Instance.TemplateShape = null;
+        painter.Clear();
+        GameController.Instance.DrawingManager.TemplateShape = null;
         Destroy(Chalk_Tutorial_Point_Inst);
     }
 }
