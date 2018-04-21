@@ -23,7 +23,6 @@ public class GameController : MonoBehaviour
     public EventsManager EventsManager;
     public DrawingManager DrawingManager;
     public bool Tooltips = true;
-    public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;

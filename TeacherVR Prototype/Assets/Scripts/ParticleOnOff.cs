@@ -104,6 +104,9 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched -= ObjectUngrabbedOn;
                 break;
+            case Occasion.Event:
+                CheckEventAbort();
+                break;
         }
 
         switch (TurnOff)
@@ -126,13 +129,19 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched -= ObjectUngrabbedOff;
                 break;
+            case Occasion.Event:
+                CheckEventAbort();
+                break;
         }
+        Points = false;
+        Del();
     }
 
     void CheckEventAbort()
     {
         if (EventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())
         {
+            Points = false;
             Del();
             CancelInvoke();
         }

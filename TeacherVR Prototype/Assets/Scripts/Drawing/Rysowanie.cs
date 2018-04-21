@@ -43,7 +43,7 @@ public class Rysowanie : MonoBehaviour
         pointThickness = GameController.Instance.DrawingManager.pointThickness;
         templateThicknessAccept = GameController.Instance.DrawingManager.templateThicknessAccept;
         pointThicknessAccept = GameController.Instance.DrawingManager.pointThicknessAccept;
-        chalkColor = GameController.Instance.ChalkColor;
+        chalkColor = GameController.Instance.DrawingManager.ChalkColor;
         TemplateShape = GameController.Instance.DrawingManager.TemplateShape;
         brushLocation = Paint.brushContainer.transform.position;
         brushLocation2 = new Vector2(brushLocation.x, brushLocation.y);
@@ -152,7 +152,7 @@ public class Rysowanie : MonoBehaviour
             }
         }
 
-        if (mistake || currentTarget == 0 || !gameInProgress) GameController.Instance.ChalkColor = chalkColor;
-        else GameController.Instance.ChalkColor = Color.grey;
+        if (mistake || currentTarget == 0 || !gameInProgress) GameController.Instance.DrawingManager.ChalkColor = chalkColor;
+        else GameController.Instance.DrawingManager.ChalkColor = Color.grey;
     }
 }

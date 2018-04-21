@@ -6,6 +6,7 @@ public class DrawingManager : MonoBehaviour
 {
     public Vector2[] TemplateShape;
     public GameObject RysObject;
+    public Color ChalkColor;
     public Rysowanie[] Boards;
     public float templateThickness;
     public float pointThickness;

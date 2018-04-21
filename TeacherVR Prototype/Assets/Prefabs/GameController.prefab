@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 114156139348577676}
   - component: {fileID: 114063989707651496}
   - component: {fileID: 114002356681056558}
+  - component: {fileID: 114846990308639244}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1203,6 +1204,37 @@ MonoBehaviour:
   ProgressBar: {fileID: 1799996432989430}
   ProgressColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
   EndColor: {r: 0, g: 1, b: 0.843, a: 1}
+--- !u!114 &114846990308639244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982150515922314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162a3d768b362c444938fb3db81cad7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Students:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114866251243165772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1346,6 +1378,7 @@ MonoBehaviour:
   MessageSystem: {fileID: 114842719621919352}
   SoundManager: {fileID: 114381028436680680}
   Particles: {fileID: 114359320960930358}
+  Students: {fileID: 114846990308639244}
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1
