@@ -18,7 +18,10 @@ public class MessageSystem : MonoBehaviour
 
     public GameObject Window6x7;
     public GameObject Window8x4;
+
     public GameObject ProgressBar;
+    public Color ProgressColor;
+    public Color EndColor;
 
     private VRTK_TransformFollow TransformFollow;
 
@@ -189,6 +192,9 @@ public class MessageSystem : MonoBehaviour
     {
         if (progress < 0) progress = 0;
         if (progress > 100) progress = 100;
+
+        if (progress > 99) ProgressBar.GetComponentInChildren<TextMeshProUGUI>().color = EndColor;
+        else ProgressBar.GetComponentInChildren<TextMeshProUGUI>().color = ProgressColor;
 
         ProgressBar.GetComponentInChildren<TextMeshProUGUI>().text = new string('█',
             (int) progress / 10);
