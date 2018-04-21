@@ -8,7 +8,7 @@ public class ResetOnRange : MonoBehaviour
 {
     public float MaxRange = 10;
     public Action OverMaxRangeAction = Action.ResetToEndPoint;
-    public bool UseParticle = false;
+    public bool UseWrongParticle = false;
     public Transform End;
 
     private VRTK_InteractableObject io;
@@ -45,6 +45,8 @@ public class ResetOnRange : MonoBehaviour
                 Vector3.Distance(End.position, startPos2) > MaxRange)
             {
                 SpawnWrongPartcile();
+                Unsnap(transform.parent);
+                Unsnap(End.transform.parent);
                 io.ForceStopInteracting();
                 io2.ForceStopInteracting();
                 transform.position = startPos1;
@@ -57,6 +59,8 @@ public class ResetOnRange : MonoBehaviour
             if (OverMaxRangeAction == Action.ResetBothToMiddle)
             {
                 SpawnWrongPartcile();
+                Unsnap(transform.parent);
+                Unsnap(End.transform.parent);
                 io2.ForceStopInteracting();
 
                 Vector3 a;
@@ -69,17 +73,32 @@ public class ResetOnRange : MonoBehaviour
             else
             {
                 SpawnWrongPartcile();
+                Unsnap(transform.parent);
                 transform.position = End.position;
             }
         }
     }
 
+    void Unsnap(Transform parent)
+    {
+        while (parent != null)
+        {
+            if (parent.GetComponent<VRTK_SnapDropZone>() != null)
+            {
+                parent.GetComponent<VRTK_SnapDropZone>().ForceUnsnap();
+                break;
+            }
+            parent = parent.parent;
+        }
+    }
+
     void SpawnWrongPartcile()
     {
-        if (UseParticle)
+        if (UseWrongParticle)
         {
-            GameController.Instance.Particles.CreateOnePoint(transform.position, 0);
-            GameController.Instance.Particles.CreateOnePoint(End.transform.position, 0);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, transform.position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                End.transform.position);
         }
     }
 }

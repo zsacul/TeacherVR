@@ -4117,7 +4117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3c188291feb5641a85f9953a9354df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: Chalk
+  tag:
+  - Water
+  - Chalk
   DestroyObjectsEvent: 1
 --- !u!136 &136084255781146374
 CapsuleCollider:

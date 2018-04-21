@@ -10,6 +10,8 @@ public class ParticleOnOff : MonoBehaviour
 
     public float LifeTime = 0f;
 
+    public bool Points = false;
+
     public GameObject Particle;
     public Transform ParticleTransform;
 
@@ -70,6 +72,13 @@ public class ParticleOnOff : MonoBehaviour
 
     private void Del()
     {
+        if (Points)
+        {
+            GameController.Instance.ScoreBoard.PointsAddAnim(100);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,transform.position + Vector3.up / 4);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, transform.position, 0.01f);
+            Points = false;
+        }
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
     }
 
