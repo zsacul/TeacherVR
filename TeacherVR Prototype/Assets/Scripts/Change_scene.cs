@@ -15,4 +15,9 @@ public class Change_scene : MonoBehaviour {
     {
         Application.Quit();
     }
+    public void startgame()
+    {
+        GameObject varGameObject = GameObject.Find("GameController");
+        varGameObject.GetComponent<EventsManager>().enabled = true;
+    }
 }

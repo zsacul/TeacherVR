@@ -20,7 +20,6 @@ public class GameController : MonoBehaviour
     }
 
     #endregion
-
     public EventsManager EventsManager;
     public DrawingManager DrawingManager;
     public bool Tooltips = true;
@@ -31,7 +30,6 @@ public class GameController : MonoBehaviour
     public Particles Particles;
     
     public void changeTooltips()
-
     {
         if (Tooltips) Tooltips = false;
         else Tooltips = true;
