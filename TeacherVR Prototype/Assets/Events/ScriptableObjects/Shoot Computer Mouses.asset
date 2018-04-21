@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d70fc1f89f1a845b6a3cd6c935cc18, type: 3}
+  m_Name: Shoot Computer Mouses
+  m_EditorClassIdentifier: 
+  name: Computer Mouse
+  description: Shoot computer mouses
+  status: 1
+  Lvl: 4
+  MediumLvl: 4
+  DeviationLvlRange: 1
+  Repeatable: 1
+  GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
+  GoToTransform: {fileID: 4731322150279260, guid: 0586f9b968eede249a54983347d515fd,
+    type: 2}
+  ObjectToShoot: {fileID: 1538524831113752, guid: d09db23a69a84544f9d96946b65b379f,
+    type: 2}
+  MoveSpeed: 2
+  AngularSpeed: 3
+  ObjectScale: 3
+  MinPos: {x: 2, y: 1.1, z: 5}
+  MaxPos: {x: 4.5, y: 1.1, z: 15}
