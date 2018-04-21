@@ -21,7 +21,7 @@ public class Particles : MonoBehaviour
 
     public void CreateOnePoint(Vector3 transform, float rotation)
     {
-        GameObject newParticle = Instantiate(OnePoint, transform, gameObject.transform.rotation) as GameObject;
+        Instantiate(OnePoint, transform, gameObject.transform.rotation);
     }
 
     /*
@@ -35,66 +35,66 @@ public class Particles : MonoBehaviour
         // PUNKTY
         if (PS == NaszeParticle.OnePoint)
         {
-            GameObject newParticle = Instantiate(OnePoint, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(OnePoint, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.TenPoints)
         {
-            GameObject newParticle = Instantiate(TenPoints, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(TenPoints, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.FiftyPoints)
         {
-            GameObject newParticle = Instantiate(FiftyPoints, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(FiftyPoints, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.HundredPoints)
         {
-            GameObject newParticle = Instantiate(HundredPoints, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(HundredPoints, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.TwoHundredPoints)
         {
-            GameObject newParticle = Instantiate(TwoHundredPoints, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(TwoHundredPoints, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.ThreeHundredPoints)
         {
-            GameObject newParticle = Instantiate(ThreeHundredPoints, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(ThreeHundredPoints, transform, gameObject.transform.rotation);
         }
         // CZAS
         else if (PS == NaszeParticle.Minus15)
         {
-            GameObject newParticle = Instantiate(Minus15, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Minus15, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Minus30)
         {
-            GameObject newParticle = Instantiate(Minus30, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Minus30, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Plus15)
         {
-            GameObject newParticle = Instantiate(Plus15, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Plus15, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Plus30)
         {
-            GameObject newParticle = Instantiate(Plus30, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Plus30, transform, gameObject.transform.rotation);
         }
         // NAPISY
         else if (PS == NaszeParticle.Small_Good_Correct_Ok)
         {
-            GameObject newParticle = Instantiate(Small_Good_Correct_Ok, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Small_Good_Correct_Ok, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Small_Hit_Boom)
         {
-            GameObject newParticle = Instantiate(Small_Hit_Boom, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Small_Hit_Boom, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Small_Wrong)
         {
-            GameObject newParticle = Instantiate(Small_Wrong, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Small_Wrong, transform, gameObject.transform.rotation);
         }
         // RESZTA
         else if (PS == NaszeParticle.FireWork)
         {
-            GameObject newParticle = Instantiate(FireWork, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(FireWork, transform, gameObject.transform.rotation);
         }
         else if (PS == NaszeParticle.Poof)
         {
-            GameObject newParticle = Instantiate(Poof, transform, gameObject.transform.rotation) as GameObject;
+            Instantiate(Poof, transform, gameObject.transform.rotation);
         }
     }
 }
