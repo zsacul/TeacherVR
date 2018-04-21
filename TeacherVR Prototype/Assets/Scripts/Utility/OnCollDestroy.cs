@@ -9,18 +9,21 @@ public class OnCollDestroy : MonoBehaviour
 
     void OnCollisionExit(Collision col)
     {
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position);
         Instantiate(WaterSplash, this.gameObject.transform.position, this.gameObject.transform.rotation);
         Destroy(this.gameObject);
     }
 
     void OnCollisionEnter(Collision col)
     {
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position);
         Instantiate(WaterSplash, this.gameObject.transform.position, this.gameObject.transform.rotation);
         Destroy(this.gameObject);
     }
 
     void OnCollisionStay(Collision col)
     {
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position);
         Instantiate(WaterSplash, this.gameObject.transform.position, this.gameObject.transform.rotation);
         Destroy(this.gameObject);
     }
@@ -29,6 +32,7 @@ public class OnCollDestroy : MonoBehaviour
     {
         if (trigger)
         {
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position);
             Instantiate(WaterSplash, this.gameObject.transform.position, this.gameObject.transform.rotation);
             Destroy(this.gameObject);
         }
