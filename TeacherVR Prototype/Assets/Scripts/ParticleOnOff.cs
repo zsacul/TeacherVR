@@ -104,10 +104,6 @@ public class ParticleOnOff : MonoBehaviour
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched -= ObjectUngrabbedOn;
                 break;
-            case Occasion.Event:
-                CheckEvent();
-                CheckEventAbort();
-                break;
         }
 
         switch (TurnOff)
@@ -129,10 +125,6 @@ public class ParticleOnOff : MonoBehaviour
                 break;
             case Occasion.Ungrabbed:
                 io.InteractableObjectTouched -= ObjectUngrabbedOff;
-                break;
-            case Occasion.Event:
-                CheckEvent();
-                CheckEventAbort();
                 break;
         }
     }
