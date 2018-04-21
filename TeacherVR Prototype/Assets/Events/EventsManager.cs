@@ -107,6 +107,10 @@ public class EventsManager : MonoBehaviour
             if (e.Repeatable) EventsToMix.Add(e);
         }
         FillList();
+        foreach (Events toDel in EventsToMix)
+        {
+            ListOfEvents.Remove(toDel);
+        }
     }
 
     void Update()

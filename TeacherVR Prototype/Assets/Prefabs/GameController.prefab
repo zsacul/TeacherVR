@@ -600,7 +600,7 @@ MonoBehaviour:
   templateThickness: 0.2
   pointThickness: 0.3
   templateThicknessAccept: 0.02
-  pointThicknessAccept: 0.03
+  pointThicknessAccept: 0.02
 --- !u!114 &114041882298443638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,6 +915,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a4ae700b7b48bae49b9647b59d5c8b4c, type: 2}
   - {fileID: 11400000, guid: 95d129cfdc1288d42a2a65242ed15ea0, type: 2}
   - {fileID: 11400000, guid: 8e32400d9b9ba964da5df389dc38cf31, type: 2}
+  - {fileID: 11400000, guid: 630768faa21c57248abbf48057bcd8d5, type: 2}
+  - {fileID: 11400000, guid: c878809a09c4ad345ad50cdf340ae1e3, type: 2}
+  - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
   delay: 2
 --- !u!114 &114185177004893528
 MonoBehaviour:
@@ -995,6 +998,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnePoint: {fileID: 1795693263993040, guid: eaf6f61df48f798449770633a0623e5d, type: 2}
+  TenPoints: {fileID: 1263047569219012, guid: ba46e4b0270a7b443be6af1b64e7aca5, type: 2}
+  FiftyPoints: {fileID: 1406913310058014, guid: 3994529fe3d868a4a8f094ee72acb583,
+    type: 2}
+  HundredPoints: {fileID: 1585772045185872, guid: 5bb02b40a660c7a40a081395db92c80b,
+    type: 2}
+  TwoHundredPoints: {fileID: 1697008181408832, guid: 9ddd9f83b9d3f1942b622f0eb9e7bf01,
+    type: 2}
+  ThreeHundredPoints: {fileID: 1352795693299546, guid: bc64de48926fd53458bc6ae662881ec3,
+    type: 2}
+  Minus15: {fileID: 1825568467996178, guid: 1d7730cc615694849bc103111d33943a, type: 2}
+  Minus30: {fileID: 1217217064749510, guid: b1ae4fb5f214abf4e97ffbbae33745b8, type: 2}
+  Plus15: {fileID: 1832989538555632, guid: 30e016408de559d4c918696c5e7559d5, type: 2}
+  Plus30: {fileID: 1840805133871226, guid: 18724093c68b8ff48b091ea3cf4e3a95, type: 2}
+  Small_Good_Correct_Ok: {fileID: 1412509880730074, guid: f46f530b3fc2c7e498fb94f8a8b0d31c,
+    type: 2}
+  Small_Hit_Boom: {fileID: 1885107866303726, guid: a2aec9faa2ce6204795a6fc16f251b49,
+    type: 2}
+  Small_Wrong: {fileID: 1770455831349846, guid: b19ef7fe17690124893a36b71c390af0,
+    type: 2}
+  FireWork: {fileID: 1136091790599870, guid: bb5e94b8d48b1f547aa787fd5d0ed275, type: 2}
+  Poof: {fileID: 1999153355165274, guid: a4032214c4af31d47890446b9b4af249, type: 2}
 --- !u!114 &114381028436680680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1014,7 +1038,7 @@ MonoBehaviour:
   TopDoor: {fileID: 0}
   SfxHookBang: {fileID: 8300000, guid: 42da4784cb93bcb48a8164bad2159881, type: 3}
   SfxComputerBeep: {fileID: 8300000, guid: 5df6a0b08da0ef540a8f087347efe874, type: 3}
-  SfxWaterSplash: {fileID: 8300000, guid: 34b3fd977ca07d540830ad0e0ab872e4, type: 3}
+  SfxWaterSplash: {fileID: 8300000, guid: 1b34049a73b2f784db64f2cc37077107, type: 3}
   SfxBottleSpray: {fileID: 8300000, guid: 260b2834f6028ea4185573f0d9ee7c55, type: 3}
   SfxBottleFilling: {fileID: 8300000, guid: 93cbd946790b41549ae3747189a0f400, type: 3}
   SfxLadder: {fileID: 8300000, guid: d7a7cbd3b0a918f4396410b7a7897334, type: 3}

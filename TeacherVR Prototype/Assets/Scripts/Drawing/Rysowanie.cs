@@ -17,6 +17,8 @@ public class Rysowanie : MonoBehaviour
     private Vector3 brushLocation;
     private Vector2 brushLocation2;
 
+    private float lastWrong;
+
     float DistanceFromLine(Vector2 start, Vector2 end, Vector2 point)
     {
         float dist = Vector2.Distance(start, end);
@@ -34,6 +36,7 @@ public class Rysowanie : MonoBehaviour
 
     void OnEnable()
     {
+        lastWrong = Time.time;
         currentTarget = 0;
         comboCounter = 0;
         templateThickness = GameController.Instance.DrawingManager.templateThickness;
@@ -65,7 +68,8 @@ public class Rysowanie : MonoBehaviour
         if (!gameInProgress) return;
         if (GameController.Instance.DrawingManager.RysObject == null) return;
 
-        RaycastHit hit = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK.VRTK_Pointer>().pointerRenderer
+        RaycastHit hit = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK.VRTK_Pointer>()
+            .pointerRenderer
             .GetDestinationHit();
         if (hit.transform == null)
         {
@@ -102,6 +106,14 @@ public class Rysowanie : MonoBehaviour
                 comboCounter = 0;
                 mistake = true;
                 Debug.Log("A mistake! Combo: " + comboCounter);
+                if (Time.time > lastWrong + 1)
+                {
+                    lastWrong = Time.time;
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                        GameController.Instance.DrawingManager.RysObject.transform.position);
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.Error,
+                        GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
+                }
             }
 
             if (DistanceFromLine(brushLocation2 + TemplateShape[currentTarget],
@@ -110,11 +122,22 @@ public class Rysowanie : MonoBehaviour
             {
                 comboCounter++;
                 //Player reached a checkpoint
+                GameController.Instance.ScoreBoard.PointsAddAnim(100 * comboCounter);
+
+                if (comboCounter == 1) GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
+                    GameController.Instance.DrawingManager.RysObject.transform.position);
+                else GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
+                    GameController.Instance.DrawingManager.RysObject.transform.position);
+
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct,
+                    GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
+
                 if (currentTarget == TemplateShape.GetLength(0) - 1)
                 {
                     Debug.Log("You finished the shape! Combo: " + comboCounter);
                     GameController.Instance.MessageSystem.SetProgressBar(100);
                     gameInProgress = false;
+                    
                 }
                 else
                 {
@@ -123,7 +146,8 @@ public class Rysowanie : MonoBehaviour
                     Paint.DrawPoint(new Vector3(TemplateShape[currentTarget].x, TemplateShape[currentTarget].y, -0.02f),
                         pointThickness,
                         Color.green);
-                    GameController.Instance.MessageSystem.SetProgressBar((float)currentTarget / TemplateShape.GetLength(0) * 100);
+                    GameController.Instance.MessageSystem.SetProgressBar(
+                        (float) currentTarget / TemplateShape.GetLength(0) * 100);
                 }
             }
         }
