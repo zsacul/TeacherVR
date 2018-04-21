@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Api;
 using UnityEngine;
 using VRTK;
 
@@ -8,7 +7,6 @@ using VRTK;
 public class TurnOnPC : Events
 {
     public Material PCOnMaterial;
-
 
     public GameObject USBCable;
 
@@ -28,7 +26,8 @@ public class TurnOnPC : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
+        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<Renderer>();
         PCOffMaterial = MonitorRenderer.material;
@@ -39,21 +38,39 @@ public class TurnOnPC : Events
     //Poprawić optymalizacje! Może na eventach?
     public override void CallInUpdate()
     {
-            u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
-            u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
-            mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
-            mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
+        u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
+        u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
+        mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
+        mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
 
-            if (u1 != null && u2 != null && mu1 != null && mu2 != null)
-            {
-                MonitorRenderer.material = PCOnMaterial;
-                u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                CompleteEvent();
-            }
-        
+        int progress = 0;
+        if (u1 != null)
+        {
+            progress += 25;
+        }
+        if (u2 != null)
+        {
+            progress += 25;
+        }
+        if (mu1 != null)
+        {
+            progress += 25;
+        }
+        if (mu2 != null)
+        {
+            progress += 25;
+        }
+        SetProgressBar(progress);
+
+        if (u1 != null && u2 != null && mu1 != null && mu2 != null)
+        {
+            u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            MonitorRenderer.material = PCOnMaterial;
+            CompleteEvent();
+        }
     }
 
     public override void AbortEvent()
@@ -71,5 +88,6 @@ public class TurnOnPC : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep, PC.transform.position);
     }
 }

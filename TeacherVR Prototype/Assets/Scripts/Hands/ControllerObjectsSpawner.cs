@@ -57,7 +57,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
     {
         foreach (GameObject obj in ObjectsInstances)
         {
-            if (obj.GetComponent<VRTK_InteractableObject>().isGrabbable)
+            if (!obj.GetComponent<VRTK_InteractableObject>().IsGrabbed())
                 Destroy(obj);
         }
         ObjectsInstances.Clear();

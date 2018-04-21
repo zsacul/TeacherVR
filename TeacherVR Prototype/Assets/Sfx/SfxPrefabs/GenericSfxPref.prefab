@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753489582905134}
   - component: {fileID: 82077194677492260}
+  - component: {fileID: 114119477208267422}
   m_Layer: 0
   m_Name: GenericSfxPref
   m_TagString: Untagged
@@ -121,3 +122,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114119477208267422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625932489477716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abb436c5ed0d664cb2de2e21c583965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _source: {fileID: 82077194677492260}

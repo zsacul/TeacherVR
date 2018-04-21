@@ -38,11 +38,11 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
 
     void Update()
     {
-        if (GameController.Instance.RysObject != null)
-            chalkPointer = GameController.Instance.RysObject.GetComponent<VRTK_Pointer>();
+        if (GameController.Instance.DrawingManager.RysObject != null)
+            chalkPointer = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK_Pointer>();
         else return;
         ChalkColor = GameController.Instance.ChalkColor;
-        if (GameController.Instance.RysObject.tag.Equals("Sponge"))
+        if (GameController.Instance.DrawingManager.RysObject.tag.Equals("Sponge"))
         {
             cursorPaint = SpongeSprite;
             brushColor = transform.parent.Find("Board").GetComponent<Renderer>().material.color;
@@ -68,7 +68,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         lineRenderer.material.SetColor("_EmissionColor", col);
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
-        lineRenderer.widthMultiplier = brushSize / 10;
+        lineRenderer.widthMultiplier = thickness / 10;
 
         line.transform.parent = brushContainer.transform;
         line.transform.position = start;
@@ -108,8 +108,8 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     //Returns the position on the texuremap according to a hit in the mesh collider
     bool HitTestUVPosition(ref Vector3 uvWorldPosition)
     {
-        if (GameController.Instance.RysObject == null) return false;
-        RaycastHit hit = GameController.Instance.RysObject.GetComponent<VRTK_Pointer>().pointerRenderer
+        if (GameController.Instance.DrawingManager.RysObject == null) return false;
+        RaycastHit hit = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK_Pointer>().pointerRenderer
             .GetDestinationHit();
 
         if (hit.transform != null)
@@ -133,5 +133,13 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         }
         lastPoint = Vector3.zero;
         return false;
+    }
+
+    public void Clear()
+    {
+        foreach (Transform child in brushContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour {
-
+public class GameController : MonoBehaviour
+{
     #region Singleton
 
     public static GameController Instance;
@@ -21,20 +21,11 @@ public class GameController : MonoBehaviour {
     #endregion
 
     public EventsManager EventsManager;
-    public GameObject RysObject;
-    public Vector2[] TemplateShape;
+    public DrawingManager DrawingManager;
+    public bool Tooltips = true;
     public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
-
-    void Start () {
-		
-	}
-	
-
-	void Update () {
-
-    }
-    
+    public Particles Particles;
 }

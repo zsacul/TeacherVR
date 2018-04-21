@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Api;
 using UnityEngine;
 using VRTK;
 
@@ -29,9 +28,11 @@ public class ShootTheObjects : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take spray", 60);
+        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         Instances.Clear();
         TargetLocations.Clear();
-        for (int i = 0; i < lvl * 2; i++)
+        for (int i = 0; i < Lvl * 2; i++)
         {
             GameObject obj = Instantiate(ObjectToShoot, RandomPos(),
                 ObjectToShoot.transform.rotation);
@@ -43,13 +44,13 @@ public class ShootTheObjects : Events
 
     public override void CallInUpdate()
     {
-        bool alive = false;
+        int alive = 0;
         int i = 0;
         foreach (GameObject obj in Instances)
         {
             if (obj != null)
             {
-                alive = true;
+                alive++;
                 float stepPos = MoveSpeed * Time.deltaTime;
                 float stepRot = AngularSpeed * Time.deltaTime;
                 if (Vector3.Distance(obj.transform.position, TargetLocations[i]) < 0.2f)
@@ -61,7 +62,8 @@ public class ShootTheObjects : Events
             }
             i++;
         }
-        if (Instances.Count != 0 && !alive) CompleteEvent();
+        SetProgressBar((float) (Lvl * 2 - alive) / (Lvl * 2) * 100);
+        if (Instances.Count != 0 && alive == 0) CompleteEvent();
     }
 
     public override void AbortEvent()

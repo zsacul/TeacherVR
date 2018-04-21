@@ -61,8 +61,9 @@ public class SoundManager : MonoBehaviour {
 
     // ---------------------------------------------------------------------
 
-    private int _PoolSize = 30;
-    private GameObject[] _SfxParticlesPool;
+    private int _PoolSize = 30000;
+    private int _InitialSize = 3;
+    private List<GameObject> _SfxParticlesPool;
     private int _FreshPoolInd = 0;
 
     public AudioClip ClipFromEnum(SamplesList en)
@@ -114,53 +115,60 @@ public class SoundManager : MonoBehaviour {
 
     private GameObject SfxFromPool()
     {
-        _FreshPoolInd %= _PoolSize;
+        int rind = _SfxParticlesPool.FindIndex(x => !x.activeSelf);
 
-        // TODO adaptive pool
-        if (_SfxParticlesPool[_FreshPoolInd].activeSelf)
-            return null;
+        if(rind == -1)
+        {
+            _SfxParticlesPool.Add(Instantiate(GenericPrefab));
+            rind = _SfxParticlesPool.Count - 1;
+        }
 
-        return _SfxParticlesPool[_FreshPoolInd++];
+        return _SfxParticlesPool[rind];
+
     }
 
-    public void Play3DAt(AudioClip clip, Transform where)
+    public GameObject Play3DAt(AudioClip clip, Transform where, float volume = 1.0f)
     {
-        Play3DAt(clip, where.position);
+        return Play3DAt(clip, where.position, volume);
     }
 
-    public void Play3DAt(SamplesList en, Transform where)
+    public GameObject Play3DAt(SamplesList en, Transform where, float volume = 1.0f)
     {
-        Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where, volume);
     }
 
-    public void Play3DAt(SamplesList en, Vector3 where)
+    public GameObject Play3DAt(SamplesList en, Vector3 where, float volume = 1.0f)
     {
-        Play3DAt(ClipFromEnum(en), where);
+        return Play3DAt(ClipFromEnum(en), where, volume);
     }
 
-    public void Play3DAt(AudioClip clip, Vector3 v3)
+    public GameObject Play3DAt(AudioClip clip, Vector3 v3, float volume = 1.0f)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
+        tmp.GetComponent<AudioSource>().volume = volume;
         tmp.transform.position = v3;
         tmp.GetComponent<AudioSource>().spatialBlend = 1.0f; //full 3D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
+        return tmp;
     }
 
 
-    public void Play2D(SamplesList en)
+    public GameObject Play2D(SamplesList en, float volume = 1.0f)
     {
-        Play2D(ClipFromEnum(en));
+        return Play2D(ClipFromEnum(en), volume);
     }
 
-    public void Play2D(AudioClip clip)
+    public GameObject Play2D(AudioClip clip, float volume = 1.0f)
     {
         GameObject tmp = SfxFromPool();
         tmp.GetComponent<AudioSource>().clip = clip;
+        tmp.GetComponent<AudioSource>().volume = volume;
         tmp.GetComponent<AudioSource>().spatialBlend = 0.0f; //full 2D
         tmp.SetActive(true);
         tmp.GetComponent<AudioSource>().Play();
+        return tmp;
     }
 
 
@@ -173,13 +181,16 @@ public class SoundManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        _SfxParticlesPool = new GameObject[_PoolSize];
-        
-        for(int i = 0; i < _PoolSize; i++)
+        _SfxParticlesPool = new List<GameObject>
+        {
+            Capacity = _PoolSize
+        };
+
+        for (int i = 0; i < _InitialSize; i++)
         {
             GameObject tmp = (GameObject)Instantiate(GenericPrefab);
             tmp.SetActive(false);
-            _SfxParticlesPool[i] = tmp;
+            _SfxParticlesPool.Add(tmp);
         }
 
         TopDoor = TopDoorSource.GetComponent<TopDoorScript>();

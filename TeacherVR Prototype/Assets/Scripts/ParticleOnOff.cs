@@ -158,19 +158,19 @@ public class ParticleOnOff : MonoBehaviour
                 sdz.ObjectSnappedToDropZone += ObjectSnappedOn;
                 break;
             case Occasion.Unsnaped:
-                sdz.ObjectSnappedToDropZone += ObjectUnsnappedOn;
+                sdz.ObjectUnsnappedFromDropZone += ObjectUnsnappedOn;
                 break;
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOn;
                 break;
             case Occasion.Untouched:
-                io.InteractableObjectTouched += ObjectUntouchedOn;
+                io.InteractableObjectUntouched += ObjectUntouchedOn;
                 break;
             case Occasion.Grabbed:
-                io.InteractableObjectTouched += ObjectGrabbedOn;
+                io.InteractableObjectGrabbed+= ObjectGrabbedOn;
                 break;
             case Occasion.Ungrabbed:
-                io.InteractableObjectTouched += ObjectUngrabbedOn;
+                io.InteractableObjectUngrabbed += ObjectUngrabbedOn;
                 break;
             case Occasion.Event:
                 InvokeRepeating("CheckEvent", 0, 1);
@@ -183,19 +183,19 @@ public class ParticleOnOff : MonoBehaviour
                 sdz.ObjectSnappedToDropZone += ObjectSnappedOff;
                 break;
             case Occasion.Unsnaped:
-                sdz.ObjectSnappedToDropZone += ObjectUnsnappedOff;
+                sdz.ObjectUnsnappedFromDropZone += ObjectUnsnappedOff;
                 break;
             case Occasion.Touched:
                 io.InteractableObjectTouched += ObjectTouchedOff;
                 break;
             case Occasion.Untouched:
-                io.InteractableObjectTouched += ObjectUntouchedOff;
+                io.InteractableObjectUntouched += ObjectUntouchedOff;
                 break;
             case Occasion.Grabbed:
-                io.InteractableObjectTouched += ObjectGrabbedOff;
+                io.InteractableObjectGrabbed += ObjectGrabbedOff;
                 break;
             case Occasion.Ungrabbed:
-                io.InteractableObjectTouched += ObjectUngrabbedOff;
+                io.InteractableObjectUngrabbed += ObjectUngrabbedOff;
                 break;
             case Occasion.Event:
                 InvokeRepeating("CheckEvent", 0, 1);

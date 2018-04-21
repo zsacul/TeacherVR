@@ -31,8 +31,7 @@ public class Sajmon : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        
-       
+
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<MeshRenderer>();
@@ -41,13 +40,10 @@ public class Sajmon : Events
         Buttons = Instantiate(ButtonsPrefab);
        // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
-        GenerateSequence(lvl); 
+        GenerateSequence(Lvl);
         buffor = sequence;
         _time = Time.time;
         played = -1;
-
-
-        
     }
 
     public override void CallInUpdate()
@@ -64,25 +60,20 @@ public class Sajmon : Events
             }
             else if (played == 1)
             {
-
                 if (buffor >= 1)
                 {
                     ShowPressing(buffor % 10);
                     buffor /= 10;
                     _time = Time.time;
-
                 }
                 else
                 {
                     played = 2;
-                  //  PlayerSequence = 0;
+                    //  PlayerSequence = 0;
                     canPlayerIteract(true);
                     _time = Time.time;
                 }
             }
-
-
-
         }
         if (needToCheck)
         {
@@ -97,7 +88,7 @@ public class Sajmon : Events
                 Debug.Log(PlayerSequence);
                 if (PlayerSequence - sequence == 0)
                 {
-                    AddPoints(lvl * 10);
+                    AddPoints(Lvl * 10);
                     CompleteEvent();
                 }
                 else
@@ -109,16 +100,12 @@ public class Sajmon : Events
                         Debug.Log("You've failed");
                         AbortEvent();
                     }
-
-
                 }
             }
             needToCheck = false;
-
         }
-
-
     }
+
     public override void AbortEvent()
     {
         base.AbortEvent();
@@ -144,17 +131,17 @@ public class Sajmon : Events
         Debug.Log(sequence + "<- od końca.");
     }
 
-    void canPlayerIteract(bool can=false)
+    void canPlayerIteract(bool can = false)
     {
-        foreach(Transform child in Buttons.transform)
+        foreach (Transform child in Buttons.transform)
         {
-            if(child.GetComponent<ButtonTouch>()!= null)
+            if (child.GetComponent<ButtonTouch>() != null)
                 child.GetComponent<ButtonTouch>().showing = !can;
         }
     }
-  
+
     private void ShowPressing(int id)
     {
-        Buttons.transform.GetChild(id-1).GetComponent<ButtonTouch>().PushButton();
+        Buttons.transform.GetChild(id - 1).GetComponent<ButtonTouch>().PushButton();
     }
 }

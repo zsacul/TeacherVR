@@ -14,7 +14,13 @@ MonoBehaviour:
   name: Ladder Climb
   description: Touch the board
   status: 1
-  lvl: 0
+  Lvl: 0
+  MediumLvl: 0
+  DeviationLvlRange: 0
+  Repeatable: 0
+  GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
+  GoToTransform: {fileID: 4484386536649846, guid: b0cf7a783ca4ab444b10bf754cecf686,
+    type: 2}
   ObjectToClimb: {fileID: 1551290260420514, guid: 858adf2d4b543664698b360115c5545d,
     type: 2}
   ObjectToTouch: {fileID: 1487045487590686, guid: bda04fb6185274f49bf933dcc4edd065,

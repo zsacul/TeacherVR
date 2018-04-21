@@ -8,6 +8,7 @@ public class ResetOnRange : MonoBehaviour
 {
     public float MaxRange = 10;
     public Action OverMaxRangeAction = Action.ResetToEndPoint;
+    public bool UseParticle = false;
     public Transform End;
 
     private VRTK_InteractableObject io;
@@ -43,10 +44,11 @@ public class ResetOnRange : MonoBehaviour
             if (Vector3.Distance(transform.position, startPos1) > MaxRange ||
                 Vector3.Distance(End.position, startPos2) > MaxRange)
             {
+                SpawnWrongPartcile();
                 io.ForceStopInteracting();
-                    io2.ForceStopInteracting();
-                    transform.position = startPos1;
-                    End.transform.position = startPos2;
+                io2.ForceStopInteracting();
+                transform.position = startPos1;
+                End.transform.position = startPos2;
             }
         }
         else if (Vector3.Distance(End.position, transform.position) > MaxRange)
@@ -54,6 +56,7 @@ public class ResetOnRange : MonoBehaviour
             io.ForceStopInteracting();
             if (OverMaxRangeAction == Action.ResetBothToMiddle)
             {
+                SpawnWrongPartcile();
                 io2.ForceStopInteracting();
 
                 Vector3 a;
@@ -63,7 +66,20 @@ public class ResetOnRange : MonoBehaviour
                 transform.position = a;
                 End.position = b;
             }
-            else transform.position = End.position;
+            else
+            {
+                SpawnWrongPartcile();
+                transform.position = End.position;
+            }
+        }
+    }
+
+    void SpawnWrongPartcile()
+    {
+        if (UseParticle)
+        {
+            GameController.Instance.Particles.CreateOnePoint(transform.position, 0);
+            GameController.Instance.Particles.CreateOnePoint(End.transform.position, 0);
         }
     }
 }

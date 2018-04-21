@@ -16,6 +16,8 @@ public class Climb : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Touchpad, "Teleport", 60);
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         objToClimbInstance = Instantiate(ObjectToClimb);
         objToTouchInstance = Instantiate(ObjectToTouch);
         tt = objToTouchInstance.GetComponent<TouchDetector>();
@@ -41,12 +43,12 @@ public class Climb : Events
     }
 
     public override void CompleteEvent()
-    { 
+    {
+        base.CompleteEvent();
         GameObject Target;
         Target = GameObject.Find("Score");                      
         Target.GetComponent<ScoreBoard>().SetActive();
-
-        base.CompleteEvent();
+        
         objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
         VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
         climb.enabled = false;
