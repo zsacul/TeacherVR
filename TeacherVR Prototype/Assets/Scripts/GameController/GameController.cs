@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(Instance);
     }
 
     #endregion
@@ -28,4 +29,11 @@ public class GameController : MonoBehaviour
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
+    
+    public void changeTooltips()
+
+    {
+        if (Tooltips) Tooltips = false;
+        else Tooltips = true;
+    }
 }
