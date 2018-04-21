@@ -28,6 +28,8 @@ public class Sajmon : Events
 
     int played; // -1 czeka na interakcję, 0 not shown, 1 showing, 2 shown
 
+    float progress;
+
     public override void StartEvent()
     {
         base.StartEvent();
@@ -44,6 +46,7 @@ public class Sajmon : Events
         buffor = sequence;
         _time = Time.time;
         played = -1;
+        progress = 0;
     }
 
     public override void CallInUpdate()
@@ -98,7 +101,21 @@ public class Sajmon : Events
                     if (!(seq[seq.Length - pseq.Length].Equals(pseq[0])))
                     {
                         Debug.Log("You've failed");
-                        AbortEvent();
+                        //tutaj wywołaj particle wrong
+                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
+                        PlayerSequence = 0;
+                        ButtonTouch.resetIndex();
+                        played = 0;
+                        buffor = sequence;
+                        progress = 0;
+
+                    }
+                    else
+                    {
+                        //tutaj wywołaj particle good 
+                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
+                        progress += 100 / seq.Length;
+                        SetProgressBar(progress);
                     }
                 }
             }

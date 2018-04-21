@@ -13,6 +13,7 @@ public class MicInput : MonoBehaviour
     public bool isSpeaking;
     public enum MicInputType
     {
+        noone,
         speechDetection,
         peakDetection
     }
@@ -113,6 +114,7 @@ public class MicInput : MonoBehaviour
     }
     private void Start()
     {
+        typeOfInput = MicInputType.noone;
         totalScore = 0;
         isSpeaking = false;
         if (SpeakingInd != null)
@@ -121,29 +123,31 @@ public class MicInput : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;
-        current_time = (int)time;
-        if (typeOfInput == MicInputType.speechDetection)
+        if (typeOfInput != MicInputType.noone)
         {
-            scoreBuffer = DetectionOfSpeech();
-            if (scoreBuffer != 0)
+            time += Time.deltaTime;
+            current_time = (int)time;
+            if (typeOfInput == MicInputType.speechDetection)
             {
-                lastPointsTime = current_time;
+                scoreBuffer = DetectionOfSpeech();
+                if (scoreBuffer != 0)
+                {
+                    lastPointsTime = current_time;
+                }
+                if (lastPointsTime + 3 <= current_time)
+                {
+                    isSpeaking = false;
+                    if (SpeakingInd != null)
+                        SpeakingInd.SetActive(false);
+                }
+                totalScore += scoreBuffer;
             }
-            if (lastPointsTime + 3 <= current_time)
+            else if (typeOfInput == MicInputType.peakDetection)
             {
-                isSpeaking = false;
-                if (SpeakingInd != null)
-                    SpeakingInd.SetActive(false);
+                if (PeakDetection() >= minSilencingVolume)
+                    Noise.shoutedLoudEnough = true;
             }
-            totalScore += scoreBuffer;
         }
-        else if(typeOfInput == MicInputType.peakDetection)
-        {
-            if (PeakDetection() >= minSilencingVolume)
-                Noise.shoutedLoudEnough = true;
-        }
-
     }
 
 
