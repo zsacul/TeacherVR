@@ -68,7 +68,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         lineRenderer.material.SetColor("_EmissionColor", col);
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
-        lineRenderer.widthMultiplier = brushSize / 10;
+        lineRenderer.widthMultiplier = thickness / 10;
 
         line.transform.parent = brushContainer.transform;
         line.transform.position = start;

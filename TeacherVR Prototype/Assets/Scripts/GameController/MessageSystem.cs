@@ -18,6 +18,7 @@ public class MessageSystem : MonoBehaviour
 
     public GameObject Window6x7;
     public GameObject Window8x4;
+    public GameObject ProgressBar;
 
     private VRTK_TransformFollow TransformFollow;
 
@@ -136,14 +137,8 @@ public class MessageSystem : MonoBehaviour
         MessageWindow.SetActive(!MessageWindow.activeSelf);
     }
 
-    public void ShowCustomText(string text, Window window, bool withClear)
+    public void ShowCustomText(string text, Window window)
     {
-        if (withClear)
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-
         MessageWindow.SetActive(true);
 
         switch (window)
@@ -188,6 +183,21 @@ public class MessageSystem : MonoBehaviour
 
         ChangTooltipsState(true);
         StartCoroutine(HideAllButtons(time));
+    }
+
+    public void SetProgressBar(float progress)
+    {
+        if (progress < 0) progress = 0;
+        if (progress > 100) progress = 100;
+
+        ProgressBar.GetComponentInChildren<TextMeshProUGUI>().text = new string('█',
+            (int) progress / 10);
+    }
+
+
+    public float GetProgress()
+    {
+        return ProgressBar.GetComponentInChildren<TextMeshProUGUI>().text.Length * 10;
     }
 
     private void HideButton(Button button)
@@ -252,14 +262,12 @@ public class MessageSystem : MonoBehaviour
         tooltips.startMenuText = "";
     }
 
-    public void HideAllText()
+    public void HideAllWindows()
     {
         MessageWindow.SetActive(false);
 
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        for (int i = 0; i < System.Enum.GetValues(typeof(Window)).Length; i++)
+            HideWindow((Window) i);
     }
 
     public void HideWindow(Window window)

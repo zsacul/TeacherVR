@@ -38,21 +38,39 @@ public class TurnOnPC : Events
     //Poprawić optymalizacje! Może na eventach?
     public override void CallInUpdate()
     {
-            u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
-            u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
-            mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
-            mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
+        u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
+        u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
+        mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
+        mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
 
-            if (u1 != null && u2 != null && mu1 != null && mu2 != null)
-            {
-                MonitorRenderer.material = PCOnMaterial;
-                u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-                CompleteEvent();
-            }
-        
+        int progress = 0;
+        if (u1 != null)
+        {
+            progress += 25;
+        }
+        if (u2 != null)
+        {
+            progress += 25;
+        }
+        if (mu1 != null)
+        {
+            progress += 25;
+        }
+        if (mu2 != null)
+        {
+            progress += 25;
+        }
+        SetProgressBar(progress);
+
+        if (u1 != null && u2 != null && mu1 != null && mu2 != null)
+        {
+            u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+            MonitorRenderer.material = PCOnMaterial;
+            CompleteEvent();
+        }
     }
 
     public override void AbortEvent()
@@ -70,6 +88,6 @@ public class TurnOnPC : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-        GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep,PC.transform.position);
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep, PC.transform.position);
     }
 }

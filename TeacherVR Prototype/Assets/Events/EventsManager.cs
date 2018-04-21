@@ -24,7 +24,7 @@ public class EventsManager : MonoBehaviour
     {
         Debug.Log("Start Message");
         GameController.Instance.MessageSystem.ChangeActiveFollower(objectToFollow);
-        GameController.Instance.MessageSystem.ShowCustomText(txt, window, true);
+        GameController.Instance.MessageSystem.ShowCustomText(txt, window);
         StopAllCoroutines();
         StartCoroutine(Hide(time,window));
     }

@@ -62,6 +62,7 @@ public class Events : ScriptableObject
         Debug.Log("Starting " + name);
         status = Status.Progress;
         ShowGoTo();
+        ResetProgressBar();
     }
 
     //Funkcja która przerywa w dowolnym momencie event i przywraca scenę do stanu z przed eventu
@@ -71,6 +72,7 @@ public class Events : ScriptableObject
         status = Status.Abort;
         DestroyGotTo();
         GameController.Instance.MessageSystem.HideAllButtons();
+        ResetProgressBar();
     }
 
     //Funkcja która poprawnie konczy Event
@@ -79,6 +81,7 @@ public class Events : ScriptableObject
         Debug.Log("Complete " + name);
         status = Status.Complete;
         DestroyGotTo();
+        CompleteProgressBar();
     }
 
     public virtual void CallInUpdate()
@@ -116,5 +119,24 @@ public class Events : ScriptableObject
         }
     }
 
+    protected void CompleteProgressBar()
+    {
+        SetProgressBar(100);
+    }
 
+    protected void ResetProgressBar()
+    {
+        SetProgressBar(0);
+    }
+
+    protected void SetProgressBar(float progress)
+    {
+        GameController.Instance.MessageSystem.SetProgressBar(progress);
+    }
+
+    protected void AddProgress(float progress)
+    {
+        GameController.Instance.MessageSystem.SetProgressBar(
+            GameController.Instance.MessageSystem.GetProgress() + progress);
+    }
 }
