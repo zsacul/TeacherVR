@@ -16,22 +16,39 @@ public class AnimationControll : MonoBehaviour {
 	private Animator anim;
 	private Material[] materials;
 	private Material eyeDefault;
+	private Material mouthDefault;
 	private IEnumerator coroutine;
 
     public Material eyeHit;
     public Material eyeDizzy;
+    public Material mouthAwkward;
 
 
 	void Start () {
 		anim = GetComponent<Animator>();
 		materials = GetComponent<Renderer>().materials;
 		eyeDefault = materials[2];
+		mouthDefault = materials[4];
 	}
 
-	private IEnumerator func(string name) {
+
+    private IEnumerator expression_hit(string name) {
+		anim.SetTrigger(name);
+		materials[2] = eyeHit;
+		materials[4] = mouthAwkward;
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    	materials[2] = eyeDefault;
+		materials[4] = mouthDefault;
+    }
+
+    private IEnumerator expression_fear(string name) {
 		anim.SetBool(name, true);
-        yield return new WaitForSeconds(0.5f);
-        anim.SetBool(name, false);
+		materials[2] = eyeHit;
+		materials[4] = mouthAwkward;
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length+anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+    	
     }
 
 	public void Walk(bool state) {
@@ -51,20 +68,31 @@ public class AnimationControll : MonoBehaviour {
 	}
 
 	public void HandThingy() {
-		coroutine = func("HandThingy");
-		StartCoroutine(coroutine);
+		anim.SetTrigger("HandThingy");
 	}
 
 	public void Clap() {
-		coroutine = func("Clap");
-		StartCoroutine(coroutine);
+		anim.SetTrigger("Clap");
+	}
+
+	public void Shake(bool state) {
+		if (state) {
+			coroutine = expression_fear("Fear");
+			StartCoroutine(coroutine);	
+		} else {
+			anim.SetBool("Fear", false);
+			materials[2] = eyeDefault;
+			materials[4] = mouthDefault;
+		}
+		
 	}
 
 	public void Hit() {
-		coroutine = func("Hit");
-		materials[3] = eyeHit;
+		anim.SetBool("Fear", false);
+		coroutine = expression_hit("Hit");
 		StartCoroutine(coroutine);
-		materials[3] = eyeDefault;		
+		materials[2] = eyeDefault;
+		materials[4] = mouthDefault;		
 	}
 	
 	public void Wave() {

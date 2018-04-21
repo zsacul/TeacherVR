@@ -28,4 +28,5 @@ public class GameController : MonoBehaviour
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
+    public StudentsRefs Students;
 }
