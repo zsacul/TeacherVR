@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1041467933381654
 GameObject:
   m_ObjectHideFlags: 1
@@ -787,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterSplash: {fileID: 1687118924408352, guid: 77c69ec12208c4c4380d15e30b6f8f68,
     type: 2}
+  trigger: 1
 --- !u!114 &114272349356900490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -908,7 +909,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1011603248113278}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.031624794
   m_Height: 0.11442463

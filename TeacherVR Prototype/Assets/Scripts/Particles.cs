@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Particles : MonoBehaviour
 {
+    public enum NaszeParticle
+    {
+        OnePoint, TenPoints, HundredPoints, TwoHundredPoints, ThreeHundredPoints
+    };
+
     public GameObject OnePoint;
 
     public void CreateOnePoint(Vector3 transform, float rotation)
