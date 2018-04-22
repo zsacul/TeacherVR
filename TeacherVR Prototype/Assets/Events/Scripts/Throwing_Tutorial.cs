@@ -26,6 +26,7 @@ public class Throwing_Tutorial : Events
         chalk_throw_tutorial_point = chalk.transform.Find("Chalk_Grab_Tutorial_Point").gameObject;
         chalk_throw_tutorial_point.SetActive(true);
         script = chalk_throw_tutorial_point.GetComponent<Tutorial_Point_Anim_Control>();
+        act.Restart();
         activate();
 
     }
@@ -50,6 +51,22 @@ public class Throwing_Tutorial : Events
     {   
         script.Kill();
         base.AbortEvent();
+        if (Lvl == 1)
+        {
+            act.throwRowAbort(1, true);
+            act.throwRowAbort(1, false);
+        }
+        else if (Lvl == 2)
+        {
+            act.throwRowAbort(2, true);
+            act.throwRowAbort(2, false);
+        }
+        else
+        {
+            act.throwRowAbort(3, true);
+            act.throwRowAbort(4, false);
+            act.throwRowAbort(3, false);
+        }
     }
 
 

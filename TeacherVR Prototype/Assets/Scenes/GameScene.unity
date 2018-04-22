@@ -7710,84 +7710,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118817119}
   m_Mesh: {fileID: 4300000, guid: adf0082d85d9199479fb8cb71ce8b637, type: 3}
---- !u!1001 &1132561444
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 5.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 1.149144
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 8.576784
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.000000014901165
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.00000005960466
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0.00000006705524
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815194152352266, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1195188733080370, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_Name
-      value: GrabAnim
-      objectReference: {fileID: 0}
-    - target: {fileID: 1424177902585506, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_Name
-      value: Chalk_Grab_Tutorial_Point
-      objectReference: {fileID: 0}
-    - target: {fileID: 95835923073303308, guid: 3967592c28e77f74e91153175a53b460,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 79cdbcf7fc72daf4f8db10ef3f8d83fb, type: 2}
-    - target: {fileID: 212919613588006086, guid: 3967592c28e77f74e91153175a53b460,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2c31d25783775574d9b19784b8152419,
-        type: 3}
-    - target: {fileID: 4184054800598510, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184054800598510, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184054800598510, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114868647887260810, guid: 3967592c28e77f74e91153175a53b460,
-        type: 2}
-      propertyPath: act
-      value: 
-      objectReference: {fileID: 475333182}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 3967592c28e77f74e91153175a53b460, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1134357325
 GameObject:
   m_ObjectHideFlags: 0
@@ -7988,7 +7910,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4951210787146780, guid: c52cd7a0773560744bc3a2835bb623a2, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c52cd7a0773560744bc3a2835bb623a2, type: 2}
