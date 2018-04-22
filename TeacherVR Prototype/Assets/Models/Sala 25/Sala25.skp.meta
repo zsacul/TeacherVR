@@ -80,7 +80,67 @@ SketchUpImporter:
     4300006: Mesh Room
     4300008: Mesh Room
     4300010: Mesh Room2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet_dark
+    second: {fileID: 2100000, guid: 35ef5688a7bbb3c4a91fb51a68bd081a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carpet_light
+    second: {fileID: 2100000, guid: 4ab42e341f4736d439e12869f0be4d9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Ceg\u0142y"
+    second: {fileID: 2100000, guid: 1ce42c8f6d53f8d48a44b2acf36c301f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color M07]'
+    second: {fileID: 2100000, guid: 33d3c500eb2a6ef429155742c0fa737d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color M08]'
+    second: {fileID: 2100000, guid: 2b0588096c3f19248a298b6f2aa49a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Concrete Block 8x8 Gray]'
+    second: {fileID: 2100000, guid: dbe7bd3e84b70774ab35ad1b79f7b89b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Quartz Light Grey]'
+    second: {fileID: 2100000, guid: ba44b8846c5df324b8f34d1e73768fe6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Quartz Light Grey]1'
+    second: {fileID: 2100000, guid: 4243bfa8a18acfe459e995cf5dbf9bc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Translucent Glass Blue]'
+    second: {fileID: 2100000, guid: 3adfe6a4ebedaa340a8f8dda2037b437, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Translucent Glass Gray]'
+    second: {fileID: 2100000, guid: d7d2a90a44d0a2d4c969b0c180c3b2e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _2
+    second: {fileID: 2100000, guid: a5366587ca9162e41877fade4f5ad803, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _defaultMat
+    second: {fileID: 2100000, guid: 20644f6346722ed41a41ff434b7cc78a, type: 2}
   materials:
     importMaterials: 1
     materialName: 2
@@ -118,7 +178,7 @@ SketchUpImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
