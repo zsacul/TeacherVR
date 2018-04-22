@@ -20,7 +20,8 @@ public class Chalk_Hit : MonoBehaviour
         if (tag == "Chalk" || tag == "Water")
         {
             script.Hit();
-            if (tag == "Chalk" && GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" && tutorial_point_user.gameObject.activeSelf)
+            if (tag == "Chalk" && GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
+                tutorial_point_user.gameObject.activeSelf && !tutorial_point_user.GetCorutineStatus())
             {
                 GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.TwoHundredPoints,
                     transform.position + Vector3.up);

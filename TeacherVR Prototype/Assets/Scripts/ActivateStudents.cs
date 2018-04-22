@@ -25,6 +25,7 @@ public class ActivateStudents : MonoBehaviour
     public void Killed()
     {
         targetsKilled++;
+        GameController.Instance.MessageSystem.SetProgressBar((float) targetsKilled / targetsNum * 100);
         Debug.Log(targetsNum);
         Debug.Log(targetsKilled);
     }
@@ -147,7 +148,7 @@ public class ActivateStudents : MonoBehaviour
             if (lr)
             {
                 throwActive(fourthlRow);
-            } 
+            }
         }
     }
 }
