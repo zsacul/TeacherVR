@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Drawing Triangle
   description: Draw triangle
-  status: 1
+  status: 2
   Lvl: 0
   MediumLvl: 0
   DeviationLvlRange: 0
@@ -23,9 +23,9 @@ MonoBehaviour:
     type: 2}
   Board: 2
   TemplateShape:
-  - {x: -0.15, y: 0.1}
-  - {x: 0.05, y: 0.4}
-  - {x: 0.15, y: 0.1}
-  - {x: -0.13, y: 0.1}
+  - {x: 0.2, y: 0.6}
+  - {x: 0.4, y: 0.9}
+  - {x: 0.6, y: 0.6}
+  - {x: 0.23, y: 0.6}
   Chalk_Tutorial_Point: {fileID: 1990725314350498, guid: 924ac6184152e6546b627d4833298476,
     type: 2}
