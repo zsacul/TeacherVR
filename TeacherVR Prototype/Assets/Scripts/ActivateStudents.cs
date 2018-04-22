@@ -19,7 +19,7 @@ public class ActivateStudents : MonoBehaviour {
 
 	void Update()
     {
-        if (targetsKilled == targetsNum) allKilled = true;
+        if (targetsNum != 0 && targetsKilled == targetsNum) allKilled = true;
     }
 
     public void Killed()

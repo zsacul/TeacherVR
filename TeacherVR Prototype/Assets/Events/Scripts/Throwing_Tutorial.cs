@@ -23,7 +23,7 @@ public class Throwing_Tutorial : Events
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         //tc = targets.GetComponent<Target_Control>();
         act = targets.GetComponent<ActivateStudents>();
-        chalk_throw_tutorial_point = chalk.transform.Find("Chalk_Throw_Tutorial_Point").gameObject;
+        chalk_throw_tutorial_point = chalk.transform.Find("Chalk_Grab_Tutorial_Point").gameObject;
         chalk_throw_tutorial_point.SetActive(true);
         script = chalk_throw_tutorial_point.GetComponent<Tutorial_Point_Anim_Control>();
         activate();

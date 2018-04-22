@@ -8,12 +8,13 @@ public class Chalk_Hit : MonoBehaviour
     private int hits = 0;
     private AnimationControll script;
 
-    public Tutorial_Point_Anim_Control tutorial_point_user;
+    private Tutorial_Point_Anim_Control tutorial_point_user;
 
     void Start()
     {
         rend = transform.GetComponent<Renderer>();
         script = gameObject.GetComponent<AnimationControll>();
+        tutorial_point_user = transform.parent.parent.Find("Chalk_Throw_Tutorial_Point").GetComponent<Tutorial_Point_Anim_Control>();
     }
 
     void OnCollisionEnter(Collision other)
