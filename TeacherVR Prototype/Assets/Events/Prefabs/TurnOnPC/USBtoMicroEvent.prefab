@@ -777,7 +777,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxRange: 3
   OverMaxRangeAction: 2
-  UseParticle: 1
+  UseWrongParticle: 1
+  SnapDropZone:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   End: {fileID: 4639256766705276}
 --- !u!114 &114682589143985296
 MonoBehaviour:

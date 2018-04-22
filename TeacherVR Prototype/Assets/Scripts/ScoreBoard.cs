@@ -102,7 +102,7 @@ public class ScoreBoard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*/ KLAWISZE TYLKO DO TESTÓW!
+        /*/ /* KLAWISZE TYLKO DO TESTÓW!
         if (Input.GetKeyDown(KeyCode.P))
         {
             ParticleSystem.GetComponent<Particles>().CreateOnePoint(Where.transform.position, 0f);
@@ -110,6 +110,7 @@ public class ScoreBoard : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
+            ParticleSystem.GetComponent<Particles>().CreateParticle(Particles.NaszeParticle.HundredPoints, Where.transform.position);
             PointsAddAnim(10);
         }
         if (Input.GetKeyDown(KeyCode.L))
@@ -120,7 +121,7 @@ public class ScoreBoard : MonoBehaviour
         {
             ChangeTime(1,59);
         }
-        */
+        //*/
     }
 
     // Dodawanie punktów bez animacji

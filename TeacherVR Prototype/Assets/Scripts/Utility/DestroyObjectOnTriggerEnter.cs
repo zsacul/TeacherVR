@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyObjectOnTriggerEnter : MonoBehaviour
 {
-    public string tag;
+    public string[] tag;
     public bool DestroyObjectsEvent = true;
 
     private GameController gameController;
@@ -16,23 +16,18 @@ public class DestroyObjectOnTriggerEnter : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.tag.Equals(tag))
+        foreach (var str in tag)
         {
-            if (DestroyObjectsEvent)
+            if (col.tag.Equals(str))
             {
-                gameController.SoundManager.Play3DAt(SamplesList.WaterSplash, transform);
-                gameController.Particles.CreateOnePoint(transform.position, 0);
-                gameController.ScoreBoard.PointsAdd(100);
+                if (DestroyObjectsEvent)
+                {
+                    gameController.SoundManager.Play2D(SamplesList.Correct,0.1f);
+                    gameController.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,transform.position);
+                    gameController.ScoreBoard.PointsAddAnim(50);
+                }
+                Destroy(transform.root.gameObject);
             }
-            Destroy(transform.root.gameObject);
-        }
-    }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (col.tag.Equals(tag))
-        {
-            if (!DestroyObjectsEvent) Destroy(transform.root.gameObject);
         }
     }
 }

@@ -41,7 +41,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         if (GameController.Instance.DrawingManager.RysObject != null)
             chalkPointer = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK_Pointer>();
         else return;
-        ChalkColor = GameController.Instance.ChalkColor;
+        ChalkColor = GameController.Instance.DrawingManager.ChalkColor;
         if (GameController.Instance.DrawingManager.RysObject.tag.Equals("Sponge"))
         {
             cursorPaint = SpongeSprite;

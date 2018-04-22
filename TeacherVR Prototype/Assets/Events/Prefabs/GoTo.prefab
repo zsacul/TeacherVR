@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3c188291feb5641a85f9953a9354df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tag: RController
+  tag:
+  - LController
+  - RController
   DestroyObjectsEvent: 0
 --- !u!135 &135434482901826458
 SphereCollider:

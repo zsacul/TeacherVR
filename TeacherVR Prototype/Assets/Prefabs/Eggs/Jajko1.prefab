@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95930354236411412}
   - component: {fileID: 136158573425961208}
   - component: {fileID: 114562487565019412}
+  - component: {fileID: 114851557506865052}
   m_Layer: 0
   m_Name: jajko02
   m_TagString: Untagged
@@ -103,22 +104,22 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888616347076542}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21249434, y: -0.017227475, z: 0.09484459}
-  m_LocalScale: {x: 0.2500468, y: 0.2500468, z: 0.17615458}
+  m_LocalRotation: {x: 0, y: -0.40673664, z: 0, w: 0.9135455}
+  m_LocalPosition: {x: -0.162, y: -0.017, z: 0.0751}
+  m_LocalScale: {x: 0.19, y: 0.19, z: 0.17615458}
   m_Children: []
   m_Father: {fileID: 4913096426442374}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -11.262696, y: -18.6423, z: 70.81958}
 --- !u!4 &4167889644124474
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843757286852168}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.351604, y: 33.522686, z: 30.228165}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.21102457, y: -0.577201, z: 0.1575795, w: 0.772966}
+  m_LocalPosition: {x: -3.6451705, y: -0.340842, z: 15.252875}
+  m_LocalScale: {x: 0.7878485, y: 0.7926352, z: 0.44983384}
   m_Children:
   - {fileID: 4913096426442374}
   m_Father: {fileID: 0}
@@ -130,13 +131,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601416426711956}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.21249434, y: -0.017227475, z: 0.09484459}
-  m_LocalScale: {x: 0.2500468, y: 0.2500468, z: 0.17615458}
+  m_LocalRotation: {x: 0, y: 0.40673664, z: 0, w: 0.9135455}
+  m_LocalPosition: {x: 0.167, y: -0.017, z: 0.0765}
+  m_LocalScale: {x: 0.19, y: 0.19, z: 0.17615458}
   m_Children: []
   m_Father: {fileID: 4913096426442374}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -32.51761, y: 108.549576, z: -95.68443}
 --- !u!4 &4809047595080994
 Transform:
   m_ObjectHideFlags: 1
@@ -165,7 +166,7 @@ Transform:
   - {fileID: 4809047595080994}
   m_Father: {fileID: 4167889644124474}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -74.11178, y: 14.666702, z: -15.206197}
+  m_LocalEulerAnglesHint: {x: -82.68689, y: -24.705097, z: 24.971594}
 --- !u!23 &23130121826346326
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -249,8 +250,8 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 0a6939eadfea75e48826993bd63f331c, type: 2}
+  - {fileID: 2100000, guid: 417d1322071f048468e0edef5989b343, type: 2}
   - {fileID: 2100000, guid: 6460bd0ab4ccc7c49b4cc662f872e33a, type: 2}
-  - {fileID: 2100000, guid: dd034d74a2eba7544a33e44ad93deaa3, type: 2}
   - {fileID: 2100000, guid: 65933c44effa30040aad3e23f602645f, type: 2}
   - {fileID: 2100000, guid: acb3402335080ed468152951bab7084a, type: 2}
   m_StaticBatchInfo:
@@ -343,7 +344,7 @@ Animator:
   m_GameObject: {fileID: 1492105637625576}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b89a27e29c5e6284299e56fe07e3a3d4, type: 3}
-  m_Controller: {fileID: 9100000, guid: e5063617bda033648b0a44a814e96194, type: 2}
+  m_Controller: {fileID: 9100000, guid: eb84fbb675b4579458698320e7c14b95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -362,6 +363,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf676074fa2bf4084a3254e3760865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114851557506865052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492105637625576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35868a5e7435e45469042bb044232876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeHit: {fileID: 2100000, guid: 7db6f14b38767db46bf3f53844a0fd45, type: 2}
+  eyeDizzy: {fileID: 0}
+  mouthAwkward: {fileID: 2100000, guid: c789414e4a410294793e63fb9c4c4ae2, type: 2}
 --- !u!136 &136158573425961208
 CapsuleCollider:
   m_ObjectHideFlags: 1

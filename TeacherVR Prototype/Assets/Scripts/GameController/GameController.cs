@@ -16,17 +16,23 @@ public class GameController : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(Instance);
     }
 
     #endregion
-
     public EventsManager EventsManager;
     public DrawingManager DrawingManager;
     public bool Tooltips = true;
-    public Color ChalkColor;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
     public MicInput MicInput;
+    public StudentsRefs Students;
+    
+    public void changeTooltips()
+    {
+        if (Tooltips) Tooltips = false;
+        else Tooltips = true;
+    }
 }

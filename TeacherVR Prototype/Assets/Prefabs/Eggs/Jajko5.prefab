@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95813303191192290}
   - component: {fileID: 136687466734765628}
   - component: {fileID: 114190981766759058}
+  - component: {fileID: 114366948135800868}
   m_Layer: 0
   m_Name: jajko02
   m_TagString: Untagged
@@ -132,9 +133,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350405572401660}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.711605, y: 33.522686, z: 34.258167}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.21102457, y: -0.577201, z: 0.1575795, w: 0.772966}
+  m_LocalPosition: {x: -3.115478, y: 0.4548017, z: 16.518847}
+  m_LocalScale: {x: 0.7681523, y: 0.78272724, z: 0.4302758}
   m_Children:
   - {fileID: 4483366353397266}
   m_Father: {fileID: 0}
@@ -343,7 +344,7 @@ Animator:
   m_GameObject: {fileID: 1321383828401490}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b89a27e29c5e6284299e56fe07e3a3d4, type: 3}
-  m_Controller: {fileID: 9100000, guid: e5063617bda033648b0a44a814e96194, type: 2}
+  m_Controller: {fileID: 9100000, guid: eb84fbb675b4579458698320e7c14b95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -362,6 +363,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bf676074fa2bf4084a3254e3760865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114366948135800868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1321383828401490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35868a5e7435e45469042bb044232876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eyeHit: {fileID: 2100000, guid: 7db6f14b38767db46bf3f53844a0fd45, type: 2}
+  eyeDizzy: {fileID: 0}
+  mouthAwkward: {fileID: 2100000, guid: c789414e4a410294793e63fb9c4c4ae2, type: 2}
 --- !u!136 &136687466734765628
 CapsuleCollider:
   m_ObjectHideFlags: 1
