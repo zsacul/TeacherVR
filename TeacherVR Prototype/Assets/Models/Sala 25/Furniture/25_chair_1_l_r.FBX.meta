@@ -3,7 +3,7 @@ guid: adf0082d85d9199479fb8cb71ce8b637
 timeCreated: 1522360251
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
     100002: chair/table_02 l
@@ -34,47 +34,10 @@ ModelImporter:
     4300002: chair/table_02 r
     4300004: chair/table_02 r part
     4300006: chair/table_02 l
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: black_rubber
-    second: {fileID: 2100000, guid: b93a1d5feb181404d8fab55d4e841b71, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: chair_02
-    second: {fileID: 2100000, guid: 25ae079bef4fec6409b60a42e40f01d2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey
-    second: {fileID: 2100000, guid: af27d1d42f1c362439ad6db15b523428, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey_metal_01
-    second: {fileID: 2100000, guid: 88fc120de59fa274da9eeb0e9e810501, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: grey_metal_02
-    second: {fileID: 2100000, guid: 8291f2de098b2b348a660dc6ddb9177a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: rust
-    second: {fileID: 2100000, guid: 1ca0cb6c4a833cd43b081f239b892100, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: table_01
-    second: {fileID: 2100000, guid: 62023804fa436ac4c881bd250080edae, type: 2}
   materials:
     importMaterials: 1
-    materialName: 0
+    materialName: 2
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -87,7 +50,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -112,8 +74,6 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    preserveHierarchy: 0
-    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
