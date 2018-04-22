@@ -29,11 +29,19 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     int brushCounter = 0, MAX_BRUSH_COUNT = 1000; //To avoid having millions of brushes
     bool saving = false; //Flag to check if we are saving the texture
     private Vector3 lastPoint;
+    private bool wasZero = false;
     GameObject brushObj;
 
     public Vector3 GetLastPoint()
     {
         return lastPoint;
+    }
+
+    public bool GetWasZero()
+    {
+        bool tmp = wasZero;
+        wasZero = false;
+        return tmp;
     }
 
     void Update()
@@ -134,6 +142,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
             return true;
         }
         lastPoint = Vector3.zero;
+        wasZero = true;
         return false;
     }
 

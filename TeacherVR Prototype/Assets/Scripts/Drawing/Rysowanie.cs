@@ -15,7 +15,7 @@ public class Rysowanie : MonoBehaviour
     private List<Vector2> Points = new List<Vector2>();
     public VRTK_Senello_TexturePainter Paint;
     private Color chalkColor;
-
+    private bool first = false;
     private float lastWrong;
 
     float DistanceFromLine(Vector2 start, Vector2 end, Vector2 point)
@@ -35,6 +35,7 @@ public class Rysowanie : MonoBehaviour
 
     void OnEnable()
     {
+        first = true;
         lastWrong = Time.time;
         currentTarget = 0;
         comboCounter = 0;
@@ -44,7 +45,7 @@ public class Rysowanie : MonoBehaviour
         pointThicknessAccept = GameController.Instance.DrawingManager.pointThicknessAccept;
         chalkColor = GameController.Instance.DrawingManager.ChalkColor;
         TemplateShape = GameController.Instance.DrawingManager.TemplateShape;
-        
+
         Points.Clear();
 
         for (int i = 0; i < TemplateShape.GetLength(0); i++)
@@ -52,9 +53,10 @@ public class Rysowanie : MonoBehaviour
             Points.Add(Paint.DrawPoint(new Vector3(TemplateShape[i].x, TemplateShape[i].y, 0.02f), pointThickness,
                 Color.red));
         }
-        for (int i = 0; i < Points.Count-1; i++)
+        for (int i = 0; i < Points.Count - 1; i++)
         {
-            Paint.DrawLine(new Vector3(Points[i].x, Points[i].y,3f), new Vector3(Points[i+1].x, Points[i+1].y, 3f), templateThickness, Color.white);
+            Paint.DrawLine(new Vector3(Points[i].x, Points[i].y, 3f), new Vector3(Points[i + 1].x, Points[i + 1].y, 3f),
+                templateThickness, Color.white);
         }
 
         if (TemplateShape.GetLength(0) >= 2)
@@ -98,8 +100,8 @@ public class Rysowanie : MonoBehaviour
         //Check against the template only if it exists
         if (TemplateShape.GetLength(0) > 1)
         {
-            if (pixelUV == Vector2.zero || currentTarget != 0 && DistanceFromLine(
-                    Points[currentTarget-1], Points[currentTarget], pixelUV) >
+            if (Paint.GetWasZero() && !first || currentTarget != 0 && DistanceFromLine(
+                    Points[currentTarget - 1], Points[currentTarget], pixelUV) >
                 templateThicknessAccept)
             {
                 //Player made a mistake
@@ -142,6 +144,7 @@ public class Rysowanie : MonoBehaviour
                 else
                 {
                     Debug.Log("Good job! Combo: " + comboCounter);
+                    first = false;
                     currentTarget++;
                     Paint.DrawPoint(new Vector3(TemplateShape[currentTarget].x, TemplateShape[currentTarget].y, 0.01f),
                         pointThickness,
