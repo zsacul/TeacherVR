@@ -68,13 +68,13 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         lineRenderer.material.SetColor("_EmissionColor", col);
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
-        lineRenderer.widthMultiplier = thickness / 10;
+        lineRenderer.widthMultiplier = thickness/2;
 
         line.transform.parent = brushContainer.transform;
         line.transform.position = start;
     }
 
-    public void DrawPoint(Vector3 uvWorldPosition, float size, Color color)
+    public Vector3 DrawPoint(Vector3 uvWorldPosition, float size, Color color)
     {
         //brushColor.a = brushSize * 2.0f; // Brushes have alpha to have a merging effect when painted over.
         brushObj = (GameObject) Instantiate(Resources.Load("TexturePainter-Instances/BrushEntity")); //Paint a brush
@@ -84,6 +84,8 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         brushObj.transform.parent = brushContainer.transform; //Add the brush to our container to be wiped later
         brushObj.transform.localPosition = uvWorldPosition; //The position of the brush (in the UVMap)
         brushObj.transform.localScale = Vector3.one * size; //The size of the brush
+
+        return brushObj.transform.position;
     }
 
     //The main action, instantiates a brush or decal entity at the clicked position on the UV map
@@ -126,8 +128,8 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
             if (meshCollider == null || meshCollider.sharedMesh == null)
                 return false;
             Vector2 pixelUV = new Vector2(hit.textureCoord.x, hit.textureCoord.y);
-            uvWorldPosition.x = pixelUV.x - canvasCam.orthographicSize; //To center the UV on X
-            uvWorldPosition.y = pixelUV.y - canvasCam.orthographicSize; //To center the UV on Y
+            uvWorldPosition.x = pixelUV.x; // - canvasCam.orthographicSize; //To center the UV on X
+            uvWorldPosition.y = pixelUV.y; // - canvasCam.orthographicSize; //To center the UV on Y
             uvWorldPosition.z = 0.0f;
             return true;
         }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Drawing sum
   description: Draw sum symbol
-  status: 2
+  status: 1
   Lvl: 0
   MediumLvl: 0
   DeviationLvlRange: 0
@@ -23,10 +23,10 @@ MonoBehaviour:
     type: 2}
   Board: 5
   TemplateShape:
-  - {x: 0.15, y: 0.4}
-  - {x: -0.15, y: 0.4}
-  - {x: 0.15, y: 0.25}
-  - {x: -0.15, y: 0.1}
-  - {x: 0.15, y: 0.1}
+  - {x: 0.7, y: 0.9}
+  - {x: 0.4, y: 0.9}
+  - {x: 0.6, y: 0.75}
+  - {x: 0.4, y: 0.6}
+  - {x: 0.7, y: 0.6}
   Chalk_Tutorial_Point: {fileID: 1990725314350498, guid: 924ac6184152e6546b627d4833298476,
     type: 2}

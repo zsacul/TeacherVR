@@ -12,10 +12,9 @@ public class Rysowanie : MonoBehaviour
     private int currentTarget = 0;
     private int comboCounter = 0;
     private Vector2[] TemplateShape;
+    private List<Vector2> Points = new List<Vector2>();
     public VRTK_Senello_TexturePainter Paint;
     private Color chalkColor;
-    private Vector3 brushLocation;
-    private Vector2 brushLocation2;
 
     private float lastWrong;
 
@@ -45,20 +44,22 @@ public class Rysowanie : MonoBehaviour
         pointThicknessAccept = GameController.Instance.DrawingManager.pointThicknessAccept;
         chalkColor = GameController.Instance.DrawingManager.ChalkColor;
         TemplateShape = GameController.Instance.DrawingManager.TemplateShape;
-        brushLocation = Paint.brushContainer.transform.position;
-        brushLocation2 = new Vector2(brushLocation.x, brushLocation.y);
+        
+        Points.Clear();
 
         for (int i = 0; i < TemplateShape.GetLength(0); i++)
         {
-            if (i < TemplateShape.GetLength(0) - 1)
-                Paint.DrawLine(brushLocation2 + TemplateShape[i], brushLocation2 + TemplateShape[i + 1],
-                    templateThickness, Color.white);
-            Paint.DrawPoint(new Vector3(TemplateShape[i].x, TemplateShape[i].y, -0.01f), pointThickness,
-                Color.red);
+            Points.Add(Paint.DrawPoint(new Vector3(TemplateShape[i].x, TemplateShape[i].y, 0.02f), pointThickness,
+                Color.red));
         }
+        for (int i = 0; i < Points.Count-1; i++)
+        {
+            Paint.DrawLine(new Vector3(Points[i].x, Points[i].y,3f), new Vector3(Points[i+1].x, Points[i+1].y, 3f), templateThickness, Color.white);
+        }
+
         if (TemplateShape.GetLength(0) >= 2)
         {
-            Paint.DrawPoint(new Vector3(TemplateShape[0].x, TemplateShape[0].y, -0.02f), pointThickness,
+            Paint.DrawPoint(new Vector3(TemplateShape[0].x, TemplateShape[0].y, 0.01f), pointThickness,
                 Color.green);
         }
     }
@@ -98,8 +99,7 @@ public class Rysowanie : MonoBehaviour
         if (TemplateShape.GetLength(0) > 1)
         {
             if (pixelUV == Vector2.zero || currentTarget != 0 && DistanceFromLine(
-                    brushLocation2 + TemplateShape[currentTarget - 1],
-                    brushLocation2 + TemplateShape[currentTarget], pixelUV) >
+                    Points[currentTarget-1], Points[currentTarget], pixelUV) >
                 templateThicknessAccept)
             {
                 //Player made a mistake
@@ -116,18 +116,19 @@ public class Rysowanie : MonoBehaviour
                 }
             }
 
-            if (DistanceFromLine(brushLocation2 + TemplateShape[currentTarget],
-                    brushLocation2 + TemplateShape[currentTarget], pixelUV) <=
+            if (DistanceFromLine(Points[currentTarget], Points[currentTarget], pixelUV) <=
                 pointThicknessAccept)
             {
                 comboCounter++;
                 //Player reached a checkpoint
                 GameController.Instance.ScoreBoard.PointsAddAnim(100 * comboCounter);
 
-                if (comboCounter == 1) GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                    GameController.Instance.DrawingManager.RysObject.transform.position);
-                else GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
-                    GameController.Instance.DrawingManager.RysObject.transform.position);
+                if (comboCounter == 1)
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
+                        GameController.Instance.DrawingManager.RysObject.transform.position);
+                else
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
+                        GameController.Instance.DrawingManager.RysObject.transform.position);
 
                 GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct,
                     GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
@@ -137,13 +138,12 @@ public class Rysowanie : MonoBehaviour
                     Debug.Log("You finished the shape! Combo: " + comboCounter);
                     GameController.Instance.MessageSystem.SetProgressBar(100);
                     gameInProgress = false;
-                    
                 }
                 else
                 {
                     Debug.Log("Good job! Combo: " + comboCounter);
                     currentTarget++;
-                    Paint.DrawPoint(new Vector3(TemplateShape[currentTarget].x, TemplateShape[currentTarget].y, -0.02f),
+                    Paint.DrawPoint(new Vector3(TemplateShape[currentTarget].x, TemplateShape[currentTarget].y, 0.01f),
                         pointThickness,
                         Color.green);
                     GameController.Instance.MessageSystem.SetProgressBar(
@@ -152,7 +152,8 @@ public class Rysowanie : MonoBehaviour
             }
         }
 
-        if (mistake || currentTarget == 0 || !gameInProgress) GameController.Instance.DrawingManager.ChalkColor = chalkColor;
+        if (mistake || currentTarget == 0 || !gameInProgress)
+            GameController.Instance.DrawingManager.ChalkColor = chalkColor;
         else GameController.Instance.DrawingManager.ChalkColor = Color.grey;
     }
 }
