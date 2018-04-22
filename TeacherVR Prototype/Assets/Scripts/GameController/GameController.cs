@@ -27,8 +27,8 @@ public class GameController : MonoBehaviour
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
+    public MicInput MicInput;
     public StudentsRefs Students;
-
     
     public void changeTooltips()
     {

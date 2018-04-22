@@ -9,12 +9,12 @@ public class ButtonTouch : MonoBehaviour {
     public bool showing;
     private Color color;
     private static int index = 1;
-    public AudioClip sound;
-
+    private Animator animator;
     private void Start()
     {
         
         color = gameObject.GetComponent<MeshRenderer>().material.color;
+        animator = gameObject.GetComponent<Animator>();
         pressed = false;
         showing = false;
         setId();
@@ -30,15 +30,31 @@ public class ButtonTouch : MonoBehaviour {
     {
         gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         pressed = true;
-        Sajmon.aSource.clip = sound;
-        Sajmon.aSource.Play();
+        // Sajmon.aSource.clip = sound;
+        //   Sajmon.aSource.Play();
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.Pop,gameObject.transform);
+        //Animation anim = gameObject.GetComponent<Animation>();
+        Animator animator = gameObject.GetComponent<Animator>();
+ 
         if (!showing)
         {
+            if (animator != null)
+                animator.SetBool(getAnimId(), true);
             Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);
             index *= 10;
             Sajmon.needToCheck = true;
+            Invoke("StopAnim", 1f);
         }
+        //   if (animator != null)
+        //       animator.SetBool("Anim", false//);
+
+
         Invoke("UnpushButton", 1.5f);
+    }
+    void StopAnim()
+    {
+          if (animator != null)
+               animator.SetBool(getAnimId(), false);
     }
     void UnpushButton()
     {
@@ -46,7 +62,16 @@ public class ButtonTouch : MonoBehaviour {
         gameObject.GetComponent<MeshRenderer>().material.color = color;
         pressed = false;
     }
-
+    string getAnimId()
+    {
+        if (id == 1)
+            return "AnimB";
+        if (id == 2)
+            return "AnimY";
+        if (id == 3)
+            return "AnimR";
+        return "AnimG";
+    }
     void setId()
     {
         switch(gameObject.name)

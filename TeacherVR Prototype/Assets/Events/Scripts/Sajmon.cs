@@ -12,7 +12,7 @@ public class Sajmon : Events
 
     private Renderer MonitorRenderer;
 
-    public static AudioSource aSource;
+   // public static AudioSource aSource;
 
     public int sequence;
     private int buffor;
@@ -28,22 +28,25 @@ public class Sajmon : Events
 
     int played; // -1 czeka na interakcję, 0 not shown, 1 showing, 2 shown
 
+    float progress;
+
     public override void StartEvent()
     {
         base.StartEvent();
 
         PC = GameObject.FindGameObjectWithTag("PCEvent");
-
+        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<MeshRenderer>();
         color = MonitorRenderer.material.color;
         MonitorRenderer.material.color = Color.red;
         Buttons = Instantiate(ButtonsPrefab);
-        aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
+       // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
         GenerateSequence(Lvl);
         buffor = sequence;
         _time = Time.time;
         played = -1;
+        progress = 0;
     }
 
     public override void CallInUpdate()
@@ -98,7 +101,21 @@ public class Sajmon : Events
                     if (!(seq[seq.Length - pseq.Length].Equals(pseq[0])))
                     {
                         Debug.Log("You've failed");
-                        AbortEvent();
+                        //tutaj wywołaj particle wrong
+                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
+                        PlayerSequence = 0;
+                        ButtonTouch.resetIndex();
+                        played = 0;
+                        buffor = sequence;
+                        progress = 0;
+
+                    }
+                    else
+                    {
+                        //tutaj wywołaj particle good 
+                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
+                        progress += 100 / seq.Length;
+                        SetProgressBar(progress);
                     }
                 }
             }
