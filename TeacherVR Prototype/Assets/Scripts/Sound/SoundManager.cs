@@ -27,6 +27,7 @@ public class SoundManager : MonoBehaviour {
     // since otherwise GetComponent<> would be called every time we want to play something.
     // Public but hidden in inspector, since they will be overwritten 
 
+
     public GameObject ACSource;
     public GameObject LightSource;
 
@@ -39,8 +40,36 @@ public class SoundManager : MonoBehaviour {
 
     #endregion
 
+    // TopDoor:
+    // SOpen() - play opening sound
+    // SClose() - play closing (bang) sound
+
+    #region LeftScreen
+
+    public GameObject LeftScreenSource;
+
+    [HideInInspector]
+    public ScreenScript LeftScreen;
+
+    #endregion
+
+    #region RightScreen
+
+    public GameObject RightScreenSource;
+
+    [HideInInspector]
+    public ScreenScript RightScreen;
+
+    #endregion
+
+    // *Screen:
+    // SLower() - play sound of lowering the screen
+    // SRaise() - play sound of raising the screen
+
 
     // ---------------------------------------------------------------------
+
+
     // Raw AudioClips which are used to play one-shot samples in the scene
     // Only generic (with no static location) samples are listed here
     // Static meaning static 3D location or a script attached to a persistent game object
@@ -207,9 +236,14 @@ public class SoundManager : MonoBehaviour {
         }
 
         TopDoor = TopDoorSource.GetComponent<TopDoorScript>();
+
+        LeftScreen = LeftScreenSource.GetComponent<ScreenScript>();
+        RightScreen = RightScreenSource.GetComponent<ScreenScript>();
     }
 	
 	// No need for this
-	void Update () {		
+	void Update () {
+        if (Input.GetKey(KeyCode.J))
+            LeftScreen.SRaise();
 	}
 }
