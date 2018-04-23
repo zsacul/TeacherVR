@@ -66,6 +66,9 @@ public class SoundManager : MonoBehaviour {
     private List<GameObject> _SfxParticlesPool;
     private int _FreshPoolInd = 0;
 
+    // ---------------------------------------------------------------------
+
+
     public AudioClip ClipFromEnum(SamplesList en)
     {
         switch (en)
@@ -175,6 +178,16 @@ public class SoundManager : MonoBehaviour {
     public void SetACVolume(float x)
     {
         ACSource.GetComponent<AudioSource>().volume = x;
+    }
+
+    public static void SetGlobalVolume(float x)
+    {
+        AudioListener.volume = x;
+    }
+
+    public static float GetGlobalVolume(float x)
+    {
+        return AudioListener.volume;
     }
 
 
