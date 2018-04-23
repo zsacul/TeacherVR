@@ -40,7 +40,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
             sign *= -1;
             count++;
             GameObject instantiate =
-                Instantiate(obj, HandTransform.position + HandTransform.forward / 4, HandTransform.rotation);
+                Instantiate(obj, HandTransform.position + HandTransform.forward / 8, HandTransform.rotation);
             float correct = 0;
             if (Objects.Length % 2 == 0) correct = angle / 2;
             instantiate.transform.RotateAround(HandTransform.position, HandTransform.up,
