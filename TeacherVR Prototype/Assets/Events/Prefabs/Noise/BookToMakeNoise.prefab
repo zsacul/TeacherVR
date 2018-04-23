@@ -22,12 +22,13 @@ GameObject:
   - component: {fileID: 33448761782007014}
   - component: {fileID: 23971428290432316}
   - component: {fileID: 114518911219618306}
-  - component: {fileID: 114225912642004164}
+  - component: {fileID: 114208267771660284}
   - component: {fileID: 114249246319834382}
   - component: {fileID: 54999838577414670}
   - component: {fileID: 114772101003303656}
   - component: {fileID: 114745444407406292}
   - component: {fileID: 65420751256484872}
+  - component: {fileID: 114245579907138398}
   m_Layer: 0
   m_Name: BookToMakeNoise
   m_TagString: Untagged
@@ -116,7 +117,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.81446534, y: 0.65069085, z: 0.16839616}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114225912642004164
+--- !u!114 &114208267771660284
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -124,15 +125,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695644066895426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec2ac476f2fc9a45a4e69712580a603, type: 3}
+  m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   precisionGrab: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 0
+  throwVelocityWithAttachDistance: 1
   throwMultiplier: 1
   onGrabCollisionDelay: 0
+  destroyImmediatelyOnThrow: 1
+  breakForce: 1500
+--- !u!114 &114245579907138398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695644066895426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 10
+  OverMaxRangeAction: 0
+  UseWrongParticle: 0
+  End: {fileID: 4443653424292658}
 --- !u!114 &114249246319834382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +184,7 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114225912642004164}
+  grabAttachMechanicScript: {fileID: 0}
   secondaryGrabActionScript: {fileID: 114249246319834382}
   isUsable: 0
   holdButtonToUse: 1

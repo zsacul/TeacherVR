@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HitVolume : MonoBehaviour {
-    static public int minLevelOfLoudness = 6;
+    public static int minLevelOfLoudness = 6;
 
 
     private void OnCollisionEnter(Collision collision)
