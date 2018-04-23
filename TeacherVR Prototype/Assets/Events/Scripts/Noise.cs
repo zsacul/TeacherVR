@@ -24,12 +24,14 @@ public class Noise : Events
         base.CompleteEvent();
         Debug.Log("It's quiet now.");
         AddPoints(10);
-        AbortEvent();
+        Debug.Log("End of noise.");
+        MicInput.typeOfInput = MicInput.MicInputType.noone;
     }
     public override void AbortEvent()
     {
         base.AbortEvent();
         Debug.Log("End of noise.");
+        MicInput.typeOfInput = MicInput.MicInputType.noone;
         //Wycofać dodany dźwięk / hałas, animacje zamieszania wśród studentów
     }
 

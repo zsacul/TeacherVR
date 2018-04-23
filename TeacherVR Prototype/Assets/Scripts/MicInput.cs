@@ -21,7 +21,7 @@ public class MicInput : MonoBehaviour
     int current_time;
     int lastPointsTime;
 
-    public int totalScore;
+    public int _legacyScore;
     int scoreBuffer;
 
     public float minSilencingVolume = 1f;
@@ -115,7 +115,7 @@ public class MicInput : MonoBehaviour
     private void Start()
     {
         typeOfInput = MicInputType.noone;
-        totalScore = 0;
+        _legacyScore = 0;
         isSpeaking = false;
         if (SpeakingInd != null)
             SpeakingInd.SetActive(false);
@@ -140,7 +140,7 @@ public class MicInput : MonoBehaviour
                     if (SpeakingInd != null)
                         SpeakingInd.SetActive(false);
                 }
-                totalScore += scoreBuffer;
+                _legacyScore += scoreBuffer;
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
