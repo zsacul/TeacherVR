@@ -24,6 +24,7 @@ public class MicInput : MonoBehaviour
     public int _legacyScore;
     int scoreBuffer;
 
+    public float minSilencingForce = 6f;
     public float minSilencingVolume = 1f;
     public float detectionLevel = 0.25f; 
     public float eps = 0.0000001f;
