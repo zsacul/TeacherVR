@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(Instance);
     }
 
     #endregion
@@ -30,7 +29,7 @@ public class GameController : MonoBehaviour
     public MicInput MicInput;
     public StudentsRefs Students;
     
-    public void changeTooltips()
+    public void ChangeTooltips()
     {
         if (Tooltips) Tooltips = false;
         else Tooltips = true;
