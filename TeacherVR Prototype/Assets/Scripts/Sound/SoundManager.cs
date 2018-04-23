@@ -180,12 +180,12 @@ public class SoundManager : MonoBehaviour {
         ACSource.GetComponent<AudioSource>().volume = x;
     }
 
-    public static void SetGlobalVolume(float x)
+    public void SetGlobalVolume(float x)
     {
         AudioListener.volume = x;
     }
 
-    public static float GetGlobalVolume(float x)
+    public float GetGlobalVolume()
     {
         return AudioListener.volume;
     }

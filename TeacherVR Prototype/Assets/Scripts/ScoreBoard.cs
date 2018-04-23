@@ -25,6 +25,10 @@ public class ScoreBoard : MonoBehaviour
     GameObject ParticleSystem;
     GameObject Where;
 
+    public delegate void GameOverDelegate();
+
+    public event GameOverDelegate GameOver;
+
     void Start ()
     {
         ParticleSystem = GameObject.Find("ParticleSystem");
@@ -49,6 +53,10 @@ public class ScoreBoard : MonoBehaviour
                     if (minutes < 0)
                     {
                         OutOfTime = true;
+                        if (GameOver != null)
+                        {
+                            GameOver();
+                        }
                     }
                 }
             }
@@ -158,9 +166,10 @@ public class ScoreBoard : MonoBehaviour
     }
 
     // Zmiana sposobu odliczania
-    public void ChangeTimeCounting()
+    public void ChangeTimeCounting(bool _CountDown)
     {
-        if (CountDown)
+        CountDown = _CountDown;
+        /*if (CountDown)
         {
             CountDown = false;
         }
@@ -168,7 +177,7 @@ public class ScoreBoard : MonoBehaviour
         {
             //ChangeTime(10, 0);
             CountDown = true;
-        }
+        }*/
     }
 
     // Zwracanie ilości punktów

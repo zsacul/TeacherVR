@@ -1374,12 +1374,23 @@ MonoBehaviour:
   EventsManager: {fileID: 114156139348577676}
   DrawingManager: {fileID: 114002356681056558}
   Tooltips: 1
+  Messages: 1
+  TeleportL: {fileID: 0}
+  TeleportR: {fileID: 0}
+  MoveInPlaceL: {fileID: 0}
+  MoveInPlaceR: {fileID: 0}
   ScoreBoard: {fileID: 114402954041823974}
   MessageSystem: {fileID: 114842719621919352}
   SoundManager: {fileID: 114381028436680680}
   Particles: {fileID: 114359320960930358}
   MicInput: {fileID: 0}
   Students: {fileID: 114846990308639244}
+  MenuScripts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GameTime: 1
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1

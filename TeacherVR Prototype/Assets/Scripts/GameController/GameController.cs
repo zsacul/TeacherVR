@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
+using VRTK.Examples;
 
 public class GameController : MonoBehaviour
 {
@@ -19,19 +22,64 @@ public class GameController : MonoBehaviour
     }
 
     #endregion
+
     public EventsManager EventsManager;
     public DrawingManager DrawingManager;
     public bool Tooltips = true;
+    public bool Messages = true;
+    public VRTK_Pointer TeleportL;
+    public VRTK_Pointer TeleportR;
+    public VRTK_MoveInPlace MoveInPlaceL;
+    public VRTK_MoveInPlace MoveInPlaceR;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
     public Particles Particles;
     public MicInput MicInput;
     public StudentsRefs Students;
-    
+    public MenuScript[] MenuScripts;
+    public int GameTime = 3;
+
+    void Start()
+    {
+        ScoreBoard.GameOver += ScoreBoard_GameOver;
+    }
+
+    void OnDestroy()
+    {
+        ScoreBoard.GameOver -= ScoreBoard_GameOver;
+    }
+
+    private void ScoreBoard_GameOver()
+    {
+        MenuScripts[0].TeleportToMenu();
+        foreach (MenuScript menu in MenuScripts)
+        {
+            menu.DoAction();
+        }
+    }
+
     public void ChangeTooltips()
     {
         if (Tooltips) Tooltips = false;
         else Tooltips = true;
+    }
+
+    public void ChangeLocomotion(bool UseArmSwinger)
+    {
+        if (UseArmSwinger)
+        {
+            MoveInPlaceL.enabled = true;
+            MoveInPlaceR.enabled = true;
+            TeleportL.enabled = false;
+            TeleportR.enabled = false;
+        }
+        else
+        {
+            MoveInPlaceL.enabled = false;
+            MoveInPlaceR.enabled = false;
+            TeleportL.enabled = true;
+            TeleportR.enabled = true;
+        }
     }
 }

@@ -142,6 +142,7 @@ public class MessageSystem : MonoBehaviour
 
     public void ShowCustomText(string text, Window window)
     {
+        if (!GameController.Instance.Messages) return;
         MessageWindow.SetActive(true);
 
         switch (window)
