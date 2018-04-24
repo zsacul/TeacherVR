@@ -47,8 +47,8 @@ public class ScoreBoard : MonoBehaviour
                 seconds = Convert.ToInt32(timer % 60);
                 if (seconds == 0)
                 {
-                    seconds = 60;
-                    timer = 60f;
+                    seconds = 59;
+                    timer = 59f;
                     minutes--;
                     if (minutes < 0)
                     {
