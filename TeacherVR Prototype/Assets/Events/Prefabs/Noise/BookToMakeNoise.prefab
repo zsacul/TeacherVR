@@ -22,13 +22,13 @@ GameObject:
   - component: {fileID: 33448761782007014}
   - component: {fileID: 23971428290432316}
   - component: {fileID: 114518911219618306}
-  - component: {fileID: 114208267771660284}
-  - component: {fileID: 114249246319834382}
   - component: {fileID: 54999838577414670}
   - component: {fileID: 114772101003303656}
   - component: {fileID: 114745444407406292}
   - component: {fileID: 65420751256484872}
   - component: {fileID: 114245579907138398}
+  - component: {fileID: 114141104554849744}
+  - component: {fileID: 114385414961804410}
   m_Layer: 0
   m_Name: BookToMakeNoise
   m_TagString: Untagged
@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695644066895426}
   m_LocalRotation: {x: -0.00000005338507, y: -0.70710665, z: 0.7071069, w: 0.000000053385087}
-  m_LocalPosition: {x: 1.6282535, y: 1.0330765, z: 6.771594}
+  m_LocalPosition: {x: 4.3954897, y: 1.7280766, z: 10.479303}
   m_LocalScale: {x: 0.4821775, y: 0.4821775, z: 0.33345646}
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,7 +117,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.81446534, y: 0.65069085, z: 0.16839616}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114208267771660284
+--- !u!114 &114141104554849744
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,17 +125,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695644066895426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8afa0b205791c9f4496bf2814aeac078, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a1ebaa51525b734287157cb3f53f958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precisionGrab: 1
+  precisionGrab: 0
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 1
+  throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 0
-  destroyImmediatelyOnThrow: 1
-  breakForce: 1500
+  detachDistance: 1
+  velocityLimit: Infinity
+  angularVelocityLimit: Infinity
 --- !u!114 &114245579907138398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +152,7 @@ MonoBehaviour:
   OverMaxRangeAction: 0
   UseWrongParticle: 0
   End: {fileID: 4443653424292658}
---- !u!114 &114249246319834382
+--- !u!114 &114385414961804410
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -175,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableWhenIdle: 1
   IgnoreSaveKinematic: 1
-  touchHighlightColor: {r: 0.9862069, g: 1, b: 0, a: 0.19607843}
+  touchHighlightColor: {r: 0.78676474, g: 0.09834559, b: 0.09834559, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -184,8 +185,8 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 0}
-  secondaryGrabActionScript: {fileID: 114249246319834382}
+  grabAttachMechanicScript: {fileID: 114141104554849744}
+  secondaryGrabActionScript: {fileID: 114385414961804410}
   isUsable: 0
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0

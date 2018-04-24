@@ -110,7 +110,7 @@ public class MicInput : MonoBehaviour
                 levelMax = wavePeak;
             }
         }
-        Debug.Log(levelMax);
+  //      Debug.Log(levelMax);
         return levelMax;
     }
     private void Start()

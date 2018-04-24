@@ -6,7 +6,7 @@ public class Noise : Events
 {
     public static bool shoutedLoudEnough = false;
     public static bool doneSomethingLoudEnough = false;
-    private int[] loudStudents;
+    public int[] loudStudents;
     //Funkcja po której wywołaniu startuje event
     //Powinna zapamiętać na starcie parametry zmienianych obiektów
     public override void StartEvent()
