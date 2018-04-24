@@ -916,11 +916,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3b136ef50289d04586538fc7b1d6a5f, type: 2}
   - {fileID: 11400000, guid: a4ae700b7b48bae49b9647b59d5c8b4c, type: 2}
   - {fileID: 11400000, guid: d81baa418989dba4f967876d1936f9de, type: 2}
-  - {fileID: 11400000, guid: 8e32400d9b9ba964da5df389dc38cf31, type: 2}
+  - {fileID: 11400000, guid: ff260632a68422c4095163588f8a78c7, type: 2}
   - {fileID: 11400000, guid: 630768faa21c57248abbf48057bcd8d5, type: 2}
-  - {fileID: 11400000, guid: c878809a09c4ad345ad50cdf340ae1e3, type: 2}
   - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
-  delay: 0
+  - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
+  delay: 2
 --- !u!114 &114185177004893528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1038,6 +1038,10 @@ MonoBehaviour:
   LightSource: {fileID: 0}
   TopDoorSource: {fileID: 0}
   TopDoor: {fileID: 0}
+  LeftScreenSource: {fileID: 0}
+  LeftScreen: {fileID: 0}
+  RightScreenSource: {fileID: 0}
+  RightScreen: {fileID: 0}
   SfxHookBang: {fileID: 8300000, guid: 42da4784cb93bcb48a8164bad2159881, type: 3}
   SfxComputerBeep: {fileID: 8300000, guid: 5df6a0b08da0ef540a8f087347efe874, type: 3}
   SfxWaterSplash: {fileID: 8300000, guid: 1b34049a73b2f784db64f2cc37077107, type: 3}
@@ -1390,7 +1394,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GameTime: 1
+  GameTime: 8
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1
