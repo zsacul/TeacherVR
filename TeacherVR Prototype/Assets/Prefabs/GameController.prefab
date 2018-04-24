@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 114063989707651496}
   - component: {fileID: 114002356681056558}
   - component: {fileID: 114846990308639244}
+  - component: {fileID: 114057373262345258}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -630,6 +631,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114057373262345258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982150515922314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6c6b2f4ddfb5ab498c09a480ab0fed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeakingInd: {fileID: 0}
+  isSpeaking: 0
+  _legacyScore: 0
+  minSilencingForce: 6
+  minSilencingVolume: 0.1
+  detectionLevel: 0.25
+  eps: 0.0000001
+  audioClipRec: {fileID: 0}
 --- !u!114 &114063989707651496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -643,7 +663,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
-  angle: 20
+  - {fileID: 1695644066895426, guid: 37ba942f78d91db45815b6189b512bc6, type: 2}
+  angle: 60
 --- !u!114 &114137391511103414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,6 +941,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 630768faa21c57248abbf48057bcd8d5, type: 2}
   - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
   - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
+  - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
+  - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
   delay: 2
 --- !u!114 &114185177004893528
 MonoBehaviour:
@@ -1387,7 +1410,7 @@ MonoBehaviour:
   MessageSystem: {fileID: 114842719621919352}
   SoundManager: {fileID: 114381028436680680}
   Particles: {fileID: 114359320960930358}
-  MicInput: {fileID: 0}
+  MicInput: {fileID: 114057373262345258}
   Students: {fileID: 114846990308639244}
   MenuScripts:
   - {fileID: 0}
