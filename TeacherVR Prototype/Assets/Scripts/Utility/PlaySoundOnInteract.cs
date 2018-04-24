@@ -5,7 +5,6 @@ using VRTK;
 
 public class PlaySoundOnInteract : MonoBehaviour
 {
-
     public SamplesList Sound;
 
     public ActionList Action;
@@ -28,49 +27,50 @@ public class PlaySoundOnInteract : MonoBehaviour
         switch (Action)
         {
             case ActionList.Snaped:
-                sdz.ObjectSnappedToDropZone -= ObjectSnapped;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectSnapped;
                 break;
             case ActionList.Unsnaped:
-                sdz.ObjectUnsnappedFromDropZone -= ObjectUnsnapped;
+                if (sdz != null) sdz.ObjectUnsnappedFromDropZone -= ObjectUnsnapped;
                 break;
             case ActionList.Touched:
-                io.InteractableObjectTouched -= ObjectTouched;
+                if (io != null) io.InteractableObjectTouched -= ObjectTouched;
                 break;
             case ActionList.Untouched:
-                io.InteractableObjectUntouched -= ObjectUntouched;
+                if (io != null) io.InteractableObjectUntouched -= ObjectUntouched;
                 break;
             case ActionList.Grabbed:
-                io.InteractableObjectGrabbed -= ObjectGrabbed;
+                if (io != null) io.InteractableObjectGrabbed -= ObjectGrabbed;
                 break;
             case ActionList.Ungrabbed:
-                io.InteractableObjectUngrabbed -= ObjectUngrabbed;
+                if (io != null) io.InteractableObjectUngrabbed -= ObjectUngrabbed;
                 break;
         }
     }
 
-    void Start () {
+    void Start()
+    {
         io = GetComponent<VRTK_InteractableObject>();
         sdz = GetComponent<VRTK_SnapDropZone>();
 
         switch (Action)
         {
             case ActionList.Snaped:
-                sdz.ObjectSnappedToDropZone += ObjectSnapped;
+                if (sdz != null) sdz.ObjectSnappedToDropZone += ObjectSnapped;
                 break;
             case ActionList.Unsnaped:
-                sdz.ObjectUnsnappedFromDropZone += ObjectUnsnapped;
+                if (sdz != null) sdz.ObjectUnsnappedFromDropZone += ObjectUnsnapped;
                 break;
             case ActionList.Touched:
-                io.InteractableObjectTouched += ObjectTouched;
+                if (io != null) io.InteractableObjectTouched += ObjectTouched;
                 break;
             case ActionList.Untouched:
-                io.InteractableObjectUntouched += ObjectUntouched;
+                if (io != null) io.InteractableObjectUntouched += ObjectUntouched;
                 break;
             case ActionList.Grabbed:
-                io.InteractableObjectGrabbed += ObjectGrabbed;
+                if (io != null) io.InteractableObjectGrabbed += ObjectGrabbed;
                 break;
             case ActionList.Ungrabbed:
-                io.InteractableObjectUngrabbed += ObjectUngrabbed;
+                if (io != null) io.InteractableObjectUngrabbed += ObjectUngrabbed;
                 break;
         }
     }
@@ -109,5 +109,4 @@ public class PlaySoundOnInteract : MonoBehaviour
     {
         Play();
     }
-    
 }

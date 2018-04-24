@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PourWater : MonoBehaviour
 {
-    public Material material;
+    public Material MaterialToCopy;
+    public Shader ShaderToCopy;
 
     public float speed;
     public float cost;
@@ -12,25 +14,33 @@ public class PourWater : MonoBehaviour
     public float offset;
 
     public Transform Top;
+    public Transform Bot;
 
     private float fuel;
     private float diff;
 
     private GameObject waterSound;
+    private Material material;
 
     private void Start()
     {
+        material = new Material(ShaderToCopy);
+        material.CopyPropertiesFromMaterial(MaterialToCopy);
+        foreach (Transform child in transform)
+        {
+            child.GetComponent<Renderer>().material = material;
+        }
         fuel = 0;
     }
 
     private void Update()
     {
-        diff = (Top.transform.position.y - transform.position.y);
-        if (diff > 0) material.SetFloat("_ConstructY", transform.position.y - offset + (fuel / maxFuel) * diff);
+        diff = (Top.position.y - Bot.position.y);
+        if (diff > 0) material.SetFloat("_ConstructY", Bot.position.y - offset + (fuel / maxFuel) * diff);
         else
             material.SetFloat("_ConstructY",
-                Top.transform.position.y - offset +
-                (fuel / maxFuel) * (transform.position.y - Top.transform.position.y));
+                Top.position.y - offset +
+                (fuel / maxFuel) * (Bot.position.y - Top.position.y));
     }
 
     public void OnTriggerStay(Collider col)

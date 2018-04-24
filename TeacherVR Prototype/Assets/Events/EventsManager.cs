@@ -9,6 +9,7 @@ public class EventsManager : MonoBehaviour
     public float delay = 2;
 
     private List<Events> EventsToMix = new List<Events>();
+    private List<Events> ListOfEventsCopy = new List<Events>();
 
     private Events currentEvent;
 
@@ -19,6 +20,28 @@ public class EventsManager : MonoBehaviour
     public event EventsManagerEventHandler EventsManagerStartNext;
 
     private int EventNumber = 0;
+
+    public void Restart()
+    {
+        ListOfEvents.Clear();
+        EventsToMix.Clear();
+        AbortCurrentEvent();
+        EventNumber = 0;
+
+        foreach (var var in ListOfEventsCopy)
+        {
+            AddEvent(var);
+        }
+        foreach (Events e in ListOfEvents)
+        {
+            if (e.Repeatable) EventsToMix.Add(e);
+        }
+        FillList();
+        foreach (Events toDel in EventsToMix)
+        {
+            ListOfEvents.Remove(toDel);
+        }
+    }
 
     private void AddPoints(int pkt)
     {
@@ -102,6 +125,10 @@ public class EventsManager : MonoBehaviour
 
     void Start()
     {
+        foreach (var var in ListOfEvents)
+        {
+            ListOfEventsCopy.Add(var);
+        }
         foreach (Events e in ListOfEvents)
         {
             if (e.Repeatable) EventsToMix.Add(e);

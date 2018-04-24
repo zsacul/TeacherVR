@@ -21,5 +21,23 @@
                 lastUsePressedState = controller.triggerPressed;
             }
         }
+
+        public void ForceTeleport()
+        {
+            float distance = Vector3.Distance(transform.position, destination.position);
+            VRTK_ControllerReference controllerReference =
+                VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetControllerRightHand()
+                    .GetComponent<VRTK_ControllerEvents>().gameObject);
+            OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, destination, new RaycastHit(), destination.position, controllerReference));
+        }
+
+        public void ForceTeleportTo(Transform location)
+        {
+            float distance = Vector3.Distance(transform.position, location.position);
+            VRTK_ControllerReference controllerReference =
+                VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetControllerRightHand()
+                    .GetComponent<VRTK_ControllerEvents>().gameObject);
+            OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, location, new RaycastHit(), location.position, controllerReference));
+        }
     }
 }

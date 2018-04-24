@@ -29,7 +29,8 @@ public class ParticleOnOff : MonoBehaviour
         Ungrabbed,
         Enable,
         Disable,
-        Event
+        Event,
+        Never
     }
 
     public Occasion TurnOn;
@@ -66,7 +67,12 @@ public class ParticleOnOff : MonoBehaviour
     private void Inst()
     {
         if (ParticleTransform == null) ParticleInstance = Instantiate(Particle);
-        else ParticleInstance = Instantiate(Particle, ParticleTransform.position, ParticleTransform.rotation);
+        else
+        {
+            ParticleInstance = Instantiate(Particle, ParticleTransform.position, ParticleTransform.rotation);
+            ParticleInstance.transform.parent = ParticleTransform;
+        }
+
         ParticleInstance.transform.localScale *= ParticleScale;
     }
 
@@ -75,7 +81,8 @@ public class ParticleOnOff : MonoBehaviour
         if (Points)
         {
             GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,transform.position + Vector3.up / 4);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
+                transform.position + Vector3.up / 4);
             GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, transform.position, 0.01f);
             Points = false;
         }
@@ -177,7 +184,7 @@ public class ParticleOnOff : MonoBehaviour
                 io.InteractableObjectUntouched += ObjectUntouchedOn;
                 break;
             case Occasion.Grabbed:
-                io.InteractableObjectGrabbed+= ObjectGrabbedOn;
+                io.InteractableObjectGrabbed += ObjectGrabbedOn;
                 break;
             case Occasion.Ungrabbed:
                 io.InteractableObjectUngrabbed += ObjectUngrabbedOn;
