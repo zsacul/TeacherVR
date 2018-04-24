@@ -126,7 +126,7 @@ public class Sajmon : Events
                      //   GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
                         progress += 100 / seq.Length;
-                        SetProgressBar(progress);
+                        //SetProgressBar(progress);
                     }
                 }
             }

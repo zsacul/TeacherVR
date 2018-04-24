@@ -66,8 +66,8 @@ public class EventsManager : MonoBehaviour
 
     public void StartNextEvent()
     {
-        if(EventNumber == 0) StartNewEventFunction();
-        else if(!CoroutineRunning) StartCoroutine(StartNewEventDelay(delay));
+        if (EventNumber == 0) StartNewEventFunction();
+        else if (!CoroutineRunning) StartCoroutine(StartNewEventDelay(delay));
     }
 
     private void StartNewEventFunction()
@@ -102,10 +102,13 @@ public class EventsManager : MonoBehaviour
 
     public void AbortCurrentEvent()
     {
-        currentEvent.AbortEvent();
-        currentEvent.AddPointsEvent -= AddPoints;
-        currentEvent.MessageEvent -= Message;
-        currentEvent = null;
+        if (currentEvent != null)
+        {
+            currentEvent.AbortEvent();
+            currentEvent.AddPointsEvent -= AddPoints;
+            currentEvent.MessageEvent -= Message;
+            currentEvent = null;
+        }
     }
 
     public void AddEvent(Events e)

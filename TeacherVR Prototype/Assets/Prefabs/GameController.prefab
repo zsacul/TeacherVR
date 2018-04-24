@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1940591884558166
 GameObject:
   m_ObjectHideFlags: 1
@@ -664,7 +664,7 @@ MonoBehaviour:
   Objects:
   - {fileID: 1348116013376524, guid: 26d9f4c608f46c04ea7ab3e768bc198d, type: 2}
   - {fileID: 1695644066895426, guid: 37ba942f78d91db45815b6189b512bc6, type: 2}
-  angle: 60
+  angle: 20
 --- !u!114 &114137391511103414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -939,9 +939,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d81baa418989dba4f967876d1936f9de, type: 2}
   - {fileID: 11400000, guid: ff260632a68422c4095163588f8a78c7, type: 2}
   - {fileID: 11400000, guid: 630768faa21c57248abbf48057bcd8d5, type: 2}
-  - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
-  - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
-  - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
+  - {fileID: 11400000, guid: c878809a09c4ad345ad50cdf340ae1e3, type: 2}
+  - {fileID: 11400000, guid: 8e32400d9b9ba964da5df389dc38cf31, type: 2}
   - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
   delay: 2
 --- !u!114 &114185177004893528
@@ -1229,9 +1228,6 @@ MonoBehaviour:
   ActiveFollower: 0
   Window6x7: {fileID: 1414781172164096}
   Window8x4: {fileID: 1940591884558166}
-  ProgressBar: {fileID: 1799996432989430}
-  ProgressColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 1}
-  EndColor: {r: 0, g: 1, b: 0.843, a: 1}
 --- !u!114 &114846990308639244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1404,8 +1400,7 @@ MonoBehaviour:
   Messages: 1
   TeleportL: {fileID: 0}
   TeleportR: {fileID: 0}
-  MoveInPlaceL: {fileID: 0}
-  MoveInPlaceR: {fileID: 0}
+  MoveInPlace: {fileID: 0}
   ScoreBoard: {fileID: 114402954041823974}
   MessageSystem: {fileID: 114842719621919352}
   SoundManager: {fileID: 114381028436680680}
@@ -1417,7 +1412,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  GameTime: 8
+  GameTime: 5
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1

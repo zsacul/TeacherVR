@@ -27,7 +27,7 @@ public class TurnOnPC : Events
     {
         base.StartEvent();
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
-        Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<Renderer>();
         PCOffMaterial = MonitorRenderer.material;
@@ -60,7 +60,7 @@ public class TurnOnPC : Events
         {
             progress += 25;
         }
-        SetProgressBar(progress);
+        //SetProgressBar(progress);
 
         if (u1 != null && u2 != null && mu1 != null && mu2 != null)
         {

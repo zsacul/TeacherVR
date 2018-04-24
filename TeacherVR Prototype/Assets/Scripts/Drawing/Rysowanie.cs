@@ -138,7 +138,7 @@ public class Rysowanie : MonoBehaviour
                 if (currentTarget == TemplateShape.GetLength(0) - 1)
                 {
                     Debug.Log("You finished the shape! Combo: " + comboCounter);
-                    GameController.Instance.MessageSystem.SetProgressBar(100);
+                    //GameController.Instance.MessageSystem.SetProgressBar(100);
                     gameInProgress = false;
                 }
                 else
@@ -149,8 +149,7 @@ public class Rysowanie : MonoBehaviour
                     Paint.DrawPoint(new Vector3(TemplateShape[currentTarget].x, TemplateShape[currentTarget].y, 0.01f),
                         pointThickness,
                         Color.green);
-                    GameController.Instance.MessageSystem.SetProgressBar(
-                        (float) currentTarget / TemplateShape.GetLength(0) * 100);
+                    //GameController.Instance.MessageSystem.SetProgressBar((float) currentTarget / TemplateShape.GetLength(0) * 100);
                 }
             }
         }

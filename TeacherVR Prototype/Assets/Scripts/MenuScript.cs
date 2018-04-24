@@ -45,8 +45,11 @@ namespace VRTK.Examples
             {
                 case Mode.StartGame:
                     TMPUGUI.text = "Open to start";
+                    StartCoroutine(TeleportToMenuWithDelay());
+                    GameController.Instance.EventsManager.Restart();
                     pos = transform.GetChild(0).position;
                     rot = transform.GetChild(0).rotation;
+                    transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = false;
                     break;
                 case Mode.Volume:
                     TMPUGUI.text = "Sound (" + GameController.Instance.SoundManager.GetGlobalVolume() * 10 + "%)";
@@ -60,10 +63,16 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Messages Off";
                     break;
                 case Mode.ArmSwinger:
-                    if (GameController.Instance.MoveInPlaceL.enabled) TMPUGUI.text = "ArmSwinger On";
-                    else TMPUGUI.text = "ArmSwinger Off";
+                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport On";
+                    else TMPUGUI.text = "ArmSwinger On";
                     break;
             }
+        }
+
+        private IEnumerator TeleportToMenuWithDelay()
+        {
+            yield return new WaitForEndOfFrame();
+            TeleportToMenu();
         }
 
         private void TeleportToStart()
@@ -81,16 +90,19 @@ namespace VRTK.Examples
             switch (mode)
             {
                 case Mode.StartGame:
-                    if (e.normalizedValue > 50)
+                    Debug.Log(e.normalizedValue);
+                    if (e.normalizedValue >= 60 || e.normalizedValue <= 40)
                     {
                         TMPUGUI.text = "";
                         TeleportToStart();
                         transform.GetChild(0).position = pos;
                         transform.GetChild(0).rotation = rot;
+                        transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = true;
                         GameController.Instance.EventsManager.Restart();
                         GameController.Instance.ScoreBoard.PointsChange(0);
                         GameController.Instance.ScoreBoard.ChangeTime(GameController.Instance.GameTime, 0);
                         GameController.Instance.ScoreBoard.ChangeTimeCounting(true);
+                        GameController.Instance.ScoreBoard.SetOutOfTime(false);
                     }
                     break;
                 case Mode.Volume:
@@ -110,10 +122,10 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Messages Off";
                     break;
                 case Mode.ArmSwinger:
-                    if (e.normalizedValue < 50) GameController.Instance.ChangeLocomotion(false);
-                    else GameController.Instance.ChangeLocomotion(true);
-                    if (GameController.Instance.MoveInPlaceL.enabled) TMPUGUI.text = "ArmSwinger On";
-                    else TMPUGUI.text = "ArmSwinger Off";
+                    if (e.normalizedValue < 50) GameController.Instance.ChangeLocomotion(true);
+                    else GameController.Instance.ChangeLocomotion(false);
+                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport On";
+                    else TMPUGUI.text = "ArmSwinger On";
                     break;
             }
         }

@@ -191,6 +191,11 @@ public class ScoreBoard : MonoBehaviour
         return OutOfTime;
     }
 
+    public void SetOutOfTime(bool val)
+    {
+        OutOfTime = val;
+    }
+
     /*
      
     JAK SIĘ ODWOŁAC?

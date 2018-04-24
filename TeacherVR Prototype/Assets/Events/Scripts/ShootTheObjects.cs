@@ -62,7 +62,7 @@ public class ShootTheObjects : Events
             }
             i++;
         }
-        SetProgressBar((float) (Lvl * 2 - alive) / (Lvl * 2) * 100);
+        //SetProgressBar((float) (Lvl * 2 - alive) / (Lvl * 2) * 100);
         if (Instances.Count != 0 && alive == 0) CompleteEvent();
     }
 

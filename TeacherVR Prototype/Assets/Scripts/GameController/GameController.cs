@@ -29,8 +29,7 @@ public class GameController : MonoBehaviour
     public bool Messages = true;
     public VRTK_Pointer TeleportL;
     public VRTK_Pointer TeleportR;
-    public VRTK_MoveInPlace MoveInPlaceL;
-    public VRTK_MoveInPlace MoveInPlaceR;
+    public VRTK_MoveInPlace MoveInPlace;
     public ScoreBoard ScoreBoard;
     public MessageSystem MessageSystem;
     public SoundManager SoundManager;
@@ -69,15 +68,13 @@ public class GameController : MonoBehaviour
     {
         if (UseArmSwinger)
         {
-            MoveInPlaceL.enabled = true;
-            MoveInPlaceR.enabled = true;
+            MoveInPlace.enabled = true;
             TeleportL.enabled = false;
             TeleportR.enabled = false;
         }
         else
         {
-            MoveInPlaceL.enabled = false;
-            MoveInPlaceR.enabled = false;
+            MoveInPlace.enabled = false;
             TeleportL.enabled = true;
             TeleportR.enabled = true;
         }

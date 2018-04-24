@@ -10,28 +10,36 @@ public class ChangeCenterOfMassOnThrow : MonoBehaviour
     private Rigidbody rb;
     private GameObject model;
 
-	void Start ()
-	{
-	    rb = GetComponent<Rigidbody>();
-	    model = transform.Find("Model").gameObject;
-        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed;
-	}
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        model = transform.Find("Model").gameObject;
+        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed +=
+            ChangeCenterOfMassOnThrow_InteractableObjectGrabbed;
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed +=
+            ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed;
+    }
+
+    private void ChangeCenterOfMassOnThrow_InteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
+    {
+        Restart();
+    }
 
     private void ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
     {
-        model.transform.position = model.transform.position + CenterOfMass - rb.centerOfMass;
+        model.transform.localPosition = model.transform.localPosition + CenterOfMass - rb.centerOfMass;
         rb.centerOfMass = CenterOfMass;
-        
     }
 
-    void Reset()
+    void Restart()
     {
-        model.transform.position = Vector3.zero;
+        model.transform.localPosition = Vector3.zero;
         rb.ResetCenterOfMass();
     }
 
     private void OnCollisionEnter(Collision col)
     {
-        Reset();
+        if(col.transform.tag == "Egg") Destroy(gameObject,3);
+        Restart();
     }
 }
