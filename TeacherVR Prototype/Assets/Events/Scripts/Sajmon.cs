@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [CreateAssetMenu(fileName = "Sajmon", menuName = "Events/Sajmon Event")]
 public class Sajmon : Events
@@ -11,6 +12,7 @@ public class Sajmon : Events
     private GameObject Buttons;
 
     private Renderer MonitorRenderer;
+    private TextMeshProUGUI TextMeshProMonitor;
 
    // public static AudioSource aSource;
 
@@ -37,6 +39,7 @@ public class Sajmon : Events
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<MeshRenderer>();
+        TextMeshProMonitor = PC.transform.Find("Monitor/Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
         color = MonitorRenderer.material.color;
         MonitorRenderer.material.color = Color.red;
         Buttons = Instantiate(ButtonsPrefab);
@@ -47,6 +50,7 @@ public class Sajmon : Events
         _time = Time.time;
         played = -1;
         progress = 0;
+        TextMeshProMonitor.text = "Click any key";
     }
 
     public override void CallInUpdate()
@@ -65,6 +69,7 @@ public class Sajmon : Events
             {
                 if (buffor >= 1)
                 {
+                    TextMeshProMonitor.text = "Watch";
                     ShowPressing(buffor % 10);
                     buffor /= 10;
                     _time = Time.time;
@@ -74,6 +79,7 @@ public class Sajmon : Events
                     played = 2;
                     //  PlayerSequence = 0;
                     canPlayerIteract(true);
+                    TextMeshProMonitor.text = "Repeat";
                     _time = Time.time;
                 }
             }
@@ -91,7 +97,9 @@ public class Sajmon : Events
                 Debug.Log(PlayerSequence);
                 if (PlayerSequence - sequence == 0)
                 {
-                    AddPoints(Lvl * 10);
+                    // AddPoints(Lvl * 10);
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f, Buttons.transform.position.z));
+                    AddPoints(300);
                     CompleteEvent();
                 }
                 else
@@ -102,7 +110,9 @@ public class Sajmon : Events
                     {
                         Debug.Log("You've failed");
                         //tutaj wywołaj particle wrong
-                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
+                        
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
+                       // GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
                         PlayerSequence = 0;
                         ButtonTouch.resetIndex();
                         played = 0;
@@ -113,7 +123,8 @@ public class Sajmon : Events
                     else
                     {
                         //tutaj wywołaj particle good 
-                        GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
+                     //   GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
                         progress += 100 / seq.Length;
                         SetProgressBar(progress);
                     }

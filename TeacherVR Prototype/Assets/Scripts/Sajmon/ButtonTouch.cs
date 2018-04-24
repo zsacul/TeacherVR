@@ -15,6 +15,7 @@ public class ButtonTouch : MonoBehaviour {
         
         color = gameObject.GetComponent<MeshRenderer>().material.color;
         animator = gameObject.GetComponent<Animator>();
+
         pressed = false;
         showing = false;
         setId();
@@ -30,32 +31,27 @@ public class ButtonTouch : MonoBehaviour {
     {
         gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         pressed = true;
-        // Sajmon.aSource.clip = sound;
-        //   Sajmon.aSource.Play();
+
         GameController.Instance.SoundManager.Play3DAt(SamplesList.Pop,gameObject.transform);
-        //Animation anim = gameObject.GetComponent<Animation>();
-        Animator animator = gameObject.GetComponent<Animator>();
+
+       
  
         if (!showing)
         {
-            if (animator != null)
-                animator.SetBool(getAnimId(), true);
+
+            animator.SetTrigger(getAnimId());
+
             Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);
             index *= 10;
             Sajmon.needToCheck = true;
-            Invoke("StopAnim", 1f);
+
         }
-        //   if (animator != null)
-        //       animator.SetBool("Anim", false//);
+
 
 
         Invoke("UnpushButton", 1.5f);
     }
-    void StopAnim()
-    {
-          if (animator != null)
-               animator.SetBool(getAnimId(), false);
-    }
+
     void UnpushButton()
     {
 
@@ -65,12 +61,12 @@ public class ButtonTouch : MonoBehaviour {
     string getAnimId()
     {
         if (id == 1)
-            return "AnimB";
+            return "AniB";
         if (id == 2)
-            return "AnimY";
+            return "AniY";
         if (id == 3)
-            return "AnimR";
-        return "AnimG";
+            return "AniR";
+        return "AniG";
     }
     void setId()
     {

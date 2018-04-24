@@ -21,9 +21,10 @@ public class MicInput : MonoBehaviour
     int current_time;
     int lastPointsTime;
 
-    public int totalScore;
+    public int _legacyScore;
     int scoreBuffer;
 
+    public float minSilencingForce = 6f;
     public float minSilencingVolume = 1f;
     public float detectionLevel = 0.25f; 
     public float eps = 0.0000001f;
@@ -109,13 +110,13 @@ public class MicInput : MonoBehaviour
                 levelMax = wavePeak;
             }
         }
-        Debug.Log(levelMax);
+  //      Debug.Log(levelMax);
         return levelMax;
     }
     private void Start()
     {
         typeOfInput = MicInputType.noone;
-        totalScore = 0;
+        _legacyScore = 0;
         isSpeaking = false;
         if (SpeakingInd != null)
             SpeakingInd.SetActive(false);
@@ -140,7 +141,7 @@ public class MicInput : MonoBehaviour
                     if (SpeakingInd != null)
                         SpeakingInd.SetActive(false);
                 }
-                totalScore += scoreBuffer;
+                _legacyScore += scoreBuffer;
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
