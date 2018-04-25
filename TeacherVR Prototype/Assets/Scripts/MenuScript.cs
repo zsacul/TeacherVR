@@ -90,7 +90,6 @@ namespace VRTK.Examples
             switch (mode)
             {
                 case Mode.StartGame:
-                    Debug.Log(e.normalizedValue);
                     if (e.normalizedValue >= 60 || e.normalizedValue <= 40)
                     {
                         TMPUGUI.text = "";
