@@ -17,11 +17,11 @@
 
         private float minTriggerRotation = -10f;
         private float maxTriggerRotation = 45f;
-        
+
         public override void Grabbed(VRTK_InteractGrab currentGrabbingObject)
         {
             base.Grabbed(currentGrabbingObject);
-            
+
             //Limit hands grabbing when picked up
             if (VRTK_DeviceFinder.GetControllerHand(currentGrabbingObject.controllerEvents.gameObject) ==
                 SDK_BaseController.ControllerHand.Left)
@@ -40,13 +40,13 @@
         public override void StartUsing(VRTK_InteractUse currentUsingObject)
         {
             base.StartUsing(currentUsingObject);
-                if (Time.time > lastFire + fireDelay && pourWater.Use())
-                {
-                    lastFire = Time.time;
-                    FireBullet();
-                    VRTK_ControllerHaptics.TriggerHapticPulse(
-                        VRTK_ControllerReference.GetControllerReference(ce.gameObject), 0.63f, 0.2f, 0.01f);
-                }
+            if (Time.time > lastFire + fireDelay && pourWater.Use())
+            {
+                lastFire = Time.time;
+                FireBullet();
+                VRTK_ControllerHaptics.TriggerHapticPulse(
+                    VRTK_ControllerReference.GetControllerReference(ce.gameObject), 0.63f, 0.2f, 0.01f);
+            }
         }
 
         protected override void Awake()
@@ -65,11 +65,11 @@
             if (ce)
             {
                 var pressure = (maxTriggerRotation * ce.GetTriggerAxis()) - minTriggerRotation;
-                trigger.transform.localEulerAngles = new Vector3(0f, pressure, 0f);
+                trigger.transform.localEulerAngles = new Vector3(0f, 0f, pressure);
             }
             else
             {
-                trigger.transform.localEulerAngles = new Vector3(0f, minTriggerRotation, 0f);
+                trigger.transform.localEulerAngles = new Vector3(0f, 0f, minTriggerRotation);
             }
         }
 
