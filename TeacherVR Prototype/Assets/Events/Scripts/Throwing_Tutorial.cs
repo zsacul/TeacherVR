@@ -49,7 +49,7 @@ public class Throwing_Tutorial : Events
    
     public override void AbortEvent()
     {   
-        script.Kill();
+        script.Abort();
         base.AbortEvent();
         if (Lvl == 1)
         {
@@ -72,7 +72,7 @@ public class Throwing_Tutorial : Events
 
     public override void CompleteEvent()
     {
-        script.Kill();
+        script.Abort();
         base.CompleteEvent();
     }
 

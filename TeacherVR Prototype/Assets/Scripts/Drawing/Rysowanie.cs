@@ -71,6 +71,19 @@ public class Rysowanie : MonoBehaviour
         if (!gameInProgress) return;
         if (GameController.Instance.DrawingManager.RysObject == null) return;
 
+        Vector2 pixelUV = Paint.GetLastPoint();
+
+        if (Paint.GetWasZero() && !first && currentTarget != 0 && Time.time > lastWrong + 3)
+        {
+            lastWrong = Time.time;
+            comboCounter = 0;
+            Debug.Log("A mistake! Combo: " + comboCounter);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                GameController.Instance.DrawingManager.RysObject.transform.position);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.Error,
+                GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
+        }
+
         RaycastHit hit = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK.VRTK_Pointer>()
             .pointerRenderer
             .GetDestinationHit();
@@ -93,14 +106,13 @@ public class Rysowanie : MonoBehaviour
         {
             ClearBoard();
         }*/
-
-        Vector2 pixelUV = Paint.GetLastPoint();
+        
         bool mistake = false;
 
         //Check against the template only if it exists
         if (TemplateShape.GetLength(0) > 1)
         {
-            if (Paint.GetWasZero() && !first || currentTarget != 0 && DistanceFromLine(
+            if (currentTarget != 0 && DistanceFromLine(
                     Points[currentTarget - 1], Points[currentTarget], pixelUV) >
                 templateThicknessAccept)
             {

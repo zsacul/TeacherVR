@@ -27,7 +27,7 @@ public class TurnOnPC : Events
     {
         base.StartEvent();
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
-        Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        Message(8, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         PC = GameObject.FindGameObjectWithTag("PCEvent");
         MonitorRenderer = PC.transform.Find("Monitor").gameObject.GetComponent<Renderer>();
         PCOffMaterial = MonitorRenderer.material;

@@ -8,7 +8,6 @@ public class Drawing : Events
     [Range(0, 5)]
     public int Board = 2;
     public Vector2[] TemplateShape;
-    public GameObject Chalk_Tutorial_Point;
 
     private Rysowanie rysowanie;
     private VRTK_Senello_TexturePainter painter;
@@ -25,7 +24,8 @@ public class Drawing : Events
         painter.Clear();
         rysowanie.gameInProgress = true;
         rysowanie.enabled = true;
-        Chalk_Tutorial_Point_Inst = Instantiate(Chalk_Tutorial_Point);
+        Chalk_Tutorial_Point_Inst = GameObject.Find("PackOfChalk 2").transform.Find("Chalk_Grab_Tutorial_Point").gameObject;
+        Chalk_Tutorial_Point_Inst.GetComponent<Tutorial_Point_Anim_Control>().Resurrect();
     }
 
     public override void CallInUpdate()
@@ -43,7 +43,7 @@ public class Drawing : Events
         rysowanie.enabled = false;
         painter.Clear();
         GameController.Instance.DrawingManager.TemplateShape = null;
-        Destroy(Chalk_Tutorial_Point_Inst);
+        Chalk_Tutorial_Point_Inst.GetComponent<Tutorial_Point_Anim_Control>().Abort();
     }
 
     public override void CompleteEvent()
@@ -52,6 +52,6 @@ public class Drawing : Events
         rysowanie.enabled = false;
         painter.Clear();
         GameController.Instance.DrawingManager.TemplateShape = null;
-        Destroy(Chalk_Tutorial_Point_Inst);
+        Chalk_Tutorial_Point_Inst.GetComponent<Tutorial_Point_Anim_Control>().Abort();
     }
 }
