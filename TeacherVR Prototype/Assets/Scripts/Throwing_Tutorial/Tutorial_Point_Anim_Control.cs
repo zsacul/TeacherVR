@@ -23,7 +23,7 @@ public class Tutorial_Point_Anim_Control : MonoBehaviour
     private IEnumerator anim_finished()
     {
         corutine = true;
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + 1f);
         corutine = false;
         gameObject.SetActive(false);
     }
@@ -33,8 +33,16 @@ public class Tutorial_Point_Anim_Control : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void SlowAbort()
+    {
+        if(!gameObject.activeSelf) return;
+        anim.SetBool("Alive", false);
+        if (!corutine) StartCoroutine(anim_finished());
+    }
+
     public void Abort()
     {
+        if (!gameObject.activeSelf) return;
         anim.SetBool("Alive", false);
         gameObject.SetActive(false);
     }

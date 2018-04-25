@@ -26,8 +26,6 @@ public class ActivateStudents : MonoBehaviour
     {
         targetsKilled++;
         //GameController.Instance.MessageSystem.SetProgressBar((float) targetsKilled / targetsNum * 100);
-        Debug.Log(targetsNum);
-        Debug.Log(targetsKilled);
     }
 
     public bool Destruction()

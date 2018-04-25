@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
 
-public class Tutorial_Point_Spawn_Control : MonoBehaviour {
+public class Tutorial_Point_Spawn_Control : MonoBehaviour
+{
+    public Tutorial_Point_Anim_Control tutorial_point_user;
+    
+    void Start()
+    {
+        foreach (var zone in transform.parent.GetComponentsInChildren<VRTK_SnapDropZone>())
+        {
+            zone.ObjectUnsnappedFromDropZone += Zone_ObjectUnsnappedFromDropZone;
+        }
+    }
 
-	// Use this for initialization
+    void OnDestroy()
+    {
+        foreach (var zone in transform.parent.GetComponentsInChildren<VRTK_SnapDropZone>())
+        {
+            zone.ObjectUnsnappedFromDropZone -= Zone_ObjectUnsnappedFromDropZone;
+        }
+    }
 
-	public Tutorial_Point_Anim_Control tutorial_point_user;
-
-
-	void Start() {
-		GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += new InteractableObjectEventHandler(ObjectGrabbed);
-	}
-	
-
-	private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-
+    private void Zone_ObjectUnsnappedFromDropZone(object sender, SnapDropZoneEventArgs e)
     {
         Debug.Log("chalk grabbed");
-    	tutorial_point_user.Kill();
-
+        tutorial_point_user.SlowAbort();
     }
 }
