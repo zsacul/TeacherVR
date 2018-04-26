@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.Networking;
 using VRTK;
 
 public class ParticleOnOff : MonoBehaviour
@@ -15,7 +16,8 @@ public class ParticleOnOff : MonoBehaviour
     public GameObject Particle;
     public Transform ParticleTransform;
 
-    public Events EventScriptableObject;
+    public Events[] EventScriptableObjects;
+    private Events CurrentEventScriptableObject;
 
     private GameObject ParticleInstance;
 
@@ -113,6 +115,7 @@ public class ParticleOnOff : MonoBehaviour
                 break;
             case Occasion.Event:
                 CheckEventAbort();
+                GameController.Instance.EventsManager.EventsManagerStartNext -= EventsManager_EventsManagerStartNext;
                 break;
         }
 
@@ -138,6 +141,7 @@ public class ParticleOnOff : MonoBehaviour
                 break;
             case Occasion.Event:
                 CheckEventAbort();
+                GameController.Instance.EventsManager.EventsManagerStartNext -= EventsManager_EventsManagerStartNext;
                 break;
         }
         Points = false;
@@ -146,7 +150,7 @@ public class ParticleOnOff : MonoBehaviour
 
     void CheckEventAbort()
     {
-        if (EventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())
+        if (CurrentEventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())
         {
             Points = false;
             Del();
@@ -156,7 +160,8 @@ public class ParticleOnOff : MonoBehaviour
 
     void CheckEvent()
     {
-        if (EventScriptableObject == GameController.Instance.EventsManager.GetCurrentEvent())
+        if (CurrentEventScriptableObject != null &&
+            CurrentEventScriptableObject == GameController.Instance.EventsManager.GetCurrentEvent())
         {
             if (TurnOn == Occasion.Event) Inst();
             if (TurnOff == Occasion.Event) Del();
@@ -169,6 +174,9 @@ public class ParticleOnOff : MonoBehaviour
     {
         io = GetComponent<VRTK_InteractableObject>();
         sdz = GetComponent<VRTK_SnapDropZone>();
+        EventsManager_EventsManagerStartNext();
+        GameController.Instance.EventsManager.EventsManagerStartNext += EventsManager_EventsManagerStartNext;
+
         switch (TurnOn)
         {
             case Occasion.Snaped:
@@ -218,6 +226,20 @@ public class ParticleOnOff : MonoBehaviour
                 InvokeRepeating("CheckEvent", 0, 1);
                 break;
         }
+    }
+
+    private void EventsManager_EventsManagerStartNext()
+    {
+        Events curr = GameController.Instance.EventsManager.GetCurrentEvent();
+        if (curr != null)
+            foreach (var eventSO in EventScriptableObjects)
+            {
+                if (eventSO.name == curr.name)
+                {
+                    CurrentEventScriptableObject = curr;
+                    InvokeRepeating("CheckEvent", 0, 1);
+                }
+            }
     }
 
     private void ObjectSnappedOn(object sender, SnapDropZoneEventArgs e)
