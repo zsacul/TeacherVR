@@ -27,8 +27,12 @@ public class ControllerObjectsSpawner : MonoBehaviour
 
         RightHand.GetComponent<VRTK_ControllerEvents>().GripPressed += RightHand_GripPressed;
         LeftHand.GetComponent<VRTK_ControllerEvents>().GripPressed += LeftHand_GripPressed;
-        RightHand.GetComponent<VRTK_ControllerEvents>().GripReleased += RightHand_GripReleased;
-        LeftHand.GetComponent<VRTK_ControllerEvents>().GripReleased += LeftHand_GripReleased;
+        RightHand.GetComponent<VRTK_ControllerEvents>().GripReleased += DeSpawn;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().GripReleased += DeSpawn;
+        RightHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed += DeSpawn;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed += DeSpawn;
+        RightHand.GetComponent<VRTK_ControllerEvents>().StartMenuReleased += DeSpawn;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuReleased += DeSpawn;
     }
 
     private void Spawn(Transform HandTransform)
@@ -54,7 +58,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
         }
     }
 
-    private void DeSpawn()
+    private void DeSpawn(object sender, ControllerInteractionEventArgs e)
     {
         foreach (GameObject obj in ObjectsInstances)
         {
@@ -72,15 +76,5 @@ public class ControllerObjectsSpawner : MonoBehaviour
     private void LeftHand_GripPressed(object sender, ControllerInteractionEventArgs e)
     {
         Spawn(LeftHand.transform);
-    }
-
-    private void RightHand_GripReleased(object sender, ControllerInteractionEventArgs e)
-    {
-        DeSpawn();
-    }
-
-    private void LeftHand_GripReleased(object sender, ControllerInteractionEventArgs e)
-    {
-        DeSpawn();
     }
 }

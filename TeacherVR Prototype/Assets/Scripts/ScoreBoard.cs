@@ -34,7 +34,16 @@ public class ScoreBoard : MonoBehaviour
         ParticleSystem = GameObject.Find("ParticleSystem");
         Where = GameObject.Find("WhereAreParticles");
         textMesh = gameObject.GetComponent<TextMeshPro>();
-        textMesh.text = "Tap here to start game!";
+        textMesh.text = "Tap here to start timer!";
+    }
+
+    public void RestartBoard()
+    {
+        textMesh.text = "Tap here to start timer!";
+        PointsChange(0);
+        ChangeTime(GameController.Instance.GameTime, 0);
+        ChangeTimeCounting(true);
+        SetOutOfTime(false);
     }
 
     private void Update()

@@ -39,7 +39,7 @@ public class ChangeCenterOfMassOnThrow : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.transform.tag == "Egg") Destroy(gameObject,3);
+        if(col.transform.tag == "Egg") Destroy(gameObject,0.7f);
         Restart();
     }
 }

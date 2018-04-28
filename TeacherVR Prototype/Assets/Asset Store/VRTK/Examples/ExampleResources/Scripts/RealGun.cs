@@ -87,13 +87,13 @@
                     slide.Fire();
                     FireBullet();
                     VRTK_ControllerHaptics.TriggerHapticPulse(
-                        VRTK_ControllerReference.GetControllerReference(ce.gameObject), 0.63f, 0.2f, 0.01f);
+                        VRTK_ControllerReference.GetControllerReference(ControllerEvents.gameObject), 0.63f, 0.2f, 0.01f);
                 }
             }
             else
             {
                 VRTK_ControllerHaptics.TriggerHapticPulse(
-                    VRTK_ControllerReference.GetControllerReference(ce.gameObject), 0.08f, 0.1f, 0.01f);
+                    VRTK_ControllerReference.GetControllerReference(ControllerEvents.gameObject), 0.08f, 0.1f, 0.01f);
             }
         }
 
@@ -117,9 +117,9 @@
         protected override void Update()
         {
             base.Update();
-            if (ce)
+            if (ControllerEvents)
             {
-                var pressure = (maxTriggerRotation * ce.GetTriggerAxis()) - minTriggerRotation;
+                var pressure = (maxTriggerRotation * ControllerEvents.GetTriggerAxis()) - minTriggerRotation;
                 trigger.transform.localEulerAngles = new Vector3(0f, pressure, 0f);
             }
             else

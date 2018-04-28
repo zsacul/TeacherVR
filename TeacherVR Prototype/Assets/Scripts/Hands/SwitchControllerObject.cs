@@ -7,14 +7,14 @@ namespace VRTK.Examples
 
     public class SwitchControllerObject : VRTK_InteractableObject
     {
-        protected VRTK_ControllerEvents ce;
+        protected VRTK_ControllerEvents ControllerEvents;
 
         public override void Grabbed(VRTK_InteractGrab grabbingObject)
         {
             base.Grabbed(grabbingObject);
-            ce = grabbingObject.controllerEvents;
-            ce.GripPressed += Hand_GripPressed;
-            ce.TriggerPressed += Hand_TriggerPressed;
+            ControllerEvents = grabbingObject.controllerEvents;
+            ControllerEvents.GripPressed += Hand_GripPressed;
+            ControllerEvents.TriggerPressed += Hand_TriggerPressed;
             grabOverrideButton =
                 VRTK_ControllerEvents.ButtonAlias
                     .StartMenuPress; //Bo kontroller sie pokazuje na ungrab jak sie zostawi domyslnie
@@ -47,10 +47,10 @@ namespace VRTK.Examples
         protected override void OnDisable()
         {
             base.OnDisable();
-            if (ce != null)
+            if (ControllerEvents != null)
             {
-                ce.GripPressed -= Hand_GripPressed;
-                ce.TriggerPressed -= Hand_TriggerPressed;
+                ControllerEvents.GripPressed -= Hand_GripPressed;
+                ControllerEvents.TriggerPressed -= Hand_TriggerPressed;
             }
         }
     }
