@@ -11,8 +11,6 @@ public class ParticleOnOff : MonoBehaviour
 
     public float LifeTime = 0f;
 
-    public bool Points = false;
-
     public GameObject Particle;
     public Transform ParticleTransform;
 
@@ -80,14 +78,6 @@ public class ParticleOnOff : MonoBehaviour
 
     private void Del()
     {
-        if (Points)
-        {
-            GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, transform.position, 0.01f);
-            Points = false;
-        }
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
     }
 
@@ -96,22 +86,22 @@ public class ParticleOnOff : MonoBehaviour
         switch (TurnOn)
         {
             case Occasion.Snaped:
-                sdz.ObjectSnappedToDropZone -= ObjectSnappedOn;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectSnappedOn;
                 break;
             case Occasion.Unsnaped:
-                sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOn;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOn;
                 break;
             case Occasion.Touched:
-                io.InteractableObjectTouched -= ObjectTouchedOn;
+                if (io != null) io.InteractableObjectTouched -= ObjectTouchedOn;
                 break;
             case Occasion.Untouched:
-                io.InteractableObjectTouched -= ObjectUntouchedOn;
+                if (io != null) io.InteractableObjectTouched -= ObjectUntouchedOn;
                 break;
             case Occasion.Grabbed:
-                io.InteractableObjectTouched -= ObjectGrabbedOn;
+                if (io != null) io.InteractableObjectTouched -= ObjectGrabbedOn;
                 break;
             case Occasion.Ungrabbed:
-                io.InteractableObjectTouched -= ObjectUngrabbedOn;
+                if (io != null) io.InteractableObjectTouched -= ObjectUngrabbedOn;
                 break;
             case Occasion.Event:
                 CheckEventAbort();
@@ -122,29 +112,28 @@ public class ParticleOnOff : MonoBehaviour
         switch (TurnOff)
         {
             case Occasion.Snaped:
-                sdz.ObjectSnappedToDropZone -= ObjectSnappedOff;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectSnappedOff;
                 break;
             case Occasion.Unsnaped:
-                sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOff;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectUnsnappedOff;
                 break;
             case Occasion.Touched:
-                io.InteractableObjectTouched -= ObjectTouchedOff;
+                if (io != null) io.InteractableObjectTouched -= ObjectTouchedOff;
                 break;
             case Occasion.Untouched:
-                io.InteractableObjectTouched -= ObjectUntouchedOff;
+                if (io != null) io.InteractableObjectTouched -= ObjectUntouchedOff;
                 break;
             case Occasion.Grabbed:
-                io.InteractableObjectTouched -= ObjectGrabbedOff;
+                if (io != null) io.InteractableObjectTouched -= ObjectGrabbedOff;
                 break;
             case Occasion.Ungrabbed:
-                io.InteractableObjectTouched -= ObjectUngrabbedOff;
+                if (io != null) io.InteractableObjectTouched -= ObjectUngrabbedOff;
                 break;
             case Occasion.Event:
                 CheckEventAbort();
                 GameController.Instance.EventsManager.EventsManagerStartNext -= EventsManager_EventsManagerStartNext;
                 break;
         }
-        Points = false;
         Del();
     }
 
@@ -152,7 +141,6 @@ public class ParticleOnOff : MonoBehaviour
     {
         if (CurrentEventScriptableObject != GameController.Instance.EventsManager.GetCurrentEvent())
         {
-            Points = false;
             Del();
             CancelInvoke();
         }

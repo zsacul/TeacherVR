@@ -44,7 +44,7 @@ namespace VRTK.Examples
             switch (mode)
             {
                 case Mode.StartGame:
-                    TMPUGUI.text = "Open to start";
+                    TMPUGUI.text = "Open to start game!";
                     StartCoroutine(TeleportToMenuWithDelay());
                     GameController.Instance.EventsManager.Restart();
                     pos = transform.GetChild(0).position;
@@ -90,18 +90,15 @@ namespace VRTK.Examples
             switch (mode)
             {
                 case Mode.StartGame:
-                    if (e.normalizedValue >= 60 || e.normalizedValue <= 40)
+                    if (e.normalizedValue <= 40)
                     {
                         TMPUGUI.text = "";
-                        TeleportToStart();
                         transform.GetChild(0).position = pos;
                         transform.GetChild(0).rotation = rot;
                         transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = true;
                         GameController.Instance.EventsManager.Restart();
-                        GameController.Instance.ScoreBoard.PointsChange(0);
-                        GameController.Instance.ScoreBoard.ChangeTime(GameController.Instance.GameTime, 0);
-                        GameController.Instance.ScoreBoard.ChangeTimeCounting(true);
-                        GameController.Instance.ScoreBoard.SetOutOfTime(false);
+                        GameController.Instance.ScoreBoard.RestartBoard();
+                        TeleportToStart();
                     }
                     break;
                 case Mode.Volume:

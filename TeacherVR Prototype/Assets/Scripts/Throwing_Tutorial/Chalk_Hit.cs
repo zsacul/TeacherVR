@@ -24,10 +24,10 @@ public class Chalk_Hit : MonoBehaviour
                 GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
                 tutorial_point_user.gameObject.activeSelf && !tutorial_point_user.GetCorutineStatus())
             {
-                GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.TwoHundredPoints,
+                GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
                     transform.position + Vector3.up);
-                GameController.Instance.ScoreBoard.PointsAddAnim(200);
-                GameController.Instance.SoundManager.Play2D(SamplesList.Correct, 0.1f);
+                GameController.Instance.ScoreBoard.PointsAddAnim(100);
+                GameController.Instance.SoundManager.Play2D(SamplesList.Correct, 0.01f);
                 tutorial_point_user.Kill();
             }
         }
