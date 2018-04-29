@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VRTK;
 using VRTK.Examples;
 
@@ -38,10 +39,24 @@ public class GameController : MonoBehaviour
     public StudentsRefs Students;
     public MenuScript[] MenuScripts;
     public int GameTime = 3;
-
+    [Tooltip("The GameObject to inject into the VRTK SDK Manager as the Left Controller Script Alias.")]
+    public GameObject leftScriptAlias;
+    [Tooltip("The GameObject to inject into the VRTK SDK Manager as the Right Controller Script Alias.")]
+    public GameObject rightScriptAlias;
     void Start()
     {
+        //VRTK_SDKManager.instance.scriptAliasRightController = rightScriptAlias;
+        //VRTK_SDKManager.instance.scriptAliasLeftController = leftScriptAlias;
         ScoreBoard.GameOver += ScoreBoard_GameOver;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //VRTK_SDKManager.instance.UnloadSDKSetup();
+            SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void OnDestroy()

@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 114002356681056558}
   - component: {fileID: 114846990308639244}
   - component: {fileID: 114057373262345258}
+  - component: {fileID: 114549958752287282}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1088,6 +1089,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b8bb5bff2f71e47baf8357cf3c2a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114549958752287282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982150515922314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752d1f59003e8194780798dd2bdb787d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneConstructor: {fileID: 0}
+  leftScriptAlias: {fileID: 0}
+  rightScriptAlias: {fileID: 0}
+  spawnPoint: {fileID: 0}
+  sdkSwitcher: 1
 --- !u!114 &114570469743984878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1413,6 +1430,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   GameTime: 5
+  leftScriptAlias: {fileID: 0}
+  rightScriptAlias: {fileID: 0}
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1

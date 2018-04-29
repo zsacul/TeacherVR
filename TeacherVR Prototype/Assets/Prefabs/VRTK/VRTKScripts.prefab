@@ -3345,6 +3345,7 @@ MonoBehaviour:
   triggerText: 
   gripText: 
   touchpadText: 
+  touchpadTwoText: 
   buttonOneText: 
   buttonTwoText: 
   startMenuText: 
@@ -3354,6 +3355,7 @@ MonoBehaviour:
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
+  touchpadTwo: {fileID: 0}
   buttonOne: {fileID: 0}
   buttonTwo: {fileID: 0}
   startMenu: {fileID: 0}
@@ -4051,12 +4053,11 @@ MonoBehaviour:
   distanceBlinkDelay: 0
   headsetPositionCompensation: 1
   targetListPolicy: {fileID: 114805077805852354}
+  navMeshData: {fileID: 0}
   navMeshLimitDistance: 0
   snapToNearestFloor: 1
+  applyPlayareaParentOffset: 0
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
 --- !u!114 &114096559414986008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4306,9 +4307,6 @@ MonoBehaviour:
   playareaCursor: {fileID: 0}
   directionIndicator: {fileID: 0}
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003
@@ -4687,6 +4685,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerModelAvailable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnControllerVisible:
     m_PersistentCalls:
       m_Calls: []
@@ -4820,9 +4823,11 @@ MonoBehaviour:
   selectAfterHoverDuration: 0
   interactWithObjects: 0
   grabToPointerTip: 0
-  controller: {fileID: 0}
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!114 &114180365192050154
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4849,15 +4854,13 @@ MonoBehaviour:
   stepThicknessMultiplier: 0.5
   stepDropThreshold: 0.08
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
   fallRestriction: 0
   gravityFallYThreshold: 0.15
   blinkYThreshold: 0.15
   floorHeightTolerance: 0.001
   fallCheckPrecision: 5
   teleporter: {fileID: 0}
+  customPlayAreaRigidbody: {fileID: 0}
   customBodyColliderContainer: {fileID: 0}
   customFootColliderContainer: {fileID: 0}
 --- !u!114 &114186023407178510
@@ -4884,9 +4887,11 @@ MonoBehaviour:
   selectAfterHoverDuration: 0
   interactWithObjects: 0
   grabToPointerTip: 0
-  controller: {fileID: 0}
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!114 &114193515828808890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5458,7 +5463,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickOnPointerCollision: 0
   autoActivateWithinDistance: 0
-  UIPointerHand: {fileID: 114368801638052658}
 --- !u!114 &114255053913420504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6109,6 +6113,10 @@ MonoBehaviour:
   clickMethod: 0
   attemptClickOnDeactivate: 0
   clickAfterHoverDuration: 0
+  maximumLength: Infinity
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
+  customOrigin: {fileID: 0}
   controller: {fileID: 0}
   pointerOriginTransform: {fileID: 0}
   hoveringElement: {fileID: 0}
@@ -6131,9 +6139,6 @@ MonoBehaviour:
   playareaCursor: {fileID: 0}
   directionIndicator: {fileID: 0}
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003
@@ -6966,9 +6971,6 @@ MonoBehaviour:
   playareaCursor: {fileID: 0}
   directionIndicator: {fileID: 0}
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003
@@ -7416,6 +7418,7 @@ MonoBehaviour:
   headsetOutOfBoundsIsCollision: 0
   displayOnInvalidLocation: 1
   targetListPolicy: {fileID: 114689080430735126}
+  directionIndicator: {fileID: 0}
   validLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
     type: 2}
   invalidLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
@@ -7494,6 +7497,7 @@ MonoBehaviour:
   triggerText: 
   gripText: 
   touchpadText: 
+  touchpadTwoText: 
   buttonOneText: 
   buttonTwoText: 
   startMenuText: 
@@ -7503,6 +7507,7 @@ MonoBehaviour:
   trigger: {fileID: 0}
   grip: {fileID: 0}
   touchpad: {fileID: 0}
+  touchpadTwo: {fileID: 0}
   buttonOne: {fileID: 0}
   buttonTwo: {fileID: 0}
   startMenu: {fileID: 0}
@@ -8016,9 +8021,11 @@ MonoBehaviour:
   selectAfterHoverDuration: 0
   interactWithObjects: 0
   grabToPointerTip: 0
-  controller: {fileID: 0}
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!114 &114652357845482366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8324,6 +8331,10 @@ MonoBehaviour:
   clickMethod: 0
   attemptClickOnDeactivate: 0
   clickAfterHoverDuration: 0
+  maximumLength: Infinity
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
+  customOrigin: {fileID: 0}
   controller: {fileID: 0}
   pointerOriginTransform: {fileID: 0}
   hoveringElement: {fileID: 0}
@@ -8345,7 +8356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickOnPointerCollision: 0
   autoActivateWithinDistance: 0
-  UIPointerHand: {fileID: 114711876239184850}
 --- !u!114 &114720748500587910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8649,6 +8659,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  OnControllerModelAvailable:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: VRTK.UnityEventHelper.VRTK_ControllerEvents_UnityEvents+ControllerInteractionEvent,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnControllerVisible:
     m_PersistentCalls:
       m_Calls: []
@@ -8819,8 +8834,11 @@ MonoBehaviour:
   objectIsPrefab: 0
   cloneGrabbedObject: 1
   alwaysCloneOnEnable: 0
+  attemptSecondaryGrab: 0
   interactTouch: {fileID: 0}
   interactGrab: {fileID: 0}
+  secondaryInteractTouch: {fileID: 0}
+  secondaryInteractGrab: {fileID: 0}
 --- !u!114 &114789006525859280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9108,6 +9126,7 @@ MonoBehaviour:
   headsetOutOfBoundsIsCollision: 0
   displayOnInvalidLocation: 1
   targetListPolicy: {fileID: 114409199012473836}
+  directionIndicator: {fileID: 0}
   validLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
     type: 2}
   invalidLocationObject: {fileID: 1394981721356878, guid: f926fcc7f99dc6946959a82220932b4c,
@@ -9191,8 +9210,11 @@ MonoBehaviour:
   objectIsPrefab: 0
   cloneGrabbedObject: 1
   alwaysCloneOnEnable: 0
+  attemptSecondaryGrab: 0
   interactTouch: {fileID: 0}
   interactGrab: {fileID: 0}
+  secondaryInteractTouch: {fileID: 0}
+  secondaryInteractGrab: {fileID: 0}
 --- !u!114 &114834828631908070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9577,9 +9599,11 @@ MonoBehaviour:
   selectAfterHoverDuration: 0
   interactWithObjects: 0
   grabToPointerTip: 0
-  controller: {fileID: 0}
+  attachedTo: {fileID: 0}
+  controllerEvents: {fileID: 0}
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
+  controller: {fileID: 0}
 --- !u!114 &114910014745218786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9763,6 +9787,7 @@ MonoBehaviour:
   timeTillFade: 0
   blinkTransitionSpeed: 0.1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  targetListPolicy: {fileID: 0}
   headsetCollision: {fileID: 0}
   headsetFade: {fileID: 0}
 --- !u!114 &114924551676298894
@@ -9788,13 +9813,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba3cd5456cd79e49948f5ceb58544b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerToggleButton: 10
-  pointerSetButton: 10
-  grabToggleButton: 3
-  useToggleButton: 7
-  uiClickButton: 3
-  menuToggleButton: 14
   axisFidelity: 1
+  senseAxisForceZeroThreshold: 0.15
+  senseAxisPressThreshold: 0.95
   triggerClickThreshold: 1
   triggerForceZeroThreshold: 0.01
   triggerAxisZeroOnUntouch: 0
@@ -9806,6 +9827,7 @@ MonoBehaviour:
   triggerHairlinePressed: 0
   triggerClicked: 0
   triggerAxisChanged: 0
+  triggerSenseAxisChanged: 0
   gripPressed: 0
   gripTouched: 0
   gripHairlinePressed: 0
@@ -9814,16 +9836,20 @@ MonoBehaviour:
   touchpadPressed: 0
   touchpadTouched: 0
   touchpadAxisChanged: 0
+  touchpadSenseAxisChanged: 0
+  touchpadTwoTouched: 0
+  touchpadTwoPressed: 0
+  touchpadTwoAxisChanged: 0
   buttonOnePressed: 0
   buttonOneTouched: 0
   buttonTwoPressed: 0
   buttonTwoTouched: 0
   startMenuPressed: 0
-  pointerPressed: 0
-  grabPressed: 0
-  usePressed: 0
-  uiClickPressed: 0
-  menuPressed: 0
+  middleFingerSenseAxisChanged: 0
+  ringFingerSenseAxisChanged: 0
+  pinkyFingerSenseAxisChanged: 0
+  gripSenseAxisChanged: 0
+  gripSensePressed: 0
   controllerVisible: 1
 --- !u!114 &114939625950658898
 MonoBehaviour:
@@ -10253,13 +10279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba3cd5456cd79e49948f5ceb58544b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerToggleButton: 10
-  pointerSetButton: 10
-  grabToggleButton: 3
-  useToggleButton: 7
-  uiClickButton: 3
-  menuToggleButton: 14
   axisFidelity: 1
+  senseAxisForceZeroThreshold: 0.15
+  senseAxisPressThreshold: 0.95
   triggerClickThreshold: 1
   triggerForceZeroThreshold: 0.01
   triggerAxisZeroOnUntouch: 0
@@ -10271,6 +10293,7 @@ MonoBehaviour:
   triggerHairlinePressed: 0
   triggerClicked: 0
   triggerAxisChanged: 0
+  triggerSenseAxisChanged: 0
   gripPressed: 0
   gripTouched: 0
   gripHairlinePressed: 0
@@ -10279,16 +10302,20 @@ MonoBehaviour:
   touchpadPressed: 0
   touchpadTouched: 0
   touchpadAxisChanged: 0
+  touchpadSenseAxisChanged: 0
+  touchpadTwoTouched: 0
+  touchpadTwoPressed: 0
+  touchpadTwoAxisChanged: 0
   buttonOnePressed: 0
   buttonOneTouched: 0
   buttonTwoPressed: 0
   buttonTwoTouched: 0
   startMenuPressed: 0
-  pointerPressed: 0
-  grabPressed: 0
-  usePressed: 0
-  uiClickPressed: 0
-  menuPressed: 0
+  middleFingerSenseAxisChanged: 0
+  ringFingerSenseAxisChanged: 0
+  pinkyFingerSenseAxisChanged: 0
+  gripSenseAxisChanged: 0
+  gripSensePressed: 0
   controllerVisible: 1
 --- !u!114 &114958921715553684
 MonoBehaviour:
@@ -10635,9 +10662,6 @@ MonoBehaviour:
   playareaCursor: {fileID: 0}
   directionIndicator: {fileID: 0}
   customRaycast: {fileID: 0}
-  layersToIgnore:
-    serializedVersion: 2
-    m_Bits: 4
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003

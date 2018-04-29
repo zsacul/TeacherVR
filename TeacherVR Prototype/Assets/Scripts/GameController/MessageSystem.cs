@@ -38,6 +38,7 @@ public class MessageSystem : MonoBehaviour
     private IEnumerator FindDevices()
     {
         yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
 
         RightHand = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_ControllerEvents>();
         LeftHand = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_ControllerEvents>();
@@ -160,6 +161,7 @@ public class MessageSystem : MonoBehaviour
 
     public void ShowButtonOnControllers(Button button, string txt, float time)
     {
+        return;
         if (!GameController.Instance.Tooltips) return;
         switch (button)
         {
