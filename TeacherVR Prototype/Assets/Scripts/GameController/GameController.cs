@@ -37,12 +37,10 @@ public class GameController : MonoBehaviour
     public Particles Particles;
     public MicInput MicInput;
     public StudentsRefs Students;
-    public MenuScript[] MenuScripts;
-    public int GameTime = 3;
-    [Tooltip("The GameObject to inject into the VRTK SDK Manager as the Left Controller Script Alias.")]
-    public GameObject leftScriptAlias;
-    [Tooltip("The GameObject to inject into the VRTK SDK Manager as the Right Controller Script Alias.")]
-    public GameObject rightScriptAlias;
+    [Tooltip("One round time")]
+    public int GameTime = 5;
+    public ForceTeleportScript ForceTeleportScript;
+
     void Start()
     {
         //VRTK_SDKManager.instance.scriptAliasRightController = rightScriptAlias;
@@ -54,9 +52,13 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            //VRTK_SDKManager.instance.UnloadSDKSetup();
-            SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex);
+            RestartGame();
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void OnDestroy()
@@ -66,11 +68,9 @@ public class GameController : MonoBehaviour
 
     private void ScoreBoard_GameOver()
     {
-        MenuScripts[0].TeleportToMenu();
-        foreach (MenuScript menu in MenuScripts)
-        {
-            menu.DoAction();
-        }
+        MessageSystem.HideAllButtons();
+        MessageSystem.HideAllWindows();
+        ForceTeleportScript.ForceTeleportToGameSummary();
     }
 
     public void ChangeTooltips()

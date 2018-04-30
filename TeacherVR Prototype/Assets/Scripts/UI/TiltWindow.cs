@@ -29,6 +29,7 @@ public class TiltWindow : MonoBehaviour
     private IEnumerator FindDevices()
     {
         yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         UIPointerR = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_UIPointer>();
         UIPointerL = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_UIPointer>();
         HeadsetTranform = VRTK_DeviceFinder.HeadsetTransform();
@@ -38,7 +39,11 @@ public class TiltWindow : MonoBehaviour
     {
         mTrans = transform;
         mStart = mTrans.localRotation;
-        StartCoroutine(FindDevices());
+    }
+
+    void OnEnable()
+    {
+        if(VR) StartCoroutine(FindDevices());
     }
 
     private void setXY(VRTK_UIPointer Pointer, VRTK_UIPointer CorrectionPointer)

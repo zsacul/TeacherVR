@@ -25,22 +25,5 @@
                 lastUsePressedState = controller.triggerPressed;
             }
         }
-
-        public void ForceTeleport()
-        {
-            float distance = Vector3.Distance(transform.position, destination.position);
-            VRTK_ControllerReference controllerReference =
-                VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetControllerRightHand());
-            OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, destination, new RaycastHit(),
-                destination.position, controllerReference));
-        }
-        public void ForceTeleportTo(Transform destination)
-        {
-            float distance = Vector3.Distance(transform.position, destination.position);
-            VRTK_ControllerReference controllerReference =
-                VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetControllerRightHand());
-            OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, destination, new RaycastHit(),
-                destination.position, controllerReference));
-        }
     }
 }

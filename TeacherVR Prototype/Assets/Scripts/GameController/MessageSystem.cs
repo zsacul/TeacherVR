@@ -10,9 +10,7 @@ public class MessageSystem : MonoBehaviour
     public GameObject LeftTooltips;
     public GameObject RightTooltips;
 
-    public GameObject HeadsetFollower;
-    public GameObject LeftHandFollower;
-    public GameObject RightHandFollower;
+    private GameObject HeadsetFollower;
 
     public ObjectToFollow ActiveFollower = ObjectToFollow.Headset;
 
@@ -40,6 +38,7 @@ public class MessageSystem : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
 
+        HeadsetFollower = VRTK_DeviceFinder.HeadsetTransform().gameObject;
         RightHand = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_ControllerEvents>();
         LeftHand = VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_ControllerEvents>();
 
@@ -55,7 +54,7 @@ public class MessageSystem : MonoBehaviour
         LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed += StartMenuPressed;
     }
 
-    private void OnDestroy()
+    /*private void OnDestroy()
     {
         RightHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressed;
         LeftHand.GetComponent<VRTK_ControllerEvents>().TriggerPressed -= TriggerPressed;
@@ -67,7 +66,7 @@ public class MessageSystem : MonoBehaviour
         LeftHand.GetComponent<VRTK_ControllerEvents>().ButtonTwoPressed -= ButtonTwoPressed;
         RightHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed -= StartMenuPressed;
         LeftHand.GetComponent<VRTK_ControllerEvents>().StartMenuPressed -= StartMenuPressed;
-    }
+    }*/
 
     private void TriggerPressed(object sender, ControllerInteractionEventArgs e)
     {
@@ -125,10 +124,10 @@ public class MessageSystem : MonoBehaviour
                 TransformFollow.gameObjectToFollow = HeadsetFollower;
                 break;
             case ObjectToFollow.RightHand:
-                TransformFollow.gameObjectToFollow = RightHandFollower;
+                TransformFollow.gameObjectToFollow = RightHand.gameObject;
                 break;
             case ObjectToFollow.LeftHand:
-                TransformFollow.gameObjectToFollow = LeftHandFollower;
+                TransformFollow.gameObjectToFollow = LeftHand.gameObject;
                 break;
         }
 

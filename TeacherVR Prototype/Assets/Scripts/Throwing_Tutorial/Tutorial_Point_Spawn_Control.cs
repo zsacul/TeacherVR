@@ -25,7 +25,6 @@ public class Tutorial_Point_Spawn_Control : MonoBehaviour
 
     private void Zone_ObjectUnsnappedFromDropZone(object sender, SnapDropZoneEventArgs e)
     {
-        Debug.Log("chalk grabbed");
-        tutorial_point_user.SlowAbort();
+        tutorial_point_user.Abort();
     }
 }
