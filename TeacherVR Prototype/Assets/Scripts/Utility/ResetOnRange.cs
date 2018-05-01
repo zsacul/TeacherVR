@@ -99,6 +99,7 @@ public class ResetOnRange : MonoBehaviour
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, transform.position);
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
                 End.transform.position);
+            GameController.Instance.SoundManager.Play2D(SamplesList.Error,0.01f);
         }
     }
 }

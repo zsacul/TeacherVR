@@ -9,7 +9,8 @@ public class ChangeStateOnButtonPress : MonoBehaviour
 
     void Start()
     {
-        HandScript.GetComponent<VRTK_UIPointer>().ActivationButtonPressed += ChangeStateOnButtonPress_ActivationButtonPressed;
+        HandScript.GetComponent<VRTK_UIPointer>().ActivationButtonPressed +=
+            ChangeStateOnButtonPress_ActivationButtonPressed;
         gameObject.SetActive(false);
     }
 
