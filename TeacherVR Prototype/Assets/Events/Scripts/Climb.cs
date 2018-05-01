@@ -27,7 +27,7 @@ public class Climb : Events
     {
         if (tt.Trigger)
         {
-               CompleteEvent();
+            CompleteEvent();
         }
     }
 
@@ -35,7 +35,8 @@ public class Climb : Events
     {
         base.AbortEvent();
         objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
-        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
+        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea")
+            .GetComponent<VRTK.VRTK_PlayerClimb>();
         climb.enabled = false;
         climb.enabled = true;
         Destroy(objToClimbInstance);
@@ -45,12 +46,12 @@ public class Climb : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-        GameObject Target;
-        Target = GameObject.Find("Score");                      
+        var Target = GameObject.Find("Score");
         Target.GetComponent<ScoreBoard>().SetActive();
-        
+
         objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
-        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea").GetComponent<VRTK.VRTK_PlayerClimb>();
+        VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea")
+            .GetComponent<VRTK.VRTK_PlayerClimb>();
         climb.enabled = false;
         climb.enabled = true;
         Destroy(objToClimbInstance);

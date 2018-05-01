@@ -48,14 +48,6 @@ public class GameController : MonoBehaviour
         ScoreBoard.GameOver += ScoreBoard_GameOver;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartGame();
-        }
-    }
-
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
