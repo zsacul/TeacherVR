@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 114688621250999454}
   - component: {fileID: 114638847498241932}
   - component: {fileID: 114408740039219246}
+  - component: {fileID: 114773104753516682}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0893f0c8a7712e8458dc3722eef95aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
 --- !u!114 &114098359752424616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1159,15 +1161,20 @@ MonoBehaviour:
   showControlHints: 1
   hideHandsAtSwitch: 0
   resetHandsAtSwitch: 1
-  mouseMovementInput: 1
+  showHandAxisHelpers: 1
   lockMouseToView: 1
-  handMoveMultiplier: 2
+  mouseMovementInput: 1
+  handMoveMultiplier: 0.3
   handRotationMultiplier: 30
   playerMoveMultiplier: 5
-  playerRotationMultiplier: 2
+  playerRotationMultiplier: 1
   playerSprintMultiplier: 2
+  lockedCursorMultiplier: 5
+  leftHandColor: {r: 1, g: 0, b: 0, a: 1}
+  rightHandColor: {r: 0, g: 1, b: 0, a: 1}
   mouseMovementKey: 324
   toggleControlHints: 282
+  toggleMouseLock: 285
   changeHands: 9
   handsOnOff: 308
   rotationPosition: 304
@@ -1318,6 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0893f0c8a7712e8458dc3722eef95aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
 --- !u!114 &114261281557719030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,7 +1502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5837af0260a118e4d808bfe0405429a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistOnLoad: 0
   autoManageScriptDefines: 1
   activeScriptingDefineSymbolsWithoutSDKClasses: []
   scriptAliasLeftController: {fileID: 0}
@@ -1504,6 +1511,8 @@ MonoBehaviour:
   setups:
   - {fileID: 114719551661403968}
   - {fileID: 114196386922175262}
+  excludeTargetGroups: 0100000001000000
+  persistOnLoad: 0
 --- !u!114 &114495300194191280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1713,6 +1722,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: -1
   origin: {fileID: 0}
+--- !u!114 &114773104753516682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622183565249102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32642724c1719444826991e4ff8fccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStartSampling: 1
+  velocityAverageFrames: 5
+  angularVelocityAverageFrames: 10
 --- !u!114 &114803183967270902
 MonoBehaviour:
   m_ObjectHideFlags: 1

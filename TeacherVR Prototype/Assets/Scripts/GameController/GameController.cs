@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VRTK;
 using VRTK.Examples;
 
@@ -36,12 +37,28 @@ public class GameController : MonoBehaviour
     public Particles Particles;
     public MicInput MicInput;
     public StudentsRefs Students;
-    public MenuScript[] MenuScripts;
-    public int GameTime = 3;
+    [Tooltip("One round time")]
+    public int GameTime = 5;
+    public ForceTeleportScript ForceTeleportScript;
 
     void Start()
     {
+        //VRTK_SDKManager.instance.scriptAliasRightController = rightScriptAlias;
+        //VRTK_SDKManager.instance.scriptAliasLeftController = leftScriptAlias;
         ScoreBoard.GameOver += ScoreBoard_GameOver;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartGame();
+        }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void OnDestroy()
@@ -51,11 +68,9 @@ public class GameController : MonoBehaviour
 
     private void ScoreBoard_GameOver()
     {
-        MenuScripts[0].TeleportToMenu();
-        foreach (MenuScript menu in MenuScripts)
-        {
-            menu.DoAction();
-        }
+        MessageSystem.HideAllButtons();
+        MessageSystem.HideAllWindows();
+        ForceTeleportScript.ForceTeleportToGameSummary();
     }
 
     public void ChangeTooltips()

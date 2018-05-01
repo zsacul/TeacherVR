@@ -7,6 +7,8 @@ using VRTK;
 
 public class ParticleOnOff : MonoBehaviour
 {
+    public bool PlayOnce = false;
+
     public float ParticleScale = 1f;
 
     public float LifeTime = 0f;
@@ -79,6 +81,7 @@ public class ParticleOnOff : MonoBehaviour
     private void Del()
     {
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
+        if (PlayOnce) enabled = false;
     }
 
     private void OnDestroy()

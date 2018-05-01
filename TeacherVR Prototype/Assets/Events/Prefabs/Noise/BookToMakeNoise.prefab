@@ -51,8 +51,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4443653424292658}
-  - component: {fileID: 114518911219618306}
   - component: {fileID: 54999838577414670}
+  - component: {fileID: 114570375358100896}
   - component: {fileID: 114745444407406292}
   - component: {fileID: 65420751256484872}
   - component: {fileID: 114141104554849744}
@@ -193,6 +193,7 @@ MonoBehaviour:
   detachDistance: 1
   velocityLimit: Infinity
   angularVelocityLimit: Infinity
+  maxDistanceDelta: 10
 --- !u!114 &114385414961804410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114518911219618306
+--- !u!114 &114570375358100896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -212,12 +213,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695644066895426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 50c36f41f46135044880c823fec07e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
   IgnoreSaveKinematic: 1
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -226,15 +227,19 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114141104554849744}
-  secondaryGrabActionScript: {fileID: 114385414961804410}
+  grabAttachMechanicScript: {fileID: 0}
+  secondaryGrabActionScript: {fileID: 0}
   isUsable: 0
-  holdButtonToUse: 1
+  holdButtonToUse: 0
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
+  CollisionDetectionMode: 0
+  AutoGrab: 0
 --- !u!114 &114745444407406292
 MonoBehaviour:
   m_ObjectHideFlags: 1

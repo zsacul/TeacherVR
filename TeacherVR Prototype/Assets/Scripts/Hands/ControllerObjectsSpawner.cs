@@ -22,6 +22,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
     private IEnumerator FindDevices()
     {
         yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
         RightHand = VRTK_DeviceFinder.GetControllerRightHand();
         LeftHand = VRTK_DeviceFinder.GetControllerLeftHand();
 
