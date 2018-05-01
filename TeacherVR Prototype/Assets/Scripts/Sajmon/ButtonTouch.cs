@@ -8,7 +8,7 @@ public class ButtonTouch : MonoBehaviour {
     private bool pressed;
     public bool showing;
     private Color color;
-    private static int index = 1;
+    //private static int index = 1;
     private Animator animator;
     private void Start()
     {
@@ -40,9 +40,9 @@ public class ButtonTouch : MonoBehaviour {
         {
 
             animator.SetTrigger(getAnimId());
-
-            Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);
-            index *= 10;
+            Sajmon.seqPlayerSequence += id.ToString();
+            //Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);
+          //  index *= 10;
             Sajmon.needToCheck = true;
 
         }
@@ -86,8 +86,8 @@ public class ButtonTouch : MonoBehaviour {
                 break;
         }
     }
-    public static void resetIndex()
-    {
-        index = 1;
-    }
+  //  public static void resetIndex()
+  //  {
+      //  index = 1;
+  //  }
 }

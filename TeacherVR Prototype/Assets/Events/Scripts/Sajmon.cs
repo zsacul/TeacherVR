@@ -16,9 +16,9 @@ public class Sajmon : Events
 
    // public static AudioSource aSource;
 
-    public int sequence;
-    private int buffor;
-    public static int PlayerSequence = 0;
+    public string sequen;
+    private int seqBufforPtr;
+    public static string seqPlayerSequence = "";
 
     private Color color;
 
@@ -28,7 +28,14 @@ public class Sajmon : Events
 
     public static bool needToCheck = false;
 
-    int played; // -1 czeka na interakcję, 0 not shown, 1 showing, 2 shown
+    SeqStatus stat;
+    enum SeqStatus
+    {
+        waitingForInteraction,
+        NotShown,
+        Showing,
+        Shown
+    }
 
     float progress;
 
@@ -46,38 +53,38 @@ public class Sajmon : Events
        // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
         GenerateSequence(Lvl);
-        buffor = sequence;
         _time = Time.time;
-        played = -1;
+        seqBufforPtr = 0;
+        stat = SeqStatus.waitingForInteraction;
         progress = 0;
-        TextMeshProMonitor.text = "Click any key";
+        TextMeshProMonitor.text = "Press any key";
     }
 
     public override void CallInUpdate()
     {
         //base.CallInUpdate();
 
-        if ((played == 0 && _time + Start_time <= Time.time) || (played == 1 && _time + deltaTime <= Time.time))
+        if (( stat == SeqStatus.NotShown && _time + Start_time <= Time.time) || ( stat == SeqStatus.Showing && _time + deltaTime <= Time.time))
         {
-            if (played == 0)
+            if (stat == SeqStatus.NotShown)
             {
-                played = 1;
+                stat = SeqStatus.Showing;
                 canPlayerIteract();
                 _time = Time.time;
             }
-            else if (played == 1)
+            else if (stat == SeqStatus.Showing)
             {
-                if (buffor >= 1)
+                if (seqBufforPtr < sequen.Length)
                 {
                     TextMeshProMonitor.text = "Watch";
-                    ShowPressing(buffor % 10);
-                    buffor /= 10;
+                    ShowPressing(sequen[seqBufforPtr]);
+                    //   buffor /= 10;
+                    seqBufforPtr++;
                     _time = Time.time;
                 }
                 else
                 {
-                    played = 2;
-                    //  PlayerSequence = 0;
+                    stat = SeqStatus.Shown;
                     canPlayerIteract(true);
                     TextMeshProMonitor.text = "Repeat";
                     _time = Time.time;
@@ -86,47 +93,38 @@ public class Sajmon : Events
         }
         if (needToCheck)
         {
-            if (played == -1)
+            if (stat == SeqStatus.waitingForInteraction)
             {
-                PlayerSequence = 0;
-                played = 0;
-                ButtonTouch.resetIndex();
+                seqPlayerSequence = "";
+                stat = SeqStatus.NotShown;
+                seqBufforPtr = 0;
             }
             else
             {
-                Debug.Log(PlayerSequence);
-                if (PlayerSequence - sequence == 0)
+                if (seqPlayerSequence.Equals(sequen))
                 {
-                    // AddPoints(Lvl * 10);
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f, Buttons.transform.position.z));
                     AddPoints(300);
                     CompleteEvent();
                 }
                 else
                 {
-                    string seq = sequence.ToString();
-                    string pseq = PlayerSequence.ToString();
-                    if (!(seq[seq.Length - pseq.Length].Equals(pseq[0])))
+                    if (!(sequen[seqPlayerSequence.Length-1].Equals(seqPlayerSequence[seqPlayerSequence.Length-1])))
                     {
-                        Debug.Log("You've failed");
-                        //tutaj wywołaj particle wrong
-                        
+                        TextMeshProMonitor.text = "Wait";
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
-                       // GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
-                        PlayerSequence = 0;
-                        ButtonTouch.resetIndex();
-                        played = 0;
-                        buffor = sequence;
+                        seqPlayerSequence = "";
+                        stat = SeqStatus.NotShown;
+                        canPlayerIteract();
+                        seqBufforPtr = 0;
                         progress = 0;
 
                     }
                     else
                     {
-                        //tutaj wywołaj particle good 
-                     //   GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
-                        progress += 100 / seq.Length;
-                        //SetProgressBar(progress);
+                        progress += 100 / sequen.Length;
+
                     }
                 }
             }
@@ -138,6 +136,7 @@ public class Sajmon : Events
     {
         base.AbortEvent();
         MonitorRenderer.material.color = color;
+        TextMeshProMonitor.text = "";
         Destroy(Buttons);
     }
 
@@ -145,18 +144,22 @@ public class Sajmon : Events
     {
         base.CompleteEvent();
         MonitorRenderer.material.color = color;
+        TextMeshProMonitor.text = "";
         Destroy(Buttons);
     }
+    
 
     void GenerateSequence(int difficulty)
     {
         int b = Random.Range(1, 4);
+        string seq = b.ToString();
         for (int i = 0; i < difficulty; i++)
         {
-            b = b * 10 + Random.Range(1, 5);
+            seq += Random.Range(1, 5).ToString();
         }
-        sequence = b;
-        Debug.Log(sequence + "<- od końca.");
+
+        sequen = seq;
+        Debug.Log(sequen);
     }
 
     void canPlayerIteract(bool can = false)
@@ -170,6 +173,7 @@ public class Sajmon : Events
 
     private void ShowPressing(int id)
     {
-        Buttons.transform.GetChild(id - 1).GetComponent<ButtonTouch>().PushButton();
+        //Hidden conversion string -> int
+        Buttons.transform.GetChild(id%49).GetComponent<ButtonTouch>().PushButton();
     }
 }
