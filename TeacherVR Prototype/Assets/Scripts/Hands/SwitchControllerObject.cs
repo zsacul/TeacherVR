@@ -7,14 +7,20 @@ namespace VRTK.Examples
 
     public class SwitchControllerObject : VRTK_InteractableObject
     {
+        [Header("SwitchControllerObject Settings")]
+        
+        public CollisionDetectionMode CollisionDetectionMode = CollisionDetectionMode.Continuous;
+        public bool AutoGrab = true;
+
         protected VRTK_ControllerEvents ControllerEvents;
 
         public override void Grabbed(VRTK_InteractGrab grabbingObject)
         {
             base.Grabbed(grabbingObject);
             ControllerEvents = grabbingObject.controllerEvents;
-            ControllerEvents.GripPressed += Hand_GripPressed;
-            ControllerEvents.TriggerPressed += Hand_TriggerPressed;
+            ControllerEvents.GripPressed += DestroyObject;
+            ControllerEvents.StartMenuPressed += DestroyObject;
+            ControllerEvents.TriggerPressed += UseObject;
             grabOverrideButton =
                 VRTK_ControllerEvents.ButtonAlias
                     .StartMenuPress; //Bo kontroller sie pokazuje na ungrab jak sie zostawi domyslnie
@@ -23,23 +29,35 @@ namespace VRTK.Examples
         public override void StartTouching(VRTK_InteractTouch currentTouchingObject = null)
         {
             base.StartTouching(currentTouchingObject);
-            VRTK_InteractGrab myGrab = currentTouchingObject.GetComponent<VRTK_InteractGrab>();
-            myGrab.AttemptGrab();
+            if (AutoGrab)
+            {
+                VRTK_InteractGrab myGrab = currentTouchingObject.GetComponent<VRTK_InteractGrab>();
+                myGrab.AttemptGrab();
+            }
+        }
+
+        public override void Ungrabbed(VRTK_InteractGrab previousGrabbingObject = null)
+        {
+            base.Ungrabbed(previousGrabbingObject);
+            if (!AutoGrab)
+            {
+                Destroy(gameObject);
+            }
         }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            interactableRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            interactableRigidbody.collisionDetectionMode = CollisionDetectionMode;
         }
 
-        protected virtual void Hand_GripPressed(object sender, ControllerInteractionEventArgs e)
+        protected virtual void DestroyObject(object sender, ControllerInteractionEventArgs e)
         {
             ForceReleaseGrab();
             Destroy(gameObject);
         }
 
-        protected virtual void Hand_TriggerPressed(object sender, ControllerInteractionEventArgs e)
+        protected virtual void UseObject(object sender, ControllerInteractionEventArgs e)
         {
             StartUsing();
         }
@@ -49,8 +67,9 @@ namespace VRTK.Examples
             base.OnDisable();
             if (ControllerEvents != null)
             {
-                ControllerEvents.GripPressed -= Hand_GripPressed;
-                ControllerEvents.TriggerPressed -= Hand_TriggerPressed;
+                ControllerEvents.GripPressed -= DestroyObject;
+                ControllerEvents.StartMenuPressed -= DestroyObject;
+                ControllerEvents.TriggerPressed -= UseObject;
             }
         }
     }

@@ -145,6 +145,8 @@ namespace VRTK
 
         [Header("General Settings")]
 
+        public bool IgnoreSaveKinematic = false;
+
         [Tooltip("If this is checked then the Interactable Object component will be disabled when the Interactable Object is not being interacted with.")]
         public bool disableWhenIdle = true;
 
@@ -708,7 +710,7 @@ namespace VRTK
                     previousIsGrabbable = isGrabbable;
                 }
 
-                if (interactableRigidbody != null)
+                if (interactableRigidbody != null && !IgnoreSaveKinematic)
                 {
                     previousKinematicState = interactableRigidbody.isKinematic;
                 }

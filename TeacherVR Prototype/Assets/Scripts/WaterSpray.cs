@@ -4,6 +4,8 @@
 
     public class WaterSpray : SwitchControllerObject
     {
+        [Header("WaterSpray Settings")]
+
         public float bulletSpeed = 200f;
         public float bulletLife = 5f;
         public float fireDelay = 0.5f;
