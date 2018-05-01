@@ -5,15 +5,10 @@ using UnityEngine;
 
 public class UpdateScore : MonoBehaviour
 {
-    private TextMeshProUGUI TMPUGUI;
-
-    void Start()
-    {
-        TMPUGUI = GetComponentInChildren<TextMeshProUGUI>();
-    }
-
+    public TextMeshPro TextMeshPro;
+    
     void Update()
     {
-        TMPUGUI.text = "Score: " + GameController.Instance.ScoreBoard.GetPoints();
+        TextMeshPro.text = "Score - " + GameController.Instance.ScoreBoard.GetPoints();
     }
 }
