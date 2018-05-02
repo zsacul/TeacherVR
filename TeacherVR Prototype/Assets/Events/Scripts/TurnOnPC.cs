@@ -110,8 +110,8 @@ public class TurnOnPC : Events
         u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
         u3.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
         u4.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-        GameController.Instance.ScoreBoard.PointsAddAnim(300);
-        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints,
+        GameController.Instance.ScoreBoard.PointsAddAnim(200);
+        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.TwoHundredPoints,
             PC.transform.position + Vector3.up / 4);
         GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep, PC.transform.position, 0.01f);
     }

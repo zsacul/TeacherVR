@@ -90,8 +90,6 @@ GameObject:
   - component: {fileID: 4309366277258380}
   - component: {fileID: 33500628139425608}
   - component: {fileID: 23795689678097438}
-  - component: {fileID: 114791667204790052}
-  - component: {fileID: 114167639731164234}
   - component: {fileID: 114078281853944708}
   - component: {fileID: 114373908337580164}
   - component: {fileID: 114045497054573086}
@@ -99,6 +97,8 @@ GameObject:
   - component: {fileID: 54632028330538736}
   - component: {fileID: 120751440855861112}
   - component: {fileID: 114648896467864210}
+  - component: {fileID: 114791667204790052}
+  - component: {fileID: 114167639731164234}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -620,9 +620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min: 0.4
-  max: 3
+  max: 3.4
   AnimName: Sliding table
   anim: {fileID: 111752366402422786}
+  EventsWhenStopGrab:
+  - {fileID: 11400000, guid: 8d970fa66d6cde749a4bae60b6d152ed, type: 2}
 --- !u!120 &120751440855861112
 LineRenderer:
   m_ObjectHideFlags: 1

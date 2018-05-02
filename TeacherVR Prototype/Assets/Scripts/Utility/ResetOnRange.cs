@@ -16,6 +16,8 @@ public class ResetOnRange : MonoBehaviour
 
     private Vector3 startPos1;
     private Vector3 startPos2;
+    private Quaternion startRot1;
+    private Quaternion startRot2;
 
     public enum Action
     {
@@ -35,6 +37,8 @@ public class ResetOnRange : MonoBehaviour
             io2 = End.GetComponent<VRTK_InteractableObject>();
             startPos1 = transform.position;
             startPos2 = End.transform.position;
+            startRot1 = transform.rotation;
+            startRot2 = End.transform.rotation;
         }
     }
 
@@ -53,6 +57,8 @@ public class ResetOnRange : MonoBehaviour
                 io2.ForceStopInteracting();
                 transform.position = startPos1;
                 End.transform.position = startPos2;
+                transform.rotation = startRot1;
+                End.transform.rotation = startRot2;
             }
         }
         else if (Vector3.Distance(End.position, transform.position) > MaxRange)
@@ -75,6 +81,7 @@ public class ResetOnRange : MonoBehaviour
                 SpawnWrongPartcile();
                 Unsnap(transform.parent);
                 transform.position = End.position;
+                transform.rotation = End.rotation;
             }
         }
     }
