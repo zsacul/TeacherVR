@@ -252,7 +252,6 @@ public class MessageSystem : MonoBehaviour
 
     void RepeatPulse()
     {
-        Debug.Log("WibruWibru");
         VRTK_ControllerHaptics.TriggerHapticPulse(
             VRTK_ControllerReference.GetControllerReference(LeftHand.gameObject), 0.63f, 0.2f, 0.01f);
         VRTK_ControllerHaptics.TriggerHapticPulse(

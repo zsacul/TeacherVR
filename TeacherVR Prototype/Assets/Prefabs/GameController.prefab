@@ -533,7 +533,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemplateShape: []
   RysObject: {fileID: 0}
-  ChalkColor: {r: 1, g: 1, b: 1, a: 1}
+  CurrentChalkColor: {r: 1, g: 1, b: 1, a: 1}
+  OnLineChalkColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
+  GoToColor: {r: 0, g: 1, b: 0, a: 1}
+  DoNotGoToColor: {r: 1, g: 0, b: 0, a: 1}
+  ShapeColor: {r: 1, g: 1, b: 1, a: 1}
+  CompleteShapeColor: {r: 0, g: 0.8627451, b: 0.39215687, a: 1}
   Boards:
   - {fileID: 0}
   - {fileID: 0}
@@ -543,8 +548,8 @@ MonoBehaviour:
   - {fileID: 0}
   templateThickness: 0.2
   pointThickness: 0.3
-  templateThicknessAccept: 0.12
-  pointThicknessAccept: 0.12
+  templateThicknessAccept: 0.07
+  pointThicknessAccept: 0.07
 --- !u!114 &114041882298443638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -880,9 +885,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d81baa418989dba4f967876d1936f9de, type: 2}
   - {fileID: 11400000, guid: ff260632a68422c4095163588f8a78c7, type: 2}
   - {fileID: 11400000, guid: 630768faa21c57248abbf48057bcd8d5, type: 2}
-  - {fileID: 11400000, guid: c878809a09c4ad345ad50cdf340ae1e3, type: 2}
   - {fileID: 11400000, guid: 8e32400d9b9ba964da5df389dc38cf31, type: 2}
   - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
+  - {fileID: 11400000, guid: 8d970fa66d6cde749a4bae60b6d152ed, type: 2}
   delay: 2
 --- !u!114 &114185177004893528
 MonoBehaviour:
@@ -1021,6 +1026,7 @@ MonoBehaviour:
   SfxClink: {fileID: 8300000, guid: dfc16653469842d47b0fd11ee8c0d19e, type: 3}
   SfxWaterRunning: {fileID: 8300000, guid: 48baa48f73c0e1045958960e8db81025, type: 3}
   SfxPoof: {fileID: 8300000, guid: 2474817e13a7f924589c809f006b4ba1, type: 3}
+  SfxShortPoof: {fileID: 8300000, guid: 4cd34702244223e44b24b37863953b2a, type: 3}
 --- !u!114 &114402954041823974
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -13,14 +13,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: TurnOnPC
   description: Connect the cables to the monitor, keyboard and computer
-  status: 0
-  lvl: 0
+  status: 2
+  Lvl: 0
+  MediumLvl: 0
+  DeviationLvlRange: 0
   Repeatable: 0
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
   GoToTransform: {fileID: 4329568916296550, guid: 6734eec64523e6a479c378a0e9fe39b1,
     type: 2}
   PCOnMaterial: {fileID: 2100000, guid: e30176cd4da79504e9a93d442119f006, type: 2}
-  USBCable: {fileID: 1426655178385984, guid: 24a6bbbdd24401648a8b893f8a0eb4b7, type: 2}
+  USBCable: {fileID: 1706524484804848, guid: 26e26332ea4da914191829308cebd13b, type: 2}
   Cable1Transform: {fileID: 4375040384195832, guid: adc96ff38ac81c84d96128d2cf0e00ae,
     type: 2}
   Cable2Transform: {fileID: 4273846218421208, guid: d63799c0c0083a5499806dc2008590fb,

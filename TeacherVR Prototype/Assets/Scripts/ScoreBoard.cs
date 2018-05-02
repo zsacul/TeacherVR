@@ -14,6 +14,7 @@ public class ScoreBoard : MonoBehaviour
     private int minutes = 0;
     private int seconds = 0;
 
+    private int MaxAnimSpeed = 100;
     private bool Anim = false;
     private int How_Many = 0;
 
@@ -29,7 +30,7 @@ public class ScoreBoard : MonoBehaviour
 
     public event GameOverDelegate GameOver;
 
-    void Start ()
+    void Start()
     {
         ParticleSystem = GameObject.Find("ParticleSystem");
         Where = GameObject.Find("WhereAreParticles");
@@ -88,7 +89,7 @@ public class ScoreBoard : MonoBehaviour
             else
             {
                 if ((seconds >= 10) && (minutes >= 10))
-                {                 
+                {
                     textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":" + seconds;
                 }
                 if ((seconds < 10) && (minutes >= 10))
@@ -104,16 +105,16 @@ public class ScoreBoard : MonoBehaviour
                     textMesh.text = "Score -  " + points + "\n\n" + "Time  -  0" + minutes + ":0" + seconds;
                 }
             }
-
-            if ((Anim) && (How_Many > 0))
-            {
-                PointsAdd(1);
-                How_Many--;
-                if (How_Many == 0)
+            for (int speed = 0; speed <= MaxAnimSpeed * Time.deltaTime; speed++)
+                if ((Anim) && (How_Many > 0))
                 {
-                    Anim = false;
+                    PointsAdd(1);
+                    How_Many--;
+                    if (How_Many == 0)
+                    {
+                        Anim = false;
+                    }
                 }
-            }
         }
     }
 
@@ -214,5 +215,4 @@ public class ScoreBoard : MonoBehaviour
     Target.GetComponent<ScoreBoard>().funkcja(argument);   // Tutaj odwołujemy się do skrypu (funkcji w tym skrypcie)
 
     */
-
 }

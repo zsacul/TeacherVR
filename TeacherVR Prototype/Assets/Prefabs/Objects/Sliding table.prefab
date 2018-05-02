@@ -90,8 +90,6 @@ GameObject:
   - component: {fileID: 4309366277258380}
   - component: {fileID: 33500628139425608}
   - component: {fileID: 23795689678097438}
-  - component: {fileID: 114791667204790052}
-  - component: {fileID: 114167639731164234}
   - component: {fileID: 114078281853944708}
   - component: {fileID: 114373908337580164}
   - component: {fileID: 114045497054573086}
@@ -99,6 +97,8 @@ GameObject:
   - component: {fileID: 54632028330538736}
   - component: {fileID: 120751440855861112}
   - component: {fileID: 114648896467864210}
+  - component: {fileID: 114791667204790052}
+  - component: {fileID: 114167639731164234}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -185,7 +185,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952965731142614}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.588, y: 1.66, z: 12.9}
   m_LocalScale: {x: 0.7, y: 0.03, z: 0.6}
   m_Children:
@@ -542,9 +542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
   IgnoreSaveKinematic: 0
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -561,6 +561,8 @@ MonoBehaviour:
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
 --- !u!114 &114167639731164234
 MonoBehaviour:
@@ -618,9 +620,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min: 0.4
-  max: 3
+  max: 3.4
   AnimName: Sliding table
   anim: {fileID: 111752366402422786}
+  EventsWhenStopGrab:
+  - {fileID: 11400000, guid: 8d970fa66d6cde749a4bae60b6d152ed, type: 2}
 --- !u!120 &120751440855861112
 LineRenderer:
   m_ObjectHideFlags: 1
