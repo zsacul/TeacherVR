@@ -21,7 +21,8 @@ public class ResetOnRange : MonoBehaviour
     {
         ResetToEndPoint,
         ResetBothToMiddle,
-        ResetBothToStart
+        ResetBothToStart,
+        ResetToEndPointOnUngrab
     }
 
     void Start()
@@ -39,6 +40,7 @@ public class ResetOnRange : MonoBehaviour
 
     void Update()
     {
+        if (OverMaxRangeAction == Action.ResetToEndPointOnUngrab && io.IsGrabbed()) return;
         if (OverMaxRangeAction == Action.ResetBothToStart)
         {
             if (Vector3.Distance(transform.position, startPos1) > MaxRange ||
@@ -63,14 +65,12 @@ public class ResetOnRange : MonoBehaviour
                 Unsnap(End.transform.parent);
                 io2.ForceStopInteracting();
 
-                Vector3 a;
-                Vector3 b;
-                a = Vector3.Lerp(transform.position, End.position, 1f / 3);
-                b = Vector3.Lerp(transform.position, End.position, 2f / 3);
+                var a = Vector3.Lerp(transform.position, End.position, 1f / 3);
+                var b = Vector3.Lerp(transform.position, End.position, 2f / 3);
                 transform.position = a;
                 End.position = b;
             }
-            else
+            else //Action.ResetToEndPointOnUngrab and Action.ResetToEndPoint
             {
                 SpawnWrongPartcile();
                 Unsnap(transform.parent);
@@ -97,9 +97,14 @@ public class ResetOnRange : MonoBehaviour
         if (UseWrongParticle)
         {
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, transform.position);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                End.transform.position);
-            GameController.Instance.SoundManager.Play2D(SamplesList.Error,0.01f);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, End.transform.position);
+            GameController.Instance.SoundManager.Play2D(SamplesList.Error, 0.01f);
+        }
+        else
+        {
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, transform.position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, End.transform.position);
+            GameController.Instance.SoundManager.Play2D(SamplesList.ShortPoof,0.1f);
         }
     }
 }

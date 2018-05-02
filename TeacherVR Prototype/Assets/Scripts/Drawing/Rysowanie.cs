@@ -80,7 +80,7 @@ public class Rysowanie : MonoBehaviour
             comboCounter = 0;
             Debug.Log("A mistake! Combo: " + comboCounter);
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                GameController.Instance.DrawingManager.RysObject.transform.position);
+                GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
             GameController.Instance.SoundManager.Play3DAt(SamplesList.Error,
                 GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
         }
@@ -125,7 +125,7 @@ public class Rysowanie : MonoBehaviour
                 {
                     lastWrong = Time.time;
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                        GameController.Instance.DrawingManager.RysObject.transform.position);
+                        GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
                     GameController.Instance.SoundManager.Play3DAt(SamplesList.Error,
                         GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
                 }
@@ -140,10 +140,10 @@ public class Rysowanie : MonoBehaviour
 
                 if (comboCounter == 1)
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                        GameController.Instance.DrawingManager.RysObject.transform.position);
+                        GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
                 else
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
-                        GameController.Instance.DrawingManager.RysObject.transform.position);
+                        GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
 
                 GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct,
                     GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
@@ -181,5 +181,10 @@ public class Rysowanie : MonoBehaviour
         if (mistake || currentTarget == 0 || !gameInProgress)
             GameController.Instance.DrawingManager.CurrentChalkColor = chalkColor;
         else GameController.Instance.DrawingManager.CurrentChalkColor = GameController.Instance.DrawingManager.OnLineChalkColor;
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.tag == "Sponge" && !enabled) Paint.Clear();
     }
 }

@@ -21,7 +21,10 @@ public class TurnOnPC : Events
     private GameObject USB1Ins;
     private GameObject USB2Ins;
 
-    Transform u1, u2, mu1, mu2;
+    private float lastTime = 0;
+    private const float delayTime = 2;
+
+    Transform u1, u2, u3, u4;
 
     public override void StartEvent()
     {
@@ -30,8 +33,8 @@ public class TurnOnPC : Events
         if (USB2Ins != null) Destroy(USB2Ins);
         if (u1 != null) Destroy(u1.gameObject);
         if (u2 != null) Destroy(u2.gameObject);
-        if (mu1 != null) Destroy(mu1.gameObject);
-        if (mu2 != null) Destroy(mu2.gameObject);
+        if (u3 != null) Destroy(u3.gameObject);
+        if (u4 != null) Destroy(u4.gameObject);
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         Message(8, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         PC = GameObject.FindGameObjectWithTag("PCEvent");
@@ -41,53 +44,47 @@ public class TurnOnPC : Events
         USB2Ins = Instantiate(USBCable, Cable2Transform.position, USBCable.transform.rotation);
     }
 
-    //Poprawić optymalizacje! Może na eventach?
+    private bool CheckIfSameCable()
+    {
+        if (u1 != null && u2 != null && (
+                u1.GetChild(0).gameObject.activeSelf &&
+                u1.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u2.GetChild(1) ||
+                u2.GetChild(0).gameObject.activeSelf &&
+                u2.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u1.GetChild(1)))
+        {
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                PC.transform.position + Vector3.up / 4);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.Error, PC.transform.position, 0.01f);
+            return true;
+        }
+        if (u3 != null && u4 != null && (
+                u3.GetChild(0).gameObject.activeSelf &&
+                u3.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u4.GetChild(1) ||
+                u4.GetChild(0).gameObject.activeSelf &&
+                u4.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u3.GetChild(1)))
+        {
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                PC.transform.position + Vector3.up / 4);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.Error, PC.transform.position, 0.01f);
+            return true;
+        }
+        return false;
+    }
+
     public override void CallInUpdate()
     {
         u1 = PC.transform.Find("PC/USBPort1/SnapDropZone/USBCable");
         u2 = PC.transform.Find("PC/USBPort2/SnapDropZone/USBCable");
-        mu1 = PC.transform.Find("Monitor/MicroUSBPort/SnapDropZone/MicroUSBCable");
-        mu2 = PC.transform.Find("Keyboard/MicroUSBPort/SnapDropZone/MicroUSBCable");
+        u3 = PC.transform.Find("Monitor/USBPort3/SnapDropZone/USBCable");
+        u4 = PC.transform.Find("Keyboard/USBPort4/SnapDropZone/USBCable");
 
-
-        if (u1 != null && u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable)
+        if (Time.time > lastTime + delayTime && CheckIfSameCable())
         {
-            u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-            GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, u1.transform.position + Vector3.up / 2,
-                0.01f);
-        }
-        if (u2 != null && u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable)
-        {
-            u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-            GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, u2.transform.position + Vector3.up / 2,
-                0.01f);
-        }
-        if (mu1 != null && mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable)
-        {
-            mu1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-            GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, mu1.transform.position + Vector3.up / 2,
-                0.01f);
-        }
-        if (mu2 != null && mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable)
-        {
-            mu2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
-            GameController.Instance.ScoreBoard.PointsAddAnim(100);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, mu2.transform.position + Vector3.up / 2,
-                0.01f);
+            lastTime = Time.time;
+            return;
         }
 
-        if (u1 != null && u2 != null && mu1 != null && mu2 != null)
+        if (u1 != null && u2 != null && u3 != null && u4 != null)
         {
             CompleteEvent();
         }
@@ -101,14 +98,21 @@ public class TurnOnPC : Events
         if (USB2Ins != null) Destroy(USB2Ins);
         if (u1 != null) Destroy(u1.gameObject);
         if (u2 != null) Destroy(u2.gameObject);
-        if (mu1 != null) Destroy(mu1.gameObject);
-        if (mu2 != null) Destroy(mu2.gameObject);
+        if (u3 != null) Destroy(u3.gameObject);
+        if (u4 != null) Destroy(u4.gameObject);
     }
 
     public override void CompleteEvent()
     {
         base.CompleteEvent();
         MonitorRenderer.material = PCOnMaterial;
+        u1.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+        u2.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+        u3.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+        u4.GetComponentInChildren<VRTK_InteractableObject>().isGrabbable = false;
+        GameController.Instance.ScoreBoard.PointsAddAnim(300);
+        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints,
+            PC.transform.position + Vector3.up / 4);
         GameController.Instance.SoundManager.Play3DAt(SamplesList.ComputerBeep, PC.transform.position, 0.01f);
     }
 }

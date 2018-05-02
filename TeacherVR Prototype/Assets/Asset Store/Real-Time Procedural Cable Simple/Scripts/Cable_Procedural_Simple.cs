@@ -44,8 +44,11 @@ public class Cable_Procedural_Simple : MonoBehaviour {
 		//Start animation at random times
 		swayValue = Random.Range(0, 3.14f);
 	}
-	
 
+    public Transform GetEnd()
+    {
+        return endPointTransform;
+    }
 
 	void Update () 
 	{

@@ -70,7 +70,7 @@ public class PourWater : MonoBehaviour
             if (canFill())
             {
                 waterSound =
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position);
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position,0.1f);
             }
         }
     }
@@ -91,7 +91,7 @@ public class PourWater : MonoBehaviour
         if (fuel > cost)
         {
             fuel -= cost;
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleSpray, transform.position);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleSpray, transform.position,0.1f);
             return true;
         }
         return false;
