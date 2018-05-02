@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 114190467910700686}
   - component: {fileID: 114405483954670570}
   - component: {fileID: 114355006565375746}
+  - component: {fileID: 114808238150151928}
   m_Layer: 0
   m_Name: 25_locker
   m_TagString: Untagged
@@ -213,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
   IgnoreSaveKinematic: 0
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -232,6 +233,8 @@ MonoBehaviour:
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
 --- !u!114 &114355006565375746
 MonoBehaviour:
@@ -257,18 +260,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipOnNearTouch: {fileID: 0}
+  strengthOnNearTouch: 0
+  durationOnNearTouch: 0
+  intervalOnNearTouch: 0.05
+  cancelOnNearUntouch: 1
   clipOnTouch: {fileID: 0}
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
+  cancelOnUntouch: 1
   clipOnGrab: {fileID: 0}
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
+  cancelOnUngrab: 1
   clipOnUse: {fileID: 0}
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+  cancelOnUnuse: 1
+  objectToAffect: {fileID: 0}
 --- !u!114 &114405483954670570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -280,9 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnce: 0
+  Played: 0
   ParticleScale: 0.1
   LifeTime: 0
-  Points: 0
   Particle: {fileID: 1545806602296978, guid: b9d8bdece9ecb54438e3a9192254f6fa, type: 2}
   ParticleTransform: {fileID: 4451600188708662}
   EventScriptableObjects: []
@@ -307,6 +320,19 @@ MonoBehaviour:
   onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
   breakForce: Infinity
+--- !u!114 &114808238150151928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1837284775250724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 5
+  Action: 4
 --- !u!153 &153305105619244020
 ConfigurableJoint:
   m_ObjectHideFlags: 1
