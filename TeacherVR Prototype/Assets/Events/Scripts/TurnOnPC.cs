@@ -6,6 +6,7 @@ using VRTK;
 [CreateAssetMenu(fileName = "New TurnOnPC Event", menuName = "Events/TurnOnPC Event")]
 public class TurnOnPC : Events
 {
+    [Header("Custom Settings")]
     public Material PCOnMaterial;
 
     public GameObject USBCable;

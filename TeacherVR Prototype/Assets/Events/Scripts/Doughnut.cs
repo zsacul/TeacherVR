@@ -6,6 +6,7 @@ using VRTK;
 [CreateAssetMenu(fileName = "New Doughnut Event", menuName = "Events/Doughnut Event")]
 public class Doughnut : Events
 {
+    [Header("Custom Settings")]
     public GameObject DoughnutObj;
     public GameObject ObjForLine;
 

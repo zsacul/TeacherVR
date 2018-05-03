@@ -4,9 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Noise", menuName = "Events/Noise")]
 public class Noise : Events
 {
+    [Header("Custom Settings")]
+    public int[] loudStudents;
     public static bool shoutedLoudEnough = false;
     public static bool doneSomethingLoudEnough = false;
-    public int[] loudStudents;
     //Funkcja po której wywołaniu startuje event
     //Powinna zapamiętać na starcie parametry zmienianych obiektów
     public override void StartEvent()

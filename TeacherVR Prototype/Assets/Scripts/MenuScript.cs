@@ -88,6 +88,7 @@ namespace VRTK.Examples
                         GameController.Instance.EventsManager.Restart();
                         GameController.Instance.ScoreBoard.RestartBoard();
                         GameController.Instance.ForceTeleportScript.ForceTeleportToStart();
+                        GameController.Instance.StartGame();
                     }
                     break;
                 case Mode.PlayAgain:

@@ -41,6 +41,8 @@ public class GameController : MonoBehaviour
     public int GameTime = 5;
     public ForceTeleportScript ForceTeleportScript;
 
+    private bool GameInProgress = false;
+
     void Start()
     {
         //VRTK_SDKManager.instance.scriptAliasRightController = rightScriptAlias;
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
 
     private void ScoreBoard_GameOver()
     {
+        GameInProgress = false;
         MessageSystem.HideAllButtons();
         MessageSystem.HideAllWindows();
         ForceTeleportScript.ForceTeleportToGameSummary();
@@ -85,5 +88,15 @@ public class GameController : MonoBehaviour
             TeleportL.enabled = true;
             TeleportR.enabled = true;
         }
+    }
+
+    public bool IsGameInProgress()
+    {
+        return GameInProgress;
+    }
+
+    public void StartGame()
+    {
+        GameInProgress = true;
     }
 }

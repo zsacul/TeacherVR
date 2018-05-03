@@ -45,7 +45,7 @@ public class EventsManager : MonoBehaviour
 
     private void AddPoints(int pkt)
     {
-        GameController.Instance.ScoreBoard.PointsAdd(pkt);
+        GameController.Instance.ScoreBoard.PointsAddAnim(pkt);
     }
 
     private void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow,

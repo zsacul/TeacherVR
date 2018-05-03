@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Throwing_Tutorial", menuName = "Events/Throwing_Tutorial Event")]
 public class Throwing_Tutorial : Events
 {
-    
+    [Header("Custom Settings")]
     private GameObject targets;
     private GameObject chalk;
     //public int Lvl = 0;

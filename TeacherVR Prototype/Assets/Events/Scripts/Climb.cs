@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Climb Event", menuName = "Events/Climb Event")]
 public class Climb : Events
 {
+    [Header("Custom Settings")]
     public GameObject ObjectToClimb;
     public GameObject ObjectToTouch;
 
