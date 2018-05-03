@@ -92,7 +92,7 @@ namespace VRTK.Examples
                     }
                     break;
                 case Mode.PlayAgain:
-                    if (e.normalizedValue > 50)
+                    if (e.normalizedValue > 30)
                     {
                         GameController.Instance.RestartGame();
                     }

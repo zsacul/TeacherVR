@@ -21,12 +21,17 @@ public class EventsManager : MonoBehaviour
 
     private int EventNumber = 0;
 
-    public void Restart()
+    public void EndAllEvents()
     {
         ListOfEvents.Clear();
         EventsToMix.Clear();
         AbortCurrentEvent();
         EventNumber = 0;
+    }
+
+    public void Restart()
+    {
+        EndAllEvents();
 
         foreach (var var in ListOfEventsCopy)
         {

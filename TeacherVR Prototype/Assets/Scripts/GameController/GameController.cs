@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
         GameInProgress = false;
         MessageSystem.HideAllButtons();
         MessageSystem.HideAllWindows();
+        EventsManager.EndAllEvents();
         ForceTeleportScript.ForceTeleportToGameSummary();
     }
 
