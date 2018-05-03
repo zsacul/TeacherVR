@@ -9,6 +9,10 @@ public class PlaySoundOnInteract : MonoBehaviour
 
     public ActionList Action;
 
+    public float Volume = 1;
+
+    public bool OnlyWhenGameInProgress = false;
+
     private VRTK_InteractableObject io;
     private VRTK_SnapDropZone sdz;
 
@@ -19,7 +23,19 @@ public class PlaySoundOnInteract : MonoBehaviour
         Touched,
         Untouched,
         Grabbed,
-        Ungrabbed
+        Ungrabbed,
+        Enable,
+        Disable
+    }
+
+    void OnEnable()
+    {
+        if (Action == ActionList.Enable) Play();
+    }
+
+    void OnDisable()
+    {
+        if (Action == ActionList.Disable) Play();
     }
 
     private void OnDestroy()
@@ -27,22 +43,22 @@ public class PlaySoundOnInteract : MonoBehaviour
         switch (Action)
         {
             case ActionList.Snaped:
-                if (sdz != null) sdz.ObjectSnappedToDropZone -= ObjectSnapped;
+                if (sdz != null) sdz.ObjectSnappedToDropZone -= PlaySDZ;
                 break;
             case ActionList.Unsnaped:
-                if (sdz != null) sdz.ObjectUnsnappedFromDropZone -= ObjectUnsnapped;
+                if (sdz != null) sdz.ObjectUnsnappedFromDropZone -= PlaySDZ;
                 break;
             case ActionList.Touched:
-                if (io != null) io.InteractableObjectTouched -= ObjectTouched;
+                if (io != null) io.InteractableObjectTouched -= PlayIO;
                 break;
             case ActionList.Untouched:
-                if (io != null) io.InteractableObjectUntouched -= ObjectUntouched;
+                if (io != null) io.InteractableObjectUntouched -= PlayIO;
                 break;
             case ActionList.Grabbed:
-                if (io != null) io.InteractableObjectGrabbed -= ObjectGrabbed;
+                if (io != null) io.InteractableObjectGrabbed -= PlayIO;
                 break;
             case ActionList.Ungrabbed:
-                if (io != null) io.InteractableObjectUngrabbed -= ObjectUngrabbed;
+                if (io != null) io.InteractableObjectUngrabbed -= PlayIO;
                 break;
         }
     }
@@ -55,57 +71,38 @@ public class PlaySoundOnInteract : MonoBehaviour
         switch (Action)
         {
             case ActionList.Snaped:
-                if (sdz != null) sdz.ObjectSnappedToDropZone += ObjectSnapped;
+                if (sdz != null) sdz.ObjectSnappedToDropZone += PlaySDZ;
                 break;
             case ActionList.Unsnaped:
-                if (sdz != null) sdz.ObjectUnsnappedFromDropZone += ObjectUnsnapped;
+                if (sdz != null) sdz.ObjectUnsnappedFromDropZone += PlaySDZ;
                 break;
             case ActionList.Touched:
-                if (io != null) io.InteractableObjectTouched += ObjectTouched;
+                if (io != null) io.InteractableObjectTouched += PlayIO;
                 break;
             case ActionList.Untouched:
-                if (io != null) io.InteractableObjectUntouched += ObjectUntouched;
+                if (io != null) io.InteractableObjectUntouched += PlayIO;
                 break;
             case ActionList.Grabbed:
-                if (io != null) io.InteractableObjectGrabbed += ObjectGrabbed;
+                if (io != null) io.InteractableObjectGrabbed += PlayIO;
                 break;
             case ActionList.Ungrabbed:
-                if (io != null) io.InteractableObjectUngrabbed += ObjectUngrabbed;
+                if (io != null) io.InteractableObjectUngrabbed += PlayIO;
                 break;
         }
     }
 
     private void Play()
     {
-        GameController.Instance.SoundManager.Play3DAt(Sound, transform.position);
+        if (OnlyWhenGameInProgress && GameController.Instance.IsGameInProgress() || !OnlyWhenGameInProgress)
+            GameController.Instance.SoundManager.Play3DAt(Sound, transform.position, Volume);
     }
 
-    private void ObjectSnapped(object sender, SnapDropZoneEventArgs e)
+    private void PlaySDZ(object sender, SnapDropZoneEventArgs e)
     {
         Play();
     }
 
-    private void ObjectUnsnapped(object sender, SnapDropZoneEventArgs e)
-    {
-        Play();
-    }
-
-    private void ObjectTouched(object sender, InteractableObjectEventArgs e)
-    {
-        Play();
-    }
-
-    private void ObjectUntouched(object sender, InteractableObjectEventArgs e)
-    {
-        Play();
-    }
-
-    private void ObjectGrabbed(object sender, InteractableObjectEventArgs e)
-    {
-        Play();
-    }
-
-    private void ObjectUngrabbed(object sender, InteractableObjectEventArgs e)
+    private void PlayIO(object sender, InteractableObjectEventArgs e)
     {
         Play();
     }

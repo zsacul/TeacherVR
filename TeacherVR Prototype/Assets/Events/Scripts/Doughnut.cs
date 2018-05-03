@@ -6,6 +6,7 @@ using VRTK;
 [CreateAssetMenu(fileName = "New Doughnut Event", menuName = "Events/Doughnut Event")]
 public class Doughnut : Events
 {
+    [Header("Custom Settings")]
     public GameObject DoughnutObj;
     public GameObject ObjForLine;
 
@@ -31,6 +32,13 @@ public class Doughnut : Events
             Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
             DoughnutInst = Instantiate(DoughnutObj, MidPoints[0].position, DoughnutObj.transform.rotation);
             DoughnutInst.GetComponent<ResetOnRange>().End = MidPoints[0];
+
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, MidPoints[0].position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof,
+                MidPoints[MidPoints.Length - 1].position);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.ShortPoof, MidPoints[0].position, 0.1f);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.ShortPoof,
+                MidPoints[MidPoints.Length - 1].position, 0.1f);
 
             CubeInstList.Add(Instantiate(ObjForLine, MidPoints[0].position, ObjForLine.transform.rotation));
 

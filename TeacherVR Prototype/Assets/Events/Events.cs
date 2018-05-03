@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Event", menuName = "Events/Basic Event")]
 public class Events : ScriptableObject
 {
+    [Header("Basic Settings")]
     //Nazwa eventu
     new public string name = "New Event";
 
@@ -43,7 +44,7 @@ public class Events : ScriptableObject
     private GameObject GoToInst;
 
     public Transform GoToTransform;
-
+    
     private void ShowGoTo()
     {
         if (GoTo != null && GoToTransform != null)

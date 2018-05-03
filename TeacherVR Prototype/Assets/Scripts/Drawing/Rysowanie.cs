@@ -136,10 +136,10 @@ public class Rysowanie : MonoBehaviour
             {
                 comboCounter++;
                 //Player reached a checkpoint
-                GameController.Instance.ScoreBoard.PointsAddAnim(100 * comboCounter);
+                GameController.Instance.ScoreBoard.PointsAddAnim(50 * comboCounter);
 
                 if (comboCounter == 1)
-                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints,
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,
                         GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
                 else
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
