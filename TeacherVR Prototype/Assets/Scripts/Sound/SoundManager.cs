@@ -9,7 +9,11 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     BookBang, // sound of book slamming into floor
     CoinArcade, // retro game style coin sfx
     Squeak, // mouse squeaking
-    DeathSqueak // mouse dying :(
+    DeathSqueak, // mouse dying :(
+    Simon1, // sfx for simon buttons, TODO add interface 
+    Simon2,
+    Simon3,
+    Simon4
 };
 
 
@@ -99,6 +103,10 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxCoinArcade;
     public AudioClip SfxSqueak;
     public AudioClip SfxDeathSqueak;
+    public AudioClip SfxSimon1;
+    public AudioClip SfxSimon2;
+    public AudioClip SfxSimon3;
+    public AudioClip SfxSimon4;
     // ---------------------------------------------------------------------
 
     private int _PoolSize = 30000;
@@ -173,7 +181,17 @@ public class SoundManager : MonoBehaviour {
             case SamplesList.DeathSqueak:
                 return SfxDeathSqueak;
 
+            case SamplesList.Simon1:
+                return SfxSimon1;
 
+            case SamplesList.Simon2:
+                return SfxSimon2;
+
+            case SamplesList.Simon3:
+                return SfxSimon3;
+
+            case SamplesList.Simon4:
+                return SfxSimon4;
         }
 
         return null;
