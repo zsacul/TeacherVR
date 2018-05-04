@@ -14,7 +14,8 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     Simon2,
     Simon3,
     Simon4,
-    AlarmClock // bell-type alarm clock
+    AlarmClock, // bell-type alarm clock
+    ThrowWoosh // woosh of air when throwing something
 };
 
 
@@ -109,6 +110,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxSimon3;
     public AudioClip SfxSimon4;
     public AudioClip SfxAlarmClock;
+    public AudioClip SfxThrowWoosh;
     // ---------------------------------------------------------------------
 
     private int _PoolSize = 30000;
@@ -197,6 +199,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.AlarmClock:
                 return SfxAlarmClock;
+
+            case SamplesList.ThrowWoosh:
+                return SfxThrowWoosh;
         }
 
         return null;
