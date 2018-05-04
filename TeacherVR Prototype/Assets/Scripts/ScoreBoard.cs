@@ -8,6 +8,8 @@ public class ScoreBoard : MonoBehaviour
 {
     private TextMeshPro textMesh;
 
+    private int[] TopScore = new int[5];
+
     private int points = 0;
     private float timer = 0f;
 
@@ -26,7 +28,7 @@ public class ScoreBoard : MonoBehaviour
     GameObject ParticleSystem;
     GameObject Where;
 
-    public delegate void GameOverDelegate();
+    public delegate void GameOverDelegate(bool NewHighScore);
 
     public event GameOverDelegate GameOver;
 
@@ -51,7 +53,7 @@ public class ScoreBoard : MonoBehaviour
     {
         if (Active)
         {
-            if (CountDown)
+            if (CountDown && !OutOfTime)
             {
                 timer -= Time.deltaTime;
                 seconds = Convert.ToInt32(timer % 60);
@@ -65,12 +67,12 @@ public class ScoreBoard : MonoBehaviour
                         OutOfTime = true;
                         if (GameOver != null)
                         {
-                            GameOver();
+                            GameOver(SetNewTopScore());
                         }
                     }
                 }
             }
-            else
+            else if (!OutOfTime)
             {
                 timer += Time.deltaTime;
                 seconds = Convert.ToInt32(timer % 60);
@@ -204,6 +206,38 @@ public class ScoreBoard : MonoBehaviour
     public void SetOutOfTime(bool val)
     {
         OutOfTime = val;
+    }
+
+    public int[] GetTopScore()
+    {
+        return TopScore;
+    }
+
+    public void SetTopScore(int[] _TopScore)
+    {
+        int i = 0;
+        foreach (var score in _TopScore)
+        {
+            TopScore[i] = score;
+            i++;
+        }
+    }
+
+    public bool SetNewTopScore()
+    {
+        for (int i = 0; i < TopScore.Length; i++)
+        {
+            if (points >= TopScore[i])
+            {
+                for (int j = TopScore.Length - 1; j > i; j--)
+                {
+                    TopScore[j] = TopScore[j - 1];
+                }
+                TopScore[i] = points;
+                return true;
+            }
+        }
+        return false;
     }
 
     /*
