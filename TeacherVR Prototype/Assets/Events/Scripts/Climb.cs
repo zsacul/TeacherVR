@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Climb Event", menuName = "Events/Climb Event")]
 public class Climb : Events
 {
-    [Header("Custom Settings")]
-    public GameObject ObjectToClimb;
+    [Header("Custom Settings")] public GameObject ObjectToClimb;
     public GameObject ObjectToTouch;
 
     private GameObject objToClimbInstance;
@@ -35,7 +34,8 @@ public class Climb : Events
     public override void AbortEvent()
     {
         base.AbortEvent();
-        objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
+        if (objToClimbInstance != null)
+            objToClimbInstance.GetComponentInChildren<VRTK.VRTK_InteractableObject>().ForceStopInteracting();
         VRTK.VRTK_PlayerClimb climb = GameObject.Find("VRTKScripts").transform.Find("PlayArea")
             .GetComponent<VRTK.VRTK_PlayerClimb>();
         climb.enabled = false;

@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     #endregion
 
+    public DataHolder DataHolder;
     public EventsManager EventsManager;
     public DrawingManager DrawingManager;
     public bool Tooltips = true;
@@ -37,21 +38,33 @@ public class GameController : MonoBehaviour
     public Particles Particles;
     public MicInput MicInput;
     public StudentsRefs Students;
-    [Tooltip("One round time")]
-    public int GameTime = 5;
+    [Tooltip("One round time")] public int GameTime = 5;
     public ForceTeleportScript ForceTeleportScript;
 
     private bool GameInProgress = false;
 
     void Start()
     {
-        //VRTK_SDKManager.instance.scriptAliasRightController = rightScriptAlias;
-        //VRTK_SDKManager.instance.scriptAliasLeftController = leftScriptAlias;
+        StartCoroutine(LoadData());
         ScoreBoard.GameOver += ScoreBoard_GameOver;
     }
 
     public void RestartGame()
     {
+        StopAllCoroutines();
+        DataHolder.SaveData();
+        StartCoroutine(LoadScene());
+    }
+
+    IEnumerator LoadData()
+    {
+        yield return new WaitForEndOfFrame();
+        DataHolder.LoadData();
+    }
+
+    IEnumerator LoadScene()
+    {
+        yield return new WaitForEndOfFrame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -60,12 +73,25 @@ public class GameController : MonoBehaviour
         ScoreBoard.GameOver -= ScoreBoard_GameOver;
     }
 
-    private void ScoreBoard_GameOver()
+    private void ScoreBoard_GameOver(bool NewHighScore)
     {
         GameInProgress = false;
         MessageSystem.HideAllButtons();
         MessageSystem.HideAllWindows();
+        EventsManager.EndAllEvents();
         ForceTeleportScript.ForceTeleportToGameSummary();
+        if (NewHighScore)
+        {
+            MessageSystem.ShowCustomText("Congratulations! \n\nYou are in Top 5!", MessageSystem.Window.W800H400);
+            StartCoroutine(Hide(5, MessageSystem.Window.W800H400));
+        }
+        DataHolder.SaveData();
+    }
+
+    private IEnumerator Hide(float time, MessageSystem.Window window)
+    {
+        yield return new WaitForSeconds(time);
+        MessageSystem.HideWindow(window);
     }
 
     public void ChangeTooltips()
@@ -88,6 +114,23 @@ public class GameController : MonoBehaviour
             TeleportL.enabled = true;
             TeleportR.enabled = true;
         }
+        StartCoroutine(RestartLocomotion());
+    }
+
+    private IEnumerator RestartLocomotion()
+    {
+        yield return new WaitForEndOfFrame();
+        MoveInPlace.enabled = !MoveInPlace.enabled;
+        MoveInPlace.enabled = !MoveInPlace.enabled;
+        TeleportL.enabled = !TeleportL.enabled;
+        TeleportL.enabled = !TeleportL.enabled;
+        TeleportR.enabled = !TeleportR.enabled;
+        TeleportR.enabled = !TeleportR.enabled;
+    }
+
+    public bool IsLocomotionArmSwinger()
+    {
+        return MoveInPlace.enabled;
     }
 
     public bool IsGameInProgress()

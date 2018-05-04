@@ -9,6 +9,11 @@ public class UpdateScore : MonoBehaviour
     
     void Update()
     {
-        TextMeshPro.text = "Score - " + GameController.Instance.ScoreBoard.GetPoints();
+        TextMeshPro.text = "Your score - " + GameController.Instance.ScoreBoard.GetPoints();
+        TextMeshPro.text += "\nTop 1 - " + GameController.Instance.ScoreBoard.GetTopScore()[0];
+        TextMeshPro.text += "\nTop 2 - " + GameController.Instance.ScoreBoard.GetTopScore()[1];
+        TextMeshPro.text += "\nTop 3 - " + GameController.Instance.ScoreBoard.GetTopScore()[2];
+        TextMeshPro.text += "\nTop 4 - " + GameController.Instance.ScoreBoard.GetTopScore()[3];
+        TextMeshPro.text += "\nTop 5 - " + GameController.Instance.ScoreBoard.GetTopScore()[4];
     }
 }

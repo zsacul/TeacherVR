@@ -10,9 +10,11 @@ public class GameControllerEditor : Editor
     {
         DrawDefaultInspector();
 
+        GameController myScript = (GameController)target;
+
         if (GUILayout.Button("Restart game"))
         {
-            if(Application.isPlaying) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if(Application.isPlaying) myScript.RestartGame();
             else Debug.LogWarning("Application is not in play mode");
         }
     }

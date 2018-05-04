@@ -40,11 +40,13 @@ namespace VRTK.Examples
             }
             controlEvents.OnValueChanged.AddListener(HandleChange);
 
-            SetUI();
+            StartCoroutine(SetUI());
         }
 
-        private void SetUI()
+        private IEnumerator SetUI()
         {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
             switch (mode)
             {
                 case Mode.StartGame:
@@ -92,7 +94,7 @@ namespace VRTK.Examples
                     }
                     break;
                 case Mode.PlayAgain:
-                    if (e.normalizedValue > 50)
+                    if (e.normalizedValue > 30)
                     {
                         GameController.Instance.RestartGame();
                     }
