@@ -7,7 +7,9 @@ using UnityEngine;
 public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, BottleFilling,
     Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof, Electric,
     BookBang, // sound of book slamming into floor
-    CoinArcade // retro game style coin sfx
+    CoinArcade, // retro game style coin sfx
+    Squeak, // mouse squeaking
+    DeathSqueak // mouse dying :(
 };
 
 
@@ -95,7 +97,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxElectric;
     public AudioClip SfxBookBang;
     public AudioClip SfxCoinArcade;
-
+    public AudioClip SfxSqueak;
+    public AudioClip SfxDeathSqueak;
     // ---------------------------------------------------------------------
 
     private int _PoolSize = 30000;
@@ -163,6 +166,14 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.CoinArcade:
                 return SfxCoinArcade;
+
+            case SamplesList.Squeak:
+                return SfxSqueak;
+
+            case SamplesList.DeathSqueak:
+                return SfxDeathSqueak;
+
+
         }
 
         return null;
