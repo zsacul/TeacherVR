@@ -19,7 +19,8 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     Gasp, // surprised egg
     Buzz, // for the fly hit sfx
     FaucetOpen, // opening squeaking faucet/valve
-    FaucetClose // closing ... 
+    FaucetClose, // closing ... 
+    Paper // paper crumbling
 };
 
 
@@ -119,6 +120,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxBuzz;
     public AudioClip SfxFaucetOpen;
     public AudioClip SfxFaucetClose;
+    public AudioClip SfxPaper;
 
     // ---------------------------------------------------------------------
 
@@ -223,6 +225,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.FaucetOpen:
                 return SfxFaucetOpen;
+
+            case SamplesList.Paper:
+                return SfxPaper;
 
         }
 
