@@ -10,13 +10,14 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     CoinArcade, // retro game style coin sfx
     Squeak, // mouse squeaking
     DeathSqueak, // mouse dying :(
-    Simon1, // sfx for simon buttons, TODO add interface 
+    Simon1, // sfx for simon buttons, TODO add interface
     Simon2,
     Simon3,
     Simon4,
     AlarmClock, // bell-type alarm clock
     ThrowWoosh, // woosh of air when throwing something
-    Gasp // surprised egg
+    Gasp, // surprised egg
+    Buzz // for the fly hit sfx
 };
 
 
@@ -113,6 +114,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxAlarmClock;
     public AudioClip SfxThrowWoosh;
     public AudioClip SfxGasp;
+    public AudioClip SfxBuzz;
 
     // ---------------------------------------------------------------------
 
@@ -208,6 +210,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Gasp:
                 return SfxGasp;
+
+            case SamplesList.Buzz:
+                return SfxBuzz;
         }
 
         return null;
