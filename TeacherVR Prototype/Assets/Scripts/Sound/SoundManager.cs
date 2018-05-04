@@ -6,7 +6,8 @@ using UnityEngine;
 // Generic samples only!
 public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, BottleFilling,
     Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof, Electric,
-    BookBang // sound of book slamming into floor
+    BookBang, // sound of book slamming into floor
+    CoinArcade // retro game style coin sfx
 };
 
 
@@ -93,6 +94,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxMagicPoof;
     public AudioClip SfxElectric;
     public AudioClip SfxBookBang;
+    public AudioClip SfxCoinArcade;
 
     // ---------------------------------------------------------------------
 
@@ -155,6 +157,12 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Electric:
                 return SfxElectric;
+
+            case SamplesList.BookBang:
+                return SfxBookBang;
+
+            case SamplesList.CoinArcade:
+                return SfxCoinArcade;
         }
 
         return null;
