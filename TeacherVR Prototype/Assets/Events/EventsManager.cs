@@ -21,12 +21,17 @@ public class EventsManager : MonoBehaviour
 
     private int EventNumber = 0;
 
-    public void Restart()
+    public void EndAllEvents()
     {
         ListOfEvents.Clear();
         EventsToMix.Clear();
         AbortCurrentEvent();
         EventNumber = 0;
+    }
+
+    public void Restart()
+    {
+        EndAllEvents();
 
         foreach (var var in ListOfEventsCopy)
         {
@@ -45,7 +50,7 @@ public class EventsManager : MonoBehaviour
 
     private void AddPoints(int pkt)
     {
-        GameController.Instance.ScoreBoard.PointsAdd(pkt);
+        GameController.Instance.ScoreBoard.PointsAddAnim(pkt);
     }
 
     private void Message(float time, string txt, MessageSystem.ObjectToFollow objectToFollow,

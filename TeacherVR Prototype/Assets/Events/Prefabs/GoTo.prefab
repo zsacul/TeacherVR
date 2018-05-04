@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4952180593190514}
   - component: {fileID: 135434482901826458}
   - component: {fileID: 114310783663204894}
+  - component: {fileID: 114135759431517928}
   m_Layer: 2
   m_Name: GoTo
   m_TagString: Untagged
@@ -103,6 +104,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114135759431517928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1482575408023132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 14
+  Action: 6
+  Volume: 0.1
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114310783663204894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,6 +134,7 @@ MonoBehaviour:
   - LController
   - RController
   DestroyObjectsEvent: 0
+  LifeTime: 3
 --- !u!135 &135434482901826458
 SphereCollider:
   m_ObjectHideFlags: 1

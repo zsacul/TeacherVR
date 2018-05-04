@@ -6,21 +6,21 @@ using TMPro;
 [CreateAssetMenu(fileName = "Sajmon", menuName = "Events/Sajmon Event")]
 public class Sajmon : Events
 {
-    private GameObject PC;
-
+    [Header("Custom Settings")]
     public GameObject ButtonsPrefab;
     private GameObject Buttons;
 
     private Renderer MonitorRenderer;
     private TextMeshProUGUI TextMeshProMonitor;
 
-   // public static AudioSource aSource;
+    // public static AudioSource aSource;
 
     public string sequen;
     private int seqBufforPtr;
     public static string seqPlayerSequence = "";
 
     private Color color;
+    private GameObject PC;
 
     float _time;
     public float Start_time = 5f; //czas, kiedy ma pokazywać po starcie
@@ -50,7 +50,7 @@ public class Sajmon : Events
         color = MonitorRenderer.material.color;
         MonitorRenderer.material.color = Color.red;
         Buttons = Instantiate(ButtonsPrefab);
-       // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
+        // aSource = Buttons.transform.GetChild(Buttons.transform.childCount - 1).GetComponent<AudioSource>();
         Buttons.SetActive(true);
         GenerateSequence(Lvl);
         _time = Time.time;
@@ -103,7 +103,14 @@ public class Sajmon : Events
             {
                 if (seqPlayerSequence.Equals(sequen))
                 {
+<<<<<<< HEAD
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f, Buttons.transform.position.z));
+=======
+                    // AddPoints(Lvl * 10);
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints,
+                        new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
+                            Buttons.transform.position.z));
+>>>>>>> master
                     AddPoints(300);
                     CompleteEvent();
                 }
@@ -111,20 +118,43 @@ public class Sajmon : Events
                 {
                     if (!(sequen[seqPlayerSequence.Length-1].Equals(seqPlayerSequence[seqPlayerSequence.Length-1])))
                     {
+<<<<<<< HEAD
                         TextMeshProMonitor.text = "Wait";
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
                         seqPlayerSequence = "";
                         stat = SeqStatus.NotShown;
                         canPlayerIteract();
                         seqBufforPtr = 0;
-                        progress = 0;
+=======
+                        Debug.Log("You've failed");
+                        //tutaj wywołaj particle wrong
 
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                            new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
+                                Buttons.transform.position.z));
+                        // GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
+                        PlayerSequence = 0;
+                        ButtonTouch.resetIndex();
+                        played = 0;
+                        buffor = sequence;
+>>>>>>> master
+                        progress = 0;
                     }
                     else
                     {
+<<<<<<< HEAD
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
                         progress += 100 / sequen.Length;
 
+=======
+                        //tutaj wywołaj particle good 
+                        //   GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
+                            new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
+                                Buttons.transform.position.z));
+                        progress += 100 / seq.Length;
+                        //SetProgressBar(progress);
+>>>>>>> master
                     }
                 }
             }

@@ -16,15 +16,12 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     public GameObject brushContainer; //The cursor that overlaps the model and our container for the brushes painted
 
     public Camera canvasCam; //The camera that looks at the model, and the camera that looks at the canvas.
-    public Sprite cursorPaint; // Cursor for the differen functions
     public Sprite ChalkSprite; // Cursor for the differen functions
-    public Sprite SpongeSprite; // Cursor for the differen functions
     public RenderTexture canvasTexture; // Render Texture that looks at our Base Texture and the painted brushes
     public Material baseMaterial; // The material of our base texture (Were we will save the painted texture)
 
     public float brushSize = 0.1f; //The size of our brush
-
-    private Color ChalkColor;
+    
     Color brushColor; //The selected color
     int brushCounter = 0, MAX_BRUSH_COUNT = 1000; //To avoid having millions of brushes
     bool saving = false; //Flag to check if we are saving the texture
@@ -49,17 +46,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         if (GameController.Instance.DrawingManager.RysObject != null)
             chalkPointer = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK_Pointer>();
         else return;
-        ChalkColor = GameController.Instance.DrawingManager.ChalkColor;
-        if (GameController.Instance.DrawingManager.RysObject.tag.Equals("Sponge"))
-        {
-            cursorPaint = SpongeSprite;
-            brushColor = transform.parent.Find("Board").GetComponent<Renderer>().material.color;
-        }
-        else
-        {
-            cursorPaint = ChalkSprite;
-            brushColor = ChalkColor; //Updates our painted color with the selected color
-        }
+        brushColor = GameController.Instance.DrawingManager.CurrentChalkColor;
         if (chalkPointer != null && chalkPointer.enabled)
         {
             DoAction();
@@ -86,7 +73,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     {
         //brushColor.a = brushSize * 2.0f; // Brushes have alpha to have a merging effect when painted over.
         brushObj = (GameObject) Instantiate(Resources.Load("TexturePainter-Instances/BrushEntity")); //Paint a brush
-        brushObj.GetComponent<SpriteRenderer>().sprite = cursorPaint;
+        brushObj.GetComponent<SpriteRenderer>().sprite = ChalkSprite;
         brushObj.GetComponent<SpriteRenderer>().color = color; //Set the brush color
 
         brushObj.transform.parent = brushContainer.transform; //Add the brush to our container to be wiped later

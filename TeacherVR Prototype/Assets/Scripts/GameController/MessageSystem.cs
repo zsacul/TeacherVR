@@ -17,14 +17,15 @@ public class MessageSystem : MonoBehaviour
     public GameObject Window6x7;
     public GameObject Window8x4;
 
-  /*public GameObject ProgressBar;
-    public Color ProgressColor;
-    public Color EndColor;*/
+    /*public GameObject ProgressBar;
+      public Color ProgressColor;
+      public Color EndColor;*/
 
     private VRTK_TransformFollow TransformFollow;
 
-    private VRTK_ControllerEvents RightHand;
     private VRTK_ControllerEvents LeftHand;
+    private VRTK_ControllerEvents RightHand;
+
 
     private void Start()
     {
@@ -160,7 +161,6 @@ public class MessageSystem : MonoBehaviour
 
     public void ShowButtonOnControllers(Button button, string txt, float time)
     {
-        return;
         if (!GameController.Instance.Tooltips) return;
         switch (button)
         {
@@ -185,7 +185,7 @@ public class MessageSystem : MonoBehaviour
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = txt;
                 break;
         }
-
+        InvokeRepeating("RepeatPulse", 1, 2);
         ChangTooltipsState(true);
         StartCoroutine(HideAllButtons(time));
     }
@@ -214,22 +214,27 @@ public class MessageSystem : MonoBehaviour
         switch (button)
         {
             case Button.Trigger:
+                if(LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText != "") CancelInvoke("RepeatPulse");
                 LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
                 break;
             case Button.Grip:
+                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText != "") CancelInvoke("RepeatPulse");
                 LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
                 break;
             case Button.Touchpad:
+                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText != "") CancelInvoke("RepeatPulse");
                 LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
                 break;
             case Button.ButtonTwo:
+                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText != "") CancelInvoke("RepeatPulse");
                 LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
                 break;
             case Button.StartMenu:
+                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText != "") CancelInvoke("RepeatPulse");
                 LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
                 RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
                 break;
@@ -245,11 +250,20 @@ public class MessageSystem : MonoBehaviour
         RightTooltips.SetActive(val);
     }
 
+    void RepeatPulse()
+    {
+        VRTK_ControllerHaptics.TriggerHapticPulse(
+            VRTK_ControllerReference.GetControllerReference(LeftHand.gameObject), 0.63f, 0.2f, 0.01f);
+        VRTK_ControllerHaptics.TriggerHapticPulse(
+            VRTK_ControllerReference.GetControllerReference(RightHand.gameObject), 0.63f, 0.2f, 0.01f);
+    }
+
     public void HideAllButtons()
     {
         HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
         HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
         ChangTooltipsState(false);
+        CancelInvoke("RepeatPulse");
     }
 
     public IEnumerator HideAllButtons(float time)
@@ -258,6 +272,7 @@ public class MessageSystem : MonoBehaviour
         HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
         HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
         ChangTooltipsState(false);
+        CancelInvoke("RepeatPulse");
     }
 
     private void HideAllButtonsOnController(VRTK_ControllerTooltips tooltips)
@@ -268,6 +283,7 @@ public class MessageSystem : MonoBehaviour
         tooltips.buttonOneText = "";
         tooltips.buttonTwoText = "";
         tooltips.startMenuText = "";
+        CancelInvoke("RepeatPulse");
     }
 
     public void HideAllWindows()

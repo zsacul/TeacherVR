@@ -6,6 +6,7 @@ using VRTK;
 [CreateAssetMenu(fileName = "New ShootTheObjects Event", menuName = "Events/ShootTheObjects Event")]
 public class ShootTheObjects : Events
 {
+    [Header("Custom Settings")]
     public GameObject ObjectToShoot;
 
     [Range(0.1f, 10f)] public float MoveSpeed = 1f;

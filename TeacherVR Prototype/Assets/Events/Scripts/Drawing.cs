@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Drawing Event", menuName = "Events/Drawing Event")]
 public class Drawing : Events
 {
+    [Header("Custom Settings")]
     [Range(0, 5)]
     public int Board = 2;
     public Vector2[] TemplateShape;

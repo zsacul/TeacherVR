@@ -16,12 +16,15 @@ public class ResetOnRange : MonoBehaviour
 
     private Vector3 startPos1;
     private Vector3 startPos2;
+    private Quaternion startRot1;
+    private Quaternion startRot2;
 
     public enum Action
     {
         ResetToEndPoint,
         ResetBothToMiddle,
-        ResetBothToStart
+        ResetBothToStart,
+        ResetToEndPointOnUngrab
     }
 
     void Start()
@@ -34,11 +37,14 @@ public class ResetOnRange : MonoBehaviour
             io2 = End.GetComponent<VRTK_InteractableObject>();
             startPos1 = transform.position;
             startPos2 = End.transform.position;
+            startRot1 = transform.rotation;
+            startRot2 = End.transform.rotation;
         }
     }
 
     void Update()
     {
+        if (OverMaxRangeAction == Action.ResetToEndPointOnUngrab && io.IsGrabbed()) return;
         if (OverMaxRangeAction == Action.ResetBothToStart)
         {
             if (Vector3.Distance(transform.position, startPos1) > MaxRange ||
@@ -51,6 +57,8 @@ public class ResetOnRange : MonoBehaviour
                 io2.ForceStopInteracting();
                 transform.position = startPos1;
                 End.transform.position = startPos2;
+                transform.rotation = startRot1;
+                End.transform.rotation = startRot2;
             }
         }
         else if (Vector3.Distance(End.position, transform.position) > MaxRange)
@@ -63,18 +71,17 @@ public class ResetOnRange : MonoBehaviour
                 Unsnap(End.transform.parent);
                 io2.ForceStopInteracting();
 
-                Vector3 a;
-                Vector3 b;
-                a = Vector3.Lerp(transform.position, End.position, 1f / 3);
-                b = Vector3.Lerp(transform.position, End.position, 2f / 3);
+                var a = Vector3.Lerp(transform.position, End.position, 1f / 3);
+                var b = Vector3.Lerp(transform.position, End.position, 2f / 3);
                 transform.position = a;
                 End.position = b;
             }
-            else
+            else //Action.ResetToEndPointOnUngrab and Action.ResetToEndPoint
             {
                 SpawnWrongPartcile();
                 Unsnap(transform.parent);
                 transform.position = End.position;
+                transform.rotation = End.rotation;
             }
         }
     }
@@ -97,8 +104,14 @@ public class ResetOnRange : MonoBehaviour
         if (UseWrongParticle)
         {
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, transform.position);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                End.transform.position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, End.transform.position);
+            GameController.Instance.SoundManager.Play2D(SamplesList.Error, 0.01f);
+        }
+        else
+        {
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, transform.position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, End.transform.position);
+            GameController.Instance.SoundManager.Play2D(SamplesList.ShortPoof,0.1f);
         }
     }
 }

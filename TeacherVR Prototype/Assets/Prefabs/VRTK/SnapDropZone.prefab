@@ -74,9 +74,11 @@ MonoBehaviour:
   applyScalingOnSnap: 0
   cloneNewOnUnsnap: 0
   highlightColor: {r: 0, g: 0, b: 0, a: 0}
+  validHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   highlightAlwaysActive: 0
   validObjectListPolicy: {fileID: 0}
   displayDropZoneInEditor: 1
+  defaultSnappedInteractableObject: {fileID: 0}
   defaultSnappedObject: {fileID: 0}
 --- !u!135 &135412110436117690
 SphereCollider:

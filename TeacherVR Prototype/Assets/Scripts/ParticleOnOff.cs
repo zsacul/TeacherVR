@@ -8,6 +8,7 @@ using VRTK;
 public class ParticleOnOff : MonoBehaviour
 {
     public bool PlayOnce = false;
+    public bool Played = false;
 
     public float ParticleScale = 1f;
 
@@ -81,7 +82,7 @@ public class ParticleOnOff : MonoBehaviour
     private void Del()
     {
         if (ParticleInstance != null) Destroy(ParticleInstance, LifeTime);
-        if (PlayOnce) enabled = false;
+        Played = true;
     }
 
     private void OnDestroy()
@@ -223,14 +224,15 @@ public class ParticleOnOff : MonoBehaviour
     {
         Events curr = GameController.Instance.EventsManager.GetCurrentEvent();
         if (curr != null)
-            foreach (var eventSO in EventScriptableObjects)
-            {
-                if (eventSO.name == curr.name)
+            if (PlayOnce && !Played || !PlayOnce)
+                foreach (var eventSO in EventScriptableObjects)
                 {
-                    CurrentEventScriptableObject = curr;
-                    InvokeRepeating("CheckEvent", 0, 1);
+                    if (eventSO.name == curr.name)
+                    {
+                        CurrentEventScriptableObject = curr;
+                        InvokeRepeating("CheckEvent", 0, 1);
+                    }
                 }
-            }
     }
 
     private void ObjectSnappedOn(object sender, SnapDropZoneEventArgs e)

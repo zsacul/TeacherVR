@@ -29,6 +29,7 @@ public class AnimationControll : MonoBehaviour
         anim = GetComponent<Animator>();
         materials = GetComponent<Renderer>().materials;
         eyeDefault = materials[2].mainTexture;
+        anim.SetFloat("SpeedMultiplier", Random.Range(0.85f, 0.95f));
     }
 
 

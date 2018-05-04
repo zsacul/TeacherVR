@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114562484775264604}
   - component: {fileID: 114988990443682288}
   - component: {fileID: 114902513452846148}
+  - component: {fileID: 65332436447735298}
   m_Layer: 0
   m_Name: MicroUSBCable
   m_TagString: MicroUSB
@@ -185,6 +186,7 @@ GameObject:
   - component: {fileID: 114675882818204354}
   - component: {fileID: 114448321834056406}
   - component: {fileID: 114495637228265818}
+  - component: {fileID: 65809494088209218}
   m_Layer: 0
   m_Name: USBCable
   m_TagString: USB
@@ -659,6 +661,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65332436447735298
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1236212554105478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 0.07, z: 0.1}
+  m_Center: {x: 0.027962923, y: 0.005553305, z: 0.0072202682}
 --- !u!65 &65457291720817926
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -683,6 +697,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.048169136, y: 0.010395646, z: 0.014936447}
   m_Center: {x: 0.027962923, y: 0.005553305, z: 0.0072202682}
+--- !u!65 &65809494088209218
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576294772812506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13, y: 0.05, z: 0.08}
+  m_Center: {x: 0.047164775, y: 0.005544126, z: 0.010838985}
 --- !u!114 &114123072346513576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -705,9 +731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
   IgnoreSaveKinematic: 0
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -724,6 +750,8 @@ MonoBehaviour:
   pointerActivatesUseAction: 1
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   usingState: 0
 --- !u!114 &114448321834056406
 MonoBehaviour:
@@ -736,9 +764,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnce: 0
+  Played: 0
   ParticleScale: 0.1
   LifeTime: 0
-  Points: 0
   Particle: {fileID: 1545806602296978, guid: 7db528ebf78ae444cacaf50d96352e56, type: 2}
   ParticleTransform: {fileID: 4610023094648428}
   EventScriptableObjects:
@@ -792,9 +821,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
   IgnoreSaveKinematic: 0
-  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
+  disableWhenIdle: 1
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -811,6 +840,8 @@ MonoBehaviour:
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0.88235295, b: 1, a: 0}
   usingState: 0
 --- !u!114 &114664131580593486
 MonoBehaviour:
@@ -834,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxRange: 3
+  MaxRange: 1
   OverMaxRangeAction: 2
   UseWrongParticle: 1
   End: {fileID: 4639256766705276}
@@ -901,18 +932,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipOnNearTouch: {fileID: 0}
+  strengthOnNearTouch: 0
+  durationOnNearTouch: 0
+  intervalOnNearTouch: 0.05
+  cancelOnNearUntouch: 1
   clipOnTouch: {fileID: 0}
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
+  cancelOnUntouch: 1
   clipOnGrab: {fileID: 0}
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
+  cancelOnUngrab: 1
   clipOnUse: {fileID: 0}
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+  cancelOnUnuse: 1
+  objectToAffect: {fileID: 0}
 --- !u!114 &114902513452846148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -941,18 +981,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipOnNearTouch: {fileID: 0}
+  strengthOnNearTouch: 0
+  durationOnNearTouch: 0
+  intervalOnNearTouch: 0.05
+  cancelOnNearUntouch: 1
   clipOnTouch: {fileID: 0}
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
+  cancelOnUntouch: 1
   clipOnGrab: {fileID: 0}
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
+  cancelOnUngrab: 1
   clipOnUse: {fileID: 0}
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+  cancelOnUnuse: 1
+  objectToAffect: {fileID: 0}
 --- !u!114 &114988990443682288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,9 +1013,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e679b8dd6bb4e48ae863e6cae55bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnce: 0
+  Played: 0
   ParticleScale: 0.1
   LifeTime: 0
-  Points: 0
   Particle: {fileID: 1545806602296978, guid: b9d8bdece9ecb54438e3a9192254f6fa, type: 2}
   ParticleTransform: {fileID: 4943714349908948}
   EventScriptableObjects:

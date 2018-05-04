@@ -8,12 +8,15 @@ public class ScoreBoard : MonoBehaviour
 {
     private TextMeshPro textMesh;
 
+    private int[] TopScore = new int[5];
+
     private int points = 0;
     private float timer = 0f;
 
     private int minutes = 0;
     private int seconds = 0;
 
+    private int MaxAnimSpeed = 100;
     private bool Anim = false;
     private int How_Many = 0;
 
@@ -25,11 +28,11 @@ public class ScoreBoard : MonoBehaviour
     GameObject ParticleSystem;
     GameObject Where;
 
-    public delegate void GameOverDelegate();
+    public delegate void GameOverDelegate(bool NewHighScore);
 
     public event GameOverDelegate GameOver;
 
-    void Start ()
+    void Start()
     {
         ParticleSystem = GameObject.Find("ParticleSystem");
         Where = GameObject.Find("WhereAreParticles");
@@ -50,7 +53,7 @@ public class ScoreBoard : MonoBehaviour
     {
         if (Active)
         {
-            if (CountDown)
+            if (CountDown && !OutOfTime)
             {
                 timer -= Time.deltaTime;
                 seconds = Convert.ToInt32(timer % 60);
@@ -64,12 +67,12 @@ public class ScoreBoard : MonoBehaviour
                         OutOfTime = true;
                         if (GameOver != null)
                         {
-                            GameOver();
+                            GameOver(SetNewTopScore());
                         }
                     }
                 }
             }
-            else
+            else if (!OutOfTime)
             {
                 timer += Time.deltaTime;
                 seconds = Convert.ToInt32(timer % 60);
@@ -88,7 +91,7 @@ public class ScoreBoard : MonoBehaviour
             else
             {
                 if ((seconds >= 10) && (minutes >= 10))
-                {                 
+                {
                     textMesh.text = "Score -  " + points + "\n\n" + "Time  -  " + minutes + ":" + seconds;
                 }
                 if ((seconds < 10) && (minutes >= 10))
@@ -104,16 +107,16 @@ public class ScoreBoard : MonoBehaviour
                     textMesh.text = "Score -  " + points + "\n\n" + "Time  -  0" + minutes + ":0" + seconds;
                 }
             }
-
-            if ((Anim) && (How_Many > 0))
-            {
-                PointsAdd(1);
-                How_Many--;
-                if (How_Many == 0)
+            for (int speed = 0; speed <= MaxAnimSpeed * Time.deltaTime; speed++)
+                if ((Anim) && (How_Many > 0))
                 {
-                    Anim = false;
+                    PointsAdd(1);
+                    How_Many--;
+                    if (How_Many == 0)
+                    {
+                        Anim = false;
+                    }
                 }
-            }
         }
     }
 
@@ -205,6 +208,38 @@ public class ScoreBoard : MonoBehaviour
         OutOfTime = val;
     }
 
+    public int[] GetTopScore()
+    {
+        return TopScore;
+    }
+
+    public void SetTopScore(int[] _TopScore)
+    {
+        int i = 0;
+        foreach (var score in _TopScore)
+        {
+            TopScore[i] = score;
+            i++;
+        }
+    }
+
+    public bool SetNewTopScore()
+    {
+        for (int i = 0; i < TopScore.Length; i++)
+        {
+            if (points >= TopScore[i])
+            {
+                for (int j = TopScore.Length - 1; j > i; j--)
+                {
+                    TopScore[j] = TopScore[j - 1];
+                }
+                TopScore[i] = points;
+                return true;
+            }
+        }
+        return false;
+    }
+
     /*
      
     JAK SIĘ ODWOŁAC?
@@ -214,5 +249,4 @@ public class ScoreBoard : MonoBehaviour
     Target.GetComponent<ScoreBoard>().funkcja(argument);   // Tutaj odwołujemy się do skrypu (funkcji w tym skrypcie)
 
     */
-
 }
