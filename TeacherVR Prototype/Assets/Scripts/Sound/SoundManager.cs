@@ -5,7 +5,7 @@ using UnityEngine;
 // Public enum for referencing individual audio samples - to be spawned wherever
 // Generic samples only!
 public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, BottleFilling,
-    Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof};
+    Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof, Electric};
 
 
 
@@ -89,6 +89,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxPoof;
     public AudioClip SfxShortPoof;
     public AudioClip SfxMagicPoof;
+    public AudioClip SfxElectric;
 
     // ---------------------------------------------------------------------
 
@@ -148,6 +149,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.MagicPoof:
                 return SfxMagicPoof;
+
+            case SamplesList.Electric:
+                return SfxElectric;
         }
 
         return null;

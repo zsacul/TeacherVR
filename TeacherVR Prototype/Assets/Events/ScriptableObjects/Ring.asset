@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e723f64323dc4fd49aea2dcc1f59218c, type: 3}
+  m_Name: Ring
+  m_EditorClassIdentifier: 
+  name: Ring
+  description: Move ring to end without touching line
+  status: 3
+  Lvl: 5
+  MediumLvl: 5
+  DeviationLvlRange: 0
+  Repeatable: 1
+  GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
+  GoToTransform: {fileID: 4636734885339910, guid: 89d79ee4785c9154682157fe44d945e4,
+    type: 2}
+  RingObj: {fileID: 1323256096402730, guid: 83bcf83b1b6eacb41b92e9d4f1d9a14d, type: 2}
+  ObjForLine: {fileID: 1824443801754830, guid: f4e22c7d5b473d448ba2c2a48f7c15bb, type: 2}
+  MinTransform: {fileID: 4855194937631280, guid: f7b7cad5179463a44b2152dea74ca119,
+    type: 2}
+  MaxTransform: {fileID: 4830755093343692, guid: 081d8c1cb2f834242a49d3269a662cc8,
+    type: 2}
