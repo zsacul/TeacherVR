@@ -17,7 +17,9 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     AlarmClock, // bell-type alarm clock
     ThrowWoosh, // woosh of air when throwing something
     Gasp, // surprised egg
-    Buzz // for the fly hit sfx
+    Buzz, // for the fly hit sfx
+    FaucetOpen, // opening squeaking faucet/valve
+    FaucetClose // closing ... 
 };
 
 
@@ -115,6 +117,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxThrowWoosh;
     public AudioClip SfxGasp;
     public AudioClip SfxBuzz;
+    public AudioClip SfxFaucetOpen;
+    public AudioClip SfxFaucetClose;
 
     // ---------------------------------------------------------------------
 
@@ -213,6 +217,13 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Buzz:
                 return SfxBuzz;
+
+            case SamplesList.FaucetClose:
+                return SfxFaucetClose;
+
+            case SamplesList.FaucetOpen:
+                return SfxFaucetOpen;
+
         }
 
         return null;
