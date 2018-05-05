@@ -78,6 +78,7 @@ public class Sajmon : Events
                 {
                     TextMeshProMonitor.text = "Watch";
                     ShowPressing(sequen[seqBufforPtr]);
+                    //   buffor /= 10;
                     seqBufforPtr++;
                     _time = Time.time;
                 }
@@ -102,10 +103,14 @@ public class Sajmon : Events
             {
                 if (seqPlayerSequence.Equals(sequen))
                 {
-
+<<<<<<< HEAD
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f, Buttons.transform.position.z));
+=======
+                    // AddPoints(Lvl * 10);
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.ThreeHundredPoints,
                         new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
                             Buttons.transform.position.z));
+>>>>>>> master
                     AddPoints(300);
                     CompleteEvent();
                 }
@@ -113,23 +118,43 @@ public class Sajmon : Events
                 {
                     if (!(sequen[seqPlayerSequence.Length-1].Equals(seqPlayerSequence[seqPlayerSequence.Length-1])))
                     {
+<<<<<<< HEAD
                         TextMeshProMonitor.text = "Wait";
-                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                            new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
-                                Buttons.transform.position.z));
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
                         seqPlayerSequence = "";
                         stat = SeqStatus.NotShown;
                         canPlayerIteract();
                         seqBufforPtr = 0;
+=======
+                        Debug.Log("You've failed");
+                        //tutaj wywołaj particle wrong
+
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                            new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
+                                Buttons.transform.position.z));
+                        // GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position,0);
+                        PlayerSequence = 0;
+                        ButtonTouch.resetIndex();
+                        played = 0;
+                        buffor = sequence;
+>>>>>>> master
                         progress = 0;
                     }
                     else
                     {
+<<<<<<< HEAD
+                        GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok, new Vector3(Buttons.transform.position.x, Buttons.transform.position.y+0.5f, Buttons.transform.position.z));
+                        progress += 100 / sequen.Length;
+
+=======
+                        //tutaj wywołaj particle good 
+                        //   GameController.Instance.Particles.CreateOnePoint(Buttons.transform.position, 0);
                         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
                             new Vector3(Buttons.transform.position.x, Buttons.transform.position.y + 0.5f,
                                 Buttons.transform.position.z));
-                         progress += 100 / sequen.Length;
-
+                        progress += 100 / seq.Length;
+                        //SetProgressBar(progress);
+>>>>>>> master
                     }
                 }
             }
