@@ -24,7 +24,8 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     FemaleOof, // hurt sound for a female egg
     MaleGrunt, // hurt sound for a male egg
     Success, // event completed
-    Murmurs // looped sfx of noisy students
+    Murmurs, // looped sfx of noisy students
+    Blinds // looped sliding metal blinds sfx
 };
 
 
@@ -129,6 +130,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxMaleGrunt;
     public AudioClip SfxSuccess;
     public AudioClip SfxMurmurs;
+    public AudioClip SfxBlinds;
 
 
     // ---------------------------------------------------------------------
@@ -249,6 +251,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Murmurs:
                 return SfxMurmurs;
+
+            case SamplesList.Blinds:
+                return SfxBlinds;
         }
 
         return null;
