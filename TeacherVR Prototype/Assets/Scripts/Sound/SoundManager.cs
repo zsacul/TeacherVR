@@ -5,7 +5,23 @@ using UnityEngine;
 // Public enum for referencing individual audio samples - to be spawned wherever
 // Generic samples only!
 public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, BottleFilling,
-    Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof, Electric};
+    Ladder, BBSliding, Error, Correct, Pop, Clink, WaterRunning, Poof , ShortPoof , MagicPoof, Electric,
+    BookBang, // sound of book slamming into floor
+    CoinArcade, // retro game style coin sfx
+    Squeak, // mouse squeaking
+    DeathSqueak, // mouse dying :(
+    Simon1, // sfx for simon buttons, TODO add interface
+    Simon2,
+    Simon3,
+    Simon4,
+    AlarmClock, // bell-type alarm clock
+    ThrowWoosh, // woosh of air when throwing something
+    Gasp, // surprised egg
+    Buzz, // for the fly hit sfx
+    FaucetOpen, // opening squeaking faucet/valve
+    FaucetClose, // closing ... 
+    Paper // paper crumbling
+};
 
 
 
@@ -90,6 +106,21 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxShortPoof;
     public AudioClip SfxMagicPoof;
     public AudioClip SfxElectric;
+    public AudioClip SfxBookBang;
+    public AudioClip SfxCoinArcade;
+    public AudioClip SfxSqueak;
+    public AudioClip SfxDeathSqueak;
+    public AudioClip SfxSimon1;
+    public AudioClip SfxSimon2;
+    public AudioClip SfxSimon3;
+    public AudioClip SfxSimon4;
+    public AudioClip SfxAlarmClock;
+    public AudioClip SfxThrowWoosh;
+    public AudioClip SfxGasp;
+    public AudioClip SfxBuzz;
+    public AudioClip SfxFaucetOpen;
+    public AudioClip SfxFaucetClose;
+    public AudioClip SfxPaper;
 
     // ---------------------------------------------------------------------
 
@@ -152,6 +183,52 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Electric:
                 return SfxElectric;
+
+            case SamplesList.BookBang:
+                return SfxBookBang;
+
+            case SamplesList.CoinArcade:
+                return SfxCoinArcade;
+
+            case SamplesList.Squeak:
+                return SfxSqueak;
+
+            case SamplesList.DeathSqueak:
+                return SfxDeathSqueak;
+
+            case SamplesList.Simon1:
+                return SfxSimon1;
+
+            case SamplesList.Simon2:
+                return SfxSimon2;
+
+            case SamplesList.Simon3:
+                return SfxSimon3;
+
+            case SamplesList.Simon4:
+                return SfxSimon4;
+
+            case SamplesList.AlarmClock:
+                return SfxAlarmClock;
+
+            case SamplesList.ThrowWoosh:
+                return SfxThrowWoosh;
+
+            case SamplesList.Gasp:
+                return SfxGasp;
+
+            case SamplesList.Buzz:
+                return SfxBuzz;
+
+            case SamplesList.FaucetClose:
+                return SfxFaucetClose;
+
+            case SamplesList.FaucetOpen:
+                return SfxFaucetOpen;
+
+            case SamplesList.Paper:
+                return SfxPaper;
+
         }
 
         return null;
