@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 /* Main source atomtwist's comment from:
 https://forum.unity.com/threads/check-current-microphone-input-volume.133501/ */
 public class MicInput : MonoBehaviour
@@ -11,6 +12,17 @@ public class MicInput : MonoBehaviour
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
+    
+    private TextMeshProUGUI tm;
+    public GameObject DetectorPrefab;
+    private GameObject Detector;
+   // private TextMeshPro tmPro;
+    private float[] peakArray;
+    private int pointer;
+    private float sampleTime;
+    private float peakArrayDisplayTime;
+    //public float minRequiredVolume;
+
     public enum MicInputType
     {
         noone,
@@ -28,7 +40,10 @@ public class MicInput : MonoBehaviour
     public float minSilencingVolume = 1f;
     public float detectionLevel = 0.25f; 
     public float eps = 0.0000001f;
-
+    public void enableDetector(bool b = true)
+    {
+        tm.enabled = b;
+    }
     void InitMic()
     {
         
@@ -108,7 +123,10 @@ public class MicInput : MonoBehaviour
             if (levelMax < wavePeak)
             {
                 levelMax = wavePeak;
+
             }
+
+
         }
   //      Debug.Log(levelMax);
         return levelMax;
@@ -117,9 +135,15 @@ public class MicInput : MonoBehaviour
     {
         typeOfInput = MicInputType.noone;
         _legacyScore = 0;
+        pointer = 0;
         isSpeaking = false;
         if (SpeakingInd != null)
             SpeakingInd.SetActive(false);
+        Detector = Instantiate(DetectorPrefab);
+        tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        //        Debug.Log("null");
+        peakArray = new float[10] { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,-1f, -1f};
+        
     }
 
     void Update()
@@ -145,13 +169,69 @@ public class MicInput : MonoBehaviour
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
-                if (PeakDetection() >= minSilencingVolume)
+                if (Detector == null)
+                    Detector = Instantiate(DetectorPrefab);
+                Detector.SetActive(true);
+                if (peakArrayDisplayTime + 1f <= time)
+                {
+                    DisplayLoudness();
+                    peakArrayDisplayTime = time;
+                }
+                float MaxPeak = PeakDetection();
+                if (sampleTime + 0.5f <= time)
+                {
+                    if (MaxPeak >= detectionLevel)
+                    {
+                        peakArray[pointer] = MaxPeak;
+                        pointer++;
+                        pointer %= 9;
+                        sampleTime = time;
+                    }
+                }
+                if (MaxPeak >= minSilencingVolume)
+                {
                     Noise.shoutedLoudEnough = true;
+                    typeOfInput = MicInputType.noone;
+                    Destroy(Detector);
+                }
             }
         }
     }
 
+    public void DisplayLoudness()
+    {
+        if (typeOfInput == MicInputType.peakDetection)
+        {
+            string text = "";
+            for (int i = 0; i < 10; i++)
+            {
+                 if(peakArray[(pointer+i)%10]!=-1f)
+                text += peakArray[(pointer+i)%10].ToString() + "\n";
+            }
+            int numb = 10;
+            float sum = 0;
+            for (int i=0; i <10; i++)
+            {
+                if (peakArray[i] == -1f)
+                    numb--;
+                else 
+                    sum += peakArray[i];
+            }
+            if (numb != 0)
+                sum /= numb;
+            else
+                sum = 0;
+            text += "Srednia: "+sum+"\n";
+            if (numb == 0)
+                minSilencingVolume = 1f;
+                else
+                minSilencingVolume = sum * 3 + 0.1f;
+            text+="To silence: " + minSilencingVolume;
+            tm.text = text;
 
+        }
+
+    }
  
     void OnEnable()
     {
