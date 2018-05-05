@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 [CreateAssetMenu(fileName = "Noise", menuName = "Events/Noise")]
 public class Noise : Events
 {
@@ -14,9 +15,11 @@ public class Noise : Events
     {
         base.StartEvent();
         Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take a book", 60);
+        
         shoutedLoudEnough = false;
         doneSomethingLoudEnough = false;
-        Debug.Log("It's loud now!");
+       // Debug.Log("It's loud now!");
         MicInput.typeOfInput = MicInput.MicInputType.peakDetection;
         //Dodać jakiś dźwięk / hałas, animacja zamieszania wśród studentów?
         loudStudents = new int[Random.Range(1, GameController.Instance.Students.Students.Length - 1)];
@@ -30,9 +33,9 @@ public class Noise : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-        Debug.Log("It's quiet now.");
+      //  Debug.Log("It's quiet now.");
         AddPoints(10);
-        Debug.Log("End of noise.");
+        //   Debug.Log("End of noise.");
         for (int i = 0; i < loudStudents.Length; i++)
         {
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(false);
