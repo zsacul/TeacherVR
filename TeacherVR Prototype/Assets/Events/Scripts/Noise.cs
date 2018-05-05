@@ -19,7 +19,7 @@ public class Noise : Events
         
         shoutedLoudEnough = false;
         doneSomethingLoudEnough = false;
-       // Debug.Log("It's loud now!");
+
         MicInput.typeOfInput = MicInput.MicInputType.peakDetection;
         //Dodać jakiś dźwięk / hałas, animacja zamieszania wśród studentów?
         loudStudents = new int[Random.Range(1, GameController.Instance.Students.Students.Length - 1)];
@@ -33,9 +33,7 @@ public class Noise : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-      //  Debug.Log("It's quiet now.");
         AddPoints(10);
-        //   Debug.Log("End of noise.");
         for (int i = 0; i < loudStudents.Length; i++)
         {
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(false);
@@ -60,12 +58,14 @@ public class Noise : Events
     public override void CallInUpdate()
     {
         base.CallInUpdate();
-        // Debug.Log("Noise.");
-        //GameController.Instance.SoundManager.Play3DAt();
+
         if (shoutedLoudEnough || doneSomethingLoudEnough)
         {
             for (int i = 0; i < loudStudents.Length; i++)
             {
+                GameController.Instance.SoundManager.Play3DAt(
+                     SamplesList.Gasp,
+                     GameController.Instance.Students.Students[loudStudents[i]].transform);
                 GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Clap();
             }
 

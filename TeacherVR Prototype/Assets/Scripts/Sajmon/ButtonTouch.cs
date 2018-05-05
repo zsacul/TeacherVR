@@ -8,7 +8,7 @@ public class ButtonTouch : MonoBehaviour {
     private bool pressed;
     public bool showing;
     private Color color;
-    //private static int index = 1;
+    private SamplesList sound;
     private Animator animator;
     private void Start()
     {
@@ -32,7 +32,7 @@ public class ButtonTouch : MonoBehaviour {
         gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
         pressed = true;
 
-        GameController.Instance.SoundManager.Play3DAt(SamplesList.Pop,gameObject.transform);
+        GameController.Instance.SoundManager.Play3DAt(sound,gameObject.transform);
 
        
  
@@ -41,8 +41,6 @@ public class ButtonTouch : MonoBehaviour {
 
             animator.SetTrigger(getAnimId());
             Sajmon.seqPlayerSequence += id.ToString();
-            //Sajmon.PlayerSequence = Sajmon.PlayerSequence + (index * id);
-          //  index *= 10;
             Sajmon.needToCheck = true;
 
         }
@@ -74,20 +72,21 @@ public class ButtonTouch : MonoBehaviour {
         {
             case "Blue":
                 id = 1;
+                sound = SamplesList.Simon1;
                 break;
             case "Yellow":
                 id = 2;
+                sound = SamplesList.Simon2;
                 break;
             case "Red":
                 id = 3;
+                sound = SamplesList.Simon3;
                 break;
             case "Green":
                 id = 4;
+                sound = SamplesList.Simon4;
                 break;
         }
     }
-  //  public static void resetIndex()
-  //  {
-      //  index = 1;
-  //  }
+
 }

@@ -12,8 +12,11 @@ public class MicInput : MonoBehaviour
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
-    
+
+    private bool initDet = false;
     private TextMeshProUGUI tm;
+    private LineRenderer lrCurr;
+    private LineRenderer lrS;
     public GameObject DetectorPrefab;
     private GameObject Detector;
    // private TextMeshPro tmPro;
@@ -48,7 +51,9 @@ public class MicInput : MonoBehaviour
     {
         
         if (deviceName == null) deviceName = Microphone.devices[0];
+      //  Debug.Log("devicename " + deviceName);
         audioClipRec = Microphone.Start(deviceName, true, 128, 44100);
+      //  Debug.Log(Microphone.IsRecording(deviceName));
     }
 
     void StopMicrophone()
@@ -128,29 +133,40 @@ public class MicInput : MonoBehaviour
 
 
         }
-  //      Debug.Log(levelMax);
         return levelMax;
     }
     private void Start()
     {
         typeOfInput = MicInputType.noone;
         _legacyScore = 0;
-        pointer = 0;
+
         isSpeaking = false;
         if (SpeakingInd != null)
             SpeakingInd.SetActive(false);
-        Detector = Instantiate(DetectorPrefab);
-        tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        //        Debug.Log("null");
-        peakArray = new float[10] { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f,-1f, -1f};
+
         
     }
-
+    void InitDetect()
+    {
+        pointer = 0;
+        Detector = Instantiate(DetectorPrefab);
+        tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+        lrCurr = Detector.transform.Find("Canvas/Line").gameObject.GetComponent<LineRenderer>();
+        lrCurr.positionCount = 0;
+        lrS = Detector.transform.Find("Canvas/ShoutLine").gameObject.GetComponent<LineRenderer>();
+        lrS.positionCount = 0;
+        peakArray = new float[10] { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f };
+        initDet = true;
+    }
     void Update()
     {
+        
+
         if (typeOfInput != MicInputType.noone)
         {
-            time += Time.deltaTime;
+            if (!Microphone.IsRecording(deviceName))
+                OnEnable();
+                time += Time.deltaTime;
             current_time = (int)time;
             if (typeOfInput == MicInputType.speechDetection)
             {
@@ -169,8 +185,8 @@ public class MicInput : MonoBehaviour
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
-                if (Detector == null)
-                    Detector = Instantiate(DetectorPrefab);
+                if (!initDet)
+                    InitDetect();
                 Detector.SetActive(true);
                 if (peakArrayDisplayTime + 1f <= time)
                 {
@@ -180,19 +196,21 @@ public class MicInput : MonoBehaviour
                 float MaxPeak = PeakDetection();
                 if (sampleTime + 0.5f <= time)
                 {
+                    Debug.Log(MaxPeak);
                     if (MaxPeak >= detectionLevel)
                     {
                         peakArray[pointer] = MaxPeak;
                         pointer++;
                         pointer %= 9;
                         sampleTime = time;
-                    }
+                   }
                 }
                 if (MaxPeak >= minSilencingVolume)
                 {
                     Noise.shoutedLoudEnough = true;
                     typeOfInput = MicInputType.noone;
                     Destroy(Detector);
+                    initDet = false;
                 }
             }
         }
@@ -202,11 +220,16 @@ public class MicInput : MonoBehaviour
     {
         if (typeOfInput == MicInputType.peakDetection)
         {
+            
             string text = "";
+            lrCurr.positionCount=10;
             for (int i = 0; i < 10; i++)
             {
-                 if(peakArray[(pointer+i)%10]!=-1f)
-                text += peakArray[(pointer+i)%10].ToString() + "\n";
+                if (peakArray[(pointer + i) % 10] != -1f)
+                {
+                    lrCurr.SetPosition(i, new Vector3(i/10f, peakArray[(pointer + i) % 10], 0));
+                    text += peakArray[(pointer + i) % 10].ToString() + "\n";
+                }
             }
             int numb = 10;
             float sum = 0;
@@ -224,8 +247,18 @@ public class MicInput : MonoBehaviour
             text += "Srednia: "+sum+"\n";
             if (numb == 0)
                 minSilencingVolume = 1f;
-                else
-                minSilencingVolume = sum * 3 + 0.1f;
+            else if (numb < 5)
+            {
+                minSilencingVolume = sum * 10 + 0.1f;
+            }
+            else
+                minSilencingVolume = sum * 5 + 0.1f;
+            if (minSilencingVolume > 2f)
+                minSilencingVolume = 2f;
+            else if (minSilencingVolume < 0.25f)
+                minSilencingVolume = 0.35f;
+            lrS.positionCount = 2;
+            lrS.SetPositions(new Vector3[2] { new Vector3(0, minSilencingVolume, 0), new Vector3(9 / 10f, minSilencingVolume, 0) });
             text+="To silence: " + minSilencingVolume;
             tm.text = text;
 
