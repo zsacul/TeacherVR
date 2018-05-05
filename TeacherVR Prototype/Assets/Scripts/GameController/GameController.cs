@@ -102,13 +102,6 @@ public class GameController : MonoBehaviour
 
     public void ChangeLocomotion(bool UseArmSwinger)
     {
-        
-        StartCoroutine(RestartLocomotion(UseArmSwinger));
-    }
-
-    private IEnumerator RestartLocomotion(bool UseArmSwinger)
-    {
-        yield return new WaitForEndOfFrame();
         if (UseArmSwinger)
         {
             MoveInPlace.enabled = true;
@@ -121,6 +114,11 @@ public class GameController : MonoBehaviour
             TeleportL.enabled = true;
             TeleportR.enabled = true;
         }
+        StartCoroutine(RestartLocomotion());
+    }
+
+    private IEnumerator RestartLocomotion()
+    {
         yield return new WaitForEndOfFrame();
         MoveInPlace.enabled = !MoveInPlace.enabled;
         MoveInPlace.enabled = !MoveInPlace.enabled;

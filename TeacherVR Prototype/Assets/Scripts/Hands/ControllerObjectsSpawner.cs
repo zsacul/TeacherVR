@@ -50,7 +50,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
             if (Objects.Length % 2 == 0) correct = angle / 2;
             instantiate.transform.RotateAround(HandTransform.position, HandTransform.up,
                 sign * (count / 2) * angle - correct);
-            instantiate.transform.position -= HandTransform.forward * 5f / 7f;
+            instantiate.transform.position -= HandTransform.forward * 6f / 7f;
             /*instantiate.transform.eulerAngles =
                 new Vector3(obj.transform.eulerAngles.x, instantiate.transform.eulerAngles.y, obj.transform.rotation.z);*/
             Rigidbody rb = instantiate.GetComponent<Rigidbody>();
@@ -63,7 +63,7 @@ public class ControllerObjectsSpawner : MonoBehaviour
     {
         foreach (GameObject obj in ObjectsInstances)
         {
-            if (obj!=null && !obj.GetComponent<VRTK_InteractableObject>().IsGrabbed())
+            if (!obj.GetComponent<VRTK_InteractableObject>().IsGrabbed())
                 Destroy(obj);
         }
         ObjectsInstances.Clear();

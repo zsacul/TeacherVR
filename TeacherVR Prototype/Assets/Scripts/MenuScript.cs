@@ -47,7 +47,6 @@ namespace VRTK.Examples
         {
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
-            yield return new WaitForEndOfFrame();
             switch (mode)
             {
                 case Mode.StartGame:
