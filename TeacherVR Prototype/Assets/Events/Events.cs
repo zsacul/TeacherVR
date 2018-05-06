@@ -29,6 +29,9 @@ public class Events : ScriptableObject
     //Czy event jest powtarzalny
     public bool Repeatable = true;
 
+    //Ile razy czesciej
+    public int Multiple = 1;
+
     public delegate void AddPointsEventHandler(int numb);
 
     public delegate void MessageEventHandler(float time, string txt, MessageSystem.ObjectToFollow objectToFollow,
@@ -82,6 +85,7 @@ public class Events : ScriptableObject
         Debug.Log("Complete " + name);
         status = Status.Complete;
         DestroyGotTo();
+        GameController.Instance.SoundManager.Play2D(SamplesList.Success,0.03f);
         //CompleteProgressBar();
     }
 

@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 95358053659641286}
   - component: {fileID: 136084255781146374}
   - component: {fileID: 114719572685202074}
+  - component: {fileID: 114505461580173362}
   m_Layer: 0
   m_Name: Housefly
   m_TagString: Untagged
@@ -4106,6 +4107,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114505461580173362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519061242598680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 27
+  Action: 9
+  Volume: 0.1
+  RandomLoopDelay: {x: 1, y: 4}
+  OnlyWhenGameInProgress: 0
 --- !u!114 &114719572685202074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4120,6 +4137,7 @@ MonoBehaviour:
   tag:
   - Water
   DestroyObjectsEvent: 1
+  LifeTime: 0
 --- !u!136 &136084255781146374
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -4129,7 +4147,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.088452816
-  m_Height: 0.5356293
+  m_Radius: 0.15437579
+  m_Height: 0.79542685
   m_Direction: 2
-  m_Center: {x: -0.022646427, y: 0.15, z: -0.4678502}
+  m_Center: {x: -0.04038644, y: 0.15, z: -0.48152804}

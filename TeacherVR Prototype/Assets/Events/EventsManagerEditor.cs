@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#if (UNITY_EDITOR)
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(EventsManager))]
@@ -24,3 +24,4 @@ public class EventsManagerEditor : Editor
         }
     }
 }
+#endif

@@ -854,11 +854,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d3b136ef50289d04586538fc7b1d6a5f, type: 2}
   - {fileID: 11400000, guid: a4ae700b7b48bae49b9647b59d5c8b4c, type: 2}
   - {fileID: 11400000, guid: d81baa418989dba4f967876d1936f9de, type: 2}
-  - {fileID: 11400000, guid: ff260632a68422c4095163588f8a78c7, type: 2}
+  - {fileID: 11400000, guid: 7be3f6dcccaedd241898389fdf0b89b0, type: 2}
   - {fileID: 11400000, guid: 8e32400d9b9ba964da5df389dc38cf31, type: 2}
   - {fileID: 11400000, guid: 38f87a8c46248924c84c9bc06b760b88, type: 2}
   - {fileID: 11400000, guid: 8d970fa66d6cde749a4bae60b6d152ed, type: 2}
-  delay: 2
+  - {fileID: 11400000, guid: c878809a09c4ad345ad50cdf340ae1e3, type: 2}
+  - {fileID: 11400000, guid: ca935c3cbfe240f4ab70bcaf6c1fb698, type: 2}
+  delay: 2.5
 --- !u!114 &114185177004893528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -999,6 +1001,32 @@ MonoBehaviour:
   SfxShortPoof: {fileID: 8300000, guid: 4cd34702244223e44b24b37863953b2a, type: 3}
   SfxMagicPoof: {fileID: 8300000, guid: 2ad20e6e2b7b0624887a44ea65ad9fd2, type: 3}
   SfxElectric: {fileID: 8300000, guid: 8bdf991ef3f086b4f8f791e5784304b3, type: 3}
+  SfxBookBang: {fileID: 8300000, guid: e8fd575482be0bc42aabb9170fd9341d, type: 3}
+  SfxCoinArcade: {fileID: 8300000, guid: 3a2fd22a97dbd0b4f9c370ad88d6f1de, type: 3}
+  SfxSqueak:
+  - {fileID: 8300000, guid: 51b9d1363a8d9d046add69a1e7daadef, type: 3}
+  - {fileID: 8300000, guid: 24cacc1cc362aec4ea9a381577b03a5b, type: 3}
+  - {fileID: 8300000, guid: 33a5c059449e4ee409cc6f1a733f64c3, type: 3}
+  - {fileID: 8300000, guid: a800067c85f77a8479eba1f8218f9bbf, type: 3}
+  - {fileID: 8300000, guid: 7d458cb880233544d90885a412b86c8e, type: 3}
+  - {fileID: 8300000, guid: b0c6e8a331efeec4b854428b1d142781, type: 3}
+  - {fileID: 8300000, guid: 9680a52d9ed089144949eedc966a3984, type: 3}
+  - {fileID: 8300000, guid: 33dc01e21d975b04cb4e546d12da0e3d, type: 3}
+  SfxDeathSqueak: {fileID: 8300000, guid: 7168aff8a9c859f46a9da10210041984, type: 3}
+  SfxSimon1: {fileID: 8300000, guid: 686873b7cd7ff25418b4e997ba22bc63, type: 3}
+  SfxSimon2: {fileID: 8300000, guid: 03a8bbf4d269f1642bc2daea61133108, type: 3}
+  SfxSimon3: {fileID: 8300000, guid: 44d3307106e88cb489ec0c4852ce884e, type: 3}
+  SfxSimon4: {fileID: 8300000, guid: ed8dc618fd4b9c645b2269a980fdfc53, type: 3}
+  SfxAlarmClock: {fileID: 8300000, guid: 0c08e6986a0bfe74787ff40ee15c0f4d, type: 3}
+  SfxThrowWoosh: {fileID: 8300000, guid: d75ee44dfefc2964ea0e7940736fafee, type: 3}
+  SfxGasp: {fileID: 8300000, guid: 4e69a0e259b6479418bd6cdf3d80528d, type: 3}
+  SfxBuzz: {fileID: 8300000, guid: 8087c941a16358c4982d6ebe02355c82, type: 3}
+  SfxFaucetOpen: {fileID: 8300000, guid: 2d14c0f2ab575e04394f848bd37a3f53, type: 3}
+  SfxFaucetClose: {fileID: 8300000, guid: 73fe7de341eb18e48ab2e0c7581af1b5, type: 3}
+  SfxPaper: {fileID: 8300000, guid: 883b4490bd66b32498b3ae6afebc6845, type: 3}
+  SfxFemaleOof: {fileID: 8300000, guid: 010ba5b23926d554697fd210fbdc965c, type: 3}
+  SfxMaleGrunt: {fileID: 8300000, guid: 482730e92720721498e05819e054b4af, type: 3}
+  SfxSuccess: {fileID: 8300000, guid: e969fe980147e1840b65d993bb15aa5b, type: 3}
 --- !u!114 &114402954041823974
 MonoBehaviour:
   m_ObjectHideFlags: 1
