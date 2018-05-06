@@ -6701,9 +6701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   operation: 1
-  checkType: 1
+  checkType: 3
   identifiers:
-  - ExcludeTeleport
+  - VRTK_DestinationPoint
+  - Stairs
 --- !u!114 &114410465896900310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8229,7 +8230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableTeleport: 1
-  targetListPolicy: {fileID: 0}
+  targetListPolicy: {fileID: 114689080430735126}
   pointerRenderer: {fileID: 114147650452147248}
   activationButton: 10
   holdButtonToActivate: 1
@@ -8574,9 +8575,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   operation: 1
-  checkType: 1
+  checkType: 3
   identifiers:
-  - ExcludeTeleport
+  - VRTK_DestinationPoint
+  - Stairs
 --- !u!114 &114695633836311420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8590,7 +8592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreTriggerColliders: 1
   colliderRadius: 0.1
-  targetListPolicy: {fileID: 114289893663998668}
+  targetListPolicy: {fileID: 0}
   headsetColliding: 0
   collidingWith: {fileID: 0}
 --- !u!114 &114711876239184850
@@ -9163,6 +9165,7 @@ MonoBehaviour:
   identifiers:
   - VRTK_DestinationPoint
   - Stairs
+  - Walkable
 --- !u!114 &114806462764712806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9672,7 +9675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableTeleport: 1
-  targetListPolicy: {fileID: 0}
+  targetListPolicy: {fileID: 114409199012473836}
   pointerRenderer: {fileID: 114983149753090434}
   activationButton: 10
   holdButtonToActivate: 1

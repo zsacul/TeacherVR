@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if (UNITY_EDITOR)
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(DataHolder))]
@@ -29,3 +30,4 @@ public class DataHolderEditor : Editor
         }
     }
 }
+#endif

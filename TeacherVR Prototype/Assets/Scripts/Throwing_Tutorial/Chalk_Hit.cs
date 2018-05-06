@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Chalk_Hit : MonoBehaviour
 {
+    public enum HitSound
+    {
+        Male,
+        Female
+    }
+
+    public HitSound Gender = HitSound.Male;
+
     private AnimationControll script;
 
     private Tutorial_Point_Anim_Control tutorial_point_user;
@@ -20,25 +28,27 @@ public class Chalk_Hit : MonoBehaviour
         if (tag == "Chalk" || tag == "Water")
         {
             script.Hit();
-            if (tag == "Chalk" && GameController.Instance.EventsManager.GetCurrentEvent() != null &&
-                GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
-                tutorial_point_user.gameObject.activeSelf && !tutorial_point_user.GetCorutineStatus())
+            if (tag == "Chalk")
             {
-                GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
-                    transform.position + Vector3.up);
-                GameController.Instance.ScoreBoard.PointsAddAnim(100);
-                GameController.Instance.SoundManager.Play2D(SamplesList.Correct, 0.01f);
-                tutorial_point_user.Kill();
+                if (Gender == HitSound.Male)
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.MaleGrunt, transform.position, 0.01f);
+                if (Gender == HitSound.Female)
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.FemaleOof, transform.position, 0.01f);
+
+                if (GameController.Instance.EventsManager.GetCurrentEvent() != null &&
+                    GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
+                    tutorial_point_user.gameObject.activeSelf && !tutorial_point_user.GetCorutineStatus())
+                {
+                    GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
+                        transform.position + Vector3.up);
+                    GameController.Instance.ScoreBoard.PointsAddAnim(100);
+                    tutorial_point_user.Kill();
+                }
             }
         }
     }
 
     void OnCollisionEnter(Collision col)
-    {
-        TakeHit(col.gameObject.tag);
-    }
-
-    void OnTriggerEnter(Collider col)
     {
         TakeHit(col.gameObject.tag);
     }

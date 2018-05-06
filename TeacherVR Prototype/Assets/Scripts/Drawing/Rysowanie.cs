@@ -145,9 +145,6 @@ public class Rysowanie : MonoBehaviour
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
                         GameController.Instance.DrawingManager.RysObject.transform.position + Vector3.right / 10);
 
-                GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct,
-                    GameController.Instance.DrawingManager.RysObject.transform.position, 0.01f);
-
                 if (currentTarget == TemplateShape.GetLength(0) - 1)
                 {
                     Debug.Log("You finished the shape! Combo: " + comboCounter);

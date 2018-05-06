@@ -16,7 +16,7 @@ public class ScoreBoard : MonoBehaviour
     private int minutes = 0;
     private int seconds = 0;
 
-    private int MaxAnimSpeed = 100;
+    private int MaxAnimSpeed = 50;
     private bool Anim = false;
     private int How_Many = 0;
 
@@ -24,6 +24,11 @@ public class ScoreBoard : MonoBehaviour
     private bool OutOfTime = false;
 
     private bool Active = false;
+
+    private bool Alarm = true;
+
+    private float LastAnimTime = 0;
+    private float AnimSoundDelay = 0.2f;
 
     GameObject ParticleSystem;
     GameObject Where;
@@ -47,6 +52,7 @@ public class ScoreBoard : MonoBehaviour
         ChangeTime(GameController.Instance.GameTime, 0);
         ChangeTimeCounting(true);
         SetOutOfTime(false);
+        Alarm = true;
     }
 
     private void Update()
@@ -57,6 +63,11 @@ public class ScoreBoard : MonoBehaviour
             {
                 timer -= Time.deltaTime;
                 seconds = Convert.ToInt32(timer % 60);
+                if (Alarm && minutes == 0 && seconds == 3)
+                {
+                    Alarm = false;
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.AlarmClock, transform.position, 0.1f);
+                }
                 if (seconds == 0)
                 {
                     seconds = 59;
@@ -110,6 +121,12 @@ public class ScoreBoard : MonoBehaviour
             for (int speed = 0; speed <= MaxAnimSpeed * Time.deltaTime; speed++)
                 if ((Anim) && (How_Many > 0))
                 {
+                    if (Time.time > LastAnimTime + AnimSoundDelay)
+                    {
+                        LastAnimTime = Time.time;
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.CoinArcade, transform.position,
+                            1f);
+                    }
                     PointsAdd(1);
                     How_Many--;
                     if (How_Many == 0)
@@ -122,7 +139,7 @@ public class ScoreBoard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*/ /* KLAWISZE TYLKO DO TESTÓW!
+        //KLAWISZE TYLKO DO TESTÓW!
         if (Input.GetKeyDown(KeyCode.P))
         {
             ParticleSystem.GetComponent<Particles>().CreateOnePoint(Where.transform.position, 0f);
@@ -131,8 +148,8 @@ public class ScoreBoard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             ParticleSystem.GetComponent<Particles>().CreateParticle(Particles.NaszeParticle.HundredPoints, Where.transform.position);
-            PointsAddAnim(10);
-        }
+            PointsAddAnim(100);
+        }/*
         if (Input.GetKeyDown(KeyCode.L))
         {
             ChangeTimeCounting();
@@ -140,8 +157,8 @@ public class ScoreBoard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             ChangeTime(1,59);
-        }
-        //*/
+        }*/
+        
     }
 
     // Dodawanie punktów bez animacji

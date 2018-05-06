@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿#if (UNITY_EDITOR)
+using UnityEngine;
 using UnityEditor;
-using UnityEngine.SceneManagement;
 
 [CustomEditor(typeof(GameController))]
 public class GameControllerEditor : Editor
@@ -19,3 +18,4 @@ public class GameControllerEditor : Editor
         }
     }
 }
+#endif

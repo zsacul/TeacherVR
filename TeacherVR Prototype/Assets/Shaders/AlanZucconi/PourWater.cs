@@ -43,16 +43,6 @@ public class PourWater : MonoBehaviour
                 (fuel / maxFuel) * (Bot.position.y - Top.position.y));
     }
 
-    public void OnTriggerStay(Collider col)
-    {
-        if (col.tag.Equals("WaterSource"))
-        {
-            if (canFill())
-            {
-                fuel = Mathf.Lerp(fuel, fuel + cost, speed * Time.deltaTime);
-            }
-        }
-    }
 
     bool canFill()
     {
@@ -65,13 +55,25 @@ public class PourWater : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.tag.Equals("WaterSource"))
+        if (col.tag.Equals("WaterSource") && col.transform.GetChild(0).gameObject.activeSelf)
         {
             if (canFill())
             {
                 waterSound =
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position,0.1f);
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleFilling, transform.position, 0.1f);
             }
+        }
+    }
+
+    public void OnTriggerStay(Collider col)
+    {
+        if (col.tag.Equals("WaterSource"))
+        {
+            if (!col.transform.GetChild(0).gameObject.activeSelf || !canFill())
+            {
+                if (waterSound != null) waterSound.GetComponent<AudioSource>().Stop();
+            }
+            else fuel = Mathf.Lerp(fuel, fuel + cost, speed * Time.deltaTime);
         }
     }
 
@@ -91,7 +93,7 @@ public class PourWater : MonoBehaviour
         if (fuel > cost)
         {
             fuel -= cost;
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleSpray, transform.position,0.1f);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.BottleSpray, transform.position, 0.1f);
             return true;
         }
         return false;

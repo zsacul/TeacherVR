@@ -30,6 +30,7 @@ public class TurnOnPC : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        lastTime = 0;
         if (USB1Ins != null) Destroy(USB1Ins);
         if (USB2Ins != null) Destroy(USB2Ins);
         if (u1 != null) Destroy(u1.gameObject);
