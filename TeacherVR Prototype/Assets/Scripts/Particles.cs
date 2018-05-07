@@ -9,14 +9,14 @@ public class Particles : MonoBehaviour
         OnePoint, TenPoints, FiftyPoints, HundredPoints, TwoHundredPoints, ThreeHundredPoints,
         Minus15, Minus30, Plus15, Plus30,
         Small_Good_Correct_Ok, Small_Hit_Boom, Small_Wrong,
-        FireWork, Poof
+        FireWork, Poof, Combo
     };
 
 
     public GameObject OnePoint, TenPoints, FiftyPoints, HundredPoints, TwoHundredPoints, ThreeHundredPoints,
                       Minus15, Minus30, Plus15, Plus30,
                       Small_Good_Correct_Ok, Small_Hit_Boom, Small_Wrong,
-                      FireWork, Poof;
+                      FireWork, Poof,Combo;
 
 
     public void CreateOnePoint(Vector3 transform, float rotation)
@@ -95,6 +95,10 @@ public class Particles : MonoBehaviour
         else if (PS == NaszeParticle.Poof)
         {
             Instantiate(Poof, transform, gameObject.transform.rotation);
+        }
+        else if (PS == NaszeParticle.Combo)
+        {
+            Instantiate(Combo, transform, gameObject.transform.rotation);
         }
     }
 }
