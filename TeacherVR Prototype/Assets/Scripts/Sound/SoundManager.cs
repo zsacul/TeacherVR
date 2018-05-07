@@ -28,7 +28,10 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     Blinds, // looped sliding metal blinds sfx
     Click, // glass-like clink for the light switching sfx
     Clapping, // three claps synced to the clapping animation (more or less)
-    MumbleMale // loop of male student mumbling (TODO sync to animation)
+    MumbleMale, // loop of male student mumbling (TODO sync to animation)
+    LeverClick, // clicking sfx for the lever mechanism (to provide audio feedback)
+    LeverSwitchOn, // when changing states (to "on", whatever that is)
+    LeverSwitchOff // ... (to "off", whatever this is)
 };
 
 
@@ -137,6 +140,9 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxClick;
     public AudioClip SfxClapping;
     public AudioClip SfxMumbleMale;
+    public AudioClip SfxLeverClick;
+    public AudioClip SfxLeverSwitchOn;
+    public AudioClip SfxLeverSwitchOff;
 
 
     // ---------------------------------------------------------------------
@@ -269,6 +275,15 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.MumbleMale:
                 return SfxMumbleMale;
+
+            case SamplesList.LeverClick:
+                return SfxLeverClick;
+
+            case SamplesList.LeverSwitchOn:
+                return SfxLeverSwitchOn;
+
+            case SamplesList.LeverSwitchOff:
+                return SfxLeverSwitchOff;
         }
 
         return null;
