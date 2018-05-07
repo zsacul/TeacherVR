@@ -6,8 +6,7 @@ using VRTK;
 [CreateAssetMenu(fileName = "New TurnOnPC Event", menuName = "Events/TurnOnPC Event")]
 public class TurnOnPC : Events
 {
-    [Header("Custom Settings")]
-    public Material PCOnMaterial;
+    [Header("Custom Settings")] public Material PCOnMaterial;
 
     public GameObject USBCable;
 
@@ -53,23 +52,13 @@ public class TurnOnPC : Events
                 u1.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u2.GetChild(1) ||
                 u2.GetChild(0).gameObject.activeSelf &&
                 u2.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u1.GetChild(1)))
-        {
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Error, PC.transform.position, 0.01f);
             return true;
-        }
         if (u3 != null && u4 != null && (
                 u3.GetChild(0).gameObject.activeSelf &&
                 u3.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u4.GetChild(1) ||
                 u4.GetChild(0).gameObject.activeSelf &&
                 u4.GetChild(0).GetComponent<Cable_Procedural_Simple>().GetEnd() == u3.GetChild(1)))
-        {
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
-                PC.transform.position + Vector3.up / 4);
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.Error, PC.transform.position, 0.01f);
             return true;
-        }
         return false;
     }
 
@@ -80,9 +69,15 @@ public class TurnOnPC : Events
         u3 = PC.transform.Find("Monitor/USBPort3/SnapDropZone/USBCable");
         u4 = PC.transform.Find("Keyboard/USBPort4/SnapDropZone/USBCable");
 
-        if (Time.time > lastTime + delayTime && CheckIfSameCable())
+        if (CheckIfSameCable())
         {
-            lastTime = Time.time;
+            if (Time.time > lastTime + delayTime)
+            {
+                lastTime = Time.time;
+                GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                    PC.transform.position + Vector3.up / 4);
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.Error, PC.transform.position, 0.01f);
+            }
             return;
         }
 
