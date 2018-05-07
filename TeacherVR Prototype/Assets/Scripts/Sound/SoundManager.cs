@@ -119,7 +119,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxElectric;
     public AudioClip SfxBookBang;
     public AudioClip SfxCoinArcade;
-    public AudioClip SfxSqueak;
+    public AudioClip[] SfxSqueak;
     public AudioClip SfxDeathSqueak;
     public AudioClip SfxSimon1;
     public AudioClip SfxSimon2;
@@ -214,7 +214,7 @@ public class SoundManager : MonoBehaviour {
                 return SfxCoinArcade;
 
             case SamplesList.Squeak:
-                return SfxSqueak;
+                return SfxSqueak[Random.Range(0,SfxSqueak.Length-1)];
 
             case SamplesList.DeathSqueak:
                 return SfxDeathSqueak;

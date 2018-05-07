@@ -13,11 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ring
   description: Move ring to end without touching line
-  status: 3
+  status: 1
   Lvl: 5
   MediumLvl: 5
   DeviationLvlRange: 0
   Repeatable: 1
+  Multiple: 2
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
   GoToTransform: {fileID: 4636734885339910, guid: 89d79ee4785c9154682157fe44d945e4,
     type: 2}

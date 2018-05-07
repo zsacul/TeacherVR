@@ -38,6 +38,8 @@ GameObject:
   - component: {fileID: 4218208522964908}
   - component: {fileID: 136134475752094182}
   - component: {fileID: 114281326094846332}
+  - component: {fileID: 114696457083585150}
+  - component: {fileID: 114900990990126192}
   m_Layer: 0
   m_Name: Computer mouse
   m_TagString: Untagged
@@ -306,6 +308,39 @@ MonoBehaviour:
   tag:
   - Water
   DestroyObjectsEvent: 1
+  LifeTime: 0
+--- !u!114 &114696457083585150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538524831113752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 18
+  Action: 9
+  Volume: 0.06
+  RandomLoopDelay: {x: 2, y: 7}
+  OnlyWhenGameInProgress: 0
+--- !u!114 &114900990990126192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538524831113752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 19
+  Action: 7
+  Volume: 0.5
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!136 &136134475752094182
 CapsuleCollider:
   m_ObjectHideFlags: 1

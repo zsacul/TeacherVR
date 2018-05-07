@@ -5,8 +5,8 @@ using Valve.VR;
 
 public class WaterOnTouch : MonoBehaviour
 {
-    public GameObject WaterSource;
-    public float WaterDurration = 5;
+    public GameObject WaterSourceModel;
+    public float WaterDurration = 7;
 
     private Animator anim;
     private float lastTime;
@@ -15,17 +15,18 @@ public class WaterOnTouch : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        WaterSource.SetActive(anim.GetBool("On"));
+        WaterSourceModel.SetActive(anim.GetBool("On"));
         lastTime = Time.time;
-        soundDurration = GameController.Instance.SoundManager.SfxWaterRunning.length-0.1f;
+        soundDurration = GameController.Instance.SoundManager.SfxWaterRunning.length - 0.1f;
     }
 
     void Update()
     {
-        if (WaterSource.activeSelf && Time.time > lastTime + soundDurration)
+        if (WaterSourceModel.activeSelf && Time.time > lastTime + soundDurration)
         {
             lastTime = Time.time;
-            GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterRunning, WaterSource.transform.position,0.05f);
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterRunning, WaterSourceModel.transform.position,
+                0.05f);
         }
     }
 
@@ -42,13 +43,16 @@ public class WaterOnTouch : MonoBehaviour
     private void ChangeState()
     {
         anim.SetBool("On", !anim.GetBool("On"));
-        WaterSource.SetActive(anim.GetBool("On"));
+        WaterSourceModel.SetActive(anim.GetBool("On"));
+        GameController.Instance.SoundManager.Play3DAt(
+            anim.GetBool("On") ? SamplesList.FaucetOpen : SamplesList.FaucetClose, transform.position, 0.1f);
     }
 
     IEnumerator TurnOff()
     {
         yield return new WaitForSeconds(WaterDurration);
+        GameController.Instance.SoundManager.Play3DAt(SamplesList.FaucetClose, transform.position, 0.1f);
         anim.SetBool("On", false);
-        WaterSource.SetActive(false);
+        WaterSourceModel.SetActive(false);
     }
 }

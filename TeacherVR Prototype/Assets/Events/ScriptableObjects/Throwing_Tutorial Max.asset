@@ -8,23 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c1573ff58e32f42bca0ae141d4aa80, type: 3}
-  m_Name: Drawing Sum
+  m_Script: {fileID: 11500000, guid: 6838f4c2e56d88a4c80b8ede4785136c, type: 3}
+  m_Name: Throwing_Tutorial Max
   m_EditorClassIdentifier: 
-  name: Drawing sum
-  description: Draw sum symbol
+  name: Throw Chalk Max
+  description: Throw chalk in students
   status: 2
-  Lvl: 0
-  MediumLvl: 0
+  Lvl: 4
+  MediumLvl: 4
   DeviationLvlRange: 0
   Repeatable: 1
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
-  GoToTransform: {fileID: 4108709543872196, guid: 73228dfe24689f743a29854f86c72c6e,
+  GoToTransform: {fileID: 4085273861506354, guid: d422cab2ef349e84fb98c2ea367eb679,
     type: 2}
-  Board: 5
-  TemplateShape:
-  - {x: 0.61, y: 0.62}
-  - {x: 0.41, y: 0.62}
-  - {x: 0.6, y: 0.75}
-  - {x: 0.43, y: 0.88}
-  - {x: 0.61, y: 0.88}
