@@ -10,7 +10,7 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     CoinArcade, // retro game style coin sfx
     Squeak, // mouse squeaking
     DeathSqueak, // mouse dying :(
-    Simon1, // sfx for simon buttons, TODO add interface
+    Simon1, // sfx for simon buttons
     Simon2,
     Simon3,
     Simon4,
@@ -27,7 +27,8 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     Murmurs, // looped sfx of noisy students
     Blinds, // looped sliding metal blinds sfx
     Click, // glass-like clink for the light switching sfx
-    Clapping // three claps synced to the clapping animation (more or less)
+    Clapping, // three claps synced to the clapping animation (more or less)
+    MumbleMale // loop of male student mumbling (TODO sync to animation)
 };
 
 
@@ -135,6 +136,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxBlinds;
     public AudioClip SfxClick;
     public AudioClip SfxClapping;
+    public AudioClip SfxMumbleMale;
 
 
     // ---------------------------------------------------------------------
@@ -264,6 +266,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.Clapping:
                 return SfxClapping;
+
+            case SamplesList.MumbleMale:
+                return SfxMumbleMale;
         }
 
         return null;
