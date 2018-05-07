@@ -60,7 +60,7 @@ namespace VRTK.Examples
                     TMPUGUI.text = "Play again!";
                     break;
                 case Mode.Volume:
-                    TMPUGUI.text = "Sound (" + GameController.Instance.SoundManager.GetGlobalVolume() * 10 + "%)";
+                    TMPUGUI.text = "Volume (" + GameController.Instance.SoundManager.GetGlobalVolume() * 10 + "%)";
                     break;
                 case Mode.Tooltips:
                     if (GameController.Instance.Tooltips) TMPUGUI.text = "Tooltips On";
@@ -101,7 +101,7 @@ namespace VRTK.Examples
                     }
                     break;
                 case Mode.Volume:
-                    TMPUGUI.text = "Sound (" + (100 - e.normalizedValue) + "%)";
+                    TMPUGUI.text = "Volume (" + (100 - e.normalizedValue) + "%)";
                     if (Time.time > lastTime + delay)
                     {
                         lastTime = Time.time;
@@ -110,19 +110,19 @@ namespace VRTK.Examples
                     GameController.Instance.SoundManager.SetGlobalVolume((100 - e.normalizedValue) / 10);
                     break;
                 case Mode.Tooltips:
-                    if (e.normalizedValue < 50) GameController.Instance.Tooltips = true;
+                    if (e.normalizedValue < 45) GameController.Instance.Tooltips = true;
                     else GameController.Instance.Tooltips = false;
                     if (GameController.Instance.Tooltips) TMPUGUI.text = "Tooltips On";
                     else TMPUGUI.text = "Tooltips Off";
                     break;
                 case Mode.Messages:
-                    if (e.normalizedValue < 50) GameController.Instance.Messages = true;
+                    if (e.normalizedValue < 45) GameController.Instance.Messages = true;
                     else GameController.Instance.Messages = false;
                     if (GameController.Instance.Messages) TMPUGUI.text = "Messages On";
                     else TMPUGUI.text = "Messages Off";
                     break;
                 case Mode.ArmSwinger:
-                    if (e.normalizedValue < 50) GameController.Instance.ChangeLocomotion(true);
+                    if (e.normalizedValue < 45) GameController.Instance.ChangeLocomotion(true);
                     else GameController.Instance.ChangeLocomotion(false);
                     if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport On";
                     else TMPUGUI.text = "ArmSwinger On";
