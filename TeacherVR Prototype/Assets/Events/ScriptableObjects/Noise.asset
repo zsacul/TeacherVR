@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Name: Noise
   m_EditorClassIdentifier: 
   name: Noise
-  description: Students are loud, you can't continue your lecture.
-  status: 2
+  description: Draw students attention by shouting or by using your heavy book.
+  status: 3
   Lvl: 0
   MediumLvl: 0
   DeviationLvlRange: 0
   Repeatable: 1
+  Multiple: 1
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
   GoToTransform: {fileID: 4102171884153582, guid: cb2cd89d056ed934bbda530ff13a9cac,
     type: 2}
-  loudStudents: 080000000a0000000c0000000a00000002000000100000000f00000006000000030000000b00000002000000
+  loudStudents: 0e00000009000000110000000c0000000d0000000f00000001000000

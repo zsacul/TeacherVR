@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayOnce: 0
-  Played: 0
   ParticleScale: 0.1
   LifeTime: 0
   Particle: {fileID: 1545806602296978, guid: b9d8bdece9ecb54438e3a9192254f6fa, type: 2}
@@ -333,6 +332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: 5
   Action: 4
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!153 &153305105619244020
 ConfigurableJoint:
   m_ObjectHideFlags: 1

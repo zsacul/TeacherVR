@@ -291,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482610467801196}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.017, y: 0.108, z: 0.081}
+  m_LocalPosition: {x: -0.017, y: 0.108, z: -0.0714}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4433439810143858}
@@ -665,7 +665,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterSplash: {fileID: 1687118924408352, guid: 77c69ec12208c4c4380d15e30b6f8f68,
     type: 2}
-  trigger: 1
 --- !u!114 &114272349356900490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -677,18 +676,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2315305343a584e8758755b54117c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipOnNearTouch: {fileID: 0}
+  strengthOnNearTouch: 0
+  durationOnNearTouch: 0
+  intervalOnNearTouch: 0.05
+  cancelOnNearUntouch: 1
   clipOnTouch: {fileID: 0}
   strengthOnTouch: 0
   durationOnTouch: 0
   intervalOnTouch: 0.05
+  cancelOnUntouch: 1
   clipOnGrab: {fileID: 0}
   strengthOnGrab: 0
   durationOnGrab: 0
   intervalOnGrab: 0.05
+  cancelOnUngrab: 1
   clipOnUse: {fileID: 0}
   strengthOnUse: 0
   durationOnUse: 0
   intervalOnUse: 0.05
+  cancelOnUnuse: 1
+  objectToAffect: {fileID: 0}
 --- !u!114 &114500046219846206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -760,9 +768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725aa2c0d81c8e04dbfa9ba013a7c15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 0
   IgnoreSaveKinematic: 0
-  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
+  disableWhenIdle: 0
+  allowedNearTouchControllers: 0
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
@@ -779,7 +787,12 @@ MonoBehaviour:
   pointerActivatesUseAction: 0
   useOverrideButton: 0
   allowedUseControllers: 0
+  objectHighlighter: {fileID: 0}
+  touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   usingState: 0
+  CollisionDetectionMode: 1
+  AutoHoldOnGrab: 1
+  UseOnAwake: 3
   bulletSpeed: 30
   bulletLife: 5
   fireDelay: 0.3
@@ -795,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4418649297046012}
+  resetOnDisable: 1
   sdkOverrides:
   - loadedSDKSetup: {fileID: 0}
     controllerType: 5
