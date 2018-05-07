@@ -74,11 +74,11 @@ GameObject:
   - component: {fileID: 65990321905488820}
   - component: {fileID: 114416904177324380}
   - component: {fileID: 114682523502965348}
-  - component: {fileID: 114733148896239040}
-  - component: {fileID: 114514975150103108}
   - component: {fileID: 114832523261641036}
   - component: {fileID: 65076928073737722}
   - component: {fileID: 114466616827912184}
+  - component: {fileID: 114462377969107196}
+  - component: {fileID: 114361063258608256}
   m_Layer: 2
   m_Name: Kreda Rys
   m_TagString: Chalk
@@ -118,7 +118,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654335223098330}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.17, y: 1.793, z: 3.856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -134,13 +134,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1653563700873232}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4597003861191536}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!23 &23743334501871688
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -271,6 +271,27 @@ MonoBehaviour:
   gripSenseAxisChanged: 0
   gripSensePressed: 0
   controllerVisible: 1
+--- !u!114 &114361063258608256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654335223098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1ebaa51525b734287157cb3f53f958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precisionGrab: 0
+  rightSnapHandle: {fileID: 4692021598434706}
+  leftSnapHandle: {fileID: 0}
+  throwVelocityWithAttachDistance: 0
+  throwMultiplier: 1
+  onGrabCollisionDelay: 0
+  detachDistance: 1
+  velocityLimit: Infinity
+  angularVelocityLimit: Infinity
+  maxDistanceDelta: 10
 --- !u!114 &114416904177324380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -303,6 +324,17 @@ MonoBehaviour:
   intervalOnUse: 0.05
   cancelOnUnuse: 1
   objectToAffect: {fileID: 0}
+--- !u!114 &114462377969107196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654335223098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114466616827912184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -317,18 +349,8 @@ MonoBehaviour:
   Sound: 25
   Action: 8
   Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
   OnlyWhenGameInProgress: 1
---- !u!114 &114514975150103108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654335223098330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114682523502965348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,8 +373,8 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 114733148896239040}
-  secondaryGrabActionScript: {fileID: 114514975150103108}
+  grabAttachMechanicScript: {fileID: 114361063258608256}
+  secondaryGrabActionScript: {fileID: 114462377969107196}
   isUsable: 0
   holdButtonToUse: 1
   useOnlyIfGrabbed: 0
@@ -362,23 +384,6 @@ MonoBehaviour:
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
---- !u!114 &114733148896239040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1654335223098330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec2ac476f2fc9a45a4e69712580a603, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  precisionGrab: 0
-  rightSnapHandle: {fileID: 4692021598434706}
-  leftSnapHandle: {fileID: 0}
-  throwVelocityWithAttachDistance: 0
-  throwMultiplier: 1
-  onGrabCollisionDelay: 1
 --- !u!114 &114758987979280164
 MonoBehaviour:
   m_ObjectHideFlags: 1
