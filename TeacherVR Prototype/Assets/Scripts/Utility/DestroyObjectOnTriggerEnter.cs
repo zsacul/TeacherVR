@@ -23,7 +23,6 @@ public class DestroyObjectOnTriggerEnter : MonoBehaviour
             {
                 if (DestroyObjectsEvent)
                 {
-                    gameController.SoundManager.Play2D(SamplesList.Correct,0.01f);
                     gameController.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,transform.position);
                     gameController.ScoreBoard.PointsAddAnim(50);
                 }

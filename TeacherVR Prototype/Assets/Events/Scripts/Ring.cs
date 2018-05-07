@@ -25,6 +25,7 @@ public class Ring : Events
     public override void StartEvent()
     {
         base.StartEvent();
+        Message(5, "Slide the table out of the locker", MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         Capsule = GameObject.Find("Sliding table/Capsule").GetComponent<VRTK_InteractableObject>();
         LastTime = 0;
@@ -127,7 +128,6 @@ public class Ring : Events
         GameController.Instance.ScoreBoard.PointsAddAnim(50 * Lvl);
         GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
             RingInst.transform.position);
-        GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, RingInst.transform.position, 0.01f);
         Clear();
     }
 

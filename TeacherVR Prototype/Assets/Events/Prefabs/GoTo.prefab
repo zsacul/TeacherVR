@@ -117,7 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: 14
   Action: 6
-  Volume: 0.1
+  Volume: 0.2
+  RandomLoopDelay: {x: 0, y: 0}
   OnlyWhenGameInProgress: 1
 --- !u!114 &114310783663204894
 MonoBehaviour:
@@ -134,7 +135,7 @@ MonoBehaviour:
   - LController
   - RController
   DestroyObjectsEvent: 0
-  LifeTime: 3
+  LifeTime: 1
 --- !u!135 &135434482901826458
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -359,8 +360,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.3
-      minScalar: 0.2
+      scalar: 0.5
+      minScalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3544,15 +3545,15 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 2145846270
+  randomSeed: 2000815151
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 1.5
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3684,7 +3685,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.2
+      scalar: 0.3
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2

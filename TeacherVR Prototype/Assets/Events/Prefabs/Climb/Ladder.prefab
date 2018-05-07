@@ -20,9 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4163954978879876}
   - component: {fileID: 65565654334195928}
+  - component: {fileID: 65571757759055974}
+  - component: {fileID: 65309770508598864}
+  - component: {fileID: 65679983880583738}
   m_Layer: 0
   m_Name: Walkable
-  m_TagString: Stairs
+  m_TagString: Walkable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,6 +604,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.75}
   m_Center: {x: 0.57, y: 0.9, z: 0.45}
+--- !u!65 &65309770508598864
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024022924992218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84838355, y: 0.048748016, z: 1}
+  m_Center: {x: 0.21, y: -1.11, z: 0.24353999}
 --- !u!65 &65565654334195928
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -611,8 +626,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.84838355, y: 0.048748016, z: 0.6139287}
-  m_Center: {x: 0.2919459, y: -0.23115683, z: 0.24353999}
+  m_Size: {x: 0.84838355, y: 0.048748016, z: 1}
+  m_Center: {x: -0.2, y: -0.23115683, z: 0.24353999}
+--- !u!65 &65571757759055974
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024022924992218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84838355, y: 0.048748016, z: 1}
+  m_Center: {x: -0.01, y: -0.62, z: 0.24353999}
 --- !u!65 &65597447497041132
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -649,6 +676,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.15, z: 0.75}
   m_Center: {x: 0.49, y: 1.2, z: 0.45}
+--- !u!65 &65679983880583738
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024022924992218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.84838355, y: 0.048748016, z: 1}
+  m_Center: {x: 0.42, y: -1.64, z: 0.24353999}
 --- !u!65 &65802346079177508
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -951,6 +990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: 5
   Action: 4
+  Volume: 1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!114 &114768039063704946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,6 +1006,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: 5
   Action: 4
+  Volume: 1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!114 &114974613396760330
 MonoBehaviour:
   m_ObjectHideFlags: 1

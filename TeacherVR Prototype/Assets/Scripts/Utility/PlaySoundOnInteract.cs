@@ -10,11 +10,17 @@ public class PlaySoundOnInteract : MonoBehaviour
     public ActionList Action;
 
     public float Volume = 1;
-
+    public Vector2 RandomLoopDelay;
     public bool OnlyWhenGameInProgress = false;
 
     private VRTK_InteractableObject io;
     private VRTK_SnapDropZone sdz;
+    private Rigidbody rb;
+
+    private const float ThrowVelocity = 6;
+
+    private float LastTime;
+    private float Delay;
 
     public enum ActionList
     {
@@ -25,8 +31,15 @@ public class PlaySoundOnInteract : MonoBehaviour
         Grabbed,
         Ungrabbed,
         Enable,
-        Disable
+        Disable,
+        Throw,
+        RandomLoop
     }
+
+    /*void Awake()
+    {
+        if (Action == ActionList.Throw) rb = GetComponent<Rigidbody>();
+    }*/
 
     void OnEnable()
     {
@@ -67,6 +80,10 @@ public class PlaySoundOnInteract : MonoBehaviour
     {
         io = GetComponent<VRTK_InteractableObject>();
         sdz = GetComponent<VRTK_SnapDropZone>();
+        LastTime = 0;
+        Delay = 6;
+
+        if (Action == ActionList.RandomLoop) Delay = Random.Range(RandomLoopDelay.x, RandomLoopDelay.y);
 
         switch (Action)
         {
@@ -88,6 +105,29 @@ public class PlaySoundOnInteract : MonoBehaviour
             case ActionList.Ungrabbed:
                 if (io != null) io.InteractableObjectUngrabbed += PlayIO;
                 break;
+            case ActionList.Throw:
+                rb = GetComponent<Rigidbody>();
+                break;
+        }
+    }
+
+    void Update()
+    {
+        if (Action == ActionList.Throw && rb != null && rb.velocity.magnitude > ThrowVelocity)
+        {
+            if (Time.time > LastTime + Delay)
+            {
+                LastTime = Time.time;
+                Play();
+            }
+        }
+        if (Action == ActionList.RandomLoop)
+        {
+            if (Time.time > LastTime + Delay)
+            {
+                LastTime = Time.time;
+                Play();
+            }
         }
     }
 

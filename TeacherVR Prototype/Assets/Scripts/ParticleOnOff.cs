@@ -8,7 +8,7 @@ using VRTK;
 public class ParticleOnOff : MonoBehaviour
 {
     public bool PlayOnce = false;
-    public bool Played = false;
+    private bool Played = false;
 
     public float ParticleScale = 1f;
 

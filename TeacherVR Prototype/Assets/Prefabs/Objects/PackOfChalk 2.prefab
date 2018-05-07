@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 114247163265149712}
   - component: {fileID: 114531659901666894}
   - component: {fileID: 65338259732983364}
+  - component: {fileID: 114454200865979212}
   m_Layer: 2
   m_Name: Kreda Rys (5)
   m_TagString: Chalk
@@ -114,6 +115,7 @@ GameObject:
   - component: {fileID: 114595782795625136}
   - component: {fileID: 114596688539898514}
   - component: {fileID: 65595990745404298}
+  - component: {fileID: 114309624962517362}
   m_Layer: 2
   m_Name: Kreda Rys (10)
   m_TagString: Chalk
@@ -137,6 +139,7 @@ GameObject:
   - component: {fileID: 114592012236285714}
   - component: {fileID: 114537502982836276}
   - component: {fileID: 65166690519425756}
+  - component: {fileID: 114984630883064722}
   m_Layer: 2
   m_Name: Kreda Rys (11)
   m_TagString: Chalk
@@ -252,6 +255,7 @@ GameObject:
   - component: {fileID: 114120109703064316}
   - component: {fileID: 114685728106738594}
   - component: {fileID: 65945320542677728}
+  - component: {fileID: 114476553153554288}
   m_Layer: 2
   m_Name: Kreda Rys (2)
   m_TagString: Chalk
@@ -290,6 +294,7 @@ GameObject:
   - component: {fileID: 114777380055493818}
   - component: {fileID: 114098587735028652}
   - component: {fileID: 65033164063531228}
+  - component: {fileID: 114972235821450558}
   m_Layer: 2
   m_Name: Kreda Rys (9)
   m_TagString: Chalk
@@ -939,6 +944,7 @@ GameObject:
   - component: {fileID: 114434428248609696}
   - component: {fileID: 114170740892420432}
   - component: {fileID: 65832300532213172}
+  - component: {fileID: 114893252401981410}
   m_Layer: 2
   m_Name: Kreda Rys (3)
   m_TagString: Chalk
@@ -1009,6 +1015,7 @@ GameObject:
   - component: {fileID: 114258191636222088}
   - component: {fileID: 114961815325312476}
   - component: {fileID: 65691715644385692}
+  - component: {fileID: 114426994537124440}
   m_Layer: 2
   m_Name: Kreda Rys
   m_TagString: Chalk
@@ -1066,6 +1073,7 @@ GameObject:
   - component: {fileID: 114868256150210920}
   - component: {fileID: 114878732010892434}
   - component: {fileID: 65645498720120160}
+  - component: {fileID: 114258339952830412}
   m_Layer: 2
   m_Name: Kreda Rys (1)
   m_TagString: Chalk
@@ -1894,6 +1902,7 @@ GameObject:
   - component: {fileID: 114469768126928218}
   - component: {fileID: 114661834298641488}
   - component: {fileID: 65685160044801396}
+  - component: {fileID: 114137176524607048}
   m_Layer: 2
   m_Name: Kreda Rys (7)
   m_TagString: Chalk
@@ -1934,6 +1943,7 @@ GameObject:
   - component: {fileID: 114486049651346160}
   - component: {fileID: 114230682913912118}
   - component: {fileID: 65245273999390870}
+  - component: {fileID: 114055559650224660}
   m_Layer: 2
   m_Name: Kreda Rys (4)
   m_TagString: Chalk
@@ -1990,6 +2000,7 @@ GameObject:
   - component: {fileID: 114668623157682390}
   - component: {fileID: 114389181952246658}
   - component: {fileID: 65543052300144914}
+  - component: {fileID: 114945898028983820}
   m_Layer: 2
   m_Name: Kreda Rys (6)
   m_TagString: Chalk
@@ -2013,6 +2024,7 @@ GameObject:
   - component: {fileID: 114689121690318774}
   - component: {fileID: 114971218573210584}
   - component: {fileID: 65935054716816472}
+  - component: {fileID: 114883384048202314}
   m_Layer: 2
   m_Name: Kreda Rys (8)
   m_TagString: Chalk
@@ -6263,6 +6275,22 @@ MonoBehaviour:
   checkType: 1
   identifiers:
   - Chalk
+--- !u!114 &114055559650224660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933931585373706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114068879344678180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6468,6 +6496,22 @@ MonoBehaviour:
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
   controller: {fileID: 0}
+--- !u!114 &114137176524607048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887338429641924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114137352030893034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6953,6 +6997,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114258339952830412
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464014089221566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114266054273495484
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7073,6 +7133,22 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 114631135605308342}
   defaultSnappedObject: {fileID: 1464014089221566}
+--- !u!114 &114309624962517362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037449973743612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114311884174428516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7556,6 +7632,22 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 1
+--- !u!114 &114426994537124440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440095041320728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114427273151232972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7641,6 +7733,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 5
+--- !u!114 &114454200865979212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014732231246310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114456427962949300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7728,6 +7836,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114476553153554288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080135849825604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114479453057970378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8939,6 +9063,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMass: {x: 0, y: -0.1, z: 0}
+--- !u!114 &114883384048202314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951320332246480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
+--- !u!114 &114893252401981410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403676790064276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114894946618491298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9106,6 +9262,22 @@ MonoBehaviour:
   maximumCursorScale: {x: Infinity, y: Infinity, z: Infinity}
   customTracer: {fileID: 0}
   customCursor: {fileID: 0}
+--- !u!114 &114945898028983820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943201785481442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114946455942852014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9227,6 +9399,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMass: {x: 0, y: -0.1, z: 0}
+--- !u!114 &114972235821450558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087751129847026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114979143759376946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9292,6 +9480,22 @@ MonoBehaviour:
   intervalOnUse: 0.05
   cancelOnUnuse: 1
   objectToAffect: {fileID: 0}
+--- !u!114 &114984630883064722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044398296942322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114986411969431098
 MonoBehaviour:
   m_ObjectHideFlags: 1
