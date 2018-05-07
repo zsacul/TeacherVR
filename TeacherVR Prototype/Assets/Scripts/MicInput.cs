@@ -14,6 +14,7 @@ public class MicInput : MonoBehaviour
     public bool isSpeaking;
 
     static public bool bookNoise = false;
+    public int multiplier = 5;
     private bool initDet = false;
     private TextMeshProUGUI tm;
     private LineRenderer lrCurr;
@@ -283,7 +284,7 @@ public class MicInput : MonoBehaviour
                 minSilencingVolume = average * 10 + 0.1f;
             }
             else
-                minSilencingVolume = average * 5 + 0.1f;
+                minSilencingVolume = average * multiplier + 0.1f;
             if (minSilencingVolume > 2f)
                 minSilencingVolume = 2f;
             else if (minSilencingVolume < 0.35f)
