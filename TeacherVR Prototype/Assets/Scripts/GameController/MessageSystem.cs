@@ -38,6 +38,8 @@ public class MessageSystem : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
 
         HeadsetFollower = VRTK_DeviceFinder.HeadsetTransform().gameObject;
         RightHand = VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_ControllerEvents>();
