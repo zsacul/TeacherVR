@@ -13,6 +13,7 @@ public class MicInput : MonoBehaviour
     private string deviceName;
     public bool isSpeaking;
 
+    static public bool bookNoise = false;
     private bool initDet = false;
     private TextMeshProUGUI tm;
     private LineRenderer lrCurr;
@@ -138,6 +139,7 @@ public class MicInput : MonoBehaviour
     }
     private void Start()
     {
+        bookNoise = false;
         typeOfInput = MicInputType.noone;
         _legacyScore = 0;
 
@@ -150,12 +152,19 @@ public class MicInput : MonoBehaviour
     void InitDetect()
     {
         pointer = 0;
-        Detector = Instantiate(DetectorPrefab);
-     //   tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
-        lrCurr = Detector.transform.Find("Canvas/Line").gameObject.GetComponent<LineRenderer>();
-        lrCurr.positionCount = 0;
-        lrS = Detector.transform.Find("Canvas/ShoutLine").gameObject.GetComponent<LineRenderer>();
-        lrS.positionCount = 0;
+        if (Detector == null)
+        {
+            Detector = Instantiate(DetectorPrefab);
+            Noise.detector = Detector;
+
+            //   tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            lrCurr = Detector.transform.Find("Canvas/Line").gameObject.GetComponent<LineRenderer>();
+            lrCurr.positionCount = 0;
+            lrS = Detector.transform.Find("Canvas/ShoutLine").gameObject.GetComponent<LineRenderer>();
+            lrS.positionCount = 0;
+        }
+        else
+            Detector.SetActive(true);
         peakArray = new float[10] { -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f, -1f };
         initDet = true;
     }
@@ -188,7 +197,7 @@ public class MicInput : MonoBehaviour
             {
                 if (!initDet)
                     InitDetect();
-                Detector.SetActive(true);
+             //   Detector.SetActive(true);
                 if (peakArrayDisplayTime + 1f <= time)
                 {
                     DisplayLoudness();
@@ -219,30 +228,33 @@ public class MicInput : MonoBehaviour
                         }
                     }*/
                 }
-                if (MaxPeak >= minSilencingVolume)
+                if (MaxPeak >= minSilencingVolume || bookNoise)
                 {
                     Noise.shoutedLoudEnough = true;
                     typeOfInput = MicInputType.noone;
-                    Destroy(Detector);
+                    Detector.SetActive(false);
                     initDet = false;
                 }
+                if (bookNoise)
+                    initDet = false;
             }
         }
     }
+
 
     public void DisplayLoudness()
     {
         if (typeOfInput == MicInputType.peakDetection)
         {
             
-            string text = "";
+          //  string text = "";
             lrCurr.positionCount=10;
             for (int i = 0; i < 10; i++)
             {
                 if (peakArray[(pointer + i) % 10] != -1f)
                 {
                     lrCurr.SetPosition(i, new Vector3(i/10f, (peakArray[(pointer + i) % 10])/minSilencingVolume, 0));
-                    text += peakArray[(pointer + i) % 10].ToString() + "\n";
+          //          text += peakArray[(pointer + i) % 10].ToString() + "\n";
                 }
               //  else
           //      {
@@ -263,7 +275,7 @@ public class MicInput : MonoBehaviour
                 average /= numb;
             else
                 average = 0;
-            text += "Srednia: "+average+"\n";
+        //    text += "Srednia: "+average+"\n";
             if (numb == 0)
                 minSilencingVolume = 1f;
             else if (numb < 5)
@@ -278,7 +290,7 @@ public class MicInput : MonoBehaviour
                 minSilencingVolume = 0.35f;
             lrS.positionCount = 2;
             lrS.SetPositions(new Vector3[2] { new Vector3(0, 1, 0), new Vector3(9 / 10f, 1, 0) }); // 1 -> 100%
-            text+="To silence: " + minSilencingVolume;
+         //   text+="To silence: " + minSilencingVolume;
            // tm.text = text;
 
         }

@@ -7,6 +7,7 @@ public class Noise : Events
 {
     [Header("Custom Settings")]
     public int[] loudStudents;
+    public static GameObject detector;
     public static bool shoutedLoudEnough = false;
     public static bool doneSomethingLoudEnough = false;
     //Funkcja po której wywołaniu startuje event
@@ -19,7 +20,8 @@ public class Noise : Events
         
         shoutedLoudEnough = false;
         doneSomethingLoudEnough = false;
-
+        if (detector != null)
+            detector.SetActive(true);
         MicInput.typeOfInput = MicInput.MicInputType.peakDetection;
         //Dodać jakiś dźwięk / hałas, animacja zamieszania wśród studentów?
         loudStudents = new int[Random.Range(1, GameController.Instance.Students.Students.Length - 1)];
@@ -43,6 +45,7 @@ public class Noise : Events
     public override void AbortEvent()
     {
         base.AbortEvent();
+        detector.SetActive(false);
         Debug.Log("End of noise.");
         for (int i = 0; i < loudStudents.Length; i++)
         {
@@ -61,6 +64,7 @@ public class Noise : Events
 
         if (shoutedLoudEnough || doneSomethingLoudEnough)
         {
+            detector.SetActive(false);
             for (int i = 0; i < loudStudents.Length; i++)
             {
                 GameController.Instance.SoundManager.Play3DAt(
@@ -68,6 +72,7 @@ public class Noise : Events
                      GameController.Instance.Students.Students[loudStudents[i]].transform);
                 GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Clap();
             }
+
 
             CompleteEvent();
         }
