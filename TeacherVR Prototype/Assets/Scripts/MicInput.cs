@@ -23,6 +23,7 @@ public class MicInput : MonoBehaviour
     private float[] peakArray;
     private int pointer;
     private float sampleTime;
+  //  private 
     private float peakArrayDisplayTime;
     //public float minRequiredVolume;
 
@@ -45,7 +46,7 @@ public class MicInput : MonoBehaviour
     public float eps = 0.0000001f;
     public void enableDetector(bool b = true)
     {
-        tm.enabled = b;
+   //     tm.enabled = b;
     }
     void InitMic()
     {
@@ -150,7 +151,7 @@ public class MicInput : MonoBehaviour
     {
         pointer = 0;
         Detector = Instantiate(DetectorPrefab);
-        tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+     //   tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
         lrCurr = Detector.transform.Find("Canvas/Line").gameObject.GetComponent<LineRenderer>();
         lrCurr.positionCount = 0;
         lrS = Detector.transform.Find("Canvas/ShoutLine").gameObject.GetComponent<LineRenderer>();
@@ -194,9 +195,9 @@ public class MicInput : MonoBehaviour
                     peakArrayDisplayTime = time;
                 }
                 float MaxPeak = PeakDetection();
-                if (sampleTime + 0.5f <= time)
+                if (sampleTime + 0.1f <= time)
                 {
-                    Debug.Log(MaxPeak);
+                   // Debug.Log(MaxPeak);
                     if (MaxPeak >= detectionLevel)
                     {
                         peakArray[pointer] = MaxPeak;
@@ -204,6 +205,19 @@ public class MicInput : MonoBehaviour
                         pointer %= 9;
                         sampleTime = time;
                    }
+                   /* else //???? average glob
+                    {
+                        int buff = pointer-1;
+                        if (buff == -1)
+                            buff = 9;
+                        if (peakArray[buff] != -1)
+                        {
+                            peakArray[pointer] = (peakArray[buff] + average) / 3;
+                            pointer++;
+                            pointer %= 9;
+                            sampleTime = time;
+                        }
+                    }*/
                 }
                 if (MaxPeak >= minSilencingVolume)
                 {
@@ -227,40 +241,45 @@ public class MicInput : MonoBehaviour
             {
                 if (peakArray[(pointer + i) % 10] != -1f)
                 {
-                    lrCurr.SetPosition(i, new Vector3(i/10f, peakArray[(pointer + i) % 10], 0));
+                    lrCurr.SetPosition(i, new Vector3(i/10f, (peakArray[(pointer + i) % 10])/minSilencingVolume, 0));
                     text += peakArray[(pointer + i) % 10].ToString() + "\n";
                 }
+              //  else
+          //      {
+          //          lrCurr.SetPosition(i, new Vector3(i / 10f, average / minSilencingVolume, 0));
+         //           text += "usr: "+ average + "\n";
+         //       }
             }
             int numb = 10;
-            float sum = 0;
+            float average = 0;
             for (int i=0; i <10; i++)
             {
                 if (peakArray[i] == -1f)
                     numb--;
                 else 
-                    sum += peakArray[i];
+                    average += peakArray[i];
             }
             if (numb != 0)
-                sum /= numb;
+                average /= numb;
             else
-                sum = 0;
-            text += "Srednia: "+sum+"\n";
+                average = 0;
+            text += "Srednia: "+average+"\n";
             if (numb == 0)
                 minSilencingVolume = 1f;
             else if (numb < 5)
             {
-                minSilencingVolume = sum * 10 + 0.1f;
+                minSilencingVolume = average * 10 + 0.1f;
             }
             else
-                minSilencingVolume = sum * 5 + 0.1f;
+                minSilencingVolume = average * 5 + 0.1f;
             if (minSilencingVolume > 2f)
                 minSilencingVolume = 2f;
-            else if (minSilencingVolume < 0.25f)
+            else if (minSilencingVolume < 0.35f)
                 minSilencingVolume = 0.35f;
             lrS.positionCount = 2;
-            lrS.SetPositions(new Vector3[2] { new Vector3(0, minSilencingVolume, 0), new Vector3(9 / 10f, minSilencingVolume, 0) });
+            lrS.SetPositions(new Vector3[2] { new Vector3(0, 1, 0), new Vector3(9 / 10f, 1, 0) }); // 1 -> 100%
             text+="To silence: " + minSilencingVolume;
-            tm.text = text;
+           // tm.text = text;
 
         }
 
