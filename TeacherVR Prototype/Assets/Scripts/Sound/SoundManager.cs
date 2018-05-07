@@ -10,7 +10,7 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     CoinArcade, // retro game style coin sfx
     Squeak, // mouse squeaking
     DeathSqueak, // mouse dying :(
-    Simon1, // sfx for simon buttons, TODO add interface
+    Simon1, // sfx for simon buttons
     Simon2,
     Simon3,
     Simon4,
@@ -23,7 +23,15 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     Paper, // paper crumbling
     FemaleOof, // hurt sound for a female egg
     MaleGrunt, // hurt sound for a male egg
-    Success // event completed
+    Success, // event completed
+    Murmurs, // looped sfx of noisy students
+    Blinds, // looped sliding metal blinds sfx
+    Click, // glass-like clink for the light switching sfx
+    Clapping, // three claps synced to the clapping animation (more or less)
+    MumbleMale, // loop of male student mumbling (TODO sync to animation)
+    LeverClick, // clicking sfx for the lever mechanism (to provide audio feedback)
+    LeverSwitchOn, // when changing states (to "on", whatever that is)
+    LeverSwitchOff // ... (to "off", whatever this is)
 };
 
 
@@ -127,6 +135,14 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxFemaleOof;
     public AudioClip SfxMaleGrunt;
     public AudioClip SfxSuccess;
+    public AudioClip SfxMurmurs;
+    public AudioClip SfxBlinds;
+    public AudioClip SfxClick;
+    public AudioClip SfxClapping;
+    public AudioClip SfxMumbleMale;
+    public AudioClip SfxLeverClick;
+    public AudioClip SfxLeverSwitchOn;
+    public AudioClip SfxLeverSwitchOff;
 
 
     // ---------------------------------------------------------------------
@@ -245,6 +261,29 @@ public class SoundManager : MonoBehaviour {
             case SamplesList.Success:
                 return SfxSuccess;
 
+            case SamplesList.Murmurs:
+                return SfxMurmurs;
+
+            case SamplesList.Blinds:
+                return SfxBlinds;
+
+            case SamplesList.Click:
+                return SfxClick;
+
+            case SamplesList.Clapping:
+                return SfxClapping;
+
+            case SamplesList.MumbleMale:
+                return SfxMumbleMale;
+
+            case SamplesList.LeverClick:
+                return SfxLeverClick;
+
+            case SamplesList.LeverSwitchOn:
+                return SfxLeverSwitchOn;
+
+            case SamplesList.LeverSwitchOff:
+                return SfxLeverSwitchOff;
         }
 
         return null;
