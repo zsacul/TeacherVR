@@ -37,7 +37,7 @@ public class Noise : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-        AddPoints(10);
+        AddPoints(100);
         for (int i = 0; i < loudStudents.Length; i++)
         {
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(false);
@@ -68,12 +68,13 @@ public class Noise : Events
 
         if (shoutedLoudEnough || doneSomethingLoudEnough)
         {
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.HundredPoints, detector.transform.GetChild(1).position);
             detector.SetActive(false);
             for (int i = 0; i < loudStudents.Length; i++)
             {
                 GameController.Instance.SoundManager.Play3DAt(
                      SamplesList.Gasp,
-                     GameController.Instance.Students.Students[loudStudents[i]].transform);
+                     GameController.Instance.Students.Students[loudStudents[i]].transform, 0.5f);
                 GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Clap();
             }
             MurmursManagement.murmurs = false;
