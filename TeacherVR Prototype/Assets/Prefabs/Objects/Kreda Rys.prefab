@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 114466616827912184}
   - component: {fileID: 114462377969107196}
   - component: {fileID: 114361063258608256}
+  - component: {fileID: 114905124734262100}
   m_Layer: 2
   m_Name: Kreda Rys
   m_TagString: Chalk
@@ -467,3 +468,16 @@ MonoBehaviour:
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
   controller: {fileID: 0}
+--- !u!114 &114905124734262100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654335223098330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95039825519c0644d81112d535873b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  min_x: 0
+  max_x: 100
