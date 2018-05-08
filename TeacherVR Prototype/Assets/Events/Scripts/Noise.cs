@@ -24,12 +24,14 @@ public class Noise : Events
             detector.SetActive(true);
         MicInput.typeOfInput = MicInput.MicInputType.peakDetection;
         //Dodać jakiś dźwięk / hałas, animacja zamieszania wśród studentów?
+     //   GameController.Instance.SoundManager.Play3DAt(SamplesList.Murmurs, somewhere);
         loudStudents = new int[Random.Range(1, GameController.Instance.Students.Students.Length - 1)];
         for (int i = 0; i < loudStudents.Length; i++)
         {
             loudStudents[i] = Random.Range(0, GameController.Instance.Students.Students.Length - 1);
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(true);
         }
+        MurmursManagement.MurmursSource.volume = 0.5f;
     }
 
     public override void CompleteEvent()
@@ -52,6 +54,8 @@ public class Noise : Events
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(false);
         }
         MicInput.typeOfInput = MicInput.MicInputType.noone;
+        MurmursManagement.murmurs = false;
+        MurmursManagement.MurmursSource.Stop();
         //Wycofać dodany dźwięk / hałas, animacje zamieszania wśród studentów
     }
 
@@ -72,7 +76,8 @@ public class Noise : Events
                      GameController.Instance.Students.Students[loudStudents[i]].transform);
                 GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Clap();
             }
-
+            MurmursManagement.murmurs = false;
+            MurmursManagement.MurmursSource.Stop();
 
             CompleteEvent();
         }
