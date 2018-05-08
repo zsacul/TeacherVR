@@ -94,7 +94,17 @@ SketchUpImporter:
     4300020: Mesh 9
     4300022: Mesh 10
     4300024: Mesh 11
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_002
+    second: {fileID: 2100000, guid: 8697714c8ac9bc644b4137bb53f146c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _Black_
+    second: {fileID: 2100000, guid: d393093a3cb439946b8ede5d6d29e0ca, type: 2}
   materials:
     importMaterials: 1
     materialName: 2
@@ -132,7 +142,7 @@ SketchUpImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
