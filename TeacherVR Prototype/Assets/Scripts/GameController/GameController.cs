@@ -142,6 +142,9 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        /*GameController.Instance.EventsManager.Restart();*/
+        ScoreBoard.RestartBoard();
+        ForceTeleportScript.ForceTeleportToStart();
         GameInProgress = true;
     }
 }

@@ -88,9 +88,7 @@ namespace VRTK.Examples
                         transform.GetChild(0).position = pos;
                         transform.GetChild(0).rotation = rot;
                         transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = true;
-                        GameController.Instance.EventsManager.Restart();
-                        GameController.Instance.ScoreBoard.RestartBoard();
-                        GameController.Instance.ForceTeleportScript.ForceTeleportToStart();
+                        
                         GameController.Instance.StartGame();
                     }
                     break;

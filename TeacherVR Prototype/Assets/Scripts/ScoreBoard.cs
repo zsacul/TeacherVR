@@ -16,7 +16,7 @@ public class ScoreBoard : MonoBehaviour
     private int minutes = 0;
     private int seconds = 0;
 
-    private int MaxAnimSpeed = 50;
+    private int MaxAnimSpeed = 100;
     private bool Anim = false;
     private int How_Many = 0;
 
@@ -140,7 +140,7 @@ public class ScoreBoard : MonoBehaviour
     private void FixedUpdate()
     {
         //KLAWISZE TYLKO DO TESTÓW!
-        if (Input.GetKeyDown(KeyCode.P))
+        /*if (Input.GetKeyDown(KeyCode.P))
         {
             ParticleSystem.GetComponent<Particles>().CreateOnePoint(Where.transform.position, 0f);
             PointsAdd(1);
@@ -149,7 +149,7 @@ public class ScoreBoard : MonoBehaviour
         {
             ParticleSystem.GetComponent<Particles>().CreateParticle(Particles.NaszeParticle.HundredPoints, Where.transform.position);
             PointsAddAnim(100);
-        }/*
+        }
         if (Input.GetKeyDown(KeyCode.L))
         {
             ChangeTimeCounting();
@@ -158,7 +158,6 @@ public class ScoreBoard : MonoBehaviour
         {
             ChangeTime(1,59);
         }*/
-        
     }
 
     // Dodawanie punktów bez animacji
@@ -171,6 +170,16 @@ public class ScoreBoard : MonoBehaviour
     public void PointsAddAnim(int how)
     {
         How_Many += how;
+        Anim = true;
+    }
+
+    // Dodawanie punktów za czas + "animacja"
+    public void PointsAddForTime()
+    {
+        How_Many += (minutes * 60 + seconds) * 10;
+        minutes = 0;
+        seconds = 0;
+        timer = 0;
         Anim = true;
     }
 
@@ -244,13 +253,13 @@ public class ScoreBoard : MonoBehaviour
     {
         for (int i = 0; i < TopScore.Length; i++)
         {
-            if (points >= TopScore[i])
+            if (points + How_Many >= TopScore[i])
             {
                 for (int j = TopScore.Length - 1; j > i; j--)
                 {
                     TopScore[j] = TopScore[j - 1];
                 }
-                TopScore[i] = points;
+                TopScore[i] = points + How_Many;
                 return true;
             }
         }

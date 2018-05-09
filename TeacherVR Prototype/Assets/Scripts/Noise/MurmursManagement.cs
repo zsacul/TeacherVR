@@ -15,7 +15,7 @@ public class MurmursManagement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!murmurs && GameController.Instance.EventsManager.ListOfEvents[0].name == "Noise")
+		if(!murmurs && GameController.Instance.EventsManager.ListOfEvents.Count > 0 && GameController.Instance.EventsManager.ListOfEvents[0].name == "Noise")
         {
             MurmursSource.volume = 0.25f;
             MurmursSource.Play();

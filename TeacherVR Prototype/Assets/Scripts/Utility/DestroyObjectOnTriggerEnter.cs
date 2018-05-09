@@ -23,7 +23,7 @@ public class DestroyObjectOnTriggerEnter : MonoBehaviour
             {
                 if (DestroyObjectsEvent)
                 {
-                    gameController.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,transform.position);
+                    gameController.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,transform.position + Vector3.up/4);
                     gameController.ScoreBoard.PointsAddAnim(50);
                 }
                 Destroy(transform.root.gameObject, LifeTime);
