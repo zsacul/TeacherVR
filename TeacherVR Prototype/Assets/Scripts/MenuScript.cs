@@ -51,7 +51,7 @@ namespace VRTK.Examples
             switch (mode)
             {
                 case Mode.StartGame:
-                    TMPUGUI.text = "Open to start game!";
+                    TMPUGUI.text = "Push door \n when you are ready";
                     pos = transform.GetChild(0).position;
                     rot = transform.GetChild(0).rotation;
                     transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = false;
