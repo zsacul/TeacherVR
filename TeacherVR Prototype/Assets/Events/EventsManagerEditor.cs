@@ -17,11 +17,11 @@ public class EventsManagerEditor : Editor
             else Debug.LogWarning("Application is not in play mode");
         }
         
-        if (GUILayout.Button("Restart events"))
+        /*if (GUILayout.Button("Restart events"))
         {
             if (Application.isPlaying) myScript.Restart();
             else Debug.LogWarning("Application is not in play mode");
-        }
+        }*/
     }
 }
 #endif

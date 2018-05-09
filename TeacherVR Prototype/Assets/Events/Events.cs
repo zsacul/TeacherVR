@@ -27,7 +27,7 @@ public class Events : ScriptableObject
     public int DeviationLvlRange = 0;
 
     //Czy event jest powtarzalny
-    public bool Repeatable = true;
+    public bool Shuffle = true;
 
     //Ile razy czesciej
     public int Multiple = 1;

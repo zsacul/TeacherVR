@@ -29,7 +29,7 @@ public class EventsManager : MonoBehaviour
         EventNumber = 0;
     }
 
-    public void Restart()
+    /*public void Restart()
     {
         EndAllEvents();
 
@@ -39,14 +39,14 @@ public class EventsManager : MonoBehaviour
         }
         foreach (Events e in ListOfEvents)
         {
-            if (e.Repeatable) EventsToMix.Add(e);
+            if (e.Shuffle) EventsToMix.Add(e);
         }
         FillList();
         foreach (Events toDel in EventsToMix)
         {
             ListOfEvents.Remove(toDel);
         }
-    }
+    }*/
 
     private void AddPoints(int pkt)
     {
@@ -88,8 +88,12 @@ public class EventsManager : MonoBehaviour
             currentEvent.MessageEvent += Message;
             currentEvent.StartEvent();
             ListOfEvents.RemoveAt(0);
-            FillList();
+            //FillList();
             EventNumber++;
+        }
+        else
+        {
+            GameController.Instance.ScoreBoard.PointsAddForTime();
         }
         if (EventsManagerStartNext != null)
         {
@@ -116,10 +120,10 @@ public class EventsManager : MonoBehaviour
         }
     }
 
-    public void AddEvent(Events e)
+    /*public void AddEvent(Events e)
     {
         ListOfEvents.Add(e);
-    }
+    }*/
 
     public Events.Status CheckCurrentEventStatus()
     {
@@ -139,11 +143,14 @@ public class EventsManager : MonoBehaviour
         }
         foreach (Events e in ListOfEvents)
         {
-            if (e.Repeatable)
-                for (int i = 0; i < e.Multiple; i++)
-                    EventsToMix.Add(e);
+            if (e.Shuffle)
+                EventsToMix.Add(e);
         }
-        FillList();
+        EventsToMix.Shuffle();
+        foreach (var var in EventsToMix)
+        {
+            ListOfEvents.Add(var);
+        }
         foreach (Events toDel in EventsToMix)
         {
             ListOfEvents.Remove(toDel);
@@ -168,7 +175,7 @@ public class EventsManager : MonoBehaviour
         }
     }
 
-    void FillList()
+    /*void FillList()
     {
         string lastName = ListOfEvents[ListOfEvents.Count - 1].name;
         while (ListOfEvents.Count < 11)
@@ -182,6 +189,25 @@ public class EventsManager : MonoBehaviour
                 tmp.Lvl = tmp.MediumLvl + Random.Range(-1, 1) * Random.Range(1, tmp.DeviationLvlRange);
             AddEvent(tmp);
             lastName = tmp.name;
+        }
+    }*/
+}
+
+public static class IListExtensions
+{
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
         }
     }
 }
