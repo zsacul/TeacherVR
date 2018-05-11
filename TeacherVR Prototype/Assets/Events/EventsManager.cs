@@ -149,6 +149,8 @@ public class EventsManager : MonoBehaviour
         EventsToMix.Shuffle();
         foreach (var var in EventsToMix)
         {
+            if (var.DeviationLvlRange >= 1)
+                var.Lvl = var.MediumLvl + Random.Range(-1, 1) * Random.Range(1, var.DeviationLvlRange);
             ListOfEvents.Add(var);
         }
         foreach (Events toDel in EventsToMix)
