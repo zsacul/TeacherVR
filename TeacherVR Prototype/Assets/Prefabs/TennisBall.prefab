@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114865606196075098}
   - component: {fileID: 135653653445999294}
   - component: {fileID: 135586923361060402}
+  - component: {fileID: 114138591477708704}
   m_Layer: 0
   m_Name: TennisBall
   m_TagString: Untagged
@@ -327,6 +328,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114138591477708704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033699191280360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 25
+  Action: 8
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 1
 --- !u!114 &114488456111068152
 MonoBehaviour:
   m_ObjectHideFlags: 1
