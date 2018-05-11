@@ -134,7 +134,7 @@ public class ScoreBoard : MonoBehaviour
                     {
                         LastAnimTime = Time.time;
                         GameController.Instance.SoundManager.Play3DAt(SamplesList.CoinArcade, transform.position,
-                            0.1f);
+                            0.5f);
                     }
                     PointsAdd(1);
                     How_Many--;

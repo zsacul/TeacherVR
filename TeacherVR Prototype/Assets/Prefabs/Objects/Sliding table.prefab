@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 114791667204790052}
   - component: {fileID: 114167639731164234}
   - component: {fileID: 114274300947310702}
+  - component: {fileID: 114927426674858810}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -642,6 +643,22 @@ MonoBehaviour:
   anim: {fileID: 111752366402422786}
   EventsWhenStopGrab:
   - {fileID: 11400000, guid: 8d970fa66d6cde749a4bae60b6d152ed, type: 2}
+--- !u!114 &114927426674858810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825260628469456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 39
+  Action: 4
+  Volume: 0.1
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!120 &120751440855861112
 LineRenderer:
   m_ObjectHideFlags: 1

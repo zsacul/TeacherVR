@@ -53,7 +53,7 @@ public class MicInput : MonoBehaviour
     void InitMic()
     {
         
-        if (deviceName == null) deviceName = Microphone.devices[0];
+        if (deviceName == null && Microphone.devices.Length >0) deviceName = Microphone.devices[0];
       //  Debug.Log("devicename " + deviceName);
         audioClipRec = Microphone.Start(deviceName, true, 128, 44100);
       //  Debug.Log(Microphone.IsRecording(deviceName));

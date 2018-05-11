@@ -76,6 +76,9 @@ public class PlaySoundOnInteract : MonoBehaviour
             case ActionList.Ungrabbed:
                 if (io != null) io.InteractableObjectUngrabbed -= PlayIO;
                 break;
+            case ActionList.Throw:
+                if (io != null) io.InteractableObjectGrabbed -= DelayOnGrab;
+                break;
             case ActionList.GrabLoop:
                 if (io != null)
                 {
@@ -116,6 +119,7 @@ public class PlaySoundOnInteract : MonoBehaviour
                 if (io != null) io.InteractableObjectUngrabbed += PlayIO;
                 break;
             case ActionList.Throw:
+                if (io != null) io.InteractableObjectGrabbed += DelayOnGrab;
                 rb = GetComponent<Rigidbody>();
                 break;
             case ActionList.GrabLoop:
@@ -135,6 +139,7 @@ public class PlaySoundOnInteract : MonoBehaviour
             if (Time.time > LastTime + Delay)
             {
                 LastTime = Time.time;
+                Delay = 6;
                 Play();
             }
         }
@@ -164,6 +169,12 @@ public class PlaySoundOnInteract : MonoBehaviour
         Play();
     }
 
+    private void DelayOnGrab(object sender, InteractableObjectEventArgs e)
+    {
+        LastTime = Time.time;
+        Delay = 0.2f;
+    }
+
     private void GrabStateOn(object sender, InteractableObjectEventArgs e)
     {
         Play();
@@ -173,5 +184,6 @@ public class PlaySoundOnInteract : MonoBehaviour
     private void GrabStateOff(object sender, InteractableObjectEventArgs e)
     {
         if (SoundInst != null) SoundInst.GetComponent<AudioSource>().Stop();
+        SoundInst.GetComponent<AudioSource>().loop = false;
     }
 }

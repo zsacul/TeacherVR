@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 65954163123338732}
   - component: {fileID: 65385769039074168}
   - component: {fileID: 65262840864967378}
+  - component: {fileID: 114434682390782782}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -202,7 +203,19 @@ MonoBehaviour:
   MaxRange: 0.1
   OverMaxRangeAction: 3
   UseWrongParticle: 1
+  StopVelocity: 1
   End: {fileID: 0}
+--- !u!114 &114434682390782782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323256096402730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fb0632dcf10c4980a24cd87fc5a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114612562516017732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,9 +251,9 @@ MonoBehaviour:
   leftSnapHandle: {fileID: 0}
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
-  onGrabCollisionDelay: 0.1
+  onGrabCollisionDelay: 0
   destroyImmediatelyOnThrow: 1
-  breakForce: 100
+  breakForce: 600
 --- !u!114 &114745552795843784
 MonoBehaviour:
   m_ObjectHideFlags: 1

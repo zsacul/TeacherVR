@@ -163,43 +163,51 @@ public class MessageSystem : MonoBehaviour
 
     public void ShowButtonOnControllers(Button button, string txt, float time)
     {
-        if (!GameController.Instance.Tooltips) return;
-        switch (button)
-        {
-            case Button.Trigger:
-                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
-                RightTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
-                LeftTooltips.tmpugui.text = txt;
-                RightTooltips.tmpugui.text = txt;
-                break;
-            case Button.Grip:
-                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
-                RightTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
-                LeftTooltips.tmpugui.text = txt;
-                RightTooltips.tmpugui.text = txt;
-                break;
-            case Button.Touchpad:
-                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
-                RightTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
-                LeftTooltips.tmpugui.text = txt;
-                RightTooltips.tmpugui.text = txt;
-                break;
-            case Button.ButtonTwo:
-                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
-                RightTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
-                LeftTooltips.tmpugui.text = txt;
-                RightTooltips.tmpugui.text = txt;
-                break;
-            case Button.StartMenu:
-                LeftTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
-                RightTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
-                LeftTooltips.tmpugui.text = txt;
-                RightTooltips.tmpugui.text = txt;
-                break;
+        StartCoroutine(ShowButtonDelay(button, txt, time));
+    }
+
+    IEnumerator ShowButtonDelay(Button button, string txt, float time)
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        if (!GameController.Instance.Tooltips) {
+            switch (button)
+            {
+                case Button.Trigger:
+                    LeftTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
+                    RightTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
+                    LeftTooltips.tmpugui.text = txt;
+                    RightTooltips.tmpugui.text = txt;
+                    break;
+                case Button.Grip:
+                    LeftTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
+                    RightTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
+                    LeftTooltips.tmpugui.text = txt;
+                    RightTooltips.tmpugui.text = txt;
+                    break;
+                case Button.Touchpad:
+                    LeftTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
+                    RightTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
+                    LeftTooltips.tmpugui.text = txt;
+                    RightTooltips.tmpugui.text = txt;
+                    break;
+                case Button.ButtonTwo:
+                    LeftTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
+                    RightTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
+                    LeftTooltips.tmpugui.text = txt;
+                    RightTooltips.tmpugui.text = txt;
+                    break;
+                case Button.StartMenu:
+                    LeftTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
+                    RightTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
+                    LeftTooltips.tmpugui.text = txt;
+                    RightTooltips.tmpugui.text = txt;
+                    break;
+            }
+            InvokeRepeating("RepeatPulse", 1, 2);
+            ChangTooltipsState(true);
+            StartCoroutine(HideAllButtons(time));
         }
-        InvokeRepeating("RepeatPulse", 1, 2);
-        ChangTooltipsState(true);
-        StartCoroutine(HideAllButtons(time));
     }
 
     /*public void SetProgressBar(float progress)

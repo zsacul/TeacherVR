@@ -4,16 +4,29 @@ using UnityEngine;
 using VRTK;
 public class SnapToDrawing : MonoBehaviour {
 
+    Rigidbody rb;
     bool grabbed;
     bool nearBoard;
+    bool b;
     public float min_x;
     public float max_x = 100f;
+    Transform controller;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        rb = GetComponent<Rigidbody>();
         GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed +=
            ChangeCenterOfMassOnThrow_InteractableObjectGrabbed;
         GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed +=
-    ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed;
+            ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed;
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed -=
+           ChangeCenterOfMassOnThrow_InteractableObjectGrabbed;
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed -=
+            ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -41,6 +54,7 @@ public class SnapToDrawing : MonoBehaviour {
                     break;
             }
             blockRotation();
+            b = true;
             nearBoard = true;
         }
     //    Debug.Log(other.gameObject.tag);
@@ -50,6 +64,8 @@ public class SnapToDrawing : MonoBehaviour {
         if (other.gameObject.tag == "HitBoxBoard")
         {
             nearBoard = true;
+
+         //   Physics.IgnoreCollision(GetComponent<Collider>(), other.GetComponentInParent<Collider>());
         }
     }
     private void OnTriggerExit(Collider other)
@@ -58,6 +74,7 @@ public class SnapToDrawing : MonoBehaviour {
         {
             nearBoard = false;
             blockRotation(false);
+            b = false;
         }
     }
     void blockRotation(bool b = true)
@@ -75,15 +92,23 @@ public class SnapToDrawing : MonoBehaviour {
                transform.localPosition.y,
                transform.localPosition.z);
             //nearBoard = false;
+            if(b)
+            {
+
+                gameObject.GetComponent<Transform>().SetPositionAndRotation(new Vector3(transform.position.x,controller.position.y,controller.position.z), Quaternion.Euler(0f, 0f, 90f));
+            }
         }
 	}
     private void ChangeCenterOfMassOnThrow_InteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
     {
+        transform.parent = null;
         grabbed = true;
+        controller = e.interactingObject.transform;
     }
     private void ChangeCenterOfMassOnThrow_InteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
     {
         grabbed = false;
+        controller = null;
     }
 
 
