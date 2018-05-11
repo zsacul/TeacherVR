@@ -13,18 +13,26 @@ public class Climb : Events
 
     private TouchDetector tt;
 
+    private bool ShowButton;
+
     public override void StartEvent()
     {
         base.StartEvent();
         GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Touchpad, "Locomotion", 60);
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         objToClimbInstance = Instantiate(ObjectToClimb);
         objToTouchInstance = Instantiate(ObjectToTouch);
         tt = objToTouchInstance.GetComponent<TouchDetector>();
+        ShowButton = true;
     }
 
     public override void CallInUpdate()
     {
+        if (GoToInst == null && ShowButton)
+        {
+            ShowButton = false;
+            GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Hold to climb",
+                60);
+        }
         if (tt.Trigger)
         {
             CompleteEvent();

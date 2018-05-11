@@ -8,8 +8,11 @@ public class BulletDestroy : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position,0.1f);
-        Instantiate(WaterSplash, gameObject.transform.position, gameObject.transform.rotation);
-        Destroy(gameObject);
+        if (col.name != "BoxColliderToIgnore")
+        {
+            GameController.Instance.SoundManager.Play3DAt(SamplesList.WaterSplash, transform.position, 0.02f);
+            Instantiate(WaterSplash, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

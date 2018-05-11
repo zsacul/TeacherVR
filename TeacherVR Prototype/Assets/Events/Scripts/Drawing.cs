@@ -17,7 +17,6 @@ public class Drawing : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         GameController.Instance.DrawingManager.TemplateShape = TemplateShape;
         rysowanie = GameController.Instance.DrawingManager.Boards[Board];

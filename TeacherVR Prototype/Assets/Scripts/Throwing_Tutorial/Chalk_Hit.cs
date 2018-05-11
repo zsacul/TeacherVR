@@ -31,9 +31,9 @@ public class Chalk_Hit : MonoBehaviour
             if (tag == "Chalk")
             {
                 if (Gender == HitSound.Male)
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.MaleGrunt, transform.position, 0.01f);
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.MaleGrunt, transform.position, 0.1f);
                 if (Gender == HitSound.Female)
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.FemaleOof, transform.position, 0.01f);
+                    GameController.Instance.SoundManager.Play3DAt(SamplesList.FemaleOof, transform.position, 0.1f);
 
                 if (GameController.Instance.EventsManager.GetCurrentEvent() != null &&
                     GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
@@ -51,5 +51,10 @@ public class Chalk_Hit : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         TakeHit(col.gameObject.tag);
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if(col.tag == "Water") script.Hit();
     }
 }

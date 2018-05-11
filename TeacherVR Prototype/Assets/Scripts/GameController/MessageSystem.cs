@@ -7,8 +7,8 @@ public class MessageSystem : MonoBehaviour
 {
     public GameObject MessageWindow;
 
-    public GameObject LeftTooltips;
-    public GameObject RightTooltips;
+    public TipsForButtonsController LeftTooltips;
+    public TipsForButtonsController RightTooltips;
 
     private GameObject HeadsetFollower;
 
@@ -167,24 +167,34 @@ public class MessageSystem : MonoBehaviour
         switch (button)
         {
             case Button.Trigger:
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = txt;
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = txt;
+                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
+                RightTooltips.ButtonTip = TipsForButtonsController.Button.Trigger;
+                LeftTooltips.tmpugui.text = txt;
+                RightTooltips.tmpugui.text = txt;
                 break;
             case Button.Grip:
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = txt;
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = txt;
+                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
+                RightTooltips.ButtonTip = TipsForButtonsController.Button.Grip;
+                LeftTooltips.tmpugui.text = txt;
+                RightTooltips.tmpugui.text = txt;
                 break;
             case Button.Touchpad:
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = txt;
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = txt;
+                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
+                RightTooltips.ButtonTip = TipsForButtonsController.Button.Touchpad;
+                LeftTooltips.tmpugui.text = txt;
+                RightTooltips.tmpugui.text = txt;
                 break;
             case Button.ButtonTwo:
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = txt;
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = txt;
+                LeftTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
+                RightTooltips.ButtonTip = TipsForButtonsController.Button.Button2;
+                LeftTooltips.tmpugui.text = txt;
+                RightTooltips.tmpugui.text = txt;
                 break;
             case Button.StartMenu:
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = txt;
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = txt;
+                LeftTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
+                RightTooltips.ButtonTip = TipsForButtonsController.Button.SteamMenu;
+                LeftTooltips.tmpugui.text = txt;
+                RightTooltips.tmpugui.text = txt;
                 break;
         }
         InvokeRepeating("RepeatPulse", 1, 2);
@@ -212,44 +222,67 @@ public class MessageSystem : MonoBehaviour
 
     private void HideButton(Button button)
     {
-        if (!LeftTooltips.activeSelf || !RightTooltips.activeSelf) return;
+        if (!LeftTooltips.gameObject.activeSelf || !RightTooltips.gameObject.activeSelf) return;
         switch (button)
         {
             case Button.Trigger:
-                if(LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText != "") CancelInvoke("RepeatPulse");
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().triggerText = "";
+                if (LeftTooltips.ButtonTip == TipsForButtonsController.Button.Trigger)
+                {
+                    CancelInvoke("RepeatPulse");
+                    LeftTooltips.tmpugui.text = "";
+                    RightTooltips.tmpugui.text = "";
+                    ChangTooltipsState(false);
+                }
                 break;
             case Button.Grip:
-                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText != "") CancelInvoke("RepeatPulse");
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().gripText = "";
+                if (LeftTooltips.ButtonTip == TipsForButtonsController.Button.Grip)
+                {
+                    CancelInvoke("RepeatPulse");
+                    LeftTooltips.tmpugui.text = "";
+                    RightTooltips.tmpugui.text = "";
+                    ChangTooltipsState(false);
+                }
                 break;
             case Button.Touchpad:
-                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText != "") CancelInvoke("RepeatPulse");
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().touchpadText = "";
+                if (LeftTooltips.ButtonTip == TipsForButtonsController.Button.Touchpad)
+                {
+                    CancelInvoke("RepeatPulse");
+                    LeftTooltips.tmpugui.text = "";
+                    RightTooltips.tmpugui.text = "";
+                    ChangTooltipsState(false);
+                }
                 break;
             case Button.ButtonTwo:
-                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText != "") CancelInvoke("RepeatPulse");
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().buttonTwoText = "";
+                if (LeftTooltips.ButtonTip == TipsForButtonsController.Button.Button2)
+                {
+                    CancelInvoke("RepeatPulse");
+                    LeftTooltips.tmpugui.text = "";
+                    RightTooltips.tmpugui.text = "";
+                    ChangTooltipsState(false);
+                }
                 break;
             case Button.StartMenu:
-                if (LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText != "") CancelInvoke("RepeatPulse");
-                LeftTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
-                RightTooltips.GetComponent<VRTK_ControllerTooltips>().startMenuText = "";
+                if (LeftTooltips.ButtonTip == TipsForButtonsController.Button.SteamMenu)
+                {
+                    CancelInvoke("RepeatPulse");
+                    LeftTooltips.tmpugui.text = "";
+                    RightTooltips.tmpugui.text = "";
+                    ChangTooltipsState(false);
+                }
                 break;
         }
+    }
 
-        ChangTooltipsState(false);
-        ChangTooltipsState(true);
+    IEnumerator ActiveDelay(bool val)
+    {
+        yield return new WaitForEndOfFrame();
+        LeftTooltips.gameObject.SetActive(val);
+        RightTooltips.gameObject.SetActive(val);
     }
 
     private void ChangTooltipsState(bool val)
     {
-        LeftTooltips.SetActive(val);
-        RightTooltips.SetActive(val);
+        StartCoroutine(ActiveDelay(val));
     }
 
     void RepeatPulse()
@@ -262,8 +295,8 @@ public class MessageSystem : MonoBehaviour
 
     public void HideAllButtons()
     {
-        HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
-        HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
+        HideAllButtonsOnController(LeftTooltips);
+        HideAllButtonsOnController(RightTooltips);
         ChangTooltipsState(false);
         CancelInvoke("RepeatPulse");
     }
@@ -271,20 +304,15 @@ public class MessageSystem : MonoBehaviour
     public IEnumerator HideAllButtons(float time)
     {
         yield return new WaitForSeconds(time);
-        HideAllButtonsOnController(LeftTooltips.GetComponent<VRTK_ControllerTooltips>());
-        HideAllButtonsOnController(RightTooltips.GetComponent<VRTK_ControllerTooltips>());
+        HideAllButtonsOnController(LeftTooltips);
+        HideAllButtonsOnController(RightTooltips);
         ChangTooltipsState(false);
         CancelInvoke("RepeatPulse");
     }
 
-    private void HideAllButtonsOnController(VRTK_ControllerTooltips tooltips)
+    private void HideAllButtonsOnController(TipsForButtonsController tooltips)
     {
-        tooltips.triggerText = "";
-        tooltips.gripText = "";
-        tooltips.touchpadText = "";
-        tooltips.buttonOneText = "";
-        tooltips.buttonTwoText = "";
-        tooltips.startMenuText = "";
+        tooltips.tmpugui.text = "";
         CancelInvoke("RepeatPulse");
     }
 
