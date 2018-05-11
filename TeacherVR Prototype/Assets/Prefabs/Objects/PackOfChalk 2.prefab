@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114531659901666894}
   - component: {fileID: 65338259732983364}
   - component: {fileID: 114454200865979212}
+  - component: {fileID: 114593056018551064}
   m_Layer: 2
   m_Name: Kreda Rys (5)
   m_TagString: Chalk
@@ -116,6 +117,7 @@ GameObject:
   - component: {fileID: 114596688539898514}
   - component: {fileID: 65595990745404298}
   - component: {fileID: 114309624962517362}
+  - component: {fileID: 114316356565652812}
   m_Layer: 2
   m_Name: Kreda Rys (10)
   m_TagString: Chalk
@@ -140,6 +142,7 @@ GameObject:
   - component: {fileID: 114537502982836276}
   - component: {fileID: 65166690519425756}
   - component: {fileID: 114984630883064722}
+  - component: {fileID: 114897293125755438}
   m_Layer: 2
   m_Name: Kreda Rys (11)
   m_TagString: Chalk
@@ -256,6 +259,7 @@ GameObject:
   - component: {fileID: 114685728106738594}
   - component: {fileID: 65945320542677728}
   - component: {fileID: 114476553153554288}
+  - component: {fileID: 114766917895441414}
   m_Layer: 2
   m_Name: Kreda Rys (2)
   m_TagString: Chalk
@@ -295,6 +299,7 @@ GameObject:
   - component: {fileID: 114098587735028652}
   - component: {fileID: 65033164063531228}
   - component: {fileID: 114972235821450558}
+  - component: {fileID: 114121910975442380}
   m_Layer: 2
   m_Name: Kreda Rys (9)
   m_TagString: Chalk
@@ -945,6 +950,7 @@ GameObject:
   - component: {fileID: 114170740892420432}
   - component: {fileID: 65832300532213172}
   - component: {fileID: 114893252401981410}
+  - component: {fileID: 114895785661521962}
   m_Layer: 2
   m_Name: Kreda Rys (3)
   m_TagString: Chalk
@@ -1016,6 +1022,7 @@ GameObject:
   - component: {fileID: 114961815325312476}
   - component: {fileID: 65691715644385692}
   - component: {fileID: 114426994537124440}
+  - component: {fileID: 114176873853624882}
   m_Layer: 2
   m_Name: Kreda Rys
   m_TagString: Chalk
@@ -1074,6 +1081,7 @@ GameObject:
   - component: {fileID: 114878732010892434}
   - component: {fileID: 65645498720120160}
   - component: {fileID: 114258339952830412}
+  - component: {fileID: 114785673105930416}
   m_Layer: 2
   m_Name: Kreda Rys (1)
   m_TagString: Chalk
@@ -1903,6 +1911,7 @@ GameObject:
   - component: {fileID: 114661834298641488}
   - component: {fileID: 65685160044801396}
   - component: {fileID: 114137176524607048}
+  - component: {fileID: 114430343449082388}
   m_Layer: 2
   m_Name: Kreda Rys (7)
   m_TagString: Chalk
@@ -1944,6 +1953,7 @@ GameObject:
   - component: {fileID: 114230682913912118}
   - component: {fileID: 65245273999390870}
   - component: {fileID: 114055559650224660}
+  - component: {fileID: 114110118643319330}
   m_Layer: 2
   m_Name: Kreda Rys (4)
   m_TagString: Chalk
@@ -2001,6 +2011,7 @@ GameObject:
   - component: {fileID: 114389181952246658}
   - component: {fileID: 65543052300144914}
   - component: {fileID: 114945898028983820}
+  - component: {fileID: 114598101999104082}
   m_Layer: 2
   m_Name: Kreda Rys (6)
   m_TagString: Chalk
@@ -2025,6 +2036,7 @@ GameObject:
   - component: {fileID: 114971218573210584}
   - component: {fileID: 65935054716816472}
   - component: {fileID: 114883384048202314}
+  - component: {fileID: 114537822693498556}
   m_Layer: 2
   m_Name: Kreda Rys (8)
   m_TagString: Chalk
@@ -6378,6 +6390,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMass: {x: 0, y: -0.1, z: 0}
+--- !u!114 &114110118643319330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933931585373706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114111190340454524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6467,6 +6491,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114121910975442380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1087751129847026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114126375014218636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6674,6 +6710,18 @@ MonoBehaviour:
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
+--- !u!114 &114176873853624882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440095041320728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114177098378088596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7173,6 +7221,18 @@ MonoBehaviour:
   displayDropZoneInEditor: 1
   defaultSnappedInteractableObject: {fileID: 114427273151232972}
   defaultSnappedObject: {fileID: 1014732231246310}
+--- !u!114 &114316356565652812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037449973743612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114319275251997054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7692,6 +7752,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a3c14c722eae3b4d8f067582f73f2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114430343449082388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887338429641924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114434428248609696
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8007,6 +8079,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMass: {x: 0, y: -0.1, z: 0}
+--- !u!114 &114537822693498556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951320332246480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114561853083954094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8115,6 +8199,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114593056018551064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014732231246310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114595782795625136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8138,6 +8234,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CenterOfMass: {x: 0, y: -0.1, z: 0}
+--- !u!114 &114598101999104082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1943201785481442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114600235983746148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8737,6 +8845,18 @@ MonoBehaviour:
   interactUse: {fileID: 0}
   customOrigin: {fileID: 0}
   controller: {fileID: 0}
+--- !u!114 &114766917895441414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1080135849825604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114776452188702714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8759,6 +8879,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114785673105930416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464014089221566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114786686862052950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9112,6 +9244,30 @@ MonoBehaviour:
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
   onGrabCollisionDelay: 1
+--- !u!114 &114895785661521962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403676790064276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
+--- !u!114 &114897293125755438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1044398296942322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edc2dcaf1a9ce4429f984b416cdafc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ColliderToIgnore: {fileID: 0}
 --- !u!114 &114916755933550638
 MonoBehaviour:
   m_ObjectHideFlags: 1

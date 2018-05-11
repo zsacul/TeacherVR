@@ -22,6 +22,8 @@ public class PlaySoundOnInteract : MonoBehaviour
     private float LastTime;
     private float Delay;
 
+    private GameObject SoundInst;
+
     public enum ActionList
     {
         Snaped,
@@ -33,7 +35,8 @@ public class PlaySoundOnInteract : MonoBehaviour
         Enable,
         Disable,
         Throw,
-        RandomLoop
+        RandomLoop,
+        GrabLoop
     }
 
     /*void Awake()
@@ -73,6 +76,13 @@ public class PlaySoundOnInteract : MonoBehaviour
             case ActionList.Ungrabbed:
                 if (io != null) io.InteractableObjectUngrabbed -= PlayIO;
                 break;
+            case ActionList.GrabLoop:
+                if (io != null)
+                {
+                    io.InteractableObjectGrabbed -= GrabStateOn;
+                    io.InteractableObjectUngrabbed -= GrabStateOff;
+                }
+                break;
         }
     }
 
@@ -108,6 +118,13 @@ public class PlaySoundOnInteract : MonoBehaviour
             case ActionList.Throw:
                 rb = GetComponent<Rigidbody>();
                 break;
+            case ActionList.GrabLoop:
+                if (io != null)
+                {
+                    io.InteractableObjectGrabbed += GrabStateOn;
+                    io.InteractableObjectUngrabbed += GrabStateOff;
+                }
+                break;
         }
     }
 
@@ -134,7 +151,7 @@ public class PlaySoundOnInteract : MonoBehaviour
     private void Play()
     {
         if (OnlyWhenGameInProgress && GameController.Instance.IsGameInProgress() || !OnlyWhenGameInProgress)
-            GameController.Instance.SoundManager.Play3DAt(Sound, transform.position, Volume);
+            SoundInst = GameController.Instance.SoundManager.Play3DAt(Sound, transform.position, Volume);
     }
 
     private void PlaySDZ(object sender, SnapDropZoneEventArgs e)
@@ -145,5 +162,16 @@ public class PlaySoundOnInteract : MonoBehaviour
     private void PlayIO(object sender, InteractableObjectEventArgs e)
     {
         Play();
+    }
+
+    private void GrabStateOn(object sender, InteractableObjectEventArgs e)
+    {
+        Play();
+        SoundInst.GetComponent<AudioSource>().loop = true;
+    }
+
+    private void GrabStateOff(object sender, InteractableObjectEventArgs e)
+    {
+        if (SoundInst != null) SoundInst.GetComponent<AudioSource>().Stop();
     }
 }

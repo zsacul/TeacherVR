@@ -33,7 +33,15 @@ public class ScoreBoard : MonoBehaviour
     GameObject ParticleSystem;
     GameObject Where;
 
-    public delegate void GameOverDelegate(bool NewHighScore);
+    public enum WhatOver
+    {
+        Time,
+        Events,
+        TopPointsTime,
+        TopPointsEvents
+    }
+
+    public delegate void GameOverDelegate(WhatOver over);
 
     public event GameOverDelegate GameOver;
 
@@ -78,7 +86,8 @@ public class ScoreBoard : MonoBehaviour
                         OutOfTime = true;
                         if (GameOver != null)
                         {
-                            GameOver(SetNewTopScore());
+                            if (SetNewTopScore()) GameOver(WhatOver.TopPointsTime);
+                            else GameOver(WhatOver.Time);
                         }
                     }
                 }
@@ -125,7 +134,7 @@ public class ScoreBoard : MonoBehaviour
                     {
                         LastAnimTime = Time.time;
                         GameController.Instance.SoundManager.Play3DAt(SamplesList.CoinArcade, transform.position,
-                            1f);
+                            0.1f);
                     }
                     PointsAdd(1);
                     How_Many--;
@@ -176,11 +185,20 @@ public class ScoreBoard : MonoBehaviour
     // Dodawanie punktów za czas + "animacja"
     public void PointsAddForTime()
     {
-        How_Many += (minutes * 60 + seconds) * 10;
-        minutes = 0;
-        seconds = 0;
-        timer = 0;
-        Anim = true;
+        if (!OutOfTime)
+        {
+            How_Many += (minutes * 60 + seconds) * 10;
+            minutes = 0;
+            seconds = 0;
+            timer = 0;
+            Anim = true;
+            OutOfTime = true;
+            if (GameOver != null)
+            {
+                if (SetNewTopScore()) GameOver(WhatOver.TopPointsEvents);
+                else GameOver(WhatOver.Events);
+            }
+        }
     }
 
     // Statyczna zmiana punktów

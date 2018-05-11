@@ -14,6 +14,7 @@
                 VRTK_ControllerReference.GetControllerReference(VRTK_DeviceFinder.GetControllerRightHand());
             OnDestinationMarkerSet(SetDestinationMarkerEvent(distance, destination, new RaycastHit(),
                 destination.position, controllerReference, false, rotation));
+            GameController.Instance.SoundManager.Play2D(SamplesList.Success, 0.03f);
         }
 
         public void ForceTeleportToStart()

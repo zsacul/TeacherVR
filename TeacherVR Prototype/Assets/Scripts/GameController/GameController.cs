@@ -73,17 +73,32 @@ public class GameController : MonoBehaviour
         ScoreBoard.GameOver -= ScoreBoard_GameOver;
     }
 
-    private void ScoreBoard_GameOver(bool NewHighScore)
+    private void ScoreBoard_GameOver(ScoreBoard.WhatOver over)
     {
         GameInProgress = false;
         MessageSystem.HideAllButtons();
         MessageSystem.HideAllWindows();
         EventsManager.EndAllEvents();
         ForceTeleportScript.ForceTeleportToGameSummary();
-        if (NewHighScore)
+        if (over == ScoreBoard.WhatOver.TopPointsTime)
         {
-            MessageSystem.ShowCustomText("Congratulations! \n\nYou are in Top 5!", MessageSystem.Window.W800H400);
-            StartCoroutine(Hide(5, MessageSystem.Window.W800H400));
+            MessageSystem.ShowCustomText("Congratulations!\n\nYou are in Top 5!", MessageSystem.Window.W800H400);
+            StartCoroutine(Hide(7, MessageSystem.Window.W800H400));
+        }
+        if (over == ScoreBoard.WhatOver.TopPointsEvents)
+        {
+            MessageSystem.ShowCustomText("Congratulations!\n\nYou have done all the events!\n\nYou are in Top 5!", MessageSystem.Window.W800H400);
+            StartCoroutine(Hide(7, MessageSystem.Window.W800H400));
+        }
+        if (over == ScoreBoard.WhatOver.Events)
+        {
+            MessageSystem.ShowCustomText("Congratulations!\n\nYou have done all the events!", MessageSystem.Window.W800H400);
+            StartCoroutine(Hide(7, MessageSystem.Window.W800H400));
+        }
+        if (over == ScoreBoard.WhatOver.Time)
+        {
+            MessageSystem.ShowCustomText("End of Time!\n\nTry again to beat your record!", MessageSystem.Window.W800H400);
+            StartCoroutine(Hide(7, MessageSystem.Window.W800H400));
         }
         DataHolder.SaveData();
     }
@@ -102,7 +117,6 @@ public class GameController : MonoBehaviour
 
     public void ChangeLocomotion(bool UseArmSwinger)
     {
-        
         StartCoroutine(RestartLocomotion(UseArmSwinger));
     }
 

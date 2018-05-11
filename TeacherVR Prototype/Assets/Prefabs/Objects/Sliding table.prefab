@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 114648896467864210}
   - component: {fileID: 114791667204790052}
   - component: {fileID: 114167639731164234}
+  - component: {fileID: 114274300947310702}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -186,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952965731142614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.588, y: 1.66, z: 12.9}
+  m_LocalPosition: {x: -2.8031476, y: -1.0381235, z: 0.9184017}
   m_LocalScale: {x: 0.7, y: 0.03, z: 0.6}
   m_Children:
   - {fileID: 4771144214037820}
@@ -577,6 +578,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Start: {x: 0.4, y: 2.8, z: 0}
   End: {x: 3.4, y: 9, z: 0}
+--- !u!114 &114274300947310702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825260628469456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5f19e04d5f58b4b88748947059341c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: 35
+  Action: 10
+  Volume: 0.01
+  RandomLoopDelay: {x: 0, y: 0}
+  OnlyWhenGameInProgress: 0
 --- !u!114 &114373908337580164
 MonoBehaviour:
   m_ObjectHideFlags: 1

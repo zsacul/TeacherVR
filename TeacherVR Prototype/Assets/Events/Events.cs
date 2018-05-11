@@ -44,7 +44,7 @@ public class Events : ScriptableObject
     //Podświetlone miejsca do których trzeba podejść
     public GameObject GoTo;
 
-    private GameObject GoToInst;
+    protected GameObject GoToInst;
 
     public Transform GoToTransform;
     

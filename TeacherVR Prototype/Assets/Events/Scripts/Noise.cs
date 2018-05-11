@@ -31,7 +31,7 @@ public class Noise : Events
             loudStudents[i] = Random.Range(0, GameController.Instance.Students.Students.Length - 1);
             GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Talk(true);
         }
-        MurmursManagement.MurmursSource.volume = 0.5f;
+        MurmursManagement.MurmursSource.volume = 0.1f;
     }
 
     public override void CompleteEvent()

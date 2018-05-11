@@ -9,6 +9,7 @@ public class ResetOnRange : MonoBehaviour
     public float MaxRange = 10;
     public Action OverMaxRangeAction = Action.ResetToEndPoint;
     public bool UseWrongParticle = false;
+    public bool StopVelocity = true;
     public Transform End;
 
     private VRTK_InteractableObject io;
@@ -59,6 +60,11 @@ public class ResetOnRange : MonoBehaviour
                 End.transform.position = startPos2;
                 transform.rotation = startRot1;
                 End.transform.rotation = startRot2;
+                if (StopVelocity)
+                {
+                    GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
             }
         }
         else if (Vector3.Distance(End.position, transform.position) > MaxRange)
@@ -75,6 +81,11 @@ public class ResetOnRange : MonoBehaviour
                 var b = Vector3.Lerp(transform.position, End.position, 2f / 3);
                 transform.position = a;
                 End.position = b;
+                if (StopVelocity)
+                {
+                    GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
             }
             else //Action.ResetToEndPointOnUngrab and Action.ResetToEndPoint
             {
@@ -82,6 +93,10 @@ public class ResetOnRange : MonoBehaviour
                 Unsnap(transform.parent);
                 transform.position = End.position;
                 transform.rotation = End.rotation;
+                if (StopVelocity)
+                {
+                    GetComponent<Rigidbody>().velocity = Vector3.zero;
+                }
             }
         }
     }

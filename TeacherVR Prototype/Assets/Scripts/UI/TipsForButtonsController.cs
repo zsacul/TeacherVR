@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TipsForButtonsController : MonoBehaviour
@@ -14,6 +15,7 @@ public class TipsForButtonsController : MonoBehaviour
     }
 
     public Button ButtonTip;
+    public TextMeshProUGUI tmpugui;
 
     private GameObject child;
 

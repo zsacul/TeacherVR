@@ -26,7 +26,6 @@ public class Ring : Events
     {
         base.StartEvent();
         Message(5, "Slide the table out of the locker", MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Trigger, "Grab", 60);
         Capsule = GameObject.Find("Sliding table/Capsule").GetComponent<VRTK_InteractableObject>();
         LastTime = 0;
         delay = 1f;
