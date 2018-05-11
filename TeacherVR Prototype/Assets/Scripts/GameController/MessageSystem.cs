@@ -170,7 +170,7 @@ public class MessageSystem : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
-        if (!GameController.Instance.Tooltips) {
+        if (GameController.Instance.Tooltips) {
             switch (button)
             {
                 case Button.Trigger:
