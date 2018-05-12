@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
             return;
         }
         Instance = this;
+        Application.targetFrameRate = 90;
     }
 
     #endregion
