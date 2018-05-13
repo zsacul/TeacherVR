@@ -1952,15 +1952,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4821464745300494, guid: b712a9f5d60bf5349af6d70bfd9958df, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.79314756
+      value: -1.304
       objectReference: {fileID: 0}
     - target: {fileID: 4821464745300494, guid: b712a9f5d60bf5349af6d70bfd9958df, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.97612345
+      value: -0.967
       objectReference: {fileID: 0}
     - target: {fileID: 4821464745300494, guid: b712a9f5d60bf5349af6d70bfd9958df, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.082598
+      value: -7.804
       objectReference: {fileID: 0}
     - target: {fileID: 4821464745300494, guid: b712a9f5d60bf5349af6d70bfd9958df, type: 2}
       propertyPath: m_LocalRotation.x
@@ -23949,6 +23949,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
   m_IsPrefabParent: 0
@@ -25465,6 +25469,22 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8cfd62fb8f889c043aa733d1d369b09a, type: 3}
   m_IsPrefabParent: 0
@@ -25872,21 +25892,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4588466633706770, guid: 30ee8f0691068874eb1774fcada8f882, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4588466633706770, guid: 30ee8f0691068874eb1774fcada8f882, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 1199023297527436, guid: 30ee8f0691068874eb1774fcada8f882, type: 2}
       propertyPath: m_Name
       value: Projector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1199023297527436, guid: 30ee8f0691068874eb1774fcada8f882, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30ee8f0691068874eb1774fcada8f882, type: 2}
