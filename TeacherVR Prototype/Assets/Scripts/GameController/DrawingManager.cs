@@ -13,6 +13,7 @@ public class DrawingManager : MonoBehaviour
     public Color ShapeColor;
     public Color CompleteShapeColor;
     public Rysowanie[] Boards;
+    public GameObject[] BrushContainers;
     public float templateThickness;
     public float pointThickness;
     public float templateThicknessAccept;

@@ -22,10 +22,10 @@ public class EnableOnControllerEvent : MonoBehaviour
         RightHand = VRTK_DeviceFinder.GetControllerRightHand();
         LeftHand = VRTK_DeviceFinder.GetControllerLeftHand();
 
-        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += RightTouchpadPressed;
-        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += LeftTouchpadPressed;
-        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchEnd += RightTouchpadReleased;
-        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchEnd += LeftTouchpadReleased;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchpadPressed;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchpadPressed;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchpadReleased;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchpadReleased;
 
         gameObject.SetActive(false);
     }
@@ -46,22 +46,12 @@ public class EnableOnControllerEvent : MonoBehaviour
         LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchEnd -= LeftTouchpadReleased;
     }*/
 
-    private void RightTouchpadPressed(object sender, ControllerInteractionEventArgs e)
+    private void TouchpadPressed(object sender, ControllerInteractionEventArgs e)
     {
         gameObject.SetActive(true);
     }
 
-    private void LeftTouchpadPressed(object sender, ControllerInteractionEventArgs e)
-    {
-        gameObject.SetActive(true);
-    }
-
-    private void RightTouchpadReleased(object sender, ControllerInteractionEventArgs e)
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void LeftTouchpadReleased(object sender, ControllerInteractionEventArgs e)
+    private void TouchpadReleased(object sender, ControllerInteractionEventArgs e)
     {
         gameObject.SetActive(false);
     }

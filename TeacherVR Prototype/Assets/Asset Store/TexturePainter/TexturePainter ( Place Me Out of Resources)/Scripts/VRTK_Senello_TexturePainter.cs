@@ -20,6 +20,7 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     public Sprite ChalkSprite; // Cursor for the differen functions
     public RenderTexture canvasTexture; // Render Texture that looks at our Base Texture and the painted brushes
     public Material baseMaterial; // The material of our base texture (Were we will save the painted texture)
+    private Texture baseTextureBackup;
     public Material ChalkLieneMaterial;
 
     public float brushSize = 0.1f; //The size of our brush
@@ -48,6 +49,8 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     {
         brushCounter = 0;
         baseMaterial.DisableKeyword("_EMISSION");
+        StartCoroutine(SaveTexture());
+        StartCoroutine(SaveBasic());
     }
 
     void Update()
@@ -104,10 +107,16 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         if (HitTestUVPosition(ref uvWorldPosition))
         {
             DrawPoint(uvWorldPosition, brushSize, brushColor);
+            if (Vector3.Distance(lastPoint, brushObj.transform.position) < brushSize / 4)
+            {
+                Destroy(brushObj);
+                return;
+            }
             if (lastPoint != Vector3.zero)
             {
-                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 10)
+                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 2)
                 {
+                    Debug.Log("Line");
                     DrawLine(lastPoint, brushObj.transform.position, brushSize, brushColor);
                 }
             }
@@ -154,9 +163,13 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
 
     public void Clear()
     {
-        foreach (Transform child in brushContainer.transform)
+        if (baseTextureBackup != null) baseMaterial.SetTexture("_EmissionMap", baseTextureBackup);
+        foreach (GameObject pack in GameController.Instance.DrawingManager.BrushContainers)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in pack.transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 
@@ -168,7 +181,6 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         brushCounter = 0;
-        System.DateTime date = System.DateTime.Now;
         RenderTexture.active = canvasTexture;
         Texture2D tex = new Texture2D(canvasTexture.width, canvasTexture.height, TextureFormat.ARGB32, false);
         tex.ReadPixels(new Rect(0, 0, canvasTexture.width, canvasTexture.height), 0, 0);
@@ -185,5 +197,19 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         saving = false;
+    }
+
+    IEnumerator SaveBasic()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        baseTextureBackup = baseMaterial.GetTexture("_EmissionMap");
     }
 }
