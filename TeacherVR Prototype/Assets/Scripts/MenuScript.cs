@@ -71,8 +71,8 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Messages Off";
                     break;
                 case Mode.ArmSwinger:
-                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport On";
-                    else TMPUGUI.text = "ArmSwinger On";
+                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport";
+                    else TMPUGUI.text = "ArmSwinger";
                     break;
             }
         }
@@ -81,7 +81,7 @@ namespace VRTK.Examples
         {
             yield return new WaitForEndOfFrame();
             if (tmp3 != GameController.Instance.TeleportR.enabled)
-                GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position);
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,0.1f);
         }
 
         private void HandleChange(object sender, Control3DEventArgs e)
@@ -110,7 +110,7 @@ namespace VRTK.Examples
                     if (Time.time > lastTime + delay)
                     {
                         lastTime = Time.time;
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.Correct, transform.position, 0.01f);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position, 0.1f);
                     }
                     GameController.Instance.SoundManager.SetGlobalVolume((100 - e.normalizedValue) / 10);
                     break;
@@ -123,7 +123,7 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Tooltips Off";
 
                     if (tmp1 != GameController.Instance.Tooltips)
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position, 0.1f);
                     break;
                 case Mode.Messages:
                     var tmp2 = GameController.Instance.Messages;
@@ -134,15 +134,15 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Messages Off";
 
                     if (tmp2 != GameController.Instance.Messages)
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,0.1f);
                     break;
                 case Mode.ArmSwinger:
                     var tmp3 = GameController.Instance.TeleportR.enabled;
 
                     if (e.normalizedValue < 45) GameController.Instance.ChangeLocomotion(true);
                     else GameController.Instance.ChangeLocomotion(false);
-                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport On";
-                    else TMPUGUI.text = "ArmSwinger On";
+                    if (GameController.Instance.TeleportR.enabled) TMPUGUI.text = "Teleport";
+                    else TMPUGUI.text = "ArmSwinger";
 
                     StartCoroutine(LeverSoundArmSwinger(tmp3));
                     break;

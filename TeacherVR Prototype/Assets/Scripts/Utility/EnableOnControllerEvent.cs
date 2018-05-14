@@ -26,7 +26,16 @@ public class EnableOnControllerEvent : MonoBehaviour
         LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadPressed += TouchpadPressed;
         RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchpadReleased;
         LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadReleased += TouchpadReleased;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchEnd += TouchpadReleased;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchEnd += TouchpadReleased;
+        RightHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchStart += TouchpadReleased;
+        LeftHand.GetComponent<VRTK_ControllerEvents>().TouchpadTouchStart += TouchpadReleased;
 
+        gameObject.SetActive(false);
+    }
+
+    private void ForceTeleportScript_DestinationMarkerSet(object sender, DestinationMarkerEventArgs e)
+    {
         gameObject.SetActive(false);
     }
 

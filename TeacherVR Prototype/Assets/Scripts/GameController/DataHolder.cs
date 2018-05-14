@@ -41,5 +41,6 @@ public class DataHolder : MonoBehaviour
     {
         Debug.Log("ResetData");
         PlayerPrefs.DeleteAll();
+        LoadData();
     }
 }
