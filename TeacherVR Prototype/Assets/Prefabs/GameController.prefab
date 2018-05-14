@@ -517,6 +517,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  BrushContainers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   templateThickness: 0.2
   pointThickness: 0.3
   templateThicknessAccept: 0.07
@@ -1037,6 +1044,7 @@ MonoBehaviour:
   SfxLeverClick: {fileID: 8300000, guid: 6f691a55e660fa047a3c69eb43f8d391, type: 3}
   SfxLeverSwitchOn: {fileID: 8300000, guid: 32a27dad3369d6d489530cf15fe849a5, type: 3}
   SfxLeverSwitchOff: {fileID: 8300000, guid: f0fc47af19e6f794fac34c0a6d88b895, type: 3}
+  SfxSpongeDrag: {fileID: 8300000, guid: 5d0e481da993ddd46913475d2b3faec2, type: 3}
 --- !u!114 &114402954041823974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1354,6 +1362,7 @@ MonoBehaviour:
   Students: {fileID: 114846990308639244}
   GameTime: 5
   ForceTeleportScript: {fileID: 114190320415876976}
+  ArmSwingerAnim: {fileID: 0}
 --- !u!114 &114925207207940992
 MonoBehaviour:
   m_ObjectHideFlags: 1

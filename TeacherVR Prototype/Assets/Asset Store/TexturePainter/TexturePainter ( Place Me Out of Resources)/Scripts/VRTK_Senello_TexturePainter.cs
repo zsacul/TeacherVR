@@ -5,6 +5,7 @@
 /// </summary>
 
 
+using System.Collections;
 using UnityEngine;
 using VRTK;
 
@@ -19,11 +20,14 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     public Sprite ChalkSprite; // Cursor for the differen functions
     public RenderTexture canvasTexture; // Render Texture that looks at our Base Texture and the painted brushes
     public Material baseMaterial; // The material of our base texture (Were we will save the painted texture)
+    private Texture baseTextureBackup;
+    public Material ChalkLieneMaterial;
 
     public float brushSize = 0.1f; //The size of our brush
-    
+
     Color brushColor; //The selected color
-    int brushCounter = 0, MAX_BRUSH_COUNT = 1000; //To avoid having millions of brushes
+    private int brushCounter = 0;
+    const int MAX_BRUSH_COUNT = 500; //To avoid having millions of brushes
     bool saving = false; //Flag to check if we are saving the texture
     private Vector3 lastPoint;
     private bool wasZero = false;
@@ -41,6 +45,14 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         return tmp;
     }
 
+    void Start()
+    {
+        brushCounter = 0;
+        baseMaterial.DisableKeyword("_EMISSION");
+        StartCoroutine(SaveTexture());
+        StartCoroutine(SaveBasic());
+    }
+
     void Update()
     {
         if (GameController.Instance.DrawingManager.RysObject != null)
@@ -51,19 +63,18 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         {
             DoAction();
         }
-        //UpdateBrushCursor();
     }
 
     public void DrawLine(Vector3 start, Vector3 end, float thickness, Color col)
     {
         GameObject line = new GameObject();
         LineRenderer lineRenderer = line.AddComponent<LineRenderer>();
-        lineRenderer.material = baseMaterial;
+        lineRenderer.material = ChalkLieneMaterial;
         lineRenderer.material.color = col;
         lineRenderer.material.SetColor("_EmissionColor", col);
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
-        lineRenderer.widthMultiplier = thickness/2;
+        lineRenderer.widthMultiplier = thickness / 2;
 
         line.transform.parent = brushContainer.transform;
         line.transform.position = start;
@@ -87,18 +98,34 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
 
     void DoAction()
     {
+        if (saving)
+        {
+            lastPoint = Vector3.zero;
+            return;
+        }
         Vector3 uvWorldPosition = Vector3.zero;
         if (HitTestUVPosition(ref uvWorldPosition))
         {
             DrawPoint(uvWorldPosition, brushSize, brushColor);
+            if (Vector3.Distance(lastPoint, brushObj.transform.position) < brushSize / 4)
+            {
+                Destroy(brushObj);
+                return;
+            }
             if (lastPoint != Vector3.zero)
             {
-                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 10)
+                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 2)
                 {
                     DrawLine(lastPoint, brushObj.transform.position, brushSize, brushColor);
                 }
             }
             lastPoint = brushObj.transform.position;
+            brushCounter++; //Add to the max brushes
+            if (brushCounter >= MAX_BRUSH_COUNT)
+            {
+                //If we reach the max brushes available, flatten the texture and clear the brushes
+                StartCoroutine(SaveTexture());
+            }
         }
     }
 
@@ -135,9 +162,53 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
 
     public void Clear()
     {
+        if (baseTextureBackup != null) baseMaterial.SetTexture("_EmissionMap", baseTextureBackup);
+        foreach (GameObject pack in GameController.Instance.DrawingManager.BrushContainers)
+        {
+            foreach (Transform child in pack.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
+    IEnumerator SaveTexture()
+    {
+        saving = true;
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        brushCounter = 0;
+        RenderTexture.active = canvasTexture;
+        Texture2D tex = new Texture2D(canvasTexture.width, canvasTexture.height, TextureFormat.ARGB32, false);
+        tex.ReadPixels(new Rect(0, 0, canvasTexture.width, canvasTexture.height), 0, 0);
+        tex.Apply();
+        RenderTexture.active = null;
+        baseMaterial.SetTexture("_EmissionMap", tex); //Put the painted texture as the base
+        baseMaterial.EnableKeyword("_EMISSION");
         foreach (Transform child in brushContainer.transform)
         {
             Destroy(child.gameObject);
         }
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        saving = false;
+    }
+
+    IEnumerator SaveBasic()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        baseTextureBackup = baseMaterial.GetTexture("_EmissionMap");
     }
 }

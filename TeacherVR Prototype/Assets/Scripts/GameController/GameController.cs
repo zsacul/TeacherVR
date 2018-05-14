@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
             return;
         }
         Instance = this;
+        Application.targetFrameRate = 90;
     }
 
     #endregion
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
     public StudentsRefs Students;
     [Tooltip("One round time")] public int GameTime = 5;
     public ForceTeleportScript ForceTeleportScript;
+    public GameObject ArmSwingerAnim;
 
     private bool GameInProgress = false;
 
@@ -117,6 +119,7 @@ public class GameController : MonoBehaviour
 
     public void ChangeLocomotion(bool UseArmSwinger)
     {
+        ArmSwingerAnim.SetActive(UseArmSwinger);
         StartCoroutine(RestartLocomotion(UseArmSwinger));
     }
 

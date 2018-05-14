@@ -177,11 +177,17 @@ public class Rysowanie : MonoBehaviour
 
         if (mistake || currentTarget == 0 || !gameInProgress)
             GameController.Instance.DrawingManager.CurrentChalkColor = chalkColor;
-        else GameController.Instance.DrawingManager.CurrentChalkColor = GameController.Instance.DrawingManager.OnLineChalkColor;
+        else
+            GameController.Instance.DrawingManager.CurrentChalkColor =
+                GameController.Instance.DrawingManager.OnLineChalkColor;
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Sponge" && !enabled) Paint.Clear();
+        if (col.tag == "Sponge" && !enabled)
+        {
+            GameController.Instance.SoundManager.Play2D(SamplesList.SpongeDrag,0.5f);
+            Paint.Clear();
+        }
     }
 }
