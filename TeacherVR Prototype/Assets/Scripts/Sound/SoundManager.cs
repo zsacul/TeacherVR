@@ -31,7 +31,8 @@ public enum SamplesList { HookBang, ComputerBeep, WaterSplash, BottleSpray, Bott
     MumbleMale, // loop of male student mumbling (TODO sync to animation)
     LeverClick, // clicking sfx for the lever mechanism (to provide audio feedback)
     LeverSwitchOn, // when changing states (to "on", whatever that is)
-    LeverSwitchOff // ... (to "off", whatever this is)
+    LeverSwitchOff, // ... (to "off", whatever this is)
+    SpongeDrag
 };
 
 
@@ -143,6 +144,7 @@ public class SoundManager : MonoBehaviour {
     public AudioClip SfxLeverClick;
     public AudioClip SfxLeverSwitchOn;
     public AudioClip SfxLeverSwitchOff;
+    public AudioClip SfxSpongeDrag;
 
 
     // ---------------------------------------------------------------------
@@ -284,6 +286,9 @@ public class SoundManager : MonoBehaviour {
 
             case SamplesList.LeverSwitchOff:
                 return SfxLeverSwitchOff;
+
+            case SamplesList.SpongeDrag:
+                return SfxSpongeDrag;
         }
 
         return null;

@@ -186,7 +186,7 @@ public class Rysowanie : MonoBehaviour
     {
         if (col.tag == "Sponge" && !enabled)
         {
-            GameController.Instance.SoundManager.Play2D(SamplesList.ShortPoof, 0.1f);
+            GameController.Instance.SoundManager.Play2D(SamplesList.SpongeDrag,0.5f);
             Paint.Clear();
         }
     }

@@ -116,7 +116,6 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
             {
                 if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 2)
                 {
-                    Debug.Log("Line");
                     DrawLine(lastPoint, brushObj.transform.position, brushSize, brushColor);
                 }
             }
