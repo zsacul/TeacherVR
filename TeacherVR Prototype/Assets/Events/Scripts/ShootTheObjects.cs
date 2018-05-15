@@ -29,7 +29,7 @@ public class ShootTheObjects : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take spray", 60);
+        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the spray bottle", 60);
         Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         Instances.Clear();
         TargetLocations.Clear();

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Name: Shoot Computer Mouses
   m_EditorClassIdentifier: 
   name: Computer Mouse
-  description: Shoot computer mouses
+  description: Shoot the computer mice
   status: 1
-  Lvl: 4
+  Lvl: 3
   MediumLvl: 4
   DeviationLvlRange: 1
-  Repeatable: 1
+  Shuffle: 1
+  Multiple: 1
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
   GoToTransform: {fileID: 4731322150279260, guid: 0586f9b968eede249a54983347d515fd,
     type: 2}

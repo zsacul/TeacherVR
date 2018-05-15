@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Name: Sajmon
   m_EditorClassIdentifier: 
   name: Sajmon
-  description: Click any button then watch and then repeat the sequence to unlock
-    computer
+  description: Click any button then watch and repeat the sequence to unlock the computer
   status: 3
-  Lvl: 3
+  Lvl: 2
   MediumLvl: 3
   DeviationLvlRange: 2
-  Repeatable: 1
+  Shuffle: 1
   Multiple: 2
   GoTo: {fileID: 1482575408023132, guid: 2896750f486cee44188f83e160884c41, type: 2}
   GoToTransform: {fileID: 4316535167316242, guid: b57dd63d2d1ba604aa8a9fbea2999fa8,
