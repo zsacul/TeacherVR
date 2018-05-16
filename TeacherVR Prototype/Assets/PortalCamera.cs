@@ -14,7 +14,7 @@ public class PortalCamera : MonoBehaviour
         playerCamera = VRTK_DeviceFinder.HeadsetCamera();
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (playerCamera == null)
         {
