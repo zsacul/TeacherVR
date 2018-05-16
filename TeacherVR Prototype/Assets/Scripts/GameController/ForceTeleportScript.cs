@@ -6,6 +6,8 @@
     {
         public Transform GameStartDestinationPoint;
         public Transform GameSummaryDestinationPoint;
+        public Transform TeleportA;
+        public Transform TeleportB;
 
         public void ForceTeleportTo(Transform destination, Quaternion rotation)
         {
@@ -27,6 +29,16 @@
             Quaternion rot = GameSummaryDestinationPoint.rotation;
             rot.eulerAngles = new Vector3(0,90,0);
             ForceTeleportTo(GameSummaryDestinationPoint, rot);
+        }
+
+        public void ForceTeleportToTeleportA()
+        {
+            ForceTeleportTo(TeleportA, TeleportA.rotation);
+        }
+
+        public void ForceTeleportToTeleportB()
+        {
+            ForceTeleportTo(TeleportB, TeleportB.rotation);
         }
     }
 }
