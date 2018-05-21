@@ -8,6 +8,7 @@ namespace VRTK
     {
 
         public ClawControl cntrl;
+        public Animator head;
         public LeverTempControll LeverX;
         public LeverTempControll LeverY;
         public LeverTempControll LeverZ;
