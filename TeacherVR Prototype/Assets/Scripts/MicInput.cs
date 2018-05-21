@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Windows.Speech;
+using System.Linq;
 /* Main source atomtwist's comment from:
 https://forum.unity.com/threads/check-current-microphone-input-volume.133501/ */
 public class MicInput : MonoBehaviour
 {
+    KeywordRecognizer recognizer;
+    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
     public GameObject SpeakingInd;
 
     static public MicInputType typeOfInput;
@@ -140,6 +144,8 @@ public class MicInput : MonoBehaviour
     }
     private void Start()
     {
+
+        AddWordsToDictionary();
         bookNoise = false;
         typeOfInput = MicInputType.noone;
         _legacyScore = 0;
@@ -149,6 +155,58 @@ public class MicInput : MonoBehaviour
             SpeakingInd.SetActive(false);
 
         
+    }
+    void AddWordsToDictionary()
+    {
+        if (PhraseRecognitionSystem.isSupported)
+        {
+            keywords.Add("one", () =>
+          {
+              RecognizedWord("one");
+          });
+            keywords.Add("two", () =>
+            {
+                RecognizedWord("two");
+            });
+            keywords.Add("egg", () =>
+            {
+                RecognizedWord("egg");
+            });
+            keywords.Add("computer", () =>
+            {
+                RecognizedWord("computer");
+            });
+            keywords.Add("teacher", () =>
+            {
+                RecognizedWord("teacher");
+            });
+            keywords.Add("programming", () =>
+            {
+                RecognizedWord("programming");
+            });
+            recognizer = new KeywordRecognizer(keywords.Keys.ToArray());
+            recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
+            recognizer.Start();
+        }
+        else
+        {
+            Debug.Log("Speech recognision is not supported on this machine");
+        }
+        
+    }
+
+    private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    {
+        System.Action keyWordAction;
+        if(keywords.TryGetValue(args.text, out keyWordAction))
+        {
+            keyWordAction.Invoke();
+        }
+    }
+
+    void RecognizedWord(string word)
+    {
+        Debug.Log("You've said: " + word);
     }
     void InitDetect()
     {
