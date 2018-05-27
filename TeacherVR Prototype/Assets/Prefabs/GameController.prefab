@@ -504,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemplateShape: []
   RysObject: {fileID: 0}
+  SpongeObject: {fileID: 0}
   CurrentChalkColor: {r: 1, g: 1, b: 1, a: 1}
   OnLineChalkColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
   GoToColor: {r: 0, g: 1, b: 0, a: 1}
@@ -900,6 +901,8 @@ MonoBehaviour:
   targetListPolicy: {fileID: 0}
   GameStartDestinationPoint: {fileID: 0}
   GameSummaryDestinationPoint: {fileID: 0}
+  TeleportA: {fileID: 0}
+  TeleportB: {fileID: 0}
 --- !u!114 &114233267596514344
 MonoBehaviour:
   m_ObjectHideFlags: 1

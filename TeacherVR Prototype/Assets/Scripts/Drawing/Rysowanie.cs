@@ -95,8 +95,7 @@ public class Rysowanie : MonoBehaviour
 
         Renderer rend = hit.transform.GetComponent<Renderer>();
 
-        if (rend == null || rend.sharedMaterial == null || rend.sharedMaterial.mainTexture == null ||
-            rend != gameObject.GetComponent<Renderer>())
+        if (rend == null || rend != gameObject.GetComponent<Renderer>())
         {
             return;
         }
@@ -136,6 +135,7 @@ public class Rysowanie : MonoBehaviour
             {
                 comboCounter++;
                 //Player reached a checkpoint
+
                 GameController.Instance.ScoreBoard.PointsAddAnim(50 * comboCounter);
 
                 if (comboCounter == 1)
@@ -187,7 +187,6 @@ public class Rysowanie : MonoBehaviour
         if (col.tag == "Sponge" && !enabled)
         {
             GameController.Instance.SoundManager.Play2D(SamplesList.SpongeDrag,0.5f);
-            Paint.Clear();
         }
     }
 }
