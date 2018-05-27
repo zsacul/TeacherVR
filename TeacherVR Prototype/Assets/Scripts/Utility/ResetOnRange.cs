@@ -7,6 +7,7 @@ using VRTK;
 public class ResetOnRange : MonoBehaviour
 {
     public float MaxRange = 10;
+    public float Delay = 0;
     public Action OverMaxRangeAction = Action.ResetToEndPoint;
     public bool UseWrongParticle = false;
     public bool StopVelocity = true;
@@ -20,6 +21,9 @@ public class ResetOnRange : MonoBehaviour
     private Quaternion startRot1;
     private Quaternion startRot2;
 
+    private bool reset;
+    private bool corutine;
+
     public enum Action
     {
         ResetToEndPoint,
@@ -30,6 +34,8 @@ public class ResetOnRange : MonoBehaviour
 
     void Start()
     {
+        reset = false;
+        corutine = false;
         io = GetComponent<VRTK_InteractableObject>();
         if (OverMaxRangeAction == Action.ResetBothToMiddle)
             io2 = End.GetComponent<VRTK_InteractableObject>();
@@ -51,53 +57,61 @@ public class ResetOnRange : MonoBehaviour
             if (Vector3.Distance(transform.position, startPos1) > MaxRange ||
                 Vector3.Distance(End.position, startPos2) > MaxRange)
             {
-                SpawnWrongPartcile();
-                Unsnap(transform.parent);
-                Unsnap(End.transform.parent);
-                io.ForceStopInteracting();
-                io2.ForceStopInteracting();
-                transform.position = startPos1;
-                End.transform.position = startPos2;
-                transform.rotation = startRot1;
-                End.transform.rotation = startRot2;
-                if (StopVelocity)
+                if (reset)
                 {
-                    GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    SpawnWrongPartcile();
+                    Unsnap(transform.parent);
+                    Unsnap(End.transform.parent);
+                    io.ForceStopInteracting();
+                    io2.ForceStopInteracting();
+                    transform.position = startPos1;
+                    End.transform.position = startPos2;
+                    transform.rotation = startRot1;
+                    End.transform.rotation = startRot2;
+                    if (StopVelocity)
+                    {
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    }
                 }
+                else if (!corutine) StartCoroutine(StartReset());
             }
         }
         else if (Vector3.Distance(End.position, transform.position) > MaxRange)
         {
-            io.ForceStopInteracting();
-            if (OverMaxRangeAction == Action.ResetBothToMiddle)
+            if (reset)
             {
-                SpawnWrongPartcile();
-                Unsnap(transform.parent);
-                Unsnap(End.transform.parent);
-                io2.ForceStopInteracting();
+                io.ForceStopInteracting();
+                if (OverMaxRangeAction == Action.ResetBothToMiddle)
+                {
+                    SpawnWrongPartcile();
+                    Unsnap(transform.parent);
+                    Unsnap(End.transform.parent);
+                    io2.ForceStopInteracting();
 
-                var a = Vector3.Lerp(transform.position, End.position, 1f / 3);
-                var b = Vector3.Lerp(transform.position, End.position, 2f / 3);
-                transform.position = a;
-                End.position = b;
-                if (StopVelocity)
+                    var a = Vector3.Lerp(transform.position, End.position, 1f / 3);
+                    var b = Vector3.Lerp(transform.position, End.position, 2f / 3);
+                    transform.position = a;
+                    End.position = b;
+                    if (StopVelocity)
+                    {
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                        End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    }
+                }
+                else //Action.ResetToEndPointOnUngrab and Action.ResetToEndPoint
                 {
-                    GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    End.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    SpawnWrongPartcile();
+                    Unsnap(transform.parent);
+                    transform.position = End.position;
+                    transform.rotation = End.rotation;
+                    if (StopVelocity)
+                    {
+                        GetComponent<Rigidbody>().velocity = Vector3.zero;
+                    }
                 }
             }
-            else //Action.ResetToEndPointOnUngrab and Action.ResetToEndPoint
-            {
-                SpawnWrongPartcile();
-                Unsnap(transform.parent);
-                transform.position = End.position;
-                transform.rotation = End.rotation;
-                if (StopVelocity)
-                {
-                    GetComponent<Rigidbody>().velocity = Vector3.zero;
-                }
-            }
+            else if (!corutine) StartCoroutine(StartReset());
         }
     }
 
@@ -119,14 +133,26 @@ public class ResetOnRange : MonoBehaviour
         if (UseWrongParticle)
         {
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, transform.position);
-            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong, End.transform.position);
+            GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Wrong,
+                End.transform.position);
             GameController.Instance.SoundManager.Play2D(SamplesList.Error, 0.01f);
         }
         else
         {
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, transform.position);
             GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Poof, End.transform.position);
-            GameController.Instance.SoundManager.Play2D(SamplesList.ShortPoof,0.1f);
+            GameController.Instance.SoundManager.Play2D(SamplesList.ShortPoof, 0.1f);
         }
+    }
+
+    IEnumerator StartReset()
+    {
+        corutine = true;
+        yield return new WaitForSeconds(Delay);
+        reset = true;
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        reset = false;
+        corutine = false;
     }
 }

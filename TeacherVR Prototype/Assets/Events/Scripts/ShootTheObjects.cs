@@ -29,7 +29,7 @@ public class ShootTheObjects : Events
     public override void StartEvent()
     {
         base.StartEvent();
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the spray bottle", 60);
+        //GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the spray bottle", 60);
         Message(5, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
         Instances.Clear();
         TargetLocations.Clear();
@@ -76,6 +76,8 @@ public class ShootTheObjects : Events
         }
         Instances.Clear();
         TargetLocations.Clear();
+        VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
+        VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
     }
 
     public override void CompleteEvent()
@@ -83,5 +85,7 @@ public class ShootTheObjects : Events
         base.CompleteEvent();
         Instances.Clear();
         TargetLocations.Clear();
+        VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
+        VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
     }
 }
