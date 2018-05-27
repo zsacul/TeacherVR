@@ -57,7 +57,6 @@ namespace VRTK.Examples
                     transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = false;
                     break;
                 case Mode.PlayAgain:
-                    TMPUGUI.text = "Play again!";
                     break;
                 case Mode.Volume:
                     TMPUGUI.text = "Volume (" + GameController.Instance.SoundManager.GetGlobalVolume() * 10 + "%)";

@@ -6,6 +6,7 @@ public class DrawingManager : MonoBehaviour
 {
     public Vector2[] TemplateShape;
     public GameObject RysObject;
+    public GameObject SpongeObject;
     public Color CurrentChalkColor;
     public Color OnLineChalkColor;
     public Color GoToColor;

@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 114846990308639244}
   - component: {fileID: 114057373262345258}
   - component: {fileID: 114190320415876976}
-  - component: {fileID: 114220230765688422}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -505,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemplateShape: []
   RysObject: {fileID: 0}
+  SpongeObject: {fileID: 0}
   CurrentChalkColor: {r: 1, g: 1, b: 1, a: 1}
   OnLineChalkColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
   GoToColor: {r: 0, g: 1, b: 0, a: 1}
@@ -901,21 +901,8 @@ MonoBehaviour:
   targetListPolicy: {fileID: 0}
   GameStartDestinationPoint: {fileID: 0}
   GameSummaryDestinationPoint: {fileID: 0}
---- !u!114 &114220230765688422
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982150515922314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b676569b4234084aaa70d27c764850b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraA: {fileID: 0}
-  CameraB: {fileID: 0}
-  CameraMatA: {fileID: 2100000, guid: 9e6d2cb0673804d41922857ab6facf44, type: 2}
-  CameraMatB: {fileID: 2100000, guid: 4f8702501f21c874d870a113741edb08, type: 2}
+  TeleportA: {fileID: 0}
+  TeleportB: {fileID: 0}
 --- !u!114 &114233267596514344
 MonoBehaviour:
   m_ObjectHideFlags: 1
