@@ -46,6 +46,7 @@ namespace VRTK.Examples
             {
                 VRTK_InteractGrab myGrab = currentTouchingObject.GetComponent<VRTK_InteractGrab>();
                 myGrab.AttemptGrab();
+               // transform.localPosition = Vector3.zero;
             }
         }
 

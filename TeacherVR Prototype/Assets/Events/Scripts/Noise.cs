@@ -16,7 +16,7 @@ public class Noise : Events
     {
         base.StartEvent();
         Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the book", 60);
+        //GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the book", 60);
         
         shoutedLoudEnough = false;
         doneSomethingLoudEnough = false;
