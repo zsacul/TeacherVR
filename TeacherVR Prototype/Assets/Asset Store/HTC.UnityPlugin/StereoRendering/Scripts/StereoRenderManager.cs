@@ -116,6 +116,14 @@ namespace HTC.UnityPlugin.StereoRendering
 
                 target = Camera.main;
             }
+            else if(VRTK_DeviceFinder.HeadsetCamera().GetComponent<Camera>() != null)
+            {
+                Debug.Log("VRTK");
+                var head = VRTK_DeviceFinder.HeadsetCamera().GetComponent<Camera>().gameObject.AddComponent<VRRenderEventDetector>();
+                head.Initialize(0);
+
+                target = VRTK_DeviceFinder.HeadsetCamera().GetComponent<Camera>();
+            }
             else
             {
                 Debug.LogError("No Camera tagged as \"MainCamera\" found.");
