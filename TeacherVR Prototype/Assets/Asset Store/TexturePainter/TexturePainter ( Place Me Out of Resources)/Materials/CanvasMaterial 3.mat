@@ -35,7 +35,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: f2354181e68fe9b4797fee0800a8b612, type: 2}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0.01, y: -0.12}
     - _Illum:
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8400000, guid: f2354181e68fe9b4797fee0800a8b612, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0.01, y: -0.12}
     - _MetallicGlossMap:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e73030d9249008d40ae88b4bcf82708b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -70,8 +70,8 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
-    - _OcclusionStrength: 0.415
-    - _Parallax: 0.02
+    - _OcclusionStrength: 0.6
+    - _Parallax: 0.08
     - _Shininess: 0.078125
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -79,7 +79,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.078431375, g: 0.25490198, b: 0.19215687, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.5294118, g: 0.49558526, b: 0.45934257, a: 1}

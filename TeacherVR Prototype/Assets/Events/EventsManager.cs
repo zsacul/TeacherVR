@@ -157,6 +157,16 @@ public class EventsManager : MonoBehaviour
         {
             ListOfEvents.Remove(toDel);
         }
+        for (int i=0;i<ListOfEvents.Count;i++)
+        {
+            if (ListOfEvents[i].name == "Sajmon")
+            {
+                Events tmp = ListOfEvents[i-1];
+                ListOfEvents[i - 1] = ListOfEvents[1];
+                ListOfEvents[1] = tmp;
+                break;
+            }
+        }
     }
 
     void Update()

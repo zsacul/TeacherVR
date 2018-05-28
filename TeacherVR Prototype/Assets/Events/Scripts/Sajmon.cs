@@ -23,7 +23,7 @@ public class Sajmon : Events
     private GameObject PC;
 
     float _time;
-    public float Start_time = 5f; //czas, kiedy ma pokazywać po starcie
+    public float Start_time = 3f; //czas, kiedy ma pokazywać po starcie
     public float deltaTime = 2f; //różnice czasu w pokazywaniu kolejnych kroków sekwencji
 
     public static bool needToCheck = false;

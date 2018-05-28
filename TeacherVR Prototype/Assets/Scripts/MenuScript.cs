@@ -38,6 +38,7 @@ namespace VRTK.Examples
             {
                 controlEvents = gameObject.AddComponent<VRTK_Control_UnityEvents>();
             }
+
             controlEvents.OnValueChanged.AddListener(HandleChange);
 
             StartCoroutine(SetUI());
@@ -57,7 +58,6 @@ namespace VRTK.Examples
                     transform.GetChild(0).GetComponent<Rigidbody>().freezeRotation = false;
                     break;
                 case Mode.PlayAgain:
-                    TMPUGUI.text = "Play again!";
                     break;
                 case Mode.Volume:
                     TMPUGUI.text = "Volume (" + GameController.Instance.SoundManager.GetGlobalVolume() * 10 + "%)";
@@ -81,7 +81,7 @@ namespace VRTK.Examples
         {
             yield return new WaitForEndOfFrame();
             if (tmp3 != GameController.Instance.TeleportR.enabled)
-                GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,0.1f);
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position, 0.1f);
         }
 
         private void HandleChange(object sender, Control3DEventArgs e)
@@ -98,20 +98,24 @@ namespace VRTK.Examples
 
                         GameController.Instance.StartGame();
                     }
+
                     break;
                 case Mode.PlayAgain:
                     if (e.normalizedValue > 30)
                     {
                         GameController.Instance.RestartGame();
                     }
+
                     break;
                 case Mode.Volume:
                     TMPUGUI.text = "Volume (" + (100 - e.normalizedValue) + "%)";
                     if (Time.time > lastTime + delay)
                     {
                         lastTime = Time.time;
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position, 0.1f);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,
+                            0.1f);
                     }
+
                     GameController.Instance.SoundManager.SetGlobalVolume((100 - e.normalizedValue) / 10);
                     break;
                 case Mode.Tooltips:
@@ -123,7 +127,8 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Tooltips Off";
 
                     if (tmp1 != GameController.Instance.Tooltips)
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position, 0.1f);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,
+                            0.1f);
                     break;
                 case Mode.Messages:
                     var tmp2 = GameController.Instance.Messages;
@@ -134,7 +139,8 @@ namespace VRTK.Examples
                     else TMPUGUI.text = "Messages Off";
 
                     if (tmp2 != GameController.Instance.Messages)
-                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,0.1f);
+                        GameController.Instance.SoundManager.Play3DAt(SamplesList.LeverSwitchOn, transform.position,
+                            0.1f);
                     break;
                 case Mode.ArmSwinger:
                     var tmp3 = GameController.Instance.TeleportR.enabled;

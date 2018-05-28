@@ -21,23 +21,9 @@ GameObject:
   - component: {fileID: 4089094880811062}
   - component: {fileID: 33832840472679014}
   - component: {fileID: 23742644021359094}
+  - component: {fileID: 65274008607797264}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1116070601065456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4715537230982198}
-  m_Layer: 0
-  m_Name: Snap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,12 +37,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4443653424292658}
+  - component: {fileID: 114573998107011992}
   - component: {fileID: 54999838577414670}
-  - component: {fileID: 114570375358100896}
   - component: {fileID: 114745444407406292}
   - component: {fileID: 65420751256484872}
   - component: {fileID: 114141104554849744}
   - component: {fileID: 114385414961804410}
+  - component: {fileID: 114665821060232850}
   m_Layer: 0
   m_Name: BookToMakeNoise
   m_TagString: Untagged
@@ -83,27 +70,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695644066895426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.885, y: 1.7280766, z: 10.479303}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children:
   - {fileID: 4089094880811062}
-  - {fileID: 4715537230982198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4715537230982198
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1116070601065456}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4443653424292658}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!23 &23742644021359094
 MeshRenderer:
@@ -161,6 +134,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65274008607797264
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022472317428180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81446546, y: 0.6506909, z: 0.1683962}
+  m_Center: {x: 0, y: -0.0000019073486, z: 0}
 --- !u!65 &65420751256484872
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -168,11 +153,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695644066895426}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.4, z: 0.34}
-  m_Center: {x: 0, y: 0, z: 0.2}
+  m_Size: {x: 0.14268428, y: 0.49858898, z: 0.4073429}
+  m_Center: {x: 0.014554104, y: 0.007531026, z: 0.15302727}
 --- !u!114 &114141104554849744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1ebaa51525b734287157cb3f53f958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precisionGrab: 0
-  rightSnapHandle: {fileID: 4715537230982198}
+  precisionGrab: 1
+  rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   throwVelocityWithAttachDistance: 0
   throwMultiplier: 1
@@ -205,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18055ba762aa3994f9c10208cd088bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114570375358100896
+--- !u!114 &114573998107011992
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -213,10 +198,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695644066895426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50c36f41f46135044880c823fec07e51, type: 3}
+  m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IgnoreSaveKinematic: 1
+  IgnoreSaveKinematic: 0
   disableWhenIdle: 1
   allowedNearTouchControllers: 0
   allowedTouchControllers: 0
@@ -227,10 +212,10 @@ MonoBehaviour:
   validDrop: 1
   grabOverrideButton: 0
   allowedGrabControllers: 0
-  grabAttachMechanicScript: {fileID: 0}
-  secondaryGrabActionScript: {fileID: 0}
+  grabAttachMechanicScript: {fileID: 114141104554849744}
+  secondaryGrabActionScript: {fileID: 114385414961804410}
   isUsable: 0
-  holdButtonToUse: 0
+  holdButtonToUse: 1
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
@@ -238,9 +223,23 @@ MonoBehaviour:
   objectHighlighter: {fileID: 0}
   touchHighlightColor: {r: 0, g: 0.88235295, b: 0.9803922, a: 0}
   usingState: 0
-  CollisionDetectionMode: 0
-  AutoHoldOnGrab: 0
-  UseOnAwake: 1
+--- !u!114 &114665821060232850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695644066895426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b71742c0f4f0846a7ac546c77321b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxRange: 1
+  Delay: 3
+  OverMaxRangeAction: 3
+  UseWrongParticle: 0
+  StopVelocity: 1
+  End: {fileID: 0}
 --- !u!114 &114745444407406292
 MonoBehaviour:
   m_ObjectHideFlags: 1

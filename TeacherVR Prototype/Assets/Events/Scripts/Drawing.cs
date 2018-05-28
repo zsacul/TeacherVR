@@ -21,7 +21,7 @@ public class Drawing : Events
         GameController.Instance.DrawingManager.TemplateShape = TemplateShape;
         rysowanie = GameController.Instance.DrawingManager.Boards[Board];
         painter = rysowanie.Paint;
-        painter.Clear();
+        painter.TotalClear();
         rysowanie.gameInProgress = true;
         rysowanie.enabled = true;
         Chalk_Tutorial_Point_Inst = GameObject.Find("PackOfChalk 2").transform.Find("Chalk_Grab_Tutorial_Point").gameObject;
@@ -41,7 +41,7 @@ public class Drawing : Events
         base.AbortEvent();
         rysowanie.gameInProgress = false;
         rysowanie.enabled = false;
-        painter.Clear();
+        painter.TotalClear();
         GameController.Instance.DrawingManager.TemplateShape = null;
         Chalk_Tutorial_Point_Inst.GetComponent<Tutorial_Point_Anim_Control>().Abort();
     }
@@ -50,7 +50,7 @@ public class Drawing : Events
     {
         base.CompleteEvent();
         rysowanie.enabled = false;
-        painter.Clear();
+        painter.TotalClear();
         GameController.Instance.DrawingManager.TemplateShape = null;
         Chalk_Tutorial_Point_Inst.GetComponent<Tutorial_Point_Anim_Control>().Abort();
     }

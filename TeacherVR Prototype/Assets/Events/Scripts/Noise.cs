@@ -16,7 +16,7 @@ public class Noise : Events
     {
         base.StartEvent();
         Message(10, description, MessageSystem.ObjectToFollow.Headset, MessageSystem.Window.W800H400);
-        GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the book", 60);
+        //GameController.Instance.MessageSystem.ShowButtonOnControllers(MessageSystem.Button.Grip, "Take the book", 60);
         
         shoutedLoudEnough = false;
         doneSomethingLoudEnough = false;
@@ -74,7 +74,7 @@ public class Noise : Events
             {
                 GameController.Instance.SoundManager.Play3DAt(
                      SamplesList.Gasp,
-                     GameController.Instance.Students.Students[loudStudents[i]].transform, 0.5f);
+                     GameController.Instance.Students.Students[loudStudents[i]].transform, 0.1f);
                 GameController.Instance.Students.Students[loudStudents[i]].GetComponentInChildren<AnimationControll>().Clap();
             }
             MurmursManagement.murmurs = false;

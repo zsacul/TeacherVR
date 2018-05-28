@@ -504,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TemplateShape: []
   RysObject: {fileID: 0}
+  SpongeObject: {fileID: 0}
   CurrentChalkColor: {r: 1, g: 1, b: 1, a: 1}
   OnLineChalkColor: {r: 0.627451, g: 0.627451, b: 0.627451, a: 1}
   GoToColor: {r: 0, g: 1, b: 0, a: 1}
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982150515922314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59cd255ab1704b14398e67ca2cafcde9, type: 3}
   m_Name: 
@@ -900,6 +901,8 @@ MonoBehaviour:
   targetListPolicy: {fileID: 0}
   GameStartDestinationPoint: {fileID: 0}
   GameSummaryDestinationPoint: {fileID: 0}
+  TeleportA: {fileID: 0}
+  TeleportB: {fileID: 0}
 --- !u!114 &114233267596514344
 MonoBehaviour:
   m_ObjectHideFlags: 1

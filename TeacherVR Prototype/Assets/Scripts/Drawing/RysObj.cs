@@ -5,6 +5,8 @@ using VRTK;
 
 public class RysObj : MonoBehaviour
 {
+    public bool Sponge = false;
+
     VRTK_InteractableObject io;
     VRTK_Pointer po;
     VRTK_StraightPointerRenderer spr;
@@ -22,7 +24,8 @@ public class RysObj : MonoBehaviour
     {
         spr.enabled = true;
         po.enabled = true;
-        GameController.Instance.DrawingManager.RysObject = gameObject;
+        if(Sponge) GameController.Instance.DrawingManager.SpongeObject = gameObject;
+        else GameController.Instance.DrawingManager.RysObject = gameObject;
     }
 
 
@@ -30,6 +33,7 @@ public class RysObj : MonoBehaviour
     {
         po.enabled = false;
         spr.enabled = false;
-        GameController.Instance.DrawingManager.RysObject = null;
+        if (Sponge) GameController.Instance.DrawingManager.SpongeObject = null;
+        else GameController.Instance.DrawingManager.RysObject = null;
     }
 }
