@@ -160,6 +160,8 @@ public class MicInput : MonoBehaviour
     {
         if (PhraseRecognitionSystem.isSupported)
         {
+            Debug.Log("You are speaking "+
+                System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
             keywords.Add("one", () =>
           {
               RecognizedWord("one");
