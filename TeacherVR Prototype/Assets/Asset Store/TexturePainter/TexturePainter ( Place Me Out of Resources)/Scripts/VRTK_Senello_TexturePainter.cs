@@ -100,14 +100,14 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
         if (HitTestUVPosition(ref uvWorldPosition))
         {
             DrawPoint(uvWorldPosition, brushSize, brushColor);
-            if (Vector3.Distance(lastPoint, brushObj.transform.position) < brushSize / 4)
+            if (Vector3.Distance(lastPoint, brushObj.transform.position) < brushSize / 10)
             {
                 Destroy(brushObj);
                 return;
             }
             if (lastPoint != Vector3.zero)
             {
-                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 2)
+                if (Vector3.Distance(lastPoint, brushObj.transform.position) > brushSize / 6)
                 {
                     DrawLine(lastPoint, brushObj.transform.position, brushSize, brushColor);
                 }
