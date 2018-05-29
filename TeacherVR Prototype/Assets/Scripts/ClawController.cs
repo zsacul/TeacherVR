@@ -19,18 +19,35 @@
         public LeverTempControll LeverY;
         public ControllableReactor Button;
         public Animator AnimButton;
+        public ActivateStudents students;
+        public GameObject clawGameObject;
 
+
+        private bool follow = false;
+        private GameObject student;
+        private Transform studentTransform;
+        private Transform clawTransform;
         private AnimatorClipInfo[] currentClipInfo;
         private bool nomed = false;
         private IEnumerator coroutine;
+        private Vector3 offset;
+
+
+        private void Start()
+        {
+            student = students.thirdlRow[1];
+            studentTransform = student.transform;
+            clawTransform = clawGameObject.transform;
+            offset = new Vector3(0.0f, 1.8f, 0.0f);
+        }
 
 
 
-	void Update()
+        void Update()
         {
             cntrl.moveX = LeverX.val/10;
             cntrl.moveY = LeverY.val/10;
-
+            Follow(follow);
             if (target)
             {
                 //button.SetTrigger("Green");
@@ -87,6 +104,7 @@
             yield return new WaitForSeconds(1f);
             head.SetTrigger("Nom");
             yield return new WaitForSeconds(0.77f);
+            follow = true;
             clawNeck.SetTrigger("Up");
         }
 
@@ -96,10 +114,22 @@
             yield return new WaitForSeconds(1.50f);
             head.SetTrigger("Open");
             yield return new WaitForSeconds(0.2f);
+            follow = false;
             clawNeck.SetTrigger("Up");
             yield return new WaitForSeconds(1.0f);
             head.SetTrigger("Nom");
             
+        }
+
+        private void Follow(bool f)
+        {
+            if (f)
+            {
+                studentTransform.position = Vector3.MoveTowards(studentTransform.position, clawTransform.position - offset, 0.1f);
+                Debug.Log(studentTransform.position);
+
+                Debug.Log(clawTransform.position);
+            }
         }
     }
 }
