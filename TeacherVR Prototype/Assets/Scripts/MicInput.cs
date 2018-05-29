@@ -166,9 +166,10 @@ public class MicInput : MonoBehaviour
     void AddWordsToDictionary()
     {
         Debug.Log("You are speaking " +
-    System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName + " is supported: "+ PhraseRecognitionSystem.isSupported+ " language "+ Application.systemLanguage);
-        if (PhraseRecognitionSystem.isSupported && SupportedLanguage() && (SystemInfo.operatingSystemFamily.Equals( "Windows")))
+    System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName + " is supported: "+ PhraseRecognitionSystem.isSupported+ " os "+ SystemInfo.operatingSystemFamily);
+        if (PhraseRecognitionSystem.isSupported && SupportedLanguage() && SystemInfo.operatingSystemFamily.Equals(OperatingSystemFamily.Windows))
         {
+            
             isRecognitionSupported = true;
 
             keywords.Add("one", () =>
