@@ -16,6 +16,7 @@ public class MicInput : MonoBehaviour
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
+    static public bool isRecognitionSupported;
 
     static public bool bookNoise = false;
     public int multiplier = 5;
@@ -156,47 +157,68 @@ public class MicInput : MonoBehaviour
 
         
     }
+    public string getRandomWord()
+    {
+        List<string> words = keywords.Keys.ToList();
+        return words[Random.Range(0,words.Count-1)];
+    }
+    
     void AddWordsToDictionary()
     {
-        if (PhraseRecognitionSystem.isSupported)
+        Debug.Log("You are speaking " +
+    System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName + " is supported: "+ PhraseRecognitionSystem.isSupported+ " language "+ Application.systemLanguage);
+        if (PhraseRecognitionSystem.isSupported && SupportedLanguage() && (SystemInfo.operatingSystemFamily.Equals( "Windows")))
         {
-            Debug.Log("You are speaking "+
-                System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
+            isRecognitionSupported = true;
+
             keywords.Add("one", () =>
           {
+              Speech.iSaid("one");
               RecognizedWord("one");
           });
             keywords.Add("two", () =>
             {
+                Speech.iSaid("two");
                 RecognizedWord("two");
             });
             keywords.Add("egg", () =>
             {
+                Speech.iSaid("egg");
                 RecognizedWord("egg");
             });
             keywords.Add("computer", () =>
             {
+                Speech.iSaid("computer");
                 RecognizedWord("computer");
             });
             keywords.Add("teacher", () =>
             {
+                Speech.iSaid("teacher");
                 RecognizedWord("teacher");
             });
             keywords.Add("programming", () =>
             {
+                Speech.iSaid("programming");
                 RecognizedWord("programming");
             });
             recognizer = new KeywordRecognizer(keywords.Keys.ToArray());
             recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
-            recognizer.Start();
+          //  recognizer.Start();
         }
         else
         {
-            Debug.Log("Speech recognision is not supported on this machine");
+            isRecognitionSupported = false;
+            
+            Debug.Log("Speech recognision is not supported on this machine, requires Windows with English interface with speech recognition.");
         }
         
     }
-
+    bool SupportedLanguage()
+    {
+        if (Application.systemLanguage.Equals(SystemLanguage.English))
+            return true;
+        return false;
+    }
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         System.Action keyWordAction;
@@ -241,6 +263,12 @@ public class MicInput : MonoBehaviour
             current_time = (int)time;
             if (typeOfInput == MicInputType.speechDetection)
             {
+
+                if (!recognizer.IsRunning)
+                { recognizer.Start();
+                    Debug.Log("Im listening");
+                }
+                /*
                 scoreBuffer = DetectionOfSpeech();
                 if (scoreBuffer != 0)
                 {
@@ -252,7 +280,7 @@ public class MicInput : MonoBehaviour
                     if (SpeakingInd != null)
                         SpeakingInd.SetActive(false);
                 }
-                _legacyScore += scoreBuffer;
+                _legacyScore += scoreBuffer;*/
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
@@ -299,6 +327,11 @@ public class MicInput : MonoBehaviour
                 if (bookNoise)
                     initDet = false;
             }
+        }
+        else
+        {
+            if (isRecognitionSupported && recognizer.IsRunning)
+                recognizer.Stop();
         }
     }
 

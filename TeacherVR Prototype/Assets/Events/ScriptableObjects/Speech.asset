@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f70178d59722f3f4085bcd31bb62af66, type: 3}
+  m_Name: Speech
+  m_EditorClassIdentifier: 
+  name: Speech
+  description: Say the words.
+  status: 1
+  Lvl: 3
+  MediumLvl: 3
+  DeviationLvlRange: 0
+  Shuffle: 1
+  Multiple: 1
+  GoTo: {fileID: 1395295741202138, guid: cb2cd89d056ed934bbda530ff13a9cac, type: 2}
+  GoToTransform: {fileID: 4102171884153582, guid: cb2cd89d056ed934bbda530ff13a9cac,
+    type: 2}
+  TTS_prefab: {fileID: 1263461575977114, guid: 02805eacb3754934a8fb7c1533f8a2b2, type: 2}
