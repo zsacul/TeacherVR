@@ -3554,6 +3554,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60a8f6092b85eb744ac7dfa57a3d6734, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &248888096 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114143561652860228, guid: c52cd7a0773560744bc3a2835bb623a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1637136928}
+  m_Script: {fileID: 11500000, guid: 43bedefe202ab8a4fb3caa3f472b5b39, type: 3}
 --- !u!1001 &249339219
 Prefab:
   m_ObjectHideFlags: 0
@@ -14672,6 +14678,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4311073586210240, guid: 75a430816f7902c46bcb7cd4e7408e7e,
     type: 2}
   m_PrefabInternal: {fileID: 1433406003}
+--- !u!1 &1064070180 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1745294795203704, guid: a8d06bf743f24024f80cee1b45293478,
+    type: 2}
+  m_PrefabInternal: {fileID: 368930393}
 --- !u!1001 &1066551603
 Prefab:
   m_ObjectHideFlags: 0
@@ -16398,6 +16409,8 @@ MonoBehaviour:
   LeverY: {fileID: 1317305174}
   Button: {fileID: 1269094103}
   AnimButton: {fileID: 1269094107}
+  students: {fileID: 248888096}
+  clawGameObject: {fileID: 1064070180}
 --- !u!4 &1209040180
 Transform:
   m_ObjectHideFlags: 0
