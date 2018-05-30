@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
+using VRTK.Examples;
 
 [CreateAssetMenu(fileName = "New ShootTheObjects Event", menuName = "Events/ShootTheObjects Event")]
 public class ShootTheObjects : Events
@@ -67,6 +68,24 @@ public class ShootTheObjects : Events
         if (Instances.Count != 0 && alive == 0) CompleteEvent();
     }
 
+    private void DestroySpray()
+    {
+        Transform LH = VRTK_DeviceFinder.GetControllerLeftHand().transform.parent.Find("Hand");
+        Transform RH = VRTK_DeviceFinder.GetControllerRightHand().transform.parent.Find("Hand");
+
+        if (LH == null || RH == null)
+        {
+            LH = VRTK_DeviceFinder.GetControllerLeftHand().transform.parent.Find("Model");
+            RH = VRTK_DeviceFinder.GetControllerRightHand().transform.parent.Find("Model");
+        }
+
+        WaterSpray LHW = LH.GetComponentInChildren<WaterSpray>();
+        WaterSpray RHW = RH.GetComponentInChildren<WaterSpray>();
+
+        if (LHW != null) LHW.ForceDestroy();
+        if (RHW != null) RHW.ForceDestroy();
+    }
+
     public override void AbortEvent()
     {
         base.AbortEvent();
@@ -76,8 +95,8 @@ public class ShootTheObjects : Events
         }
         Instances.Clear();
         TargetLocations.Clear();
-        VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
-        VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
+
+       DestroySpray();
     }
 
     public override void CompleteEvent()
@@ -85,7 +104,7 @@ public class ShootTheObjects : Events
         base.CompleteEvent();
         Instances.Clear();
         TargetLocations.Clear();
-        VRTK_DeviceFinder.GetControllerLeftHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
-        VRTK_DeviceFinder.GetControllerRightHand().GetComponent<VRTK_InteractGrab>().ForceRelease();
+
+        DestroySpray();
     }
 }

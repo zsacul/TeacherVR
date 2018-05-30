@@ -42,12 +42,12 @@ GameObject:
   - component: {fileID: 23218065196578736}
   - component: {fileID: 65715338769418202}
   - component: {fileID: 114210778872741014}
-  - component: {fileID: 114449519924300654}
   - component: {fileID: 114232629658398428}
   - component: {fileID: 54492550354079588}
   - component: {fileID: 114616452646325304}
   - component: {fileID: 114142852996111112}
-  m_Layer: 0
+  - component: {fileID: 114449519924300654}
+  m_Layer: 2
   m_Name: Sponge
   m_TagString: Sponge
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1401788760374302}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -89,13 +89,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245818141018830}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
   m_LocalPosition: {x: 0.01, y: -0.002, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4706200584479698}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!4 &4821464745300494
 Transform:
   m_ObjectHideFlags: 1
@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95039825519c0644d81112d535873b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: -1
+  ObjRotation: {x: 0, y: 90, z: -90}
   min_x: 0
   max_x: 100
 --- !u!114 &114210778872741014
@@ -389,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxRange: 0.5
+  Delay: 0
   OverMaxRangeAction: 3
   UseWrongParticle: 0
   StopVelocity: 1
