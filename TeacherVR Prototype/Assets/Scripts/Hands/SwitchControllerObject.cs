@@ -68,10 +68,15 @@ namespace VRTK.Examples
             if (UseOnAwake == ColliderType.FirstChildToTrigger) SetFirstChildCollider(true);
         }
 
-        protected virtual void DestroyObject(object sender, ControllerInteractionEventArgs e)
+        public void ForceDestroy()
         {
             ForceReleaseGrab();
             Destroy(gameObject);
+        }
+
+        protected virtual void DestroyObject(object sender, ControllerInteractionEventArgs e)
+        {
+            ForceDestroy();
         }
 
         protected virtual void UseObject(object sender, ControllerInteractionEventArgs e)

@@ -17,6 +17,8 @@ public class Rysowanie : MonoBehaviour
     private Color chalkColor;
     private bool first = false;
     private float lastWrong;
+    private float lastTime;
+    private const float delay = 1.5f;
 
     float DistanceFromLine(Vector2 start, Vector2 end, Vector2 point)
     {
@@ -35,6 +37,7 @@ public class Rysowanie : MonoBehaviour
 
     void OnEnable()
     {
+        lastTime = 0;
         first = true;
         lastWrong = Time.time;
         currentTarget = 0;
@@ -182,10 +185,12 @@ public class Rysowanie : MonoBehaviour
                 GameController.Instance.DrawingManager.OnLineChalkColor;
     }
 
-    void OnTriggerEnter(Collider col)
+    
+    void OnTriggerStay(Collider col)
     {
-        if (col.tag == "Sponge" && !enabled)
+        if (col.tag == "Sponge" && !enabled && Time.time > lastTime + delay)
         {
+            lastTime = Time.time;
             GameController.Instance.SoundManager.Play2D(SamplesList.SpongeDrag,0.5f);
         }
     }
