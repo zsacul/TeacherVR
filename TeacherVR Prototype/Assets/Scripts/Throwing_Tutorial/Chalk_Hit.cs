@@ -28,19 +28,20 @@ public class Chalk_Hit : MonoBehaviour
         if (tag == "Chalk" || tag == "Water")
         {
             script.Hit();
+
+            if (Gender == HitSound.Male)
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.MaleGrunt, transform.position, 0.1f);
+            if (Gender == HitSound.Female)
+                GameController.Instance.SoundManager.Play3DAt(SamplesList.FemaleOof, transform.position, 0.1f);
+
             if (tag == "Chalk")
             {
-                if (Gender == HitSound.Male)
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.MaleGrunt, transform.position, 0.1f);
-                if (Gender == HitSound.Female)
-                    GameController.Instance.SoundManager.Play3DAt(SamplesList.FemaleOof, transform.position, 0.1f);
-
                 if (GameController.Instance.EventsManager.GetCurrentEvent() != null &&
                     GameController.Instance.EventsManager.GetCurrentEvent().name == "Throw Chalk" &&
                     tutorial_point_user.gameObject.activeSelf && !tutorial_point_user.GetCorutineStatus())
                 {
                     GameController.Instance.Particles.CreateParticle(Particles.NaszeParticle.Small_Good_Correct_Ok,
-                        transform.position + Vector3.up);
+                        transform.position + 1.5f * Vector3.up);
                     GameController.Instance.ScoreBoard.PointsAddAnim(100);
                     tutorial_point_user.Kill();
                 }
@@ -55,6 +56,6 @@ public class Chalk_Hit : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Water") script.Hit();
+        TakeHit(col.gameObject.tag);
     }
 }

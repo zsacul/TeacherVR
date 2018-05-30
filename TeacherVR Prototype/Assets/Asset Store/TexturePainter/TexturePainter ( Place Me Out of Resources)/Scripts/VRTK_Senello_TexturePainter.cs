@@ -45,9 +45,8 @@ public class VRTK_Senello_TexturePainter : MonoBehaviour
     {
         if (GameController.Instance.DrawingManager.RysObject != null)
             chalkPointer = GameController.Instance.DrawingManager.RysObject.GetComponent<VRTK_Pointer>();
-        else if (GameController.Instance.DrawingManager.SpongeObject != null)
+        if (GameController.Instance.DrawingManager.SpongeObject != null)
             spongePointer = GameController.Instance.DrawingManager.SpongeObject.GetComponent<VRTK_Pointer>();
-        else return;
         brushColor = GameController.Instance.DrawingManager.CurrentChalkColor;
         if (chalkPointer != null && chalkPointer.enabled)
         {
