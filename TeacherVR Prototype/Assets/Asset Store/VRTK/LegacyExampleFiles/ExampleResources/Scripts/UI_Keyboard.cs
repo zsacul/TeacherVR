@@ -7,6 +7,8 @@
     {
         private InputField input;
 
+        private string nick = "BSTTE";
+
         public void ClickKey(string character)
         {
             input.text += character;
@@ -23,7 +25,13 @@
         public void Enter()
         {
             VRTK_Logger.Info("You've typed [" + input.text + "]");
+            nick = input.text;
             input.text = "";
+        }
+
+        public string getnick()
+        {
+            return nick;
         }
 
         private void Start()
