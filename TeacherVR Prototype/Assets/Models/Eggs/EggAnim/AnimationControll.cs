@@ -49,7 +49,7 @@ public class AnimationControll : MonoBehaviour
     private IEnumerator expression_fear(string name)
     {
         anim.SetBool(name, true);
-        materials[2] = eyeHit;
+        materials[2].mainTexture = eyeHit.mainTexture;
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length +
                                         anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
         yield return new WaitForSeconds(0.1f);
@@ -66,6 +66,20 @@ public class AnimationControll : MonoBehaviour
         else
         {
             anim.SetBool("isWalking", false);
+        }
+    }
+
+    public void Hanging(bool state)
+    {
+        if (state)
+        {
+            anim.SetBool("Hanging", true);
+            materials[2].mainTexture = eyeHit.mainTexture;
+        }
+        else
+        {
+            anim.SetBool("Hanging", false);
+            materials[2].mainTexture = eyeDefault;
         }
     }
 
