@@ -19,7 +19,12 @@ public class DataHolder : MonoBehaviour
             PlayerPrefs.GetInt("Top1", 0), PlayerPrefs.GetInt("Top2", 0), PlayerPrefs.GetInt("Top3", 0),
             PlayerPrefs.GetInt("Top4", 0), PlayerPrefs.GetInt("Top5", 0)
         };
-        _gameController.ScoreBoard.SetTopScore(_TopScore);
+        string[] _TopNick =
+        {
+            PlayerPrefs.GetString("Nop1", "BSTTE"), PlayerPrefs.GetString("Nop2", "BSTTE"), PlayerPrefs.GetString("Nop3", "BSTTE"),
+            PlayerPrefs.GetString("Nop4", "BSTTE"), PlayerPrefs.GetString("Nop5", "BSTTE")
+        };
+        _gameController.ScoreBoard.SetTopNick(_TopNick);
     }
 
     public void SaveData()
@@ -35,6 +40,11 @@ public class DataHolder : MonoBehaviour
         PlayerPrefs.SetInt("Top3", _gameController.ScoreBoard.GetTopScore()[2]);
         PlayerPrefs.SetInt("Top4", _gameController.ScoreBoard.GetTopScore()[3]);
         PlayerPrefs.SetInt("Top5", _gameController.ScoreBoard.GetTopScore()[4]);
+        PlayerPrefs.SetString("Nop1", _gameController.ScoreBoard.GetTopNick()[0]);
+        PlayerPrefs.SetString("Nop2", _gameController.ScoreBoard.GetTopNick()[1]);
+        PlayerPrefs.SetString("Nop3", _gameController.ScoreBoard.GetTopNick()[2]);
+        PlayerPrefs.SetString("Nop4", _gameController.ScoreBoard.GetTopNick()[3]);
+        PlayerPrefs.SetString("Nop5", _gameController.ScoreBoard.GetTopNick()[4]);
     }
 
     public void ResetAllData()
