@@ -274,7 +274,6 @@
             if ((Math.Abs(studentTransform.position.x - defaultLocation.x) < 0.2f && Math.Abs(studentTransform.position.z - defaultLocation.z ) < 0.2f && (studentTransform.position.y - defaultLocation.y) < 0.2f) && !nomed && fin)
             {
                 //play some animation maybe?
-                Reset();
                return true;
             } else
             {

@@ -69,6 +69,7 @@ public class Claw : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
+        clawControllerScript.Reset();
         Destroy(destinationInstance);
         Destroy(clawInstance);
         Destroy(clawControllerInstance);
