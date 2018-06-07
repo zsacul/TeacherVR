@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4829c1cb5e987fe49b2e7b2fb8bf9f22, type: 3}
+  m_Name: Claw
+  m_EditorClassIdentifier: 
+  name: New Event
+  description: 
+  status: 1
+  Lvl: 0
+  MediumLvl: 0
+  DeviationLvlRange: 0
+  Shuffle: 1
+  Multiple: 1
+  GoTo: {fileID: 0}
+  GoToTransform: {fileID: 0}
+  destination: {fileID: 1080537015108412, guid: 06f4fa433b160ce43a1cc1b2da32f0d1,
+    type: 2}
+  clawController: {fileID: 1023819504772376, guid: 59ae31794f7e52d4998d00c3f8ef37b6,
+    type: 2}
+  claw: {fileID: 1066877904832864, guid: a8d06bf743f24024f80cee1b45293478, type: 2}

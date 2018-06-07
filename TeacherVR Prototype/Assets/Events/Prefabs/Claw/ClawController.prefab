@@ -723,7 +723,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: 1
-  destination: 1
   cntrl: {fileID: 0}
   head: {fileID: 0}
   clawNeck: {fileID: 0}
@@ -733,6 +732,8 @@ MonoBehaviour:
   AnimButton: {fileID: 95926898079723998}
   students: {fileID: 0}
   clawGameObject: {fileID: 0}
+  defaultLocation: {x: 0, y: 0, z: 0}
+  nomed: 0
 --- !u!114 &114835655684275984
 MonoBehaviour:
   m_ObjectHideFlags: 1
