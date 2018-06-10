@@ -46,17 +46,18 @@
             
             
             offset = new Vector3(0.1f, 1.8f, 0.0f);
-            clawGameObject = GameObject.Find("Claw/ClawBelka/ClawHolder/Claw/ClawPiston/Head");
+            clawGameObject = GameObject.Find("Claw(Clone)/ClawBelka/ClawHolder/Claw/ClawPiston/Head");
             students = GameObject.Find("Students").GetComponent<ActivateStudents>();
             cntrl = GameObject.FindGameObjectWithTag("Claw").GetComponent<ClawControl>();
             head = clawGameObject.GetComponent<Animator>();
-            clawNeck = GameObject.Find("Claw/ClawBelka/ClawHolder/Claw").GetComponent<Animator>();
+            clawNeck = GameObject.Find("Claw(Clone)/ClawBelka/ClawHolder/Claw").GetComponent<Animator>();
             student = RandStudent();
             studentTransform = student.transform;
             defaultLocation = studentTransform.position;
             clawTransform = clawGameObject.transform;
             studentAnimator = student.gameObject.transform.GetChild(1).GetChild(0).gameObject.GetComponent<AnimationControll>();
-            destination = GameObject.Find("Destination");
+            //destination = GameObject.Find("Destination");
+            destination = GameObject.Find("Destination(Clone)"); 
             destinationTransform = destination.transform.position;
             
             
