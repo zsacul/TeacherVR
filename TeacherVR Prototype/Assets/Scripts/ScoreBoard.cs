@@ -64,7 +64,7 @@ public class ScoreBoard : MonoBehaviour
         SetOutOfTime(false);
         Alarm = true;
         keyb = gameObject.GetComponent<VRTK.Examples.UI_Keyboard>();
-        nick = keyb.getnick();
+    //    nick = keyb.getnick();
     }
 
     private void Update()

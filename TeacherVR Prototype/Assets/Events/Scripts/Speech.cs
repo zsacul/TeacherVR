@@ -5,7 +5,7 @@ using TMPro;
 [CreateAssetMenu(fileName = "Speech", menuName = "Events/Speech")]
 public class Speech : Events
 {
-    [Header("Custom Settings")]
+   /* [Header("Custom Settings")]
     public static List <string> TextToSay;
     static bool SaidEverything = false;
     public GameObject TTS_prefab;
@@ -89,5 +89,5 @@ public class Speech : Events
         {
             whole_text += " " + word;
         }
-    }
+    }*/
 }

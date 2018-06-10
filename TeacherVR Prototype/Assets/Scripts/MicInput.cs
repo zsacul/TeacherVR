@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Windows.Speech;
-using System.Linq;
+//using UnityEngine.Windows.Speech;
+//using System.Linq;
 /* Main source atomtwist's comment from:
 https://forum.unity.com/threads/check-current-microphone-input-volume.133501/ */
 public class MicInput : MonoBehaviour
 {
-    KeywordRecognizer recognizer;
-    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+   // KeywordRecognizer recognizer;
+ //   Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
     public GameObject SpeakingInd;
 
     static public MicInputType typeOfInput;
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
-    static public bool isRecognitionSupported;
+//    static public bool isRecognitionSupported;
 
     static public bool bookNoise = false;
     public int multiplier = 5;
@@ -146,7 +146,7 @@ public class MicInput : MonoBehaviour
     private void Start()
     {
 
-        AddWordsToDictionary();
+    //    AddWordsToDictionary();
         bookNoise = false;
         typeOfInput = MicInputType.noone;
         _legacyScore = 0;
@@ -157,13 +157,13 @@ public class MicInput : MonoBehaviour
 
         
     }
-    public string getRandomWord()
+   /* public string getRandomWord()
     {
         List<string> words = keywords.Keys.ToList();
         return words[Random.Range(0,words.Count-1)];
-    }
+    }*/
     
-    void AddWordsToDictionary()
+ /*   void AddWordsToDictionary()
     {
         Debug.Log("You are speaking " +
     System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName + " is supported: "+ PhraseRecognitionSystem.isSupported+ " os "+ SystemInfo.operatingSystemFamily);
@@ -213,13 +213,13 @@ public class MicInput : MonoBehaviour
             Debug.Log("Speech recognision is not supported on this machine, requires Windows with English interface with speech recognition.");
         }
         
-    }
+    }*//*
     bool SupportedLanguage()
     {
         if (Application.systemLanguage.Equals(SystemLanguage.English))
             return true;
         return false;
-    }
+    }*//*
     private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         System.Action keyWordAction;
@@ -228,11 +228,11 @@ public class MicInput : MonoBehaviour
             keyWordAction.Invoke();
         }
     }
-
+    *//*
     void RecognizedWord(string word)
     {
         Debug.Log("You've said: " + word);
-    }
+    }*/
     void InitDetect()
     {
         pointer = 0;
@@ -265,11 +265,11 @@ public class MicInput : MonoBehaviour
             if (typeOfInput == MicInputType.speechDetection)
             {
 
-                if (!recognizer.IsRunning)
+                /*if (!recognizer.IsRunning)
                 { recognizer.Start();
                     Debug.Log("Im listening");
-                }
-                /*
+                }*/
+                
                 scoreBuffer = DetectionOfSpeech();
                 if (scoreBuffer != 0)
                 {
@@ -281,7 +281,7 @@ public class MicInput : MonoBehaviour
                     if (SpeakingInd != null)
                         SpeakingInd.SetActive(false);
                 }
-                _legacyScore += scoreBuffer;*/
+                _legacyScore += scoreBuffer;
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
@@ -329,11 +329,11 @@ public class MicInput : MonoBehaviour
                     initDet = false;
             }
         }
-        else
+      /*  else
         {
             if (isRecognitionSupported && recognizer.IsRunning)
                 recognizer.Stop();
-        }
+        }*/
     }
 
 
