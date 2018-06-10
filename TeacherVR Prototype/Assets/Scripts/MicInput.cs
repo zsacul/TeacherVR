@@ -275,7 +275,7 @@ public class MicInput : MonoBehaviour
                 {
                     lastPointsTime = current_time;
                 }
-                if (lastPointsTime + 3 <= current_time)
+                if (lastPointsTime + 1 <= current_time)
                 {
                     isSpeaking = false;
                     if (SpeakingInd != null)

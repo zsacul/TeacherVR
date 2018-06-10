@@ -14,7 +14,7 @@ MonoBehaviour:
   name: Lecture
   description: Lecture students by talking to them.
   status: 1
-  Lvl: 1
+  Lvl: 2
   MediumLvl: 0
   DeviationLvlRange: 0
   Shuffle: 1
@@ -22,13 +22,18 @@ MonoBehaviour:
   GoTo: {fileID: 1395295741202138, guid: 8ed1ea0e88e8e724fa0f2ea4b7f2fcaf, type: 2}
   GoToTransform: {fileID: 4102171884153582, guid: 8ed1ea0e88e8e724fa0f2ea4b7f2fcaf,
     type: 2}
-  knowledge_beam_SpawnDelay: 0
-  lightbulb_prefab: {fileID: 1381075852399886, guid: fdca82cd0f93d2a4ebb4b18ffd511e0c,
+  knowledgeBeam_prefab: {fileID: 1402097542744342, guid: 6f32ec5331c75304fa96aafc3d2904d9,
     type: 2}
-  Students_ToLecture: 10000000040000000c0000000700000000000000
-  remainingStudents: 4
-  studentsToLect_GOs:
+  knowledge_beam_SpawnDelay: 0
+  lightbulb_prefab: {fileID: 1797078903472106, guid: 1bea49caa7c4ab24c98f1b1c385d02ec,
+    type: 2}
+  lightbulbs:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Students_ToLecture: 060000000c0000001100000000000000
+  shootPos: {x: 1, y: 0, z: 0}
+  studentsToLect_GOs:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

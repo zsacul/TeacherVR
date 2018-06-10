@@ -15,6 +15,7 @@ public class Lecture : Events
     private float lastSpawnTime;
     public int[] Students_ToLecture;
     public static int remainingStudents;
+    private int notYETPointedStudents;
     public Vector3 shootPos;
     public List<GameObject> studentsToLect_GOs; // priv later?..
 
@@ -65,6 +66,7 @@ public class Lecture : Events
             
         }
         remainingStudents = studentsToLect_GOs.Count;
+        notYETPointedStudents = remainingStudents;
         lightbulbs = new GameObject[remainingStudents];
         for (int i = 0; i < remainingStudents; i++)
         {
@@ -81,8 +83,8 @@ public class Lecture : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-        AddPoints(50);
-        for (int i = 0; i < lightbulbs.Length - 1; i++)
+       // AddPoints(50);
+        for (int i = 0; i < lightbulbs.Length; i++)
         {
             if(lightbulbs[i]!=null)
             Destroy(lightbulbs[i]);
@@ -96,7 +98,7 @@ public class Lecture : Events
     public override void AbortEvent()
     {
         base.AbortEvent();
-        for (int i = 0; i < lightbulbs.Length - 1; i++)
+        for (int i = 0; i < lightbulbs.Length; i++)
         {
             if (lightbulbs[i] != null)
                 Destroy(lightbulbs[i]);
@@ -115,7 +117,7 @@ public class Lecture : Events
     {
         base.CallInUpdate();
         currentTime = Time.time;
-        if(GameController.Instance.MicInput.isSpeaking && (currentTime >= lastSpawnTime + 0.5f))
+        if(GameController.Instance.MicInput.isSpeaking && (currentTime >= lastSpawnTime + 0.25f))
         {
             Debug.Log("Beam");
             Transform headseatTransform = VRTK_DeviceFinder.HeadsetTransform();
@@ -131,7 +133,11 @@ public class Lecture : Events
             lastSpawnTime = Time.time;
 
         }
-        remainingStudents = studentsToLect_GOs.Count;
+        while(notYETPointedStudents>remainingStudents)
+        {
+            AddPoints(50);
+            notYETPointedStudents--;
+        }
         if (remainingStudents == 0)
             CompleteEvent();
     }

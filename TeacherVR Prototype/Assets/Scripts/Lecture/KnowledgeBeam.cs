@@ -6,21 +6,20 @@ public class KnowledgeBeam : MonoBehaviour {
 
     public Vector3 force;
     private Rigidbody rb;
+    public float speed;
+    public Mesh[] smartThings;
     private GameObject Headset;
 	// Use this for initialization
 	void Start () {
-        
+        int model = Random.Range(0, 14);
+        GetComponentInChildren<MeshFilter>().sharedMesh = smartThings[model];
         Headset = VRTK_DeviceFinder.HeadsetTransform().gameObject;
         Debug.Log(Headset);
         force = new Vector3(0, 0, 0);
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.velocity = gameObject.transform.forward * 6;
+        rb.velocity = gameObject.transform.forward * speed;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
     private void OnCollisionEnter(Collision collision)
     {
