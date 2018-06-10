@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 54582848998325654}
   - component: {fileID: 114210997866315590}
   m_Layer: 0
-  m_Name: Temp-Knowledge-Beam
+  m_Name: Knowledge-Beam
   m_TagString: KnowledgeBeam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 0, z: 0}
+  speed: 4
   smartThings:
   - {fileID: 4300010, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}
   - {fileID: 4300012, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}

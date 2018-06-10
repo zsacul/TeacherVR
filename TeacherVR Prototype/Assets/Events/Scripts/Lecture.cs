@@ -17,7 +17,7 @@ public class Lecture : Events
     public static int remainingStudents;
     private int notYETPointedStudents;
     public Vector3 shootPos;
-    public List<GameObject> studentsToLect_GOs; // priv later?..
+    public List<GameObject> studentsToLect_GOs; 
 
     public override void StartEvent()
     {
@@ -83,7 +83,6 @@ public class Lecture : Events
     public override void CompleteEvent()
     {
         base.CompleteEvent();
-       // AddPoints(50);
         for (int i = 0; i < lightbulbs.Length; i++)
         {
             if(lightbulbs[i]!=null)

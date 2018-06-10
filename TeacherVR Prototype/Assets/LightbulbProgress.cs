@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+
 
 public class LightbulbProgress : MonoBehaviour {
 
@@ -9,14 +9,14 @@ public class LightbulbProgress : MonoBehaviour {
     public float Seen;
     private float total;
     public Material light_mat;
-	// Use this for initialization
+
 	void Start () {
         ToLearn = 15;
         Seen = ToLearn;
         total = ToLearn;
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
         if(Seen== 0)
         {
