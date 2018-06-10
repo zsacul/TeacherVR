@@ -36,11 +36,10 @@ public class LightbulbProgress : MonoBehaviour {
             Seen--;
             for (int i = 0; i < 80*(total- Seen)/total; i+=20)
             {
-                Debug.Log(i);
-                Debug.Log(Mathf.FloorToInt(i / 20)); 
+
                 transform.GetChild(Mathf.FloorToInt(i/20)).gameObject.GetComponent<MeshRenderer>().material = light_mat;
             }
-            Debug.Log("Uczy sie");
+
         }
 	}
 }

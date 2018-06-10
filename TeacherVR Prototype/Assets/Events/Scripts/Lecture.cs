@@ -118,7 +118,7 @@ public class Lecture : Events
         currentTime = Time.time;
         if(GameController.Instance.MicInput.isSpeaking && (currentTime >= lastSpawnTime + 0.25f))
         {
-            Debug.Log("Beam");
+
             Transform headseatTransform = VRTK_DeviceFinder.HeadsetTransform();
 
             Vector3 spawnPosition = headseatTransform.position;

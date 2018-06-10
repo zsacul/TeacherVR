@@ -33659,7 +33659,7 @@ RectTransform:
   - {fileID: 2032935840}
   - {fileID: 1604497676}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -36875,6 +36875,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114156139348577676, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
+        type: 2}
+      propertyPath: ListOfEvents.Array.size
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4199499733645704, guid: 6369b2c7d8b71ab428227fa70f8acbb2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -37142,6 +37147,12 @@ Prefab:
       propertyPath: RightScreenSource
       value: 
       objectReference: {fileID: 221272145}
+    - target: {fileID: 114156139348577676, guid: 6369b2c7d8b71ab428227fa70f8acbb2,
+        type: 2}
+      propertyPath: ListOfEvents.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: c15999e859deb714aa5e6920d1814845,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6369b2c7d8b71ab428227fa70f8acbb2, type: 2}
   m_IsPrefabParent: 0
