@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Lecture
   m_EditorClassIdentifier: 
   name: Lecture
-  description: Lecture students by talking to them.
-  status: 3
+  description: Lecture students by talking to them
+  status: 1
   Lvl: 2
   MediumLvl: 0
   DeviationLvlRange: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
     type: 2}
   lightbulbs:
   - {fileID: 0}
-  Students_ToLecture: 0100000000000000
-  shootPos: {x: 0.3, y: 0, z: 0}
+  Students_ToLecture: 0400000000000000
+  shootPos: {x: 0.3, y: 0.01, z: 0}
   studentsToLect_GOs:
   - {fileID: 0}

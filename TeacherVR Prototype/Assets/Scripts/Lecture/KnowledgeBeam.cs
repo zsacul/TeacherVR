@@ -4,23 +4,36 @@ using UnityEngine;
 using VRTK;
 public class KnowledgeBeam : MonoBehaviour {
 
-    public Vector3 force;
+
+
     private Rigidbody rb;
     public float speed;
     public Mesh[] smartThings;
 
+    public float lifetime;
+    private float lifeSpawnTime;
+
 	// Use this for initialization
 	void Start () {
+
         int model = Random.Range(0, 14);
         GetComponentInChildren<MeshFilter>().sharedMesh = smartThings[model];
 
+	    lifeSpawnTime = Time.time;
 
-        force = new Vector3(0, 0, 0);
         rb = gameObject.GetComponent<Rigidbody>();
         rb.velocity = gameObject.transform.forward * speed;
 	}
-	
 
+     void Update()
+     {
+         if (Time.time - lifeSpawnTime >= .5f)
+             gameObject.GetComponent<SphereCollider>().enabled=true;
+        if (lifeSpawnTime + lifetime <= Time.time)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.transform.tag);

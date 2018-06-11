@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9046e20bdf1853c40b86ce749ebfbfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 0, z: 0}
   speed: 4
   smartThings:
   - {fileID: 4300010, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}
@@ -157,6 +156,7 @@ MonoBehaviour:
   - {fileID: 4300024, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}
   - {fileID: 4300026, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}
   - {fileID: 4300028, guid: 169ade1ec6d23eb4db45afebb1c47e09, type: 3}
+  lifetime: 20
 --- !u!135 &135262532329890934
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -165,7 +165,7 @@ SphereCollider:
   m_GameObject: {fileID: 1402097542744342}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.35
   m_Center: {x: 0, y: 0.15, z: 0}

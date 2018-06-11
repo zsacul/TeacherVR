@@ -119,8 +119,8 @@ public class Lecture : Events
         if(GameController.Instance.MicInput.isSpeaking && (currentTime >= lastSpawnTime + 0.25f))
         {
 
-            Transform headseatTransform = VRTK_DeviceFinder.HeadsetTransform();
-
+            Transform headseatTransform = VRTK_DeviceFinder.HeadsetCamera();
+            
             Vector3 spawnPosition = headseatTransform.position;
             spawnPosition = new Vector3(spawnPosition.x + shootPos.x, spawnPosition.y + shootPos.y, spawnPosition.z + shootPos.z);
             Quaternion spawnRotation = headseatTransform.rotation;
