@@ -14,6 +14,7 @@ public class ScoreBoard : MonoBehaviour
     private string nick = "BSTTE";
     private int points = 0;
     private float timer = 0f;
+    public VRTK.Examples.UI_Keyboard keybo;
 
     private int minutes = 0;
     private int seconds = 0;
@@ -34,7 +35,6 @@ public class ScoreBoard : MonoBehaviour
 
     GameObject ParticleSystem;
     GameObject Where;
-    private VRTK.Examples.UI_Keyboard keyb;
     public enum WhatOver
     {
         Time,
@@ -63,8 +63,7 @@ public class ScoreBoard : MonoBehaviour
         ChangeTimeCounting(true);
         SetOutOfTime(false);
         Alarm = true;
-        keyb = gameObject.GetComponent<VRTK.Examples.UI_Keyboard>();
-    //    nick = keyb.getnick();
+        nick = keybo.getnick();
     }
 
     private void Update()

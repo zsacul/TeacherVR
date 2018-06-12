@@ -25,7 +25,7 @@
         public void Enter()
         {
             VRTK_Logger.Info("You've typed [" + input.text + "]");
-            nick = input.text;
+            nick = input.text.Remove(5);
             input.text = "";
         }
 
