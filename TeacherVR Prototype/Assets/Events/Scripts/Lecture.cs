@@ -25,13 +25,14 @@ public class Lecture : Events
         remainingStudents = 100;
         currentTime = Time.time;
         lastSpawnTime = 0;
-        if (Lvl < 2)
+       /* if (Lvl < 2)
             Lvl=2;
         int maxLvl = Lvl + 5;
         if (maxLvl > GameController.Instance.Students.Students.Length - 1)
-            maxLvl = GameController.Instance.Students.Students.Length - 1;
-        Students_ToLecture = new int[Random.Range(Lvl,maxLvl)];
-        Debug.Log("Tyle studentów " + (Students_ToLecture.Length-1));
+            maxLvl = GameController.Instance.Students.Students.Length - 1;*/
+        // Students_ToLecture = new int[Random.Range(Lvl,maxLvl)];
+        Students_ToLecture = new int[5];
+       // Debug.Log("Tyle studentów " + (Students_ToLecture.Length-1));
         studentsToLect_GOs = new List<GameObject>();
         for (int i = 0; i < Students_ToLecture.Length-1; i++)
         {
@@ -60,7 +61,7 @@ public class Lecture : Events
             if (goodStudentToLecture)
             {
                 studentsToLect_GOs.Add(GameController.Instance.Students.Students[newStudentToLecture]);
-                Debug.Log("Student no." + newStudentToLecture + "does not understand. Lecture him/her.");
+               // Debug.Log("Student no." + newStudentToLecture + "does not understand. Lecture him/her.");
                 GameController.Instance.Students.Students[newStudentToLecture].GetComponentInChildren<AnimationControll>().Talk(true);
             }
             

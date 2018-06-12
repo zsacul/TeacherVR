@@ -36,7 +36,7 @@ public class KnowledgeBeam : MonoBehaviour {
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.tag);
+     //   Debug.Log(collision.transform.tag);
         if (collision.transform.CompareTag("Egg"))
         {
  
