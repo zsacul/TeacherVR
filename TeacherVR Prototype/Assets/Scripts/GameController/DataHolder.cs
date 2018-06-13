@@ -19,6 +19,7 @@ public class DataHolder : MonoBehaviour
             PlayerPrefs.GetInt("Top1", 0), PlayerPrefs.GetInt("Top2", 0), PlayerPrefs.GetInt("Top3", 0),
             PlayerPrefs.GetInt("Top4", 0), PlayerPrefs.GetInt("Top5", 0)
         };
+        _gameController.ScoreBoard.SetTopScore(_TopScore);
         string[] _TopNick =
         {
             PlayerPrefs.GetString("Nop1", "BSTTE"), PlayerPrefs.GetString("Nop2", "BSTTE"), PlayerPrefs.GetString("Nop3", "BSTTE"),

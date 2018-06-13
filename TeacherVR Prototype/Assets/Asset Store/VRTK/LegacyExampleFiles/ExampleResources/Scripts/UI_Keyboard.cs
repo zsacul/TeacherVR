@@ -25,8 +25,10 @@
         public void Enter()
         {
             VRTK_Logger.Info("You've typed [" + input.text + "]");
-            nick = input.text.Remove(5);
+            if (nick.Length > 5) nick = input.text.Remove(5);
+            else nick = input.text;
             input.text = "";
+            gameObject.SetActive(false);
         }
 
         public string getnick()
