@@ -7,6 +7,7 @@ public class DestroyObjectOnTriggerEnter : MonoBehaviour
     public string[] tag;
     public bool DestroyObjectsEvent = true;
     public float LifeTime = 0;
+    public bool DestroyRoot = true;
 
     private GameController gameController;
 
@@ -26,7 +27,8 @@ public class DestroyObjectOnTriggerEnter : MonoBehaviour
                     gameController.Particles.CreateParticle(Particles.NaszeParticle.FiftyPoints,transform.position + Vector3.up/4);
                     gameController.ScoreBoard.PointsAddAnim(50);
                 }
-                Destroy(transform.root.gameObject, LifeTime);
+                if(DestroyRoot) Destroy(transform.root.gameObject, LifeTime);
+                else Destroy(gameObject, LifeTime);
             }
         }
     }
