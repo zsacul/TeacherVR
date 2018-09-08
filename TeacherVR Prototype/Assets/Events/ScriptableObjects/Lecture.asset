@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa442030a8a17f41bc8059fcba7e42a, type: 3}
+  m_Name: Lecture
+  m_EditorClassIdentifier: 
+  name: Lecture
+  description: Lecture students by talking to them
+  status: 1
+  Lvl: 2
+  MediumLvl: 0
+  DeviationLvlRange: 0
+  Shuffle: 1
+  Multiple: 1
+  GoTo: {fileID: 0}
+  GoToTransform: {fileID: 0}
+  knowledgeBeam_prefab: {fileID: 1402097542744342, guid: 6f32ec5331c75304fa96aafc3d2904d9,
+    type: 2}
+  knowledge_beam_SpawnDelay: 0
+  lightbulb_prefab: {fileID: 1797078903472106, guid: 1bea49caa7c4ab24c98f1b1c385d02ec,
+    type: 2}
+  lightbulbs:
+  - {fileID: 0}
+  Students_ToLecture: 0400000000000000
+  shootPos: {x: 0.3, y: 0.01, z: 0}
+  studentsToLect_GOs:
+  - {fileID: 0}

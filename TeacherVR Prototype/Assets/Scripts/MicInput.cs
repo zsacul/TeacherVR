@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Windows.Speech;
-using System.Linq;
-/* Main source atomtwist's comment from:
+//using UnityEngine.Windows.Speech;
+//using System.Linq;
+/*  Source atomtwist's comment from:
 https://forum.unity.com/threads/check-current-microphone-input-volume.133501/ */
 public class MicInput : MonoBehaviour
 {
-    KeywordRecognizer recognizer;
-    Dictionary<string, System.Action> keywords = new Dictionary<string, System.Action>();
+
     public GameObject SpeakingInd;
 
     static public MicInputType typeOfInput;
     bool _isInitialized;
     private string deviceName;
     public bool isSpeaking;
-    static public bool isRecognitionSupported;
+
 
     static public bool bookNoise = false;
     public int multiplier = 5;
@@ -26,13 +25,13 @@ public class MicInput : MonoBehaviour
     private LineRenderer lrS;
     public GameObject DetectorPrefab;
     private GameObject Detector;
-   // private TextMeshPro tmPro;
+
     private float[] peakArray;
     private int pointer;
     private float sampleTime;
-  //  private 
+  
     private float peakArrayDisplayTime;
-    //public float minRequiredVolume;
+
 
     public enum MicInputType
     {
@@ -42,26 +41,23 @@ public class MicInput : MonoBehaviour
     }
     float time;
     int current_time;
-    int lastPointsTime;
+    int lastSpeakingPointsTime;
 
-    public int _legacyScore;
-    int scoreBuffer;
+
+    int speakingScore;
 
     public float minSilencingForce = 6f;
     public float minSilencingVolume = 1f;
     public float detectionLevel = 0.25f; 
     public float eps = 0.0000001f;
-    public void enableDetector(bool b = true)
-    {
-   //     tm.enabled = b;
-    }
+
     void InitMic()
     {
         
         if (deviceName == null && Microphone.devices.Length >0) deviceName = Microphone.devices[0];
-      //  Debug.Log("devicename " + deviceName);
+  
         audioClipRec = Microphone.Start(deviceName, true, 128, 44100);
-      //  Debug.Log(Microphone.IsRecording(deviceName));
+
     }
 
     void StopMicrophone()
@@ -146,10 +142,10 @@ public class MicInput : MonoBehaviour
     private void Start()
     {
 
-        AddWordsToDictionary();
+
         bookNoise = false;
         typeOfInput = MicInputType.noone;
-        _legacyScore = 0;
+ 
 
         isSpeaking = false;
         if (SpeakingInd != null)
@@ -157,82 +153,7 @@ public class MicInput : MonoBehaviour
 
         
     }
-    public string getRandomWord()
-    {
-        List<string> words = keywords.Keys.ToList();
-        return words[Random.Range(0,words.Count-1)];
-    }
-    
-    void AddWordsToDictionary()
-    {
-        Debug.Log("You are speaking " +
-    System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName + " is supported: "+ PhraseRecognitionSystem.isSupported+ " os "+ SystemInfo.operatingSystemFamily);
-        if (PhraseRecognitionSystem.isSupported && SupportedLanguage() && SystemInfo.operatingSystemFamily.Equals(OperatingSystemFamily.Windows))
-        {
-            
-            isRecognitionSupported = true;
 
-            keywords.Add("one", () =>
-          {
-              Speech.iSaid("one");
-              RecognizedWord("one");
-          });
-            keywords.Add("two", () =>
-            {
-                Speech.iSaid("two");
-                RecognizedWord("two");
-            });
-            keywords.Add("egg", () =>
-            {
-                Speech.iSaid("egg");
-                RecognizedWord("egg");
-            });
-            keywords.Add("computer", () =>
-            {
-                Speech.iSaid("computer");
-                RecognizedWord("computer");
-            });
-            keywords.Add("teacher", () =>
-            {
-                Speech.iSaid("teacher");
-                RecognizedWord("teacher");
-            });
-            keywords.Add("programming", () =>
-            {
-                Speech.iSaid("programming");
-                RecognizedWord("programming");
-            });
-            recognizer = new KeywordRecognizer(keywords.Keys.ToArray());
-            recognizer.OnPhraseRecognized += Recognizer_OnPhraseRecognized;
-          //  recognizer.Start();
-        }
-        else
-        {
-            isRecognitionSupported = false;
-            
-            Debug.Log("Speech recognision is not supported on this machine, requires Windows with English interface with speech recognition.");
-        }
-        
-    }
-    bool SupportedLanguage()
-    {
-        if (Application.systemLanguage.Equals(SystemLanguage.English))
-            return true;
-        return false;
-    }
-    private void Recognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        System.Action keyWordAction;
-        if(keywords.TryGetValue(args.text, out keyWordAction))
-        {
-            keyWordAction.Invoke();
-        }
-    }
-
-    void RecognizedWord(string word)
-    {
-        Debug.Log("You've said: " + word);
-    }
     void InitDetect()
     {
         pointer = 0;
@@ -241,7 +162,7 @@ public class MicInput : MonoBehaviour
             Detector = Instantiate(DetectorPrefab);
             Noise.detector = Detector;
 
-            //   tm = Detector.transform.Find("Canvas").gameObject.GetComponentInChildren<TextMeshProUGUI>();
+
             lrCurr = Detector.transform.Find("Canvas/Line").gameObject.GetComponent<LineRenderer>();
             lrCurr.positionCount = 0;
             lrS = Detector.transform.Find("Canvas/ShoutLine").gameObject.GetComponent<LineRenderer>();
@@ -265,29 +186,25 @@ public class MicInput : MonoBehaviour
             if (typeOfInput == MicInputType.speechDetection)
             {
 
-                if (!recognizer.IsRunning)
-                { recognizer.Start();
-                    Debug.Log("Im listening");
-                }
-                /*
-                scoreBuffer = DetectionOfSpeech();
-                if (scoreBuffer != 0)
+                
+                speakingScore = DetectionOfSpeech();
+                if (speakingScore != 0)
                 {
-                    lastPointsTime = current_time;
+                    lastSpeakingPointsTime = current_time;
                 }
-                if (lastPointsTime + 3 <= current_time)
+                if (lastSpeakingPointsTime + 1 <= current_time)
                 {
                     isSpeaking = false;
                     if (SpeakingInd != null)
                         SpeakingInd.SetActive(false);
                 }
-                _legacyScore += scoreBuffer;*/
+
             }
             else if (typeOfInput == MicInputType.peakDetection)
             {
                 if (!initDet)
                     InitDetect();
-             //   Detector.SetActive(true);
+
                 if (peakArrayDisplayTime + 1f <= time)
                 {
                     DisplayLoudness();
@@ -296,7 +213,7 @@ public class MicInput : MonoBehaviour
                 float MaxPeak = PeakDetection();
                 if (sampleTime + 0.1f <= time)
                 {
-                   // Debug.Log(MaxPeak);
+
                     if (MaxPeak >= detectionLevel)
                     {
                         peakArray[pointer] = MaxPeak;
@@ -304,19 +221,7 @@ public class MicInput : MonoBehaviour
                         pointer %= 9;
                         sampleTime = time;
                    }
-                   /* else //???? average glob
-                    {
-                        int buff = pointer-1;
-                        if (buff == -1)
-                            buff = 9;
-                        if (peakArray[buff] != -1)
-                        {
-                            peakArray[pointer] = (peakArray[buff] + average) / 3;
-                            pointer++;
-                            pointer %= 9;
-                            sampleTime = time;
-                        }
-                    }*/
+
                 }
                 if (MaxPeak >= minSilencingVolume || bookNoise)
                 {
@@ -329,11 +234,7 @@ public class MicInput : MonoBehaviour
                     initDet = false;
             }
         }
-        else
-        {
-            if (isRecognitionSupported && recognizer.IsRunning)
-                recognizer.Stop();
-        }
+
     }
 
 
@@ -349,13 +250,9 @@ public class MicInput : MonoBehaviour
                 if (peakArray[(pointer + i) % 10] != -1f)
                 {
                     lrCurr.SetPosition(i, new Vector3(i/10f, (peakArray[(pointer + i) % 10])/minSilencingVolume, 0));
-          //          text += peakArray[(pointer + i) % 10].ToString() + "\n";
+
                 }
-              //  else
-          //      {
-          //          lrCurr.SetPosition(i, new Vector3(i / 10f, average / minSilencingVolume, 0));
-         //           text += "usr: "+ average + "\n";
-         //       }
+
             }
             int numb = 10;
             float average = 0;
@@ -370,7 +267,7 @@ public class MicInput : MonoBehaviour
                 average /= numb;
             else
                 average = 0;
-        //    text += "Srednia: "+average+"\n";
+
             if (numb == 0)
                 minSilencingVolume = 1f;
             else if (numb < 5)
@@ -385,8 +282,7 @@ public class MicInput : MonoBehaviour
                 minSilencingVolume = 0.35f;
             lrS.positionCount = 2;
             lrS.SetPositions(new Vector3[2] { new Vector3(0, 1, 0), new Vector3(9 / 10f, 1, 0) }); // 1 -> 100%
-         //   text+="To silence: " + minSilencingVolume;
-           // tm.text = text;
+
 
         }
 

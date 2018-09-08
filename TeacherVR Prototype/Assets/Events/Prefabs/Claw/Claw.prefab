@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 114821078971922158}
   m_Layer: 0
   m_Name: Claw
-  m_TagString: Untagged
+  m_TagString: Claw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2036,6 +2036,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4147648515815570}
   - component: {fileID: 114363863119631914}
+  - component: {fileID: 95255031269235926}
   m_Layer: 0
   m_Name: Claw
   m_TagString: Untagged
@@ -4244,7 +4245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933862364360832}
   m_LocalRotation: {x: -0, y: -0.000000014901161, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: -5.3350897, z: 37.1}
+  m_LocalPosition: {x: 5, y: -5.33509, z: 37.1}
   m_LocalScale: {x: 1.404827, y: 1.4672778, z: 0.61}
   m_Children:
   - {fileID: 4504772223750294}
@@ -5582,7 +5583,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1152862098712358}
   m_LocalRotation: {x: -0.7071067, y: 0.0000000037252894, z: 0.70710677, w: 0}
-  m_LocalPosition: {x: -286.14, y: 1.181092, z: 3.1078887}
+  m_LocalPosition: {x: -263, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768047511405618}
@@ -5932,7 +5933,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457592525250902}
   m_LocalRotation: {x: -0, y: -0.000000014901161, z: -0, w: 1}
-  m_LocalPosition: {x: 7.149875, y: -7.6182013, z: 37.09999}
+  m_LocalPosition: {x: 7.149875, y: -7.618201, z: 37.09999}
   m_LocalScale: {x: 1.5733685, y: 1.6673099, z: 0.61}
   m_Children:
   - {fileID: 4751162998411340}
@@ -13035,6 +13036,23 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 82a68905d3e95c64781b29b04539e0dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95255031269235926
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573042065552336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0c311ec911a3cfd4385ca17f2cf3ea00, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

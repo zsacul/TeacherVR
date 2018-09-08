@@ -9,9 +9,12 @@ public class ScoreBoard : MonoBehaviour
     private TextMeshPro textMesh;
 
     private int[] TopScore = new int[5];
+    private string[] TopNick = new string[5];
 
+    private string nick = "BSTTE";
     private int points = 0;
     private float timer = 0f;
+    public VRTK.Examples.UI_Keyboard keybo;
 
     private int minutes = 0;
     private int seconds = 0;
@@ -32,7 +35,6 @@ public class ScoreBoard : MonoBehaviour
 
     GameObject ParticleSystem;
     GameObject Where;
-
     public enum WhatOver
     {
         Time,
@@ -61,6 +63,7 @@ public class ScoreBoard : MonoBehaviour
         ChangeTimeCounting(true);
         SetOutOfTime(false);
         Alarm = true;
+        nick = keybo.getnick();
     }
 
     private void Update()
@@ -251,10 +254,19 @@ public class ScoreBoard : MonoBehaviour
     {
         OutOfTime = val;
     }
+    public string GetNick()
+    {
+        return nick;
+    }
 
     public int[] GetTopScore()
     {
         return TopScore;
+    }
+
+    public string[] GetTopNick()
+    {
+        return TopNick;
     }
 
     public void SetTopScore(int[] _TopScore)
@@ -267,6 +279,16 @@ public class ScoreBoard : MonoBehaviour
         }
     }
 
+    public void SetTopNick(string[] _TopScore)
+    {
+        int i = 0;
+        foreach (var score in _TopScore)
+        {
+            TopNick[i] = score;
+            i++;
+        }
+    }
+
     public bool SetNewTopScore()
     {
         for (int i = 0; i < TopScore.Length; i++)
@@ -275,8 +297,10 @@ public class ScoreBoard : MonoBehaviour
             {
                 for (int j = TopScore.Length - 1; j > i; j--)
                 {
+                    TopNick[j] = TopNick[j - 1];
                     TopScore[j] = TopScore[j - 1];
                 }
+                TopNick[i] = nick;
                 TopScore[i] = points + How_Many;
                 return true;
             }

@@ -53,9 +53,28 @@ public class GameController : MonoBehaviour
 
     public void RestartGame()
     {
+        DestroySpray();
         StopAllCoroutines();
         DataHolder.SaveData();
         StartCoroutine(LoadScene());
+    }
+
+    private void DestroySpray()
+    {
+        Transform LH = VRTK_DeviceFinder.GetControllerLeftHand().transform.parent.Find("Hand");
+        Transform RH = VRTK_DeviceFinder.GetControllerRightHand().transform.parent.Find("Hand");
+
+        if (LH == null || RH == null)
+        {
+            LH = VRTK_DeviceFinder.GetControllerLeftHand().transform.parent.Find("Model");
+            RH = VRTK_DeviceFinder.GetControllerRightHand().transform.parent.Find("Model");
+        }
+
+        WaterSpray LHW = LH.GetComponentInChildren<WaterSpray>();
+        WaterSpray RHW = RH.GetComponentInChildren<WaterSpray>();
+
+        if (LHW != null) LHW.ForceDestroy();
+        if (RHW != null) RHW.ForceDestroy();
     }
 
     IEnumerator LoadData()

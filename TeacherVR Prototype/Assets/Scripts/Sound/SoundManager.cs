@@ -389,10 +389,4 @@ public class SoundManager : MonoBehaviour {
         LeftScreen = LeftScreenSource.GetComponent<ScreenScript>();
         RightScreen = RightScreenSource.GetComponent<ScreenScript>();
     }
-	
-	// No need for this
-	void Update () {
-        if (Input.GetKey(KeyCode.J))
-            LeftScreen.SRaise();
-	}
 }
